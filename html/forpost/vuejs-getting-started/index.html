@@ -1,6 +1,19 @@
 <html>
-  <head></head>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
   <body>
-  <p>index</p>
+  <p id="mess">{{message}}</p>
+  <script>
+  
+  new Vue({
+    el:'#mess',
+    data: {
+      message:'hello world'
+    }
+  })
+  
+  </script>
   </body>
 </html>
