@@ -51,7 +51,7 @@ module.exports = (opt) => {
 
                                 files.forEach((pfn) => {
 
-                                    html += '<li><a href="/' + opt.folderName + '/' + fn + '/' + pfn + '">' + pfn + '<\/li>'
+                                    html += '<li><a href="/' + opt.folderName + '/' + fn + '/' + pfn + '">' + pfn + '<\/a><\/li>'
 
                                 });
 
