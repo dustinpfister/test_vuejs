@@ -5,12 +5,12 @@ fs = require('fs'),
 port = process.env.PORT || process.argv[2] || 8080;
 
 // host forpost and js folders as static
-app.use('/forpost', express.static('html/forpost'));
-app.use('/js', express.static('html/js'));
+app.use('/forpost', express.static('public/forpost'));
+app.use('/js', express.static('public/js'));
 
 // generate list of examples for root
 app.get('/', function (req, res) {
-    fs.readdir('./html/forpost', function (e, files) {
+    fs.readdir('./public/forpost', function (e, files) {
         if (e) {
             res.send(e.message);
         } else {
