@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <p id="mess">{{message}}</p>
+  <script>
+  
+  new Vue({
+    el:'#mess',
+    data: {
+      message:'an element can be selected by id with the # symbol'
+    }
+  });
+  
+  </script>
+  </body>
+</html>

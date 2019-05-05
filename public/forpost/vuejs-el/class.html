@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <ul>
+    <li class="red" v-bind:style="style" >This is red text</li>
+    <li>This is not red</li>
+    <li class="red" v-bind:style="style">This text is not red selection by class only selects the first element</li>
+  </ul>
+  <script>
+  
+  new Vue({
+    el:'.red',
+    data: {
+      style: 'color:red;'
+    }
+  });
+  
+  </script>
+  </body>
+</html>
