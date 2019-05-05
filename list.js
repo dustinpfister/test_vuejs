@@ -9,6 +9,8 @@ app.use('/forpost', express.static('public/forpost'));
 app.use('/js', express.static('public/js'));
 
 // generate list of examples for root
+app.use('/', require('./middleware/index_forpost.js')({dir:'./public/forpost'}))
+/*
 app.get('/', function (req, res) {
     fs.readdir('./public/forpost', function (e, files) {
         if (e) {
@@ -22,6 +24,7 @@ app.get('/', function (req, res) {
         }
     });
 });
+*/
 
 // start server
 app.listen(port, function () {
