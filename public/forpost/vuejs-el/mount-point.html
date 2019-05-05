@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  
+  <div class="wrap">
+    <div>
+      <p>{{ mess }}</p>
+    </div>
+  
+    <div class="project">
+      <p>{{ mess }}</p>
+    </div>
+  
+    <div class="project">
+      <p>{{ mess }}</p>
+    </div>
+  </div>
+  
+  
+  <script>
+  
+  // mounting to '.project' results in the mess being displayed for the
+  // first div of the 'project' class. If I where to mount to '.wrap' that
+  // would result in mess being displayed for all divs
+  new Vue({
+    el:'.project',
+    data: {
+      style: 'color:red;',
+      mess: 'This is the mounted vue project'
+    }
+  });
+  
+  </script>
+  </body>
+</html>
