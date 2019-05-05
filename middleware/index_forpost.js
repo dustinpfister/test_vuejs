@@ -8,6 +8,7 @@ module.exports = (opt) => {
     // options
     opt = opt || {};
     opt.dir = path.resolve(opt.dir || 'public/forpost');
+    opt.folderName = 'forpost';
 
     // Router
     let router = express.Router();
@@ -26,11 +27,49 @@ module.exports = (opt) => {
 
             (req, res, next) => {
 
-                let html = '<h1>VUE.JS EXAMPLES:</h1>';
-                req.files.forEach((folder) => {
-                    html += '<a href=\"\/forpost\/' + folder + '\"><p>' + folder + '<\/p>'
+                let html = '<h1>VUE.JS EXAMPLES:</h1>',
+                len = req.files.length,
+                i = 0,
+                step = () => {
+                    i += 1;
+                    if (i === len) {
+                        res.send(html);
+                    }
+                };
+
+                req.files.forEach((fn) => {
+
+                    fs.stat(path.join(opt.dir, fn), (e, stats) => {
+
+                        //html += '<a href=\"\/forpost\/' + folder + '\"><p>' + folder + '<\/p>';
+
+                        if (stats.isDirectory()) {
+
+                            fs.readdir(path.join(opt.dir, fn), (e, files) => {
+
+                                html += '<ul><li>' + fn + ':<ul>';
+
+                                files.forEach((pfn) => {
+
+                                    html += '<li><a href="/' + opt.folderName + '/' + fn + '/' + pfn + '">' + pfn + '<\/li>'
+
+                                });
+
+                                html += '</ul></li></ul>'
+
+                                step();
+
+                            });
+
+                        } else {
+
+                            html += '<p>' + fn + '<\/p>';
+                            step();
+
+                        }
+
+                    });
                 });
-                res.send(html);
 
             }
 
