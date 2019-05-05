@@ -4,17 +4,28 @@
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <ul>
-    <li class="red" v-bind:style="style" >This is red text</li>
+  <ul class="foo">
+    <li class="bar" v-bind:style="style" >This is red text {{ mess }}</li>
     <li>This is not red</li>
-    <li class="red" v-bind:style="style">This text is not red selection by class only selects the first element</li>
+    <li class="bar" v-bind:style="style">This text is not red {{ mess }}</li>
   </ul>
   <script>
   
+  // mounts to the first element with 'bar' class
   new Vue({
-    el:'.red',
+    el:'.bar',
     data: {
-      style: 'color:red;'
+      style: 'color:red;',
+      mess: 'bar'
+    }
+  });
+  
+  // mounts to the first element with 'foo' class
+  new Vue({
+    el:'.foo',
+    data: {
+      style: 'color:blue;',
+      mess: 'foo'
     }
   });
   
