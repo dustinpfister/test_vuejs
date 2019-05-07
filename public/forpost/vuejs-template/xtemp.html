@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>vue template example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="foo"></div>
+  <script type="text/x-template" id="xtemp">
+    <p v-bind:style="redness">{{mess}}</p>
+  </script>
+  <script>
+  new Vue({
+    el:'#foo',
+    template: '#xtemp',
+    data: {
+      mess: 'bar',
+      redness: 'color:blue;'
+    }
+  });
+  </script>
+  </body>
+</html>
