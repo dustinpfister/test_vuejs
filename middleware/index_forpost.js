@@ -43,11 +43,11 @@ module.exports = (opt) => {
                         if (stats.isDirectory()) {
                             fs.readdir(path.join(opt.dir, fn), (e, files) => {
                                 //html += '<ul><li>' + fn + ' <ul>';
-								html += '<h2>'+fn + ' examples: <\/h2>';
+                                html += '<h2>' + fn + ' examples: <\/h2>';
                                 files.forEach((pfn) => {
                                     html += '<li><a href="/' + opt.folderName + '/' + fn + '/' + pfn + '">' + pfn + '<\/a><\/li>';
                                     //html += '<p>' + path.basename(pfn,path.extname(pfn)).replace(/-|_/g,' ') + '<\/p> ';
-									//html += '<li><\/li> ';
+                                    //html += '<li><\/li> ';
                                 });
                                 //html += '</ul><\/li><\/ul>';
                                 step();
