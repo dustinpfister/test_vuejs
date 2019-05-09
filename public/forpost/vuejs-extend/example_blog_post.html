@@ -9,7 +9,10 @@
   
   <script>
 var Post = Vue.extend({
-    template: '<ul><li><h2>{{ title }}</h2></li><li>published: {{ date.publish }}</li><li>updated: {{ date.update }}</li></ul>',
+    template: '<ul>'+
+        '<li><h2>{{ title }}</h2></li><li>published: {{ date.publish }}</li>'+
+        '<li>updated: {{ date.update }}</li>'+
+       '</ul>',
     data: function () {
         return {
             title: 'Vue extend example',
