@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Vue extend closure example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  
+  <div id="count1"></div>
+  <div id="count2"></div>
+  
+  <script>
+var Count = Vue.extend({
+    template: '<div><input type=\"button\" v-on:click=\"n++\" value=\"Step\"> {{n}} </div>',
+    data: function (a) {
+        return {
+            n:0
+        }
+    }
+});
+  
+  new Count().$mount('#count1');
+  new Count().$mount('#count2');
+  
+  
+  </script>
+  </body>
+</html>
