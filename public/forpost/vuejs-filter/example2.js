@@ -1,12 +1,24 @@
 
 new Vue({
-    el: '#bar',
+    el: '#list',
     data: {
-        mess: 'bar'
+        items: [{
+                name: 'fooBox',
+                cost: '$20'
+            }, {
+                name: 'bazAnaTer',
+                cost: '$35'
+            }
+        ]
     },
     filters: {
-        fooanate: function (val) {
-            return 'foo' + val;
+        toText: function (items) {
+            return items.map(function (item) {
+                return 'name: ' + item.name + '\ncost: ' + item.cost + '\n\n';
+            })
+            .reduce(function (acc, item) {
+                return acc + item;
+            });
         }
     }
 });
