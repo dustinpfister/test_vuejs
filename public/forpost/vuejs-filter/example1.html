@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <p id="bar">{{ mess | fooanate }}</p>
+  <script>
+  
+  new Vue({
+    el:'#bar',
+    data: {
+      mess: 'bar'
+    },
+    filters: {
+      fooanate : function(val){
+        return 'foo' + val;
+      }
+    }
+  });
+  
+  </script>
+  </body>
+</html>
