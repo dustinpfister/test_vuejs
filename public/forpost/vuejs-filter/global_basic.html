@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>vue filter global example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="guesswork">
+      <p>{{ 'The wind in your hair!' | answerCheck }}</p>
+      <p>{{ '42' | answerCheck }}</p>
+      <p>{{ 'To crush your enemies, see them driven before you, and to hear the lamentation of their women' | answerCheck }}</p>
+      <p>{{ 42 | answerCheck }}</p>
+      <p>{{ 40 + 2 | answerCheck }}</p>
+    </div>
+  <script>
+  
+  Vue.filter('answerCheck', function(val){
+     if(parseInt(val) === 42){
+        return 'YES that is the answer to everything!'
+     }
+     return 'Nope, sorry';
+  });
+  
+  
+  new Vue({
+    el: '#guesswork'
+  })
+  
+  
+  </script>
+  </body>
+</html>
