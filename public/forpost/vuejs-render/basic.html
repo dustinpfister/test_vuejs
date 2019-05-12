@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>vue render example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="bar">
+  </div>
+  <script>
+  
+  var vm = new Vue({
+    el:'#bar',
+    render : function(createElement){
+       return createElement('p', 'Hello World');
+    }
+  });
+  
+  
+  </script>
+  </body>
+</html>
