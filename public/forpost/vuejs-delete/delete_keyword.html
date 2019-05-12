@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <ul class="foo">
+    <li id="bar" >{{ obj }}</li>
+  </ul>
+  <script>
+  
+  var vm = new Vue({
+    el:'#bar',
+    data: {
+        obj: {foo:'bar', baz:'chew'}
+    }
+  });
+  
+  // delete will not update the view
+  // so force update must be used to
+  // render the change
+  delete vm.obj.baz
+  vm.$forceUpdate();
+  
+  </script>
+  </body>
+</html>
