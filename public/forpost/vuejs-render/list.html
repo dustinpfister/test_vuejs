@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>vue render example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="bar">
+  </div>
+  <ul>
+    <li>0) hello</li>
+    <li>1) hello</li>
+  </ul>
+  <script>
+  
+  var vm = new Vue({
+      el:'#bar',
+      render : function(createElement){
+          var i = 0, len = 5,
+          children = [];
+          while(i < len){
+              children.push(createElement('li', i+') hello'));
+              i += 1;
+          }
+          return createElement('ul', children);
+      }
+  });
+  
+  console.log(vm.$el)
+  
+  
+  </script>
+  </body>
+</html>
