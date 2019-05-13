@@ -16,6 +16,10 @@ var httpGet = (function ()
             {
                 console.log(res);
             }
+            opt.onError = opt.onError || function ()
+            {
+                console.log(this);
+            }
 
             var xhr = new XMLHttpRequest();
             xhr.open('GET', opt.url);
@@ -25,11 +29,21 @@ var httpGet = (function ()
 
                 console.log(this.readyState, this.status);
 
-            };
-            xhr.send();
+                if (this.readyState === 4 && this.status === 200)
+                {
+                    opt.onDone.call(this, this.response);
+                }
 
+                if (this.readyState === 4 && this.status === !200)
+                {
+                    opt.onError.call(this, this);
+                };
+
+            }
+
+            xhr.send();
         }
-    }
+    };
 
     // must have an install method
     api.install = function (Vue, opt)
@@ -38,10 +52,9 @@ var httpGet = (function ()
         opt = opt || {};
         opt.baseUrl = opt.baseUrl || '/';
 
-        Vue.prototype.$httpGet = function (opt)
+        Vue.prototype.$httpGet = function (getOpt)
         {
-			
-            api.get(opt);
+            api.get(getOpt);
         }
 
     };
