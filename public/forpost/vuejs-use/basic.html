@@ -5,10 +5,10 @@
   </head>
   <body>
   <code id="bar">{{mess}}</code>
-  <script src="./plugin_get.js"></script>
+  <script src="./plugin_basic.js"></script>
   <script>
   
-  Vue.use(httpGet);
+  Vue.use(basic);
   
   var vm = new Vue({
     el:'#bar',
@@ -17,15 +17,11 @@
     }
   });
   
-  vm.$httpGet({
+  vm.$foo(function(mess){
   
-    url:'/',
-    onDone: function(res){
-      console.log(res);
-      vm.mess = res;
-    }
+      vm.mess = mess;
   
-  })
+  });
   
   
   </script>
