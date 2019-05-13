@@ -4,15 +4,22 @@
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <p id="foo"></p>
+  <p id="bar"></p>
+  <script src="./plugin_get.js"></script>
   <script>
   
-  new Vue({
-    el:'.bar',
+  Vue.use(httpGet);
+  
+  var vm = new Vue({
+    el:'#bar',
     data: {
       mess: 'bar'
     }
   });
+  
+  vm.$httpGet({
+  
+  })
   
   
   </script>

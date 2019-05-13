@@ -1,20 +1,47 @@
 // Simple http get client for vuejs
 // using XMLHttpRequest
-var get = (function ()
+var httpGet = (function ()
 {
 
-    var api = {};
+    var api =
+    {
+
+        get: function (opt)
+        {
+
+            opt = opt || {};
+            opt.url = opt.url || '/';
+            opt.beforeSend = opt.beforeSend || function (xhr)  {};
+            opt.onDone = opt.onDone || function (res)
+            {
+                console.log(res);
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', opt.url);
+            opt.beforeSend.call(this, xhr);
+            xhr.onreadystatechange = function ()
+            {
+
+                console.log(this.readyState, this.status);
+
+            };
+            xhr.send();
+
+        }
+    }
 
     // must have an install method
     api.install = function (Vue, opt)
     {
 
-        opt = options || {};
+        opt = opt || {};
         opt.baseUrl = opt.baseUrl || '/';
 
-        Vue.prototype.$myMethod = function (opt)
+        Vue.prototype.$httpGet = function (opt)
         {
-            // some logic ...
+			
+            api.get(opt);
         }
 
     };
