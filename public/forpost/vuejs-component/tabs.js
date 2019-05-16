@@ -1,16 +1,20 @@
 Vue.component('tab', {
-    template: '<div v-bind:style="tab_style" ><slot></slot></div>',
+    template: '<div v-on:click="clicked" v-bind:style="tab_style" ><slot></slot></div>',
     data: function () {
         return {
             tab_style: 'display:inline-block;padding:5px;margin:2px;outline:1px solid red;'
+        }
+    },
+    methods: {
+        clicked: function (e) {
+
+            console.log(e.target.parentNode);
         }
     }
 });
 
 Vue.component('tabs', {
     render: function (createElement) {
-
-        console.log()
 
         let tabs = ['foo', 'bar'],
         children = [];
@@ -22,7 +26,7 @@ Vue.component('tabs', {
     },
     data: function () {
         return {
-            i: 0
+            content: 0
         }
     }
 });
