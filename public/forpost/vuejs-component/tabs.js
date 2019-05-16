@@ -1,4 +1,5 @@
 Vue.component('tab', {
+    props: ['tabname'],
     template: '<div v-on:click="clicked" v-bind:style="tab_style" ><slot></slot></div>',
     data: function () {
         return {
@@ -19,6 +20,7 @@ Vue.component('tabs', {
         children = [];
         tabs.forEach(function (tabName) {
             children.push(createElement('tab', {
+                    tabname: tabName,
                     class: 'tabs_tab'
                 }, tabName));
         });
