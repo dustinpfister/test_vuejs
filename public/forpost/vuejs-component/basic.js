@@ -14,5 +14,5 @@ Vue.component('step', {
 });
 
 new Vue({
-    el: '#components-demo'
+    el: '#step-demo'
 })

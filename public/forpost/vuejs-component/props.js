@@ -4,7 +4,7 @@ Vue.component('step', {
     template: '<div><button v-on:click="step">step</button> i: {{ i }} </div>',
     data: function (a) {
         return {
-            i: this.si === undefined ? 0 : this.si
+            i: parseInt(this.si === undefined ? 0 : this.si)
         }
     },
     methods: {
@@ -15,5 +15,5 @@ Vue.component('step', {
 });
 
 new Vue({
-    el: '#components-demo'
+    el: '#step-demo'
 })
