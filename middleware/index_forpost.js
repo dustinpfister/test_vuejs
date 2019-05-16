@@ -28,14 +28,27 @@ module.exports = (opt) => {
 
             // gen html
             (req, res, next) => {
-                let html = '<body><h1>VUE.JS EXAMPLES:</h1>',
+                let projects = [],
                 len = req.files.length,
                 i = 0,
-                step = () => {
+                step = (projects) => {
                     i += 1;
                     if (i === len) {
-                        html += '<\/body>';
-                        res.send(html);
+                        let html = '<body><h1>VUE.JS EXAMPLES:<\/h1>';
+                        projects.forEach((project_item) => {
+
+                            html += '<ul><li>' + project_item.fn + ' -<ul>';
+
+                            project_item.files.forEach((file) => {
+
+                                html += '<li><a href=\"' + file.href + '\">' + file.pfn + '<\/a><\/li>';
+
+                            });
+
+                            html += '<\/ul><\/li><\/ul>';
+
+                        });
+                        res.send(html + '<\/body>');
                     }
                 };
                 req.files.forEach((fn) => {
@@ -43,27 +56,36 @@ module.exports = (opt) => {
                     fs.stat(path.join(opt.dir, fn), (e, stats) => {
 
                         if (stats.isDirectory()) {
+
                             fs.readdir(path.join(opt.dir, fn), (e, files) => {
 
-                                //html += '<ul><li>' + fn + ' <ul>';
-                                html += '<h2>' + fn + ' examples: <\/h2>';
+                                let project_item = {
+                                    fn: fn,
+                                    files: []
+                                }
+
                                 files.forEach((pfn) => {
 
                                     if (path.extname(pfn) === '.html') {
-                                        html += '<li><a href="/' +
-                                        opt.folderName + '/' + fn + '/' + pfn + '">' + pfn +
-                                        '<\/a><\/li>';
+
+                                        project_item.files.push({
+                                            href: opt.folderName + '/' + fn + '/' + pfn,
+                                            pfn: pfn
+                                        });
+
                                     }
 
-                                    //html += '<p>' + path.basename(pfn,path.extname(pfn)).replace(/-|_/g,' ') + '<\/p> ';
-                                    //html += '<li><\/li> ';
                                 });
-                                //html += '</ul><\/li><\/ul>';
-                                step();
+
+                                projects.push(project_item);
+
+                                step(projects);
                             });
+
                         } else {
-                            html += '<p>' + fn + '<\/p ';
+
                             step();
+
                         }
                     });
                 });
