@@ -7,8 +7,7 @@ Vue.component('tab', {
     },
     methods: {
         clicked: function (e) {
-
-            console.log(e.target.parentNode);
+            console.log(e.target.parentNode.children);
         }
     }
 });
@@ -16,17 +15,25 @@ Vue.component('tab', {
 Vue.component('tabs', {
     render: function (createElement) {
 
-        let tabs = ['foo', 'bar'],
+        var tabs = ['foo', 'bar'],
         children = [];
         tabs.forEach(function (tabName) {
-            children.push(createElement('tab', tabName));
+            children.push(createElement('tab', {
+                    class: 'tabs_tab'
+                }, tabName));
         });
+        var disp = createElement('div', {
+                class: 'tabs_content'
+            }, 'foo');
+        console.log(disp);
+        //disp.elm
+        children.push(disp);
         return createElement('div', children);
 
     },
     data: function () {
         return {
-            content: 0
+            content: 'This is some default content'
         }
     }
 });
