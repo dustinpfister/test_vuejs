@@ -1,11 +1,8 @@
 Vue.component('tab', {
-    template: '<p><slot></slot></p>',
+    template: '<div v-bind:style="tab_style" ><slot></slot></div>',
     data: function () {
-
-        console.log(this);
-
         return {
-            i: 0
+            tab_style: 'display:inline-block;padding:5px;margin:2px;outline:1px solid red;'
         }
     }
 });
