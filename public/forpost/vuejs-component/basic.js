@@ -1,11 +1,18 @@
-// Define a new component called button-counter
-Vue.component('button-counter', {
-    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>',
+// A Basic step Component
+Vue.component('step', {
+    template: '<div><button v-on:click="step">step</button> i: {{ i }} </div>',
     data: function () {
         return {
-            count: 0
+            i: 0
+        }
+    },
+    methods: {
+        step: function (e) {
+            this.$data.i += 1;
         }
     }
 });
 
-new Vue({ el: '#components-demo' })
+new Vue({
+    el: '#components-demo'
+})
