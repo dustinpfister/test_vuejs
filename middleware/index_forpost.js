@@ -35,22 +35,31 @@ module.exports = (opt) => {
                     i += 1;
                     if (i === len) {
                         let html = '<body><h1>VUE.JS EXAMPLES:<\/h1>';
-                        projects.forEach((project_item) => {
 
-                            html += '<ul><li>' + project_item.fn + ' -<ul>';
-
-                            project_item.files.forEach((file) => {
-
-                                html += '<li><a href=\"' + file.href + '\">' + file.pfn + '<\/a><\/li>';
-
-                            });
-
-                            html += '<\/ul><\/li><\/ul>';
-
+                        projects.sort((a, b) => {
+                            if (a.fn > b.fn) {
+                                return 1
+                            }
+                            if (a.fn < b.fn) {
+                                return -1
+                            }
+                            return 0;
                         });
+
+                        projects.forEach((project_item) => {
+                            html += '<ul><li>' + project_item.fn + '- <ul>';
+                            project_item.files.forEach((file) => {
+                                html += '<li><a href=\"' + file.href + '\">' + file.pfn + '<\/a><\/li>';
+                            });
+                            html += '<\/ul><\/li><\/ul>';
+                        });
+
                         res.send(html + '<\/body>');
+
                     }
+
                 };
+
                 req.files.forEach((fn) => {
 
                     fs.stat(path.join(opt.dir, fn), (e, stats) => {
