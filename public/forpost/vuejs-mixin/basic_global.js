@@ -9,7 +9,7 @@ Vue.mixin({
             this.$data.mess = 'no start mess option given.';
         }
     }
-})
+});
 
 new Vue({
     el: '#one',
