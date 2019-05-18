@@ -1,7 +1,6 @@
-
 Vue.component('stepper', {
 
-    // uisng props
+    // using props
     props: ['si'],
 
     // setting i to si prop if given
@@ -11,32 +10,19 @@ Vue.component('stepper', {
         }
     },
 
-    // using a render method
-    render: function (ce) {
-        var children = [
-            ce('input', {
-                domProps: {
-                    type: 'button',
-                    value: 'step'
-                },
-                on: {
-                    click: this.bar
-                }
-            }),
-            ce('slot', ' ' + this.$data.i)
-        ]
-        return ce('div', children);
-    },
-
+    template: '<div><input type="button" value="step" v-on:click="stepit" ><span> {{i}} </span></div>',
     methods: {
-        bar: function () {
+        stepit: function () {
             this.$data.i += 1;
-            console.log(this.$data.i);
         }
     }
 })
 
+// can use a si attribute to set starting index
 new Vue({
     el: '#demo-data',
-    template: '<div><stepper si=\"5\"></stepper><br><stepper></stepper></div>'
+    template: '<div>' +
+    '<stepper si=\"5\"></stepper><br>' +
+    '<stepper></stepper>' +
+    '</div>'
 });
