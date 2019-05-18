@@ -8,8 +8,5 @@ Vue.component('foo', {
 // simple text node
 new Vue({
     el: '#demo-data',
-    template: '<foo>hello</foo>',
-    data: {
-        foo: 'bar'
-    }
+    template: '<foo>hello</foo>'
 });
