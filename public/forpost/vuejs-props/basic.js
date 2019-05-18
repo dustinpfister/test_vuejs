@@ -4,5 +4,6 @@ Vue.component('custom', {
 });
 
 new Vue({
-    el: '#demo-props'
+    el: '#demo-props',
+    template: '<div><custom foo="baz"></custom><custom></custom></div>'
 });
