@@ -1,6 +1,6 @@
 var vm = new Vue({
         el: '#demo-nexttick',
-        template: '<div>{{ figX() }}</div>',
+        template: '<p>{{ figX() }}</p>',
         data: {
             radian: Math.PI / 4,
             radius: 25,
@@ -13,4 +13,9 @@ var vm = new Vue({
         }
     });
 
-Vue.nextTick(function () {});
+vm.radian = 0;
+console.log(vm.$el.textContent); // 17.68
+
+Vue.nextTick(function () {
+    console.log(vm.$el.textContent); // 25
+});
