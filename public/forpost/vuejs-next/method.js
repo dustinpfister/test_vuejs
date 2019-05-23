@@ -16,5 +16,4 @@ var vm = new Vue({
             }
         }
     });
-
 vm.setMess('foo');
