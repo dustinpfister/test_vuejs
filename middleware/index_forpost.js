@@ -47,7 +47,7 @@ module.exports = (opt) => {
                         });
 
                         projects.forEach((project_item) => {
-                            html += '<ul><li>' + project_item.fn + '- <ul>';
+                            html += '<ul style="display:inline-block;"><li>' + project_item.fn + '- <ul>';
                             project_item.files.forEach((file) => {
                                 html += '<li><a href=\"' + file.href + '\">' + file.pfn + '<\/a><\/li>';
                             });
