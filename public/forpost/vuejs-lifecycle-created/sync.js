@@ -5,8 +5,9 @@ new Vue({
         st: 0,
         time: 0
     },
-    // synchronously
+    // vue create is called synchronously
     created: function () {
+        // so this will delay the mount hook
         var i = Math.pow(10, 9),
         st = Date.now();
         while (i--) {};
