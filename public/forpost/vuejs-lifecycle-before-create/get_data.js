@@ -1,37 +1,37 @@
 new Vue({
     el: '#demo-lifecycle-before-create',
-    template: '<p>n:{{ n }} mess: {{ eMess }}</p>',
+    template: '<div><span>n:{{ n }} </span><br><span> mess: {{ mess }}</span></div>',
     data: {
         n: null,
-        eMess: ''
+        mess: ''
     },
+
+    // default create hook
     beforeCreate: function () {
-
-        // define a default data object
-        this.defaultData = {
+        // define hard coded data object
+        this.hardData = {
             n: 21,
-            eMess: 'Default data is used'
+            mess: 'hard coded data is used'
         };
-
     },
+
+    // create hook
     created: function () {
-
         var self = this;
-
+        // fetch data
         fetch('/data')
         .then(function (res) {
             return res.json();
         })
         .then(function (data) {
-            self.n = data.n;
+            // if all goes well use that
+            self.$data.n = data.n;
+            self.$data.mess = 'Got data from back end';
         })
-        .catch (function (error) {
-            self.$data.n = self.defaultData.n;
-            self.$data.eMess = self.defaultData.eMess;
+        .catch (function (e) {
+            // else use hard data
+            self.$data.n = self.hardData.n;
+            self.$data.mess = self.hardData.mess + ' : ' + e.message;
         });
-
-        // the data object is not created
-        //console.log(this.fooData)
-        //console.log(this.$data.n); // 42
     }
 });
