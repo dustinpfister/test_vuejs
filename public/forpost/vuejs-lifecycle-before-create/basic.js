@@ -2,12 +2,14 @@ new Vue({
     el: '#demo-lifecycle-before-create',
     template: '<p>n: {{ n }}</p>',
     data: {
-        n: 4
+        n: 42
     },
     beforeCreate: function () {
-        console.log(this.$data);
+        // the data object is not yet created
+        console.log(this.$data); // undefined
     },
     created: function () {
-        console.log(this.$data);
+        // the data object is not created
+        console.log(this.$data.n); // 42
     }
 });
