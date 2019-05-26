@@ -8,8 +8,14 @@ port = process.env.PORT || process.argv[2] || 8080;
 app.use('/forpost', express.static('public/forpost'));
 app.use('/js', express.static('public/js'));
 
+// simple data demo path for examples
+app.use('/data', require('./middleware/get_data.js')());
+
 // generate list of examples for root
-app.use('/', require('./middleware/index_forpost.js')({dir:'./public/forpost'}))
+app.use('/', require('./middleware/index_forpost.js')({dir:'./public/forpost'}));
+
+
+
 
 // start server
 app.listen(port, function () {
