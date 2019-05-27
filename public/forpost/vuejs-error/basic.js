@@ -23,7 +23,7 @@ var vm = new Vue({
 			
 			//throw new Error('nope');
 			
-			return createElement('p','nope');
+			return createElement('error-handler',[createElement('foo')]);
 			
 		}
 		
