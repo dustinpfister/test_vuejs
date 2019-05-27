@@ -1,31 +1,36 @@
+
 Vue.config.errorHandler = function (err, vm, info) {
-    conssole.log('what the?');
-    console.log('so far it seems like this does not work');
-    //console.log(err.message);
+
+    console.log('');
+    console.log('ERROR:');
+    console.log(err.message);
+    console.log('');
 
 };
 
-Vue.component('error-handler', {
+Vue.component('item', {
+    props: ['item'],
+    template: '<div>{{ item.age }}</div>',
 
-    template:'<div><slot></slot></div>',
-    errorCaptured: function (err, vm, info) {
-
-        console.log('this does not work as well');
-
-        return false;
-
-    }
 });
 
-var vm = new Vue({
-        el: '#demo-error',
-		render: function(createElement){
-			
-			//throw new Error('nope');
-			
-			return createElement('error-handler',[createElement('foo')]);
-			
-		}
-		
-        //template: '<error-handler>foo</error-handler>',
-    });
+new Vue({
+    el: '#demo-error',
+    template: '<ul><li is="item" v-for="item in items" :item="item"></li></ul>',
+    data: {
+        items: [{
+                name: 'Tom',
+                age: 5,
+                food: {
+                    amount: 10
+                }
+            }, {
+                name: 'Jerry',
+                age: 15, // food object is missing
+                //food:{
+                //	amount:5
+                //}
+            }
+        ]
+    },
+});
