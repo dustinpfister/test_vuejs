@@ -8,7 +8,6 @@ var vm = new Vue({
             console.log(this.$el.textContent); // n: 4
         }
     });
-
 setTimeout(function () {
     vm.$mount('#demo-lifecycle-mounted');
 }, 3000);
