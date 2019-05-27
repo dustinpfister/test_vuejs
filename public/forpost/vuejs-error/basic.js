@@ -8,29 +8,18 @@ Vue.config.errorHandler = function (err, vm, info) {
 
 };
 
-Vue.component('item', {
-    props: ['item'],
-    template: '<div>{{ item.age }}</div>',
-
+Vue.component('point', {
+    props: ['point'],
+    template: '<div>x: {{ point.x }} y: {{ point.deltas.x }}</div>',
 });
 
 new Vue({
     el: '#demo-error',
-    template: '<ul><li is="item" v-for="item in items" :item="item"></li></ul>',
+    template: '<div><p is="point" v-for="point in points" :point="point"></p></div>',
     data: {
-        items: [{
-                name: 'Tom',
-                age: 5,
-                food: {
-                    amount: 10
-                }
-            }, {
-                name: 'Jerry',
-                age: 15, // food object is missing
-                //food:{
-                //	amount:5
-                //}
-            }
-        ]
+        points: [ 
+        {x:40,y:5,deltas:{x:0,y:0}},
+        {x:5,y:32,deltas:{x:1,y:2}},
+        {x:40,y:5}]
     },
 });
