@@ -1,6 +1,7 @@
 new Vue({
     el: '#demo-watch',
-    template: '<div><p> ( {{ point.x }} , {{ point.y }} )</p>' +
+    template: '<div><p> point: ( {{ point.x }} , {{ point.y }} )</p>' +
+    '<p>ticks: {{ ticks }}</p>' +
     '<input type=\"button\" value=\"rand2\" v-on:click=\"rand2\">' +
     '<ul><li v-for=\"m in mess\" >{{ m }}</li></ul></div>',
     data: {
@@ -8,7 +9,8 @@ new Vue({
             x: 40,
             y: 2
         },
-        mess: []
+        mess: [],
+        ticks: 10
     },
     watch: {
         point: {
@@ -24,25 +26,22 @@ new Vue({
             this.$data.point.y = 75;
         },
         rand2: function () {
-            this.$data.point.x = 5 + Math.floor(Math.random() * 95);
-            this.$data.point.y = 5 + Math.floor(Math.random() * 95);
+            this.$data.point.x = 10 + Math.floor(Math.random() * 90);
+            this.$data.point.y = 95 + Math.floor(Math.random() * 5);
+        },
+        tickDown: function () {
+            if (this.$data.ticks >= 1) {
+                this.rand1();
+                setTimeout(this.tickDown, 1000);
+                this.$data.ticks -= 1;
+            }
         }
     },
     mounted: function () {
-        var vm = this;
         // change manually point
-        vm.point.x = 0;
-        vm.point.y = 0;
-        // script that changes point
-        var count = 5,
-        delay = 500;
-        var next = function () {
-            if (count) {
-                setTimeout(next, delay);
-            }
-            vm.rand1();
-            count -= 1;
-        };
-        setTimeout(next, delay);
+        this.$data.point.x = 0;
+        this.$data.point.y = 0;
+        // start tick down
+        this.tickDown();
     }
 });
