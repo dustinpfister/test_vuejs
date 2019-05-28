@@ -16,6 +16,14 @@ var vm = new Vue({
                 },
                 deep: true
             }
+        },
+        methods: {
+
+            rand1: function () {
+                this.$data.point.x = 25 + Math.floor(Math.random() * 75);
+                this.$data.point.y = 50;
+            }
+
         }
     });
 
@@ -24,22 +32,16 @@ vm.point.x = 0;
 vm.point.y = 0;
 
 // script that changes point
-var points = [{
-        x: 13,
-        y: 5
-    }, {
-        x: 47,
-        y: 13
-    }
-],
-i = 0;
+var count = 5,
+delay = 500;
 var next = function () {
 
-    if (i < points.length - 1) {
-        setTimeout(next, 3000);
+    if (count) {
+        setTimeout(next, delay);
     }
-    vm.point.x = points[i].x;
-    vm.point.y = points[i].y;
-    i += 1;
+    //vm.point.x = ;
+    //vm.point.y = 25;
+	vm.rand1();
+    count -= 1;
 };
-setTimeout(next, 3000);
+setTimeout(next, delay);
