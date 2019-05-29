@@ -1,10 +1,12 @@
 // parent
 var vm = new Vue({
         data: {
-            foo: 'bar'
+            str: 'foo'
         },
         methods: {
-            baz: function () {}
+            baz: function () {
+                console.log(this.$children[0].mess);
+            }
         }
     });
 
@@ -14,10 +16,13 @@ new Vue({
     el: '#demo-parent',
     template: '<p>{{ mess }}</p>',
     data: {
+        str: 'bar',
         mess: 'nope'
     },
     mounted: function () {
-        var mess = this.$parent.$data.foo;
+        var mess = this.$parent.$data.str + this.$data.str;
         this.$data.mess = mess;
+
+        this.$parent.baz();
     }
 });
