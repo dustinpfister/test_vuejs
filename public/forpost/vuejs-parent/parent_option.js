@@ -1,14 +1,16 @@
+// parent
 var vm = new Vue({
-
         data: {
             foo: 'bar'
+        },
+        methods: {
+            baz: function () {}
         }
-
     });
 
+// child
 new Vue({
-
-    parent: vm,
+    parent: vm, // using the parent option to set a parent
     el: '#demo-parent',
     template: '<p>{{ mess }}</p>',
     data: {
