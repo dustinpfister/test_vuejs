@@ -1,17 +1,25 @@
-var comp = {
-    template: '<div><p>Foo</p></div>'
+var Foo = {
+    template: '<span>Foo</span>'
 };
-// so of course the vue name is undefined for now
-console.log(comp.name); // undefined
+var Bar = {
+    name: 'bar',
+    template: '<span>Bar</span>'
+};
 
-// But when the component is made  global
-// the first argument given is the name
-Vue.component('foo', comp);
-console.log(comp.name); // foo
-
-// the name can then be used to refer
-// to the component in templates
+// using components locally
 new Vue({
     el: '#demo-name',
-    template: '<foo></foo>'
+    template: '<div><foo></foo><bar></bar></div>',
+    components: {
+        foo: Foo,
+        bar: Bar
+    },
+    mounted: function () {
+        // when using a component locally the key name used
+        // in the components option seems to work in templates
+        // but no name property is defined in the object like
+        // when it is added globally
+        console.log(Foo.name); // undefined
+        console.log(Bar.name); // 'bar'
+    }
 });
