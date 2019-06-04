@@ -12,16 +12,18 @@ var vmError = new Vue({
                 line: '',
                 col: ''
             }
+        },
+        methods: {
+            onError: function (mess, source, line, col) {
+                var err = this.error;
+                err.mess = mess;
+                err.source = source;
+                err.line = line;
+                err.col = col;
+            }
         }
     });
-
-window.onerror = function (mess, source, line, col) {
-    vmError.error.mess = mess;
-    vmError.error.source = source;
-    vmError.error.line = line;
-    vmError.error.col = col;
-
-};
+window.onerror = vmError.onError;
 
 // trowning an error
 throw new Error('My error');
