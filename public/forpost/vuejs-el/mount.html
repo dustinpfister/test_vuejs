@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="foo">
+  </div>
+  <script>
+  
+  new Vue({
+     template:'<p>bar</p>',
+     created: function(){
+         this.$mount('#foo');
+     }
+  })
+  
+  </script>
+  </body>
+</html>
