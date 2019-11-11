@@ -16,7 +16,8 @@ var Asset = Vue.extend({
         '<div style="width:320px;height:20px;background:black;">' +
         '<div id="pbar" style="width:100px;height:20px;background:lime;"></div>' +
         '</div>' +
-        '<p>money: {{ money }} level: {{ level.current }} next level: {{ level.nextCost }} rate: {{ rate.amount }}</p>' +
+        '<h3>money: ${{ money.toFixed(2) }}</h3>'+ 
+        '<p>level: {{ level.current }} next level: {{ level.nextCost.toFixed(2) }} rate: {{ rate.amount.toFixed(2) }}</p>' +
         '<input type="button" value="upgrade" v-on:click="upgrade">' +
         '</div>',
         // data
@@ -74,8 +75,9 @@ var a = new Asset({
         data: {
             name: 'Slow House',
             rate: {
-                amount: 50,
-                time: 20000
+                time: 20000,
+                baseAmount: 100,
+                powAmount: 3
             }
         }
     }).$mount('#asset-1');
@@ -84,8 +86,8 @@ var a2 = new Asset({
         data: {
             name: 'Fast House',
             rate: {
-                amount: 1,
-                time: 500
+                time: 500,
+                powAmount: 1.25
             }
         }
     }).$mount('#asset-2');
