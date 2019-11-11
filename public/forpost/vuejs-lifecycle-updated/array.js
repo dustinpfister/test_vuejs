@@ -47,13 +47,10 @@ var app = new Vue({
                     money: 25
                 };
                 this.$data.log.push(obj);
-
             }
         }
     });
 
 setInterval(function () {
-
     app.tick();
-
 }, 1000);

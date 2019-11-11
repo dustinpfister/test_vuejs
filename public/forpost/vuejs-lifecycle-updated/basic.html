@@ -5,6 +5,36 @@
   </head>
   <body>
   <div id="demo"></div>
-  <script src="basic.js"></script>
+  <script>
+new Vue({
+    el: '#demo',
+    template: '<div><p>2^{{ pow }} = {{ n }}</p><input type="text" v-model:value="pow"></div>',
+    data: {
+        pow: 0,
+        n: 0
+    },
+    // before figure
+    beforeUpdate: function () {
+        var data = this.$data;
+        data.pow = Number(data.pow);
+        if (data.pow + '' === 'NaN' || data.pow < 0) {
+            data.pow = 0;
+        }
+        if (data.pow > 1023) {
+            data.pow = 1023;
+        }
+    },
+    // good to figure
+    updated: function () {
+        this.figure()
+    },
+    methods: {
+        figure: function () {
+            this.$data.n = Math.pow(2, this.$data.pow);
+        }
+    }
+});
+
+  </script>
   </body>
 </html>
