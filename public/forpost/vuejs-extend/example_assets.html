@@ -6,6 +6,7 @@
   <body>
   
   <div id="asset-1"></div>
+  <div id="asset-2"></div>
   
   <script>
 var Asset = Vue.extend({
@@ -16,7 +17,7 @@ var Asset = Vue.extend({
         '</div>' +
         '<p>money: {{ money }} </p>' +
         '</div>',
-        data: function () {
+        data: function (a) {
             return {
                 name: 'House 1',
                 money: 0,
@@ -43,15 +44,35 @@ var Asset = Vue.extend({
             }
         }
     });
+// slow house asset
+var a = new Asset({
+        data: {
+            name: 'Slow House',
+            rate: {
+                amount: 50,
+                time: 20000
+            }
+        }
+    }).$mount('#asset-1');
+// fast house asset
+var a2 = new Asset({
+        data: {
+            name: 'Fast House',
+            rate: {
+                amount: 1,
+                time: 500
+            }
+        }
+    }).$mount('#asset-2');
 
-var a = new Asset().$mount('#asset-1');
+// app loop
 var loop = function () {
     setTimeout(loop, 1000 / 30);
     a.update();
+    a2.update();
 };
 loop();
 
-  
   </script>
   </body>
 </html>
