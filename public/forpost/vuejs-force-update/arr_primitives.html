@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>vue force update example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="container"></div>
+  <script>
+var app = new Vue({
+    el: '#container',
+    template:'<div><ul><li v-for="n in arr" >{{ n }}</li></ul></div>',
+    data: {
+        arr: [1,2,3,4]
+    },
+    methods: {
+        genNew : function(){
+            this.$data.arr = this.$data.arr.map(function(n){
+                return 10 + Math.floor( Math.random() * 10 );
+            });
+        }
+    }
+});
+ 
+setInterval(function(){
+    console.log('hello');
+   app.genNew();
+}, 1000);
+  </script>
+  </body>
+</html>
