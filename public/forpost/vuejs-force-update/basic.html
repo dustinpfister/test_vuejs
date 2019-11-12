@@ -6,36 +6,46 @@
   <body>
   <div id="container"></div>
   <script>
-  
-var app = new Vue({
-  el: '#container',
-  template:'<div><ul><li v-for="n in arr" >{{ n }}</li></ul></div>',
-  data: {
-     arr: [1,2,3,4]
-  },
-  methods: {
-  
-     genNew : function(){
-	 
-	    this.$data.arr = this.$data.arr.map(function(n){
-		
-		    return 10 + Math.floor( Math.random() * 10 );
-		
-		});
-		
-		
-		
-		//this.$forceUpdate();
-	 
-	 }
-  
-  }
-
-});
-
-setInterval(function(){
-    console.log('hello');
-   app.genNew();
+  var app = new Vue({
+        el: '#container',
+        template: '<div>total: {{ total }}</div>',
+        data: {
+            total: 0,
+            nums: []
+        },
+        // updated hook
+        updated: function () {
+            var data = this.$data;
+            if(data.nums.length === 0){
+                data.total = 0;
+            }
+            if(data.nums.length === 1){
+                data.total = data.nums[0].n
+            }
+            if(data.nums.length >= 2){
+                data.total = data.nums.reduce(function (acc, obj) {
+                    acc = typeof acc === 'object' ? acc.n : acc;
+                    return acc + obj.n;
+                });
+            }
+        },
+        methods: {
+            // tick method
+            tick: function () {
+                var data = this.$data;
+                if (data.nums.length < 3) {
+                    data.nums.push({
+                        n: 10 + Math.floor(Math.random() * 10)
+                    });
+                }
+                // force update to make sure update hook fires
+                this.$forceUpdate();
+            }
+        }
+    });
+// app loop
+setInterval(function () {
+    app.tick();
 
 }, 1000);
   
