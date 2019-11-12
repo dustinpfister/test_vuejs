@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>vue force update example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="container"></div>
+  <script>
+var app = new Vue({
+        el: '#container',
+        template: '<div>'+
+            '<p>total: {{ total }}</p>'+
+            '<ul><li v-for="obj in nums">{{ obj.n }}</li></ul>'+
+        '</div>',
+        data: {
+            total: 0,
+            nums: []
+        },
+        // updated hook
+        updated: function () {
+            var data = this.$data;
+            if (data.nums.length === 0) {
+                data.total = 0;
+            }
+            if (data.nums.length === 1) {
+                data.total = data.nums[0].n
+            }
+            if (data.nums.length >= 2) {
+                data.total = data.nums.reduce(function (acc, obj) {
+                        acc = typeof acc === 'object' ? acc.n : acc;
+                        return acc + obj.n;
+                    });
+            }
+        },
+        methods: {
+            // tick method
+            tick: function () {
+                var data = this.$data;
+                if (data.nums.length < 3) {
+                    data.nums.push({
+                        n: 10 + Math.floor(Math.random() * 10)
+                    });
+                }
+                // force update is not needed because nums array
+                // is being used in the template
+            }
+        }
+    });
+// app loop
+setInterval(function () {
+    app.tick();
+}, 1000);
+  </script>
+  </body>
+</html>
