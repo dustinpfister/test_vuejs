@@ -22,6 +22,7 @@
         template:'<div><div class="mess">Hello World</div><div class="mess">Hello Mars</div></div>'
     });
     var mess = app.$get('.mess');
+    console.log(mess[0].innerText); // 'Hello World'
     console.log(mess[1].innerText); // 'Hello Mars'
   
   </script>
