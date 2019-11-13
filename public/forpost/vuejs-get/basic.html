@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>vue get example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+    // a simple vue.$get plug-in that is just an abstraction
+    // for vue.$el.querySelectorAll
+    var vueGet = {
+        install : function(Vue){
+            Vue.prototype.$get = function(what){
+                return this.$el.querySelectorAll(what);
+            };
+        }
+    };
+    // using it to get a collection of elements
+    Vue.use(vueGet);
+    var app = new Vue({
+        el: '#demo',
+        template:'<div><div class="mess">Hello World</div><div class="mess">Hello Mars</div></div>'
+    });
+    var mess = app.$get('.mess');
+    console.log(mess[1].innerText); // 'Hello Mars'
+  
+  </script>
+  </body>
+</html>
