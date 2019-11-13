@@ -21,12 +21,15 @@
     Vue.use(vueGet);
     var app = new Vue({
         el: '#demo',
-        template:'<div>n: {{ n }}</div>',
+        template:'<div>a: {{ a }}; b: {{ b }}</div>',
         data:{
-            n: 5
+            a: 5,
+            b: 7
         },
         mounted: function(){
-            this.$get().n = this.$get('n') + 5
+            this.$get().a = this.$get('a') + 5;
+            // so now vue get is just an abstraction for this
+            this.$data.b = this.$data.b + 5
         }
     });
   
