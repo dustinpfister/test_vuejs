@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>vue get example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+var vueGet = {
+    install: function (Vue) {
+        Vue.prototype.$get = function (url, cb) {
+            url = url || '/';
+            cb = cb || function () {};
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    cb.call(xhr, null, this.response, xhr);
+                }
+                if (this.readyState === 4 && this.status === !200) {
+                    cb.call(xhr, new Error('non 200 status'), this.response, xhr);
+                };
+            }
+            xhr.send();
+            return xhr;
+        };
+    }
+};
+// using it to get a collection of elements
+Vue.use(vueGet);
+new Vue({
+    el: '#demo',
+    template: '<textarea cols="120" rows="30">{{ html }}</textarea>',
+    data: {
+        html: ''
+    },
+    mounted: function () {
+        var app = this;
+        app.$get('https://dustinpfister.github.io/', function (err, html, xhr) {
+            if (err) {
+                app.$data.html = '<p>Error getting HTML</p>'
+            } else {
+                app.$data.html = html;
+            }
+        });
+    }
+});
+
+  </script>
+  </body>
+</html>
