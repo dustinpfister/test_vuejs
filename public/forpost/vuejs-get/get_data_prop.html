@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>vue get example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+    // get a data object prop
+    var vueGet = {
+        install : function(Vue){
+            Vue.prototype.$get = function(key){
+                if(key === undefined){
+                    return this.$data;
+                }
+                return this.$data[key];
+            };
+        }
+    };
+    // using it
+    Vue.use(vueGet);
+    var app = new Vue({
+        el: '#demo',
+        template:'<div>n: {{ n }}</div>',
+        data:{
+            n: 5
+        },
+        mounted: function(){
+            this.$get().n = this.$get('n') + 5
+        }
+    });
+  
+  </script>
+  </body>
+</html>
