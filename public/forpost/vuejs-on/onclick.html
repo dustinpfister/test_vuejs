@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>vue set example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  
+    <div id="demo"></div>
+
+    <script>
+new Vue({
+    el:'#demo',
+    template: '<div><input type="button" v-on:click="step" v-bind:value="mess" ></div>',
+    data: {
+        n : 0,
+        mess: 'step (0)'
+    },
+    methods: {
+        step: function(){
+            var data = this.$data;
+            data.n += 1;
+            data.mess = 'step (' + data.n + ')';
+        }
+    }
+});
+  
+    </script>
+  </body>
+</html>
