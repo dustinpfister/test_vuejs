@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>vue canvas example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body style="margin:50px;">
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el: '#demo',
+    template: '<canvas ' +
+    'v-bind:width="width" ' +
+    'v-bind:height="height"' +
+    'v-on:click="click"' +
+    'v-on:touchstart="click"' +
+    '></canvas>',
+    data: {
+        width: 320,
+        height: 240,
+        canvas: null,
+        ctx: null,
+        points: []
+    },
+    // on mounted
+    mounted: function () {
+        // get canvas and context
+        this.$data.canvas = this.$el;
+        this.$data.ctx = this.$el.getContext('2d');
+        this.draw();
+    },
+    // on updated
+    updated: function () {
+        this.draw();
+    },
+    // single draw method
+    methods: {
+        // on click or touch
+        click: function (e) {
+            var bx = e.target.getBoundingClientRect();
+            this.$data.points.push({
+                x: (e.touches ? e.touches[0].x : e.clientX) - bx.left,
+                y: (e.touches ? e.touches[0].y : e.clientY) - bx.top
+            });
+            if (this.$data.points.length > 10) {
+                this.$data.points = this.$data.points.slice(1, 11);
+            }
+            this.draw();
+        },
+        // draw the current state
+        draw: function () {
+            var canvas = this.$data.canvas,
+            ctx = this.$data.ctx;
+            var px = Math.floor(canvas.width / 10);
+            // clear
+            ctx.fillStyle = '#00afaf';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ffffff';
+            // draw circles
+            this.$data.points.forEach(function (pt) {
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+    }
+});
+
+
+    </script>
+  </body>
+</html>
