@@ -6,7 +6,7 @@
   <body>
     <div id="demo"></div>
     <script>
-new Vue({
+var vm = new Vue({
     el:'#demo',
     template: '<canvas v-bind:width="width" v-bind:height="height"></canvas>',
     data: {
@@ -28,7 +28,6 @@ new Vue({
         ctx.fillText('Hello Vue Canvas!', canvas.width / 2, canvas.height / 2);
     }
 });
-  
     </script>
   </body>
 </html>

@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>vue canvas example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+var vm = new Vue({
+        el: '#demo',
+        template: '<canvas v-bind:width="width" v-bind:height="height"></canvas>',
+        data: {
+            width: 320,
+            height: 240,
+            canvas: null,
+            ctx: null
+        },
+        // get canvas, context, and draw for the first time
+        // lifecycle hook
+        mounted: function () {
+            // get canvas and context
+            this.$data.canvas = this.$el;
+            this.$data.ctx = this.$el.getContext('2d');
+            this.draw();
+        },
+        // draw on updated hook
+        updated: function () {
+            this.draw();
+        },
+        // single draw method
+        methods: {
+            draw: function () {
+                var canvas = this.$data.canvas,
+                ctx = this.$data.ctx;
+                var px = Math.floor(canvas.width / 10);
+                // draw something
+                ctx.fillStyle = '#00afaf';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = px + 'px arial';
+                ctx.fillText('Hello Vue Canvas!', canvas.width / 2, canvas.height / 2);
+            }
+        }
+    });
+// change size of canvas
+vm.$data.width = 800;
+vm.$data.height = 600;
+    </script>
+  </body>
+</html>
