@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>vue canvas example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el:'#demo',
+    template: '<canvas v-bind:width="width" v-bind:height="height"></canvas>',
+    data: {
+        width: 320,
+        height: 240
+    },
+    // using the mounted lifecycle hook
+    mounted: function(){
+        // get canvas and context
+        var canvas = this.$el,
+        ctx = canvas.getContext('2d');
+        // draw something
+        ctx.fillStyle = '#00afaf';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font='30px arial';
+        ctx.fillText('Hello Vue Canvas!', canvas.width / 2, canvas.height / 2);
+    }
+});
+  
+    </script>
+  </body>
+</html>
