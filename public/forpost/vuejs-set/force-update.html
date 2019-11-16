@@ -15,11 +15,10 @@
     }
   });
   
-  // set mess property and trigger update of the view
-  Vue.set(vm.u,'mess', 'bar');
-  
-  // this will not work as I am not making the property reactive
-  //vm.$data.mess = 'bar';
+  // force update can be used as an alternative
+  // to making a property reactive
+  vm.$data.u.mess = 'bar';
+  vm.$forceUpdate();
   
   </script>
   </body>
