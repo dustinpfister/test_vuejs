@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>vue on example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+    '<input type="text" v-model="username" v-on:keyup="check" v-on:change="end"><br>' +
+    '<p> {{ mess }}</p>' +
+    '</div>',
+    data: {
+        username: '',
+        valid: false,
+        mess: 'enter a username'
+    },
+    methods: {
+        check: function () {
+            this.$data.valid = false;
+            this.$data.mess = 'need 8 chars or more here';
+            if (this.$data.username.length >= 8) {
+                this.$data.valid = true;
+                this.$data.mess = 'looking good so far';
+            }
+        },
+        end: function () {
+            this.$data.mess = 'Not a vaild username'
+                if (this.$data.valid) {
+                    this.$data.mess = 'Okay Good thanks';
+                }
+        }
+    }
+});
+    </script>
+  </body>
+</html>
