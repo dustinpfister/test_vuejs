@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>vue set example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  
+  <p id="foo"></p>
+
+  <script>
+
+   var app = {
+      set n(val){
+          this.container.innerText = val;
+       },
+       container: document.getElementById('foo')
+   };
+   
+   setInterval(function(){
+       app.n = Math.floor( Math.random() * 6 );
+   },1000);
+
+  </script>
+  </body>
+</html>
