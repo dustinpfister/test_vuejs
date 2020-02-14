@@ -33,17 +33,24 @@ new Vue({
             var str = e.target.value;
             var n = parseInt(e.target.value);
 
+            // add number to expression
             if (typeof n === 'number' && String(n) != 'NaN') {
                 this.$data.expression += n;
             } else {
-
+                // add operator to expression
                 if ('+-*/'.split('').some(function (ch) {
                         return ch === str;
                     })) {
                     this.$data.expression += str;
                 }
-
+                // clear expression
+                if (str === 'CR') {
+                    this.$data.expression = '';
+                }
             }
+
+            // eval expression
+            this.$data.num = eval(this.$data.expression);
 
         }
 
