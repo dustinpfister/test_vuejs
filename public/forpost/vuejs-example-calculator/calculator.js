@@ -18,7 +18,7 @@ new Vue({
     '<input type=\"button\" value=\"-\"><br>' +
     '<input type=\"button\" value=\"*\">' +
     '<input type=\"button\" value=\"/\">' +
-    '<input type=\"button\" value=\"CR\">'+
+    '<input type=\"button\" value=\"CR\">' +
     '</form>' +
     '</div>',
     data: {
@@ -28,14 +28,21 @@ new Vue({
     },
     methods: {
 
-        click: function (a) {
+        click: function (e) {
 
-            console.log(a.target.value)
-
-            var n = parseInt(a.target.value);
+            var str = e.target.value;
+            var n = parseInt(e.target.value);
 
             if (typeof n === 'number' && String(n) != 'NaN') {
                 this.$data.expression += n;
+            } else {
+
+                if ('+-*/'.split('').some(function (ch) {
+                        return ch === str;
+                    })) {
+                    this.$data.expression += str;
+                }
+
             }
 
         }
