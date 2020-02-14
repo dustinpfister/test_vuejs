@@ -2,7 +2,7 @@ new Vue({
     el: '#app',
     template: '<div>' +
     '<div v-text=\"expression\" v-bind:style=\"style_expression\"></div>' +
-    '<div v-text=\"num\"></div>' +
+    '<div v-text=\"num\" v-bind:style=\"style_num\"></div>' +
     '<form v-on:click=\"click\">' +
     '<input type=\"button\" value=\"1\">' +
     '<input type=\"button\" value=\"2\">' +
@@ -23,6 +23,7 @@ new Vue({
     '</div>',
     data: {
         style_expression: 'height: 20px',
+        style_num: 'height: 20px',
         num: 0,
         expression: ''
     },
@@ -50,7 +51,11 @@ new Vue({
             }
 
             // eval expression
-            this.$data.num = eval(this.$data.expression);
+            try {
+                this.$data.num = eval(this.$data.expression);
+            } catch (e) {
+                this.$data.num = e.message;
+            }
 
         }
 
