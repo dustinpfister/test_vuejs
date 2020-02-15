@@ -18,6 +18,7 @@ new Vue({
     '<input type=\"button\" value=\"-\"><br>' +
     '<input type=\"button\" value=\"*\">' +
     '<input type=\"button\" value=\"/\">' +
+    '<input type=\"button\" value=\".\">' +
     '<input type=\"button\" value=\"CR\">' +
     '</form>' +
     '</div>',
@@ -36,7 +37,7 @@ new Vue({
                 this.$data.expression += n;
             } else {
                 // add operator to expression
-                if ('+-*/'.split('').some(function (ch) {
+                if ('+-*/.'.split('').some(function (ch) {
                         return ch === str;
                     })) {
                     this.$data.expression += str;
