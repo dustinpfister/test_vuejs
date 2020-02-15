@@ -1,7 +1,7 @@
 new Vue({
     el: '#app',
     template: '<div>' +
-    '<input v-model=\"expression\" v-bind:style=\"style_expression\"></br>' +
+    '<input v-model=\"expression\" v-on:keyup=\"eval\" v-bind:style=\"style_expression\"></br>' +
     '<div v-text=\"num\" v-bind:style=\"style_num\"></div>' +
     '<form v-on:click=\"click\">' +
     '<input type=\"button\" value=\"1\">' +
