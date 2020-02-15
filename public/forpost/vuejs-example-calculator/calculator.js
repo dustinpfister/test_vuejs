@@ -29,6 +29,15 @@ new Vue({
         expression: ''
     },
     methods: {
+        // evaluate the expression
+        eval: function () {
+            try {
+                this.$data.num = eval(this.$data.expression);
+            } catch (e) {
+                this.$data.num = e.message;
+            }
+        },
+        // a button was clicked
         click: function (e) {
             var str = e.target.value;
             var n = parseInt(e.target.value);
@@ -47,12 +56,7 @@ new Vue({
                     this.$data.expression = '';
                 }
             }
-            // eval expression
-            try {
-                this.$data.num = eval(this.$data.expression);
-            } catch (e) {
-                this.$data.num = e.message;
-            }
+            this.eval();
         }
     }
 })
