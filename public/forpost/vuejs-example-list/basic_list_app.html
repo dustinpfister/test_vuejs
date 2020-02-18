@@ -8,31 +8,25 @@
   <script>
 new Vue({
   el: '#app',
-  template: '<ul><li v-for=\"item in items\"><input v-model=\"item.mess\"></li></ul>',
+  template: '<div>'+
+  '<input type=\"text\" v-model=\"textInput\"><input type=\"Button\" value=\"Push\" v-on:click=\"pushNew\"></br>' +
+  '<ul><li v-for=\"item in items\"><input v-model=\"item.mess\"></li></ul>' +
+  '</div>',
   data: {
+	  textInput: 'Enter new item text',
      items: []
   },
   methods: {
-	 pushBlank: function(){
-		 
+	 pushNew: function(){
+		 var id = this.$data.items.length;
 		 this.$data.items.push({
-		      mess: 'Enter text',
+			  id: id,
+		      mess: this.$data.textInput,
 			  done:false
 		   });
-		 
-	 },
-     zeroCheck: function(){
-	    var data = this.$data,
-		items = data.items;
-		
-		if(items.length === 0){
-		   this.pushBlank();
-		}
-		
 	 }
   },
   mounted: function(){
-     this.zeroCheck();
   }
 });
   
