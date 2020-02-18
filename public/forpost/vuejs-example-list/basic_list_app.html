@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>vue example list</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+new Vue({
+  el: '#app',
+  template: '<ul><li v-for=\"item in items\"><input v-model=\"item.mess\"></li></ul>',
+  data: {
+     items: []
+  },
+  methods: {
+	 pushBlank: function(){
+		 
+		 this.$data.items.push({
+		      mess: 'Enter text',
+			  done:false
+		   });
+		 
+	 },
+     zeroCheck: function(){
+	    var data = this.$data,
+		items = data.items;
+		
+		if(items.length === 0){
+		   this.pushBlank();
+		}
+		
+	 }
+  },
+  mounted: function(){
+     this.zeroCheck();
+  }
+});
+  
+  </script>
+  </body>
+</html>
