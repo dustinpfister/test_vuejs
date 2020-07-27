@@ -12,8 +12,7 @@ new Vue({
         width: 4,
         height: 4,
         currentColorIndex: 0,
-        colors: ['white', 'red', 'green', 'blue'],
-        cells: []
+        colors: ['white', 'red', 'green', 'blue']
     },
     methods: {
         renderColorSel: function (createElement) {
@@ -63,7 +62,7 @@ new Vue({
                         position: 'absolute',
                         width: '32px',
                         height: '32px',
-                        background: d.cells[i] || 0,
+                        background: 0,
                         left: (i % d.width * 32) + 'px',
                         top: (i % d.width * 32) + 'px',
                         textAlign: 'center'
@@ -73,7 +72,7 @@ new Vue({
                     }
                 };
                 cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
-                div = createElement('div', cellOpt, d.cells[i] || 0);
+                div = createElement('div', cellOpt, 0);
                 grid.push(div);
                 i += 1;
             }
