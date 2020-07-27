@@ -14,14 +14,15 @@ new Vue({
                     height: '32px',
                     background: 'red',
                     left: (i % this.$data.width * 32) + 'px',
-                    top: (i % this.$data.width * 32) + 'px'
+                    top: (i % this.$data.width * 32) + 'px',
+                    textAlign: 'center'
                 },
                 on: {
                     click: this.draw
                 }
             };
             cellOpt.style.top = (Math.floor(i / this.$data.height) * 32) + 'px';
-            div = createElement('div', cellOpt, '');
+            div = createElement('div', cellOpt, 0);
             grid.push(div);
             i += 1;
         }
@@ -32,7 +33,7 @@ new Vue({
         height: 4,
     },
     methods: {
-        draw: function () {
+        draw: function (e) {
 
             console.log('good');
 
