@@ -23,7 +23,7 @@ new Vue({
                 }
             };
             cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
-            div = createElement('div', cellOpt, 0);
+            div = createElement('div', cellOpt, d.currentColorIndex);
             grid.push(div);
             i += 1;
         }
@@ -37,9 +37,11 @@ new Vue({
     },
     methods: {
         draw: function (e) {
-
+            var div = e.target,
+            d = this.$data;
+            div.innerText = this.$data.currentColorIndex;
+            div.style.background = d.colors[d.currentColorIndex];
             console.log('good');
-
         }
     }
 })
