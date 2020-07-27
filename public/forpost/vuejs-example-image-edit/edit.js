@@ -1,6 +1,7 @@
 new Vue({
     el: '#app',
     render: function (createElement) {
+        /*
         var grid = [],
         div,
         cellOpt,
@@ -8,26 +9,27 @@ new Vue({
         i = 0,
         len = this.$data.width * this.$data.height;
         while (i < len) {
-            cellOpt = {
-                style: {
-                    position: 'absolute',
-                    width: '32px',
-                    height: '32px',
-                    background: d.colors[d.currentColorIndex],
-                    left: (i % d.width * 32) + 'px',
-                    top: (i % d.width * 32) + 'px',
-                    textAlign: 'center'
-                },
-                on: {
-                    click: this.draw
-                }
-            };
-            cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
-            div = createElement('div', cellOpt, d.currentColorIndex);
-            grid.push(div);
-            i += 1;
+        cellOpt = {
+        style: {
+        position: 'absolute',
+        width: '32px',
+        height: '32px',
+        background: d.colors[d.currentColorIndex],
+        left: (i % d.width * 32) + 'px',
+        top: (i % d.width * 32) + 'px',
+        textAlign: 'center'
+        },
+        on: {
+        click: this.draw
         }
-        return createElement('div', grid);
+        };
+        cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
+        div = createElement('div', cellOpt, d.currentColorIndex);
+        grid.push(div);
+        i += 1;
+        }
+         */
+        return createElement('div', this.renderGrid(createElement));
     },
     data: {
         width: 4,
@@ -36,12 +38,41 @@ new Vue({
         colors: ['white', 'red', 'green', 'blue']
     },
     methods: {
+        renderGrid: function (createElement) {
+            var grid = [],
+            div,
+            cellOpt,
+            d = this.$data,
+            i = 0,
+            len = this.$data.width * this.$data.height;
+            while (i < len) {
+                cellOpt = {
+                    style: {
+                        position: 'absolute',
+                        width: '32px',
+                        height: '32px',
+                        background: d.colors[d.currentColorIndex],
+                        left: (i % d.width * 32) + 'px',
+                        top: (i % d.width * 32) + 'px',
+                        textAlign: 'center'
+                    },
+                    on: {
+                        click: this.draw
+                    }
+                };
+                cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
+                div = createElement('div', cellOpt, d.currentColorIndex);
+                grid.push(div);
+                i += 1;
+            }
+            return grid;
+        },
         draw: function (e) {
             var div = e.target,
             d = this.$data;
-            div.innerText = this.$data.currentColorIndex;
-            div.style.background = d.colors[d.currentColorIndex];
-            console.log('good');
+            e.preventDefault();
+            div.innerText = 0; //this.$data.currentColorIndex;
+            div.style.background = d.colors[0]; //d.colors[d.currentColorIndex];
         }
     }
 })
