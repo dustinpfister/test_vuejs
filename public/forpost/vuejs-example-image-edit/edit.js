@@ -1,57 +1,69 @@
 new Vue({
     el: '#app',
     render: function (createElement) {
-        /*
-        var grid = [],
-        div,
-        cellOpt,
-        d = this.$data,
-        i = 0,
-        len = this.$data.width * this.$data.height;
-        while (i < len) {
-        cellOpt = {
-        style: {
-        position: 'absolute',
-        width: '32px',
-        height: '32px',
-        background: d.colors[d.currentColorIndex],
-        left: (i % d.width * 32) + 'px',
-        top: (i % d.width * 32) + 'px',
-        textAlign: 'center'
-        },
-        on: {
-        click: this.draw
-        }
-        };
-        cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
-        div = createElement('div', cellOpt, d.currentColorIndex);
-        grid.push(div);
-        i += 1;
-        }
-         */
-        return createElement('div', this.renderGrid(createElement));
+        return createElement('div', {
+            style: {
+                position: 'relative',
+                left: '0px'
+            }
+        }, [this.renderGrid(createElement), this.renderColorSel(createElement)]);
     },
     data: {
         width: 4,
         height: 4,
-        currentColorIndex: 1,
-        colors: ['white', 'red', 'green', 'blue']
+        currentColorIndex: 0,
+        colors: ['white', 'red', 'green', 'blue'],
+        cells: []
     },
     methods: {
-        renderGrid: function (createElement) {
-            var grid = [],
+        renderColorSel: function (createElement) {
+            var sel = [],
             div,
             cellOpt,
             d = this.$data,
             i = 0,
-            len = this.$data.width * this.$data.height;
+            len = d.colors.length;
             while (i < len) {
                 cellOpt = {
                     style: {
                         position: 'absolute',
                         width: '32px',
                         height: '32px',
-                        background: d.colors[d.currentColorIndex],
+                        background: d.colors[i],
+                        left: (i % d.width * 32) + 'px',
+                        top: '0px',
+                        textAlign: 'center'
+                    },
+                    on: {
+                        click: this.setColor
+                    }
+                };
+                div = createElement('div', cellOpt, i);
+                sel.push(div);
+                i += 1;
+            }
+            return createElement('div', {
+                style: {
+                    position: 'relative',
+                    left: '0px',
+                    top: '0px'
+                }
+            }, sel);
+        },
+        renderGrid: function (createElement) {
+            var grid = [],
+            div,
+            cellOpt,
+            d = this.$data,
+            i = 0,
+            len = d.width * d.height;
+            while (i < len) {
+                cellOpt = {
+                    style: {
+                        position: 'absolute',
+                        width: '32px',
+                        height: '32px',
+                        background: d.cells[i] || 0,
                         left: (i % d.width * 32) + 'px',
                         top: (i % d.width * 32) + 'px',
                         textAlign: 'center'
@@ -61,18 +73,31 @@ new Vue({
                     }
                 };
                 cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
-                div = createElement('div', cellOpt, d.currentColorIndex);
+                div = createElement('div', cellOpt, d.cells[i] || 0);
                 grid.push(div);
                 i += 1;
             }
-            return grid;
+            return createElement('div', {
+                style: {
+                    position: 'relative',
+                    left: '0px',
+                    top: '64px'
+                }
+            }, grid);
+        },
+        setColor: function (e) {
+            var div = e.target,
+            d = this.$data;
+            e.preventDefault();
+            d.currentColorIndex = div.innerText;
+            console.log(div)
         },
         draw: function (e) {
             var div = e.target,
             d = this.$data;
             e.preventDefault();
-            div.innerText = 0; //this.$data.currentColorIndex;
-            div.style.background = d.colors[0]; //d.colors[d.currentColorIndex];
+            div.innerText = this.$data.currentColorIndex;
+            div.style.background = d.colors[d.currentColorIndex];
         }
     }
 })
