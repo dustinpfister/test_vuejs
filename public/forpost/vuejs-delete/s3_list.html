@@ -6,26 +6,36 @@
   <body>
   <div id="app"></div>
   <script>
-  
-  var vm = new Vue({
-    el:'#app',
-    template: '<div><ul><li v-for="fn in names" v-text="fn"></li></ul>' +
-    '<input type="text" v-model="name">'+
-	'<input type="button" value="delete" v-on:click="del"></div>',
-    data: {
-        names: ['dustin', 'john', 'emme'],
-        name:'dustin'
-    },
-    methods: {
-	  del: function(){
-	    var vm = this;
-	     vm.$delete(this.names, this.names.findIndex(function(n){
-		     return n === vm.name;
-		 }));
-	  }
-	}
-  });
-  
+var vm = new Vue({
+        el: '#app',
+        template: '<div><ul><li v-for="fn in names" v-text="fn"></li></ul>' +
+        '<input type="text" v-model="name">' +
+        '<input type="button" value="delete" v-on:click="del">' +
+        '<input type="button" value="add" v-on:click="add"></div>',
+        data: {
+            names: ['dustin', 'john', 'emme'],
+            name: 'dustin'
+        },
+        methods: {
+            del: function () {
+                var vm = this;
+                vm.$delete(this.names, this.names.findIndex(function (n) {
+                        return n === vm.name;
+                    }));
+                vm.names.sort();
+            },
+            add: function () {
+                var vm = this;
+                if (!vm.names.some(function (n) {
+                        return n === vm.name;
+                    })) {
+                    vm.names.push(vm.name);
+                    vm.names.sort();
+                }
+            }
+        }
+    });
+vm.names.sort();
   </script>
   </body>
 </html>
