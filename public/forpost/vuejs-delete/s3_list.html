@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+  
+  var vm = new Vue({
+    el:'#app',
+    template: '<div><ul><li v-for="fn in names" v-text="fn"></li></ul>' +
+    '<input type="text" v-model="name">'+
+	'<input type="button" value="delete" v-on:click="del"></div>',
+    data: {
+        names: ['dustin', 'john', 'emme'],
+        name:'dustin'
+    },
+    methods: {
+	  del: function(){
+	    var vm = this;
+	     vm.$delete(this.names, this.names.findIndex(function(n){
+		     return n === vm.name;
+		 }));
+	  }
+	}
+  });
+  
+  </script>
+  </body>
+</html>
