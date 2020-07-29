@@ -15,6 +15,18 @@ new Vue({
         colors: ['white', 'red', 'green', 'blue']
     },
     methods: {
+        createStyleObj: function (colorIndex, left, top) {
+            var d = this.$data;
+            return {
+                position: 'absolute',
+                width: '32px',
+                height: '32px',
+                background: d.colors[colorIndex],
+                left: left + 'px',
+                top: top + 'px',
+                textAlign: 'center'
+            };
+        },
         renderColorSel: function (createElement) {
             var sel = [],
             div,
@@ -24,15 +36,7 @@ new Vue({
             len = d.colors.length;
             while (i < len) {
                 cellOpt = {
-                    style: {
-                        position: 'absolute',
-                        width: '32px',
-                        height: '32px',
-                        background: d.colors[i],
-                        left: (i % d.width * 32) + 'px',
-                        top: '0px',
-                        textAlign: 'center'
-                    },
+                    style: this.createStyleObj(i, i % d.width * 32, 0),
                     on: {
                         click: this.setColor
                     }
@@ -58,21 +62,13 @@ new Vue({
             len = d.width * d.height;
             while (i < len) {
                 cellOpt = {
-                    style: {
-                        position: 'absolute',
-                        width: '32px',
-                        height: '32px',
-                        background: 0,
-                        left: (i % d.width * 32) + 'px',
-                        top: (i % d.width * 32) + 'px',
-                        textAlign: 'center'
-                    },
+                    style: this.createStyleObj(1, i % d.width * 32, i % d.width * 32),
                     on: {
                         click: this.draw
                     }
                 };
                 cellOpt.style.top = (Math.floor(i / d.height) * 32) + 'px';
-                div = createElement('div', cellOpt, 0);
+                div = createElement('div', cellOpt, 1);
                 grid.push(div);
                 i += 1;
             }
