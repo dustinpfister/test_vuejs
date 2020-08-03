@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>vue destroyed lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+    '<p>count: {{c}}</p>' +
+    '<input type=\"button\" value=\"step\" v-on:click=\"step\">' +
+    '<input type=\"button\" value=\"purge\" v-on:click=\"done\"></div>',
+    destroyed: function () {
+        // make the innerhtml of DEMO div just the count value
+        this.$el.innerHTML = this.$data.c;
+    },
+    data: {
+        c: 0
+    },
+    methods: {
+        step: function () {
+            this.c += 1;
+        },
+        done: function () {
+            // start destroy
+            this.$destroy();
+        }
+    }
+});
+  </script>
+  </body>
+</html>
