@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>vue on example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+var state = Vue.observable({
+    count: 0
+});
+
+var vm = new Vue({
+    el:'#demo',
+    render : function(createElement){
+       var html = [],
+       div = createElement('div' , 'count: ' + state.count);
+       html.push( div );
+       return html
+    }
+});
+
+    </script>
+  </body>
+</html>
