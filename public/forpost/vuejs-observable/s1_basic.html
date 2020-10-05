@@ -10,14 +10,28 @@ var state = Vue.observable({
     count: 0
 });
 
+//var state = {
+//    count: 0
+//};
+
 var vm = new Vue({
     el:'#demo',
     render : function(createElement){
-       var html = [],
-       div = createElement('div' , 'count: ' + state.count);
-       html.push( div );
-       return html
-    }
+       return createElement('input', {
+            attrs: {
+                type: 'button',
+                value: 'count: ' + state.count
+            },
+            on: {
+                click: this.click
+            }
+        });
+    },
+	methods: {
+	   click : function(){
+	       state.count += 1;
+	   }
+	}
 });
 
     </script>
