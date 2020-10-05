@@ -9,11 +9,7 @@
 var state = Vue.observable({
     count: 0
 });
-
-//var state = {
-//    count: 0
-//};
-
+ 
 var vm = new Vue({
     el:'#demo',
     render : function(createElement){
@@ -27,13 +23,13 @@ var vm = new Vue({
             }
         });
     },
-	methods: {
-	   click : function(){
-	       state.count += 1;
-	   }
-	}
+    methods: {
+       click : function(){
+           state.count += 1;
+       }
+    }
 });
-
+ 
     </script>
   </body>
 </html>
