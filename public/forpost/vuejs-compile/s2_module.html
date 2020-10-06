@@ -12,12 +12,11 @@
     el:'#demo',
     data: Mod.create(),
     render : Vue.compile(Mod.template).render,
-	methods: {
-	   update: function(){
-	   
-	      Mod.update(this.$data)
-	   }
-	}
+    methods: {
+       update: function(){
+           Mod.update(this.$data)
+       }
+    }
   });
   </script>
   </body>
