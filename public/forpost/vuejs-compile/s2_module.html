@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>vue component example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo">
+  </div>
+  <script src="./module.js" ></script>
+  <script>
+  new Vue({
+    el:'#demo',
+    data: Mod.create(),
+    render : Vue.compile(Mod.template).render,
+	methods: {
+	   update: function(){
+	   
+	      Mod.update(this.$data)
+	   }
+	}
+  });
+  </script>
+  </body>
+</html>
