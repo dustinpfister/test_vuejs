@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>vue bind example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<p ref=\"p\"></p>',
+    mounted: function(){
+        this.$refs.p.innerText = 'foo';
+    }
+  });
+  </script>
+  </body>
+</html>
