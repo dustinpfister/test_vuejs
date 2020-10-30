@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>vue bind example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<div><span>{{ \'hello \' }}</span><span>{{ \"count: \" + ct + \";\" }}<\/span></div>',
+    data:{
+      ct: 3
+    }
+  });
+  </script>
+  </body>
+</html>
