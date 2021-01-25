@@ -23,7 +23,7 @@ new Vue({
         '<div>' +
             '<div v-bind:id="min.id" class="wrap_minbox" v-for="min in minerals" >' +
                  '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
-                 ' {{ min.type }} ' +
+                 '<div><span>type: {{ min.type }}, count: {{ min.unitCount }}</span></div>' +
             '</div>' +
         '</div>' +
     '</div>',
