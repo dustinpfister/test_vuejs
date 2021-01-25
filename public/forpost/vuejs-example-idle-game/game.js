@@ -21,8 +21,14 @@ new Vue({
         // a button was clicked
         click: function (e) {
             var dat = this.$data;
-            console.log(e.target.id.split('_'));
-            //dat.money += 1;
+            var buttonArr = e.target.id.split('_');
+            if(buttonArr[1] == 'mine'){
+                console.log('mine');
+            }
+            if(buttonArr[1] == 'sellall'){
+                var type = buttonArr[2];
+                console.log('sell all ' + type);
+            }
         }
     }
 })
