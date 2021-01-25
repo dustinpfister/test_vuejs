@@ -8,9 +8,28 @@
   <script>
 new Vue({
     el: '#demo-bind',
-    template: '<div><div v-bind:id="\'item_\'+item.id" v-for="item in items" >red text</div></div>',
+    template: '<div>'+
+        '<div v-for="item in items">'+
+            '<input v-bind:id="\'item_\'+item.id" type="button" value="click" v-on:click="click">'+
+            '<span> {{ item.count }} </span>'+
+        '</div>'+
+    '</div>',
     data: {
-        items: [{ id: 'one' },{ id: 'two' },{ id: 'three' }]
+        items: [{ id: 'one', count:0 },{ id: 'two', count: 0 },{ id: 'three', count: 0 }]
+    },
+    methods: {
+        click : function(e){
+            var itemArr = e.target.id.split('_')
+            var dat = this.$data;
+            var i = dat.items.length, item;
+            while(i--){
+                item = dat.items[i];
+                if(item.id === itemArr[1]){
+                    item.count += 1;
+                    break;
+                }
+            }
+        }
     }
 });
   </script>
