@@ -1,22 +1,20 @@
-var utils = {};
-
-// format number as money
-// https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
-utils.format_money = function(number){
-    var formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        // These options are needed to round to whole numbers if that's what you want.
-        minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-        maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
-    });
-    return formatter.format(number); /* $2,500.00 */
-};
-
 var gameMod = (function(){;
 
-  var api = {};
+  // HELPERS
 
+  // format number as money
+  // https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+  var format_money = function(number){
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      // These options are needed to round to whole numbers if that's what you want.
+      minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+      maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+    });
+    return formatter.format(number); /* $2,500.00 */
+  };
+  // get a mineral object
   var getMinObj = function(game, query){
     // if string get by type
     console.log(query);
@@ -36,6 +34,9 @@ var gameMod = (function(){;
     return false;
   };
 
+  // PUBLIC API
+  var api = {};
+
   // create a main game state object
   api.createState = function(){
     return {
@@ -49,7 +50,6 @@ var gameMod = (function(){;
       ]
     };
   };
-
   // prefrom a mine action
   api.mine = function(game){
     var i = 0,
@@ -66,16 +66,15 @@ var gameMod = (function(){;
       i = i + 1;
     }
   };
-
+  // sell
   api.sell = function(game, type){
       var minObj = getMinObj(game, type);
       game.money += minObj.unitCount * minObj.moneyPerUnit;
       game.money_formatted = utils.format_money(game.money);
       minObj.unitCount = 0;
   };
-
+  // return public API
   return api;
-
 }());
 
 new Vue({
