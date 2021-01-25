@@ -1,20 +1,26 @@
-var gameMod = {};
+var gameMod = (function(){;
 
-// create a main game state object
-gameMod.createState = function(){
+  var api = {};
+
+  // create a main game state object
+  api.createState = function(){
     return {
-        money: 0,
-        minerals: [
-            {id: 'minbox_iron', type: 'iron', unitCount: 0, moneyPerUnit: 1},
-            {id: 'minbox_copper', type: 'copper', unitCount: 0, moneyPerUnit: 2.5},
-            {id: 'minbox_silver', type: 'silver', unitCount: 0, moneyPerUnit: 7}
-        ]
+      money: 0,
+      minerals: [
+        {id: 'minbox_iron', type: 'iron', unitCount: 0, moneyPerUnit: 1},
+        {id: 'minbox_copper', type: 'copper', unitCount: 0, moneyPerUnit: 2.5},
+        {id: 'minbox_silver', type: 'silver', unitCount: 0, moneyPerUnit: 7}
+      ]
     };
-};
+  };
 
-gameMod.mine = function(game){
+  api.mine = function(game){
     game.minerals[0].unitCount += 1;
-};
+  };
+
+  return api;
+
+}());
 
 new Vue({
     el: '#app',
