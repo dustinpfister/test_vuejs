@@ -41,7 +41,7 @@ var gameMod = (function(){;
   api.createState = function(){
     return {
       money: 0,
-      money_formatted: utils.format_money(0),
+      money_formatted: format_money(0),
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
         {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
@@ -70,42 +70,9 @@ var gameMod = (function(){;
   api.sell = function(game, type){
       var minObj = getMinObj(game, type);
       game.money += minObj.unitCount * minObj.moneyPerUnit;
-      game.money_formatted = utils.format_money(game.money);
+      game.money_formatted = format_money(game.money);
       minObj.unitCount = 0;
   };
   // return public API
   return api;
 }());
-
-new Vue({
-    el: '#app',
-    template: '<div>' +
-        '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span> <br>' +
-        '<div>' +
-            '<div v-bind:id="\'minbox_\'+min.type" '+
-                'class="wrap_minbox" v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
-                'v-for="min in minerals" '+
-            '>' +
-                 '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
-                 '<div><span>type: {{ min.type }}, count: {{ min.unitCount }}</span></div>' +
-            '</div>' +
-        '</div>' +
-    '</div>',
-    data: gameMod.createState(),
-    methods: {
-        // a button was clicked
-        click: function (e) {
-            var dat = this.$data;
-            var buttonArr = e.target.id.split('_');
-            if(buttonArr[1] == 'mine'){
-                console.log('mine');
-                gameMod.mine(dat);
-            }
-            if(buttonArr[1] == 'sellall'){
-                var type = buttonArr[2];
-                console.log('sell all ' + type);
-                gameMod.sell(dat, type);
-            }
-        }
-    }
-});
