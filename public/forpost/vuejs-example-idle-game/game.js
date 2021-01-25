@@ -2,6 +2,16 @@ var gameMod = (function(){;
 
   var api = {};
 
+  var getMinObj = function(game, query){
+    if(typeof query === 'number'){
+      return game.minerals[query];
+    }
+    if(typeof query === 'string'){
+      return game.minerals[query];
+    }
+    return false;
+  };
+
   // create a main game state object
   api.createState = function(){
     return {
@@ -30,6 +40,10 @@ var gameMod = (function(){;
       }
       i = i + 1;
     }
+  };
+
+  api.sell = function(game, type){
+
   };
 
   return api;
