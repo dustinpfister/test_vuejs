@@ -28,7 +28,7 @@ var gameMod = (function(){;
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
         {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
-        {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: true, chance: 0.25},
+        {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: false, chance: 0.25},
         {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
       ]
     };
@@ -66,7 +66,10 @@ new Vue({
     template: '<div>' +
         '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money }} </span> <br>' +
         '<div>' +
-            '<div v-bind:id="\'minbox_\'+min.type" class="wrap_minbox" v-for="min in minerals" >' +
+            '<div v-bind:id="\'minbox_\'+min.type" '+
+                'class="wrap_minbox" v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
+                'v-for="min in minerals" '+
+            '>' +
                  '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
                  '<div><span>type: {{ min.type }}, count: {{ min.unitCount }}</span></div>' +
             '</div>' +
