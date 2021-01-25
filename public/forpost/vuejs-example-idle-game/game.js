@@ -3,7 +3,10 @@ new Vue({
     template: '<div>' +
         '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money }} </span> <br>' +
         '<div>' +
-            '<div v-bind:id="min.id" class="wrap_minbox" v-for="min in minerals" > {{ min.type }} </div>' +
+            '<div v-bind:id="min.id" class="wrap_minbox" v-for="min in minerals" >' +
+                 '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
+                 ' {{ min.type }} ' +
+            '</div>' +
         '</div>' +
     '</div>',
     data: {
