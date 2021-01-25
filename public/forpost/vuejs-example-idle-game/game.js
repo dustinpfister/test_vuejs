@@ -27,8 +27,8 @@ var gameMod = (function(){;
       money: 0,
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
-        {type: 'copper', unitCount: 0, moneyPerUnit: 2.5, locked: false, chance: 0.5},
-        {type: 'silver', unitCount: 0, moneyPerUnit: 7, locked: true, chance: 0.25},
+        {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
+        {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: true, chance: 0.25},
         {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
       ]
     };
@@ -53,7 +53,8 @@ var gameMod = (function(){;
 
   api.sell = function(game, type){
       var minObj = getMinObj(game, type);
-      console.log(minObj);
+      game.money += minObj.unitCount * minObj.moneyPerUnit;
+      minObj.unitCount = 0;
   };
 
   return api;
