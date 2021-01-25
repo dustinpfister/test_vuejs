@@ -1,3 +1,18 @@
+var utils = {};
+
+// format number as money
+// https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+utils.format_money = function(number){
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        // These options are needed to round to whole numbers if that's what you want.
+        minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+    });
+    return formatter.format(number); /* $2,500.00 */
+};
+
 var gameMod = (function(){;
 
   var api = {};
@@ -25,6 +40,7 @@ var gameMod = (function(){;
   api.createState = function(){
     return {
       money: 0,
+      money_formatted: utils.format_money(0),
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
         {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
@@ -54,6 +70,7 @@ var gameMod = (function(){;
   api.sell = function(game, type){
       var minObj = getMinObj(game, type);
       game.money += minObj.unitCount * minObj.moneyPerUnit;
+      game.money_formatted = utils.format_money(game.money);
       minObj.unitCount = 0;
   };
 
@@ -64,7 +81,7 @@ var gameMod = (function(){;
 new Vue({
     el: '#app',
     template: '<div>' +
-        '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money }} </span> <br>' +
+        '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span> <br>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="wrap_minbox" v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
