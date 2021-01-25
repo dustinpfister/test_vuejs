@@ -10,7 +10,7 @@ new Vue({
     el: '#demo-bind',
     template: '<div>'+
         '<div v-bind:style="item.locked?\'display:none;\':\'display:block\'" v-for="item in items">'+
-            '<input v-bind:id="\'item_\'+item.id" type="button" value="click" v-on:click="click">'+
+            '<input v-bind:value="item.id" v-bind:id="\'item_\'+item.id" type="button"  v-on:click="click">'+
             '<span> {{ item.count }} </span>'+
         '</div>'+
     '</div>',
