@@ -7,14 +7,15 @@ var gameMod = (function(){;
     return {
       money: 0,
       minerals: [
-        {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false},
-        {type: 'copper', unitCount: 0, moneyPerUnit: 2.5, locked: false},
-        {type: 'silver', unitCount: 0, moneyPerUnit: 7, locked: true},
-        {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true}
+        {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
+        {type: 'copper', unitCount: 0, moneyPerUnit: 2.5, locked: false, chance: 0.5},
+        {type: 'silver', unitCount: 0, moneyPerUnit: 7, locked: true, chance: 0.25},
+        {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
       ]
     };
   };
 
+  // prefrom a mine action
   api.mine = function(game){
     var i = 0,
     len = game.minerals.length,
@@ -22,7 +23,10 @@ var gameMod = (function(){;
     while(i < len){
       minObj = game.minerals[i];
       if(!minObj.locked){
-          minObj.unitCount += 1;
+          var roll = Math.random();
+          if(roll < minObj.chance){
+              minObj.unitCount += 1;
+          }
       }
       i = i + 1;
     }
