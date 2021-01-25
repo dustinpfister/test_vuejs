@@ -14,9 +14,6 @@ app.use('/data', require('./middleware/get_data.js')());
 // generate list of examples for root
 app.use('/', require('./middleware/index_forpost.js')({dir:'./public/forpost'}));
 
-
-
-
 // start server
 app.listen(port, function () {
     console.log('list examples server up on port: ' + port);
