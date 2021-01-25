@@ -4,6 +4,7 @@ var gameMod = (function(){;
 
   var getMinObj = function(game, query){
     // if string get by type
+    console.log(query);
     if(typeof query === 'string'){
       var i = game.minerals.length;
       while(i--){
@@ -51,7 +52,8 @@ var gameMod = (function(){;
   };
 
   api.sell = function(game, type){
-      console.log(type);
+      var minObj = getMinObj(game, type);
+      console.log(minObj);
   };
 
   return api;
