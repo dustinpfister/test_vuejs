@@ -8,7 +8,7 @@ var gameMod = (function(){;
       money: 0,
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false},
-        {type: 'copper', unitCount: 0, moneyPerUnit: 2.5, locked: true},
+        {type: 'copper', unitCount: 0, moneyPerUnit: 2.5, locked: false},
         {type: 'silver', unitCount: 0, moneyPerUnit: 7, locked: true},
         {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true}
       ]
@@ -16,7 +16,16 @@ var gameMod = (function(){;
   };
 
   api.mine = function(game){
-    game.minerals[0].unitCount += 1;
+    var i = 0,
+    len = game.minerals.length,
+    minObj;
+    while(i < len){
+      minObj = game.minerals[i];
+      if(!minObj.locked){
+          minObj.unitCount += 1;
+      }
+      i = i + 1;
+    }
   };
 
   return api;
