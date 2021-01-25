@@ -3,10 +3,18 @@ var gameMod = (function(){;
   var api = {};
 
   var getMinObj = function(game, query){
-    if(typeof query === 'number'){
-      return game.minerals[query];
-    }
+    // if string get by type
     if(typeof query === 'string'){
+      var i = game.minerals.length;
+      while(i--){
+          var minObj = game.minerals[i];
+          if(minObj.type === query.toLowerCase()){
+             return minObj;
+          }
+      }
+    }
+    // if number get by index
+    if(typeof query === 'number'){
       return game.minerals[query];
     }
     return false;
@@ -43,7 +51,7 @@ var gameMod = (function(){;
   };
 
   api.sell = function(game, type){
-
+      console.log(type);
   };
 
   return api;
@@ -74,6 +82,7 @@ new Vue({
             if(buttonArr[1] == 'sellall'){
                 var type = buttonArr[2];
                 console.log('sell all ' + type);
+                gameMod.sell(dat, type);
             }
         }
     }
