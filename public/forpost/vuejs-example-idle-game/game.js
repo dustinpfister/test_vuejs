@@ -1,5 +1,6 @@
 var gameMod = {};
 
+// create a main game state object
 gameMod.createState = function(){
     return {
         money: 0,
@@ -9,6 +10,10 @@ gameMod.createState = function(){
             {id: 'minbox_silver', type: 'silver', unitCount: 0, moneyPerUnit: 7}
         ]
     };
+};
+
+gameMod.mine = function(game){
+    game.minerals[0].unitCount += 1;
 };
 
 new Vue({
