@@ -1,11 +1,12 @@
 new Vue({
     el: '#app',
-    template: '<div>' +
+    template: '<div class="wrap_main">' +
         '<div><input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span></div>' +
-        '<div v-bind:style="\'background:lime;height:10px;width:\'+Math.round(overTime.per * 100)+\'px;\'" ></div>' +
+        '<div v-bind:style="\'background:lime;height:10px;width:\'+Math.round(overTime.per * 100)+\'%;\'" ></div>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
-                'class="wrap_minbox" v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
+                'class="minbox"' +
+                'v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
                 'v-for="min in minerals" '+
             '>' +
                  '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
