@@ -1,6 +1,8 @@
 var gameMod = (function(){;
 
-  // HELPERS
+/********** ********** **********
+    HELPERS
+********** ********** **********/
 
   // format number as money
   // https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
@@ -36,6 +38,10 @@ var gameMod = (function(){;
   // PUBLIC API
   var api = {};
 
+/********** ********** **********
+    CREATE
+********** ********** **********/
+
   var createMinerals = function(opt){
       opt = opt || [{type:'iron', unitCount: 5}];
       var minerals = [
@@ -68,6 +74,10 @@ var gameMod = (function(){;
     };
   };
 
+/********** ********** **********
+    MINE
+********** ********** **********/
+
   // a single min action using Math.random for each mineral
   var mineSingle = function(game){
     var i = 0,
@@ -93,6 +103,14 @@ var gameMod = (function(){;
       }
   };
 
+  // mine by chance and count
+  var mineByChanceAndCount = function(game, count){
+      game.minerals.map(function(minObj){
+          minObj.unitCount += Math.floor(minObj.chance * count);
+          return minObj;
+      });
+  };
+
   // prefrom a mine action
   api.mine = function(game, count){
       if(count === 1){
@@ -101,7 +119,15 @@ var gameMod = (function(){;
       if(count > 1 && count <= 50){
           mineLoop(game, count);
       }
+      if(count > 50){
+          mineByChanceAndCount(game, count);
+      }
   };
+
+/********** ********** **********
+    SELL
+********** ********** **********/
+
   // sell
   api.sell = function(game, type){
       var minObj = getMinObj(game.minerals, type);
@@ -110,6 +136,11 @@ var gameMod = (function(){;
       minObj.unitCount = 0;
   };
 
+/********** ********** **********
+    UPDATE
+********** ********** **********/
+
+  // update method
   api.update = function(game, secs){
     var ot = game.overTime;
     ot.secs += secs;

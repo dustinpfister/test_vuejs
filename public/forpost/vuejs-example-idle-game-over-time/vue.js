@@ -25,7 +25,7 @@ new Vue({
             var dat = this.$data;
             var buttonArr = e.target.id.split('_');
             if(buttonArr[1] == 'mine'){
-                gameMod.mine(dat.game, 10);
+                gameMod.mine(dat.game, 100);
             }
             if(buttonArr[1] == 'sellall'){
                 var type = buttonArr[2];
