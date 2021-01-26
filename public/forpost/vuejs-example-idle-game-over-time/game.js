@@ -38,10 +38,11 @@ var gameMod = (function(){;
   var api = {};
 
   // create a main game state object
-  api.createState = function(){
+  api.createState = function(opt){
+    opt = opt || {};
     return {
-      money: 0,
-      money_formatted: format_money(0),
+      money: opt.money || 0,
+      money_formatted: format_money(opt.money || 0),
       overTime: {
           secs: 0,
           per: 0,

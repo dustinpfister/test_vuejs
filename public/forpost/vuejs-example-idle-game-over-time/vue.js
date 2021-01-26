@@ -16,7 +16,7 @@ new Vue({
             '</div>' +
         '</div>' +
     '</div>',
-    data: gameMod.createState(),
+    data: gameMod.createState({money:100}),
     methods: {
         // a button was clicked
         click: function (e) {
