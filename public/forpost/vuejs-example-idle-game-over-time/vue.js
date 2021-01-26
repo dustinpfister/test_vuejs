@@ -40,7 +40,7 @@ new Vue({
         dat = this.$data,
         game;
 
-        dat.game = gameMod.createState({money:100});
+        dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
 
         // app loop calling gameMod.update
         var loop = function(){

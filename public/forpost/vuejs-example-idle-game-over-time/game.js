@@ -64,7 +64,7 @@ var gameMod = (function(){;
           per: 0,
           minesPerSec: 0.125
       },
-      minerals: createMinerals()
+      minerals: createMinerals(opt.minerals)
     };
   };
   // prefrom a mine action
