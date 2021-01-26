@@ -28,5 +28,19 @@ new Vue({
                 gameMod.sell(dat, type);
             }
         }
+    },
+    // on mounted life cycle hook
+    mounted: function(){
+        console.log('mounted, started app loop');
+        var lt = new Date(),
+        game = this.$data;
+        var loop = function(){
+            var now = new Date(),
+            secs = (now - lt) / 1000;
+            gameMod.update(game, secs);
+            setTimeout(loop, 250);
+            lt = now;
+        };
+        loop();
     }
 });

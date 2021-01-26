@@ -42,6 +42,10 @@ var gameMod = (function(){;
     return {
       money: 0,
       money_formatted: format_money(0),
+      overTime: {
+          secs: 0,
+          minesPerSec: 2
+      },
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
         {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
@@ -73,6 +77,16 @@ var gameMod = (function(){;
       game.money_formatted = format_money(game.money);
       minObj.unitCount = 0;
   };
+
+  api.update = function(game, secs){
+    var ot = game.overTime;
+    ot.secs += secs;
+    if(ot.secs >= 1 / ot.minesPerSec){
+       console.log('auto mine');
+       ot.secs = 0;
+    }
+  };
+
   // return public API
   return api;
 }());
