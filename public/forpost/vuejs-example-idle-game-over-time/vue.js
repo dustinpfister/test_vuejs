@@ -33,6 +33,17 @@ new Vue({
                 gameMod.sell(dat.game, type);
             }
         },
+        away: function(){
+            var dat = this.$data;
+            var now = new Date();
+            var secs = (now - dat.game.lt) / 1000;
+            var ot = dat.game.overTime,
+            mineSecs = 1 / ot.minesPerSec,
+            mineCount = Math.floor(secs / mineSecs);
+            console.log('It has been ' + secs + ' seconds since last save');
+            console.log('This results in a mine count of ' + mineCount);
+            gameMod.mine(dat.game, mineCount);
+        },
         // load a save state
         load: function(){
             var dat = this.$data;
@@ -73,6 +84,7 @@ new Vue({
         // load progress
         //vm.reset();
         vm.load();
+        vm.away();
         // app loop calling gameMod.update
         var loop = function(){
             var now = new Date(),
