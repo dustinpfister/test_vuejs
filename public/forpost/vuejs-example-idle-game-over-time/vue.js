@@ -40,13 +40,21 @@ new Vue({
         dat = this.$data,
         game;
 
-        dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
-
+        var jsonStr = localStorage.getItem('vuejs-example-idle-game-over-time');
+        if(jsonStr){
+            dat.game = gameMod.createState(JSON.parse(jsonStr));
+        }else{
+            dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
+        }
         // app loop calling gameMod.update
         var loop = function(){
             var now = new Date(),
             secs = (now - lt) / 1000;
             gameMod.update(dat.game, secs);
+            var jsonStr = JSON.stringify({
+                money: dat.game.money
+            });
+            localStorage.setItem('vuejs-example-idle-game-over-time', jsonStr);
             setTimeout(loop, 33);
             lt = now;
         };
