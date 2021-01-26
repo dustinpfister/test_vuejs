@@ -3,7 +3,9 @@
 * have the lt date be part of the save state, and use it to figure away production
 
 ## 0.1.0 - save state started
-* set up a basic save state for this
+* (done) update gameMod.create to take an options argument
+* have a way to create a starting state for minerals
+* set up a basic save state for this example
 
 ## 0.0.0 - mine events over time
 * (done) copy over what was started with vuejs-example-udle-game

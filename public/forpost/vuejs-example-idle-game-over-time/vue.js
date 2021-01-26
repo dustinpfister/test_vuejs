@@ -41,13 +41,12 @@ new Vue({
         game;
 
         dat.game = gameMod.createState({money:100});
-        game = dat.game;
 
         // app loop calling gameMod.update
         var loop = function(){
             var now = new Date(),
             secs = (now - lt) / 1000;
-            gameMod.update(game, secs);
+            gameMod.update(dat.game, secs);
             setTimeout(loop, 33);
             lt = now;
         };

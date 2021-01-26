@@ -36,6 +36,15 @@ var gameMod = (function(){;
   // PUBLIC API
   var api = {};
 
+  var createMinerals = function(){
+      return [
+        {type: 'iron', unitCount: 3, moneyPerUnit: 1, locked: false, chance: 1},
+        {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
+        {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: false, chance: 0.25},
+        {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
+      ];
+  };
+
   // create a main game state object
   api.createState = function(opt){
     opt = opt || {};
@@ -47,12 +56,7 @@ var gameMod = (function(){;
           per: 0,
           minesPerSec: 0.125
       },
-      minerals: [
-        {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
-        {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
-        {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: false, chance: 0.25},
-        {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
-      ]
+      minerals: createMinerals()
     };
   };
   // prefrom a mine action
