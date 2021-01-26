@@ -31,6 +31,16 @@ new Vue({
                 var type = buttonArr[2];
                 gameMod.sell(dat.game, type);
             }
+        },
+        // load a save state
+        load: function(){
+            var dat = this.$data;
+            var jsonStr = localStorage.getItem('vuejs-example-idle-game-over-time');
+            if(jsonStr){
+                dat.game = gameMod.createState(JSON.parse(jsonStr));
+            }else{
+                dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
+            }
         }
     },
     // on mounted life cycle hook
@@ -40,12 +50,8 @@ new Vue({
         dat = this.$data,
         game;
 
-        var jsonStr = localStorage.getItem('vuejs-example-idle-game-over-time');
-        if(jsonStr){
-            dat.game = gameMod.createState(JSON.parse(jsonStr));
-        }else{
-            dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
-        }
+        this.load();
+
         // app loop calling gameMod.update
         var loop = function(){
             var now = new Date(),
