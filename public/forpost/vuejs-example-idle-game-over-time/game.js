@@ -67,8 +67,8 @@ var gameMod = (function(){;
       minerals: createMinerals(opt.minerals)
     };
   };
-  // prefrom a mine action
-  api.mine = function(game){
+
+  var mineSingle = function(game){
     var i = 0,
     len = game.minerals.length,
     minObj;
@@ -82,6 +82,13 @@ var gameMod = (function(){;
       }
       i = i + 1;
     }
+  };
+
+  // prefrom a mine action
+  api.mine = function(game, count){
+      if(count === 1){
+          mineSingle(game);
+      }
   };
   // sell
   api.sell = function(game, type){
@@ -97,7 +104,7 @@ var gameMod = (function(){;
     ot.per = ot.secs / (1 / ot.minesPerSec);
     ot.per = ot.per > 1 ? 1 : ot.per;
     if(ot.secs >= 1 / ot.minesPerSec){
-       api.mine(game);
+       api.mine(game, 1);
        ot.secs = 0;
     }
   };

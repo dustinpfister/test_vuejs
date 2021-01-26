@@ -4,8 +4,8 @@
 
 ## 0.1.0 - save state started
 * (done) update gameMod.create to take an options argument
-* have a way to create a starting state for minerals
-* set up a basic save state for this example
+* (done) have a way to create a starting state for minerals
+* (done) set up a basic save state for this example
 
 ## 0.0.0 - mine events over time
 * (done) copy over what was started with vuejs-example-udle-game
