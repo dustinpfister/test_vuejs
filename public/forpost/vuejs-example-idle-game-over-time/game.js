@@ -43,7 +43,7 @@ var gameMod = (function(){;
 ********** ********** **********/
 
   var createMinerals = function(opt){
-      opt = opt || [{type:'iron', unitCount: 5}];
+      opt = opt || [];
       var minerals = [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
         {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},

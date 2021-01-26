@@ -2,7 +2,9 @@ new Vue({
     el: '#app',
     template: '<div class="wrap_main">' +
         '<div class="disp">'+
-            '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ game.money_formatted }} </span>'+
+            '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
+            '<input id="button_mine" type="button" value="reset" v-on:click="reset">'+
+            '<span> {{ game.money_formatted }} </span>'+
         '</div>' +
         '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '<div>' +
@@ -43,6 +45,7 @@ new Vue({
             console.log('It has been ' + secs + ' seconds since last save');
             console.log('This results in a mine count of ' + mineCount);
             gameMod.mine(dat.game, mineCount);
+            dat.game.lt = new Date();
         },
         // load a save state
         load: function(){
@@ -53,7 +56,7 @@ new Vue({
                 opt.lt = new Date(opt.lt);
                 dat.game = gameMod.createState(opt);
             }else{
-                dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
+                dat.game = gameMod.createState();
             }
         },
         // save a save state
@@ -73,6 +76,7 @@ new Vue({
         },
         reset: function(){
             localStorage.removeItem(this.$data.appName);
+            this.$data.game = gameMod.createState();
         }
     },
     // on mounted life cycle hook
