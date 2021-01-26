@@ -52,9 +52,13 @@ new Vue({
                         type: minObj.type,
                         unitCount: minObj.unitCount
                     };
-                })
+                }),
+                lt: new Date()
             });
             localStorage.setItem('vuejs-example-idle-game-over-time', jsonStr);
+        },
+        reset: function(){
+            localStorage.removeItem('vuejs-example-idle-game-over-time');
         }
     },
     // on mounted life cycle hook
@@ -64,19 +68,18 @@ new Vue({
         vm = this,
         dat = vm.$data,
         game;
-
+        // load progress
+        //vm.reset();
         vm.load();
-
         // app loop calling gameMod.update
         var loop = function(){
             var now = new Date(),
-            secs = (now - lt) / 1000;
+            secs = (now - dat.game.lt) / 1000;
             gameMod.update(dat.game, secs);
-
+            // save progress
             vm.save();
-
             setTimeout(loop, 33);
-            lt = now;
+            dat.game.lt = now;
         };
         loop();
     }

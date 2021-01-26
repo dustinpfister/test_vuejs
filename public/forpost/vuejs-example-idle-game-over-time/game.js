@@ -63,6 +63,7 @@ var gameMod = (function(){;
   api.createState = function(opt){
     opt = opt || {};
     return {
+      lt: opt.lt || new Date(),
       money: opt.money || 0,
       money_formatted: format_money(opt.money || 0),
       overTime: {
@@ -142,12 +143,15 @@ var gameMod = (function(){;
 
   // update method
   api.update = function(game, secs){
-    var ot = game.overTime;
+    var ot = game.overTime,
+    mineSecs = 1 / ot.minesPerSec;
     ot.secs += secs;
-    ot.per = ot.secs / (1 / ot.minesPerSec);
+    ot.per = ot.secs / mineSecs;
     ot.per = ot.per > 1 ? 1 : ot.per;
-    if(ot.secs >= 1 / ot.minesPerSec){
-       api.mine(game, 1);
+    if(ot.secs >= mineSecs){
+       var count = Math.floor(ot.secs / mineSecs);
+       console.log(count);
+       api.mine(game, count);
        ot.secs = 0;
     }
   };
