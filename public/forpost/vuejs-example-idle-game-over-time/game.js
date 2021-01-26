@@ -46,6 +46,9 @@ var gameMod = (function(){;
       ];
       opt.forEach(function(minOpt){
         var minObj = getMinObj(minerals, minOpt.type);
+        if(minObj){
+            minObj.unitCount = minOpt.unitCount;
+        }
       });
       return minerals;
   };
