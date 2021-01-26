@@ -44,7 +44,8 @@ var gameMod = (function(){;
       money_formatted: format_money(0),
       overTime: {
           secs: 0,
-          minesPerSec: 2
+          per: 0,
+          minesPerSec: 0.125
       },
       minerals: [
         {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
@@ -81,8 +82,9 @@ var gameMod = (function(){;
   api.update = function(game, secs){
     var ot = game.overTime;
     ot.secs += secs;
+    ot.per = ot.secs / (1 / ot.minesPerSec);
+    ot.per = ot.per > 1 ? 1 : ot.per;
     if(ot.secs >= 1 / ot.minesPerSec){
-       console.log('auto mine');
        api.mine(game);
        ot.secs = 0;
     }

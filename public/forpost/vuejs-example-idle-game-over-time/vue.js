@@ -1,7 +1,8 @@
 new Vue({
     el: '#app',
     template: '<div>' +
-        '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span> <br>' +
+        '<div><input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span></div>' +
+        '<div v-bind:style="\'background:lime;height:10px;width:\'+Math.round(overTime.per * 100)+\'px;\'" ></div>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="wrap_minbox" v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
@@ -38,7 +39,7 @@ new Vue({
             var now = new Date(),
             secs = (now - lt) / 1000;
             gameMod.update(game, secs);
-            setTimeout(loop, 250);
+            setTimeout(loop, 33);
             lt = now;
         };
         loop();
