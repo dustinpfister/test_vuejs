@@ -1,5 +1,9 @@
 
 
+## 0.1.0 - save state started, and away production
+* set up a basic save state for this
+* have away production.
+
 ## 0.0.0 - mine events over time
 * (done) copy over what was started with vuejs-example-udle-game
 * (done) start an gameMod.update public method
