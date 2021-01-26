@@ -41,22 +41,10 @@ new Vue({
             }else{
                 dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
             }
-        }
-    },
-    // on mounted life cycle hook
-    mounted: function(){
-        console.log('mounted, started app loop');
-        var lt = new Date(),
-        dat = this.$data,
-        game;
-
-        this.load();
-
-        // app loop calling gameMod.update
-        var loop = function(){
-            var now = new Date(),
-            secs = (now - lt) / 1000;
-            gameMod.update(dat.game, secs);
+        },
+        // save a save state
+        save: function(){
+            var dat = this.$data;
             var jsonStr = JSON.stringify({
                 money: dat.game.money,
                 minerals: dat.game.minerals.map(function(minObj){
@@ -67,6 +55,26 @@ new Vue({
                 })
             });
             localStorage.setItem('vuejs-example-idle-game-over-time', jsonStr);
+        }
+    },
+    // on mounted life cycle hook
+    mounted: function(){
+        console.log('mounted, started app loop');
+        var lt = new Date(),
+        vm = this,
+        dat = vm.$data,
+        game;
+
+        vm.load();
+
+        // app loop calling gameMod.update
+        var loop = function(){
+            var now = new Date(),
+            secs = (now - lt) / 1000;
+            gameMod.update(dat.game, secs);
+
+            vm.save();
+
             setTimeout(loop, 33);
             lt = now;
         };
