@@ -17,7 +17,8 @@ new Vue({
         '</div>' +
     '</div>',
     data: {
-        game: gameMod.createState()
+        game: gameMod.createState(),
+        appName: 'vuejs-example-idle-game-over-time'
     },
     methods: {
         // a button was clicked
@@ -35,9 +36,11 @@ new Vue({
         // load a save state
         load: function(){
             var dat = this.$data;
-            var jsonStr = localStorage.getItem('vuejs-example-idle-game-over-time');
+            var jsonStr = localStorage.getItem(dat.appName);
             if(jsonStr){
-                dat.game = gameMod.createState(JSON.parse(jsonStr));
+                var opt = JSON.parse(jsonStr);
+                opt.lt = new Date(opt.lt);
+                dat.game = gameMod.createState(opt);
             }else{
                 dat.game = gameMod.createState({money:100, minerals:[{type:'iron', unitCount: 100}]});
             }
@@ -53,19 +56,18 @@ new Vue({
                         unitCount: minObj.unitCount
                     };
                 }),
-                lt: new Date()
+                lt: dat.game.lt
             });
-            localStorage.setItem('vuejs-example-idle-game-over-time', jsonStr);
+            localStorage.setItem(dat.appName, jsonStr);
         },
         reset: function(){
-            localStorage.removeItem('vuejs-example-idle-game-over-time');
+            localStorage.removeItem(this.$data.appName);
         }
     },
     // on mounted life cycle hook
     mounted: function(){
         console.log('mounted, started app loop');
-        var lt = new Date(),
-        vm = this,
+        var vm = this,
         dat = vm.$data,
         game;
         // load progress
