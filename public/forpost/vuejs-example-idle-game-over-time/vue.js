@@ -19,6 +19,10 @@ var vm = new Vue({
     '</div>',
     data: {
         game: gameMod.createState(),
+        newGameOptions: {
+            money: 100,
+            minerals: [{type:'iron', unitCount: 20}]
+        },
         appName: 'vuejs-example-idle-game-over-time'
     },
     methods: {
@@ -56,7 +60,7 @@ var vm = new Vue({
                 opt.lt = new Date(opt.lt);
                 dat.game = gameMod.createState(opt);
             }else{
-                dat.game = gameMod.createState();
+                dat.game = gameMod.createState(dat.newGameOptions);
             }
         },
         // save a save state
@@ -76,8 +80,9 @@ var vm = new Vue({
         },
         // reset save and current game (can use from javaScript console as > vm.reset() )
         reset: function(){
-            localStorage.removeItem(this.$data.appName);
-            this.$data.game = gameMod.createState();
+            var dat = this.$data;
+            localStorage.removeItem(dat.appName);
+            dat.game = gameMod.createState(dat.newGameOptions);
         }
     },
     // on mounted life cycle hook
@@ -87,7 +92,6 @@ var vm = new Vue({
         dat = vm.$data,
         game;
         // load progress
-        //vm.reset();
         vm.load();
         vm.away();
         // app loop calling gameMod.update
