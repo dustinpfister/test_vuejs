@@ -15,12 +15,12 @@ var gameMod = (function(){;
     return formatter.format(number); /* $2,500.00 */
   };
   // get a mineral object
-  var getMinObj = function(game, query){
+  var getMinObj = function(minerals, query){
     // if string get by type
     if(typeof query === 'string'){
-      var i = game.minerals.length;
+      var i = minerals.length;
       while(i--){
-          var minObj = game.minerals[i];
+          var minObj = minerals[i];
           if(minObj.type === query.toLowerCase()){
              return minObj;
           }
@@ -36,13 +36,18 @@ var gameMod = (function(){;
   // PUBLIC API
   var api = {};
 
-  var createMinerals = function(){
-      return [
-        {type: 'iron', unitCount: 3, moneyPerUnit: 1, locked: false, chance: 1},
+  var createMinerals = function(opt){
+      opt = opt || [{type:'iron', unitCount: 5}];
+      var minerals = [
+        {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
         {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
         {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: false, chance: 0.25},
         {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
       ];
+      opt.forEach(function(minOpt){
+        var minObj = getMinObj(minerals, minOpt.type);
+      });
+      return minerals;
   };
 
   // create a main game state object
@@ -77,7 +82,7 @@ var gameMod = (function(){;
   };
   // sell
   api.sell = function(game, type){
-      var minObj = getMinObj(game, type);
+      var minObj = getMinObj(game.minerals, type);
       game.money += minObj.unitCount * minObj.moneyPerUnit;
       game.money_formatted = format_money(game.money);
       minObj.unitCount = 0;
