@@ -52,7 +52,13 @@ new Vue({
             secs = (now - lt) / 1000;
             gameMod.update(dat.game, secs);
             var jsonStr = JSON.stringify({
-                money: dat.game.money
+                money: dat.game.money,
+                minerals: dat.game.minerals.map(function(minObj){
+                    return {
+                        type: minObj.type,
+                        unitCount: minObj.unitCount
+                    };
+                })
             });
             localStorage.setItem('vuejs-example-idle-game-over-time', jsonStr);
             setTimeout(loop, 33);
