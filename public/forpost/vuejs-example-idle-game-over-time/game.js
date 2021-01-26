@@ -83,6 +83,7 @@ var gameMod = (function(){;
     ot.secs += secs;
     if(ot.secs >= 1 / ot.minesPerSec){
        console.log('auto mine');
+       api.mine(game);
        ot.secs = 0;
     }
   };
