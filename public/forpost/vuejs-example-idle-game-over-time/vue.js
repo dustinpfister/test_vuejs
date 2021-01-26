@@ -2,7 +2,7 @@ new Vue({
     el: '#app',
     template: '<div class="wrap_main">' +
         '<div><input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span></div>' +
-        '<div v-bind:style="\'background:lime;height:10px;width:\'+Math.round(overTime.per * 100)+\'%;\'" ></div>' +
+        '<div class="probar" v-bind:style="\'width:\'+Math.round(overTime.per * 100)+\'%;\'" ></div>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="minbox"' +
