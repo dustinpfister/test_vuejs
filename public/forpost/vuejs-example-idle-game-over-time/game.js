@@ -17,7 +17,6 @@ var gameMod = (function(){;
   // get a mineral object
   var getMinObj = function(game, query){
     // if string get by type
-    console.log(query);
     if(typeof query === 'string'){
       var i = game.minerals.length;
       while(i--){

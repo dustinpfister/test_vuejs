@@ -2,33 +2,34 @@ new Vue({
     el: '#app',
     template: '<div class="wrap_main">' +
         '<div class="disp">'+
-            '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ money_formatted }} </span>'+
+            '<input id="button_mine" type="button" value="mine" v-on:click="click"> <span> {{ game.money_formatted }} </span>'+
         '</div>' +
-        '<div class="probar" v-bind:style="\'width:\'+Math.round(overTime.per * 100)+\'%;\'" ></div>' +
+        '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="minbox"' +
                 'v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
-                'v-for="min in minerals" '+
+                'v-for="min in game.minerals" '+
             '>' +
                  '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
                  '<div><span>type: {{ min.type }}, count: {{ min.unitCount }}</span></div>' +
             '</div>' +
         '</div>' +
     '</div>',
-    data: gameMod.createState({money:100}),
+    data: {
+        game: gameMod.createState()
+    },
     methods: {
         // a button was clicked
         click: function (e) {
             var dat = this.$data;
             var buttonArr = e.target.id.split('_');
             if(buttonArr[1] == 'mine'){
-                gameMod.mine(dat);
+                gameMod.mine(dat.game);
             }
             if(buttonArr[1] == 'sellall'){
                 var type = buttonArr[2];
-                console.log('sell all ' + type);
-                gameMod.sell(dat, type);
+                gameMod.sell(dat.game, type);
             }
         }
     },
@@ -36,7 +37,13 @@ new Vue({
     mounted: function(){
         console.log('mounted, started app loop');
         var lt = new Date(),
-        game = this.$data;
+        dat = this.$data,
+        game;
+
+        dat.game = gameMod.createState({money:100});
+        game = dat.game;
+
+        // app loop calling gameMod.update
         var loop = function(){
             var now = new Date(),
             secs = (now - lt) / 1000;
