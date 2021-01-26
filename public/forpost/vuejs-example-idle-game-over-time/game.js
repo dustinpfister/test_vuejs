@@ -68,6 +68,7 @@ var gameMod = (function(){;
     };
   };
 
+  // a single min action using Math.random for each mineral
   var mineSingle = function(game){
     var i = 0,
     len = game.minerals.length,
@@ -84,10 +85,21 @@ var gameMod = (function(){;
     }
   };
 
+  // call mineSingle a given count of times
+  var mineLoop = function(game, count){
+      var i = count;
+      while(i--){
+         mineSingle(game);
+      }
+  };
+
   // prefrom a mine action
   api.mine = function(game, count){
       if(count === 1){
           mineSingle(game);
+      }
+      if(count > 1 && count <= 50){
+          mineLoop(game, count);
       }
   };
   // sell
