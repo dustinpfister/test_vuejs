@@ -1,9 +1,8 @@
-new Vue({
+var vm = new Vue({
     el: '#app',
     template: '<div class="wrap_main">' +
         '<div class="disp">'+
             '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
-            '<input id="button_mine" type="button" value="reset" v-on:click="reset">'+
             '<span> {{ game.money_formatted }} </span>'+
         '</div>' +
         '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
@@ -28,13 +27,14 @@ new Vue({
             var dat = this.$data;
             var buttonArr = e.target.id.split('_');
             if(buttonArr[1] == 'mine'){
-                gameMod.mine(dat.game, 100);
+                gameMod.mine(dat.game, 1);
             }
             if(buttonArr[1] == 'sellall'){
                 var type = buttonArr[2];
                 gameMod.sell(dat.game, type);
             }
         },
+        // away production
         away: function(){
             var dat = this.$data;
             var now = new Date();
@@ -74,6 +74,7 @@ new Vue({
             });
             localStorage.setItem(dat.appName, jsonStr);
         },
+        // reset save and current game (can use from javaScript console as > vm.reset() )
         reset: function(){
             localStorage.removeItem(this.$data.appName);
             this.$data.game = gameMod.createState();
