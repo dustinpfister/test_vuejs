@@ -157,6 +157,14 @@ var gameMod = (function(){;
     }
   };
 
+/********** ********** **********
+    UPGRADES
+********** ********** **********/
+
+  api.upgradeCheck = function(game, key){
+      console.log('upgrade check for ' + key);
+  };
+
   // return public API
   return api;
 }());

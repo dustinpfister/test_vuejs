@@ -45,7 +45,7 @@ var vm = new Vue({
             }
             // an upgrade button
             if(buttonArr[1] == 'upgrade'){
-                gameMod.mine(dat.game, 1);
+                gameMod.upgradeCheck(dat.game, buttonArr[2]);
             }
         },
         // away production
