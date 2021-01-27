@@ -92,6 +92,13 @@ var vm = new Vue({
                         unitCount: minObj.unitCount
                     };
                 }),
+                upgrades: Object.keys(dat.game.upgrades).map(function(upKey){
+                    var upgrade = dat.game.upgrades[upKey];
+                    return {
+                        key: upgrade.key,
+                        level: upgrade.level
+                    };
+                }),
                 lt: dat.game.lt
             });
             localStorage.setItem(dat.appName, jsonStr);
