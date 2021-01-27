@@ -43,7 +43,8 @@ var gameMod = (function(){;
 ********** ********** **********/
 
   // create upgrades helper
-  var createUpgrades = function(){
+  var createUpgrades = function(opt){
+      opt = opt || [{key:'manual', level: 3}]
       var upgrades = {
           manual : {
               key: 'manual',
@@ -58,6 +59,10 @@ var gameMod = (function(){;
               }
           }
       };
+      // set levels from options array
+      opt.forEach(function(upOpt){
+          upgrades[upOpt.key].level = upOpt.level;
+      });
       return upgrades;
   };
 
@@ -94,8 +99,9 @@ var gameMod = (function(){;
           minesPerSec: 0.125
       },
       minerals: createMinerals(opt.minerals),
-      upgrades: createUpgrades()
+      upgrades: createUpgrades(opt.upgrades)
     };
+    // call figure cost methods for all upgrades
     updateUpgradeCosts(game);
     return game;
   };
