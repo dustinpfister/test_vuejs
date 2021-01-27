@@ -32,7 +32,7 @@ var vm = new Vue({
         newGameOptions: {
             money: 100,
             minerals: [{type:'iron', unitCount: 20}],
-            upgrades: [{key: 'manual', level: 5}]
+            upgrades: [{key: 'manual', level: 1}]
         },
         appName: 'vuejs-example-idle-game-upgrades'
     },

@@ -44,7 +44,7 @@ var gameMod = (function(){;
 
   // create upgrades helper
   var createUpgrades = function(opt){
-      opt = opt || [{key:'manual', level: 3}]
+      opt = opt || []
       var upgrades = {
           manual : {
               key: 'manual',
@@ -181,7 +181,6 @@ var gameMod = (function(){;
     ot.per = ot.per > 1 ? 1 : ot.per;
     if(ot.secs >= mineSecs){
        var count = Math.floor(ot.secs / mineSecs);
-       console.log(count);
        api.mine(game, count);
        ot.secs = 0;
     }
@@ -200,6 +199,12 @@ var gameMod = (function(){;
 
     api.upgradeCheck = function(game, key){
         console.log('upgrade check for ' + key);
+        var upgrade = game.upgrades[key];
+        if(game.money >= upgrade.cost){
+            console.log('we have the money');
+        }else{
+            console.log('need more money');
+        }
     };
 
     // return public API
