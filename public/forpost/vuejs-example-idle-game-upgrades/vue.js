@@ -8,7 +8,12 @@ var vm = new Vue({
         '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '<div class="upgrades">'+
             '<div v-for="upgrade in game.upgrades">' +
-                '<input v-bind:id="\'button_upgrade_\'+upgrade.key" type="button" v-bind:value="\'upgrade (\'+upgrade.level+\')\'" v-on:click="click">'+
+                '<input v-bind:id="\'button_upgrade_\'+upgrade.key"'+ 
+                    'type="button" v-bind:value="\'upgrade (\'+upgrade.level+\')\'" v-on:click="click"'+
+                '>'+
+                '<span> Level: {{ upgrade.level }} | </span>' +
+                '<span> cost: {{ upgrade.cost }} | </span>' +
+                '<span> desc: {{ upgrade.desc }} </span>' +
             '</div>'+
         '</div>' +
         '<div>' +
