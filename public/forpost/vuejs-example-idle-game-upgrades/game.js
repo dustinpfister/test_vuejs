@@ -92,7 +92,8 @@ var gameMod = (function(){;
           per: 0,
           minesPerSec: 0.125
       },
-      minerals: createMinerals(opt.minerals)
+      minerals: createMinerals(opt.minerals),
+      upgradtes: createUpgrades()
     };
   };
 
