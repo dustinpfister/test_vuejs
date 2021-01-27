@@ -42,6 +42,26 @@ var gameMod = (function(){;
     CREATE
 ********** ********** **********/
 
+  // create upgrades helper
+  var createUpgrades = function(){
+      var upgrades = {
+          manual : {
+              desc: 'The count of mine actions per click of the manual mine button',
+              level: 0,
+              cost: Infinity,
+              figureCost: function(game, upgrade, level){
+                  return 100 + Math.floor(100 * level + Math.pow(1.25, level));
+              },
+              applyToGame: function(game, upgradeObj, level){
+                  game.manualMineCount = 5 + Math.floor(1 * level);
+              }
+          }
+      };
+      return upgrades;
+  };
+
+
+  // create minerals helper
   var createMinerals = function(opt){
       opt = opt || [];
       var minerals = [
