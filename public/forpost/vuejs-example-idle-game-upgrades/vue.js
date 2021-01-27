@@ -7,7 +7,9 @@ var vm = new Vue({
         '</div>' +
         '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '<div class="upgrades">'+
-            '<input id="button_upgrade_manual" type="button" value="upgrade" v-on:click="click">'+
+            '<div v-for="upgrade in game.upgrades">' +
+                '<input v-bind:id="\'button_upgrade_\'+upgrade.key" type="button" v-bind:value="\'upgrade (\'+upgrade.level+\')\'" v-on:click="click">'+
+            '</div>'+
         '</div>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+

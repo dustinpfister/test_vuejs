@@ -46,6 +46,7 @@ var gameMod = (function(){;
   var createUpgrades = function(){
       var upgrades = {
           manual : {
+              key: 'manual',
               desc: 'The count of mine actions per click of the manual mine button',
               level: 0,
               cost: Infinity,
@@ -93,7 +94,7 @@ var gameMod = (function(){;
           minesPerSec: 0.125
       },
       minerals: createMinerals(opt.minerals),
-      upgradtes: createUpgrades()
+      upgrades: createUpgrades()
     };
   };
 
