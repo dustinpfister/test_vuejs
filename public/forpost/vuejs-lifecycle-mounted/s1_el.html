@@ -1,3 +1,11 @@
+<html>
+  <head>
+    <title>vue mounted lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-lifecycle-mounted"></div>
+  <script>
 new Vue({
     el: '#demo-lifecycle-mounted',
     template: '<p>n: {{ n }}</p>',
@@ -9,3 +17,7 @@ new Vue({
         console.log(this.$el.textContent); // n: 4
     }
 });
+
+  </script>
+  </body>
+</html>
