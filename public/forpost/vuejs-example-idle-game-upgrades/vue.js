@@ -23,7 +23,7 @@ var vm = new Vue({
             money: 100,
             minerals: [{type:'iron', unitCount: 20}]
         },
-        appName: 'vuejs-example-idle-game-over-time'
+        appName: 'vuejs-example-idle-game-upgrades'
     },
     methods: {
         // a button was clicked
