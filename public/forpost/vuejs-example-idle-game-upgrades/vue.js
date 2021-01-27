@@ -6,6 +6,9 @@ var vm = new Vue({
             '<span> {{ game.money_formatted }} </span>'+
         '</div>' +
         '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
+        '<div class="upgrades">'+
+            '<input id="button_upgrade_manual" type="button" value="upgrade" v-on:click="click">'+
+        '</div>' +
         '<div>' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="minbox"' +
@@ -30,6 +33,7 @@ var vm = new Vue({
         click: function (e) {
             var dat = this.$data;
             var buttonArr = e.target.id.split('_');
+            console.log(buttonArr);
             if(buttonArr[1] == 'mine'){
                 gameMod.mine(dat.game, 1);
             }
