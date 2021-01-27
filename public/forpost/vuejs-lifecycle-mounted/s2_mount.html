@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>vue mounted lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-lifecycle-mounted"></div>
+  <script>
+var vm = new Vue({
+        template: '<p>mess: {{ mess }}</p>',
+        data: {
+            mess: 'Hello World'
+        },
+        // mounted lifecycle hook
+        mounted: function () {
+            console.log(this.$el.textContent); // n: 4
+        }
+    });
+ 
+// mounting outside of vue instance
+// with the $mount method
+vm.$mount('#demo-lifecycle-mounted');
+ 
+  </script>
+  </body>
+</html>
