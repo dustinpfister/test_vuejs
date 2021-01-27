@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>vue html example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-bind"></div>
+  <script>
+new Vue({
+    el: '#demo-bind',
+    template: '<div>' +
+ 
+    // will result in a text node "{ html1 }"
+    '<div>{ html1 }</div>' +
+ 
+    // will result in a text node "<p style="background:red;">mustache syntax</p>"
+    '<div>{{ html1 }}</div>' +
+ 
+    // the use of the html directive is what is needed to inject as html
+    '<div v-html=\"html1\"></div>' +
+    '</div>',
+    data: {
+        html1: '<p style="background:red;">mustache syntax</p>'
+    }
+});
+  </script>
+  </body>
+</html>
