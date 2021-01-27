@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>vue mounted lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-lifecycle-mounted"></div>
+  <script>
+new Vue({
+    template: '<p>mess: {{ mess }}</p>',
+    data: {
+        mess: 'Hello'
+    },
+    created: function(){
+        // calling mount in the create hook
+        this.$mount('#demo-lifecycle-mounted');
+    },
+    // mounted lifecycle hook
+    mounted: function () {
+        this.$el.textContent += ' World.';
+    }
+});
+  </script>
+  </body>
+</html>
