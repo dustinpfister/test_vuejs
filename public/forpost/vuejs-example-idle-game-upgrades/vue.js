@@ -30,9 +30,9 @@ var vm = new Vue({
     data: {
         game: gameMod.createState(),
         newGameOptions: {
-            money: 100,
+            money: 200,
             minerals: [{type:'iron', unitCount: 20}],
-            upgrades: [{key: 'manual', level: 1}]
+            upgrades: [{key: 'manual', level: 0}]
         },
         appName: 'vuejs-example-idle-game-upgrades'
     },

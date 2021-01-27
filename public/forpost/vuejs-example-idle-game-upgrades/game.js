@@ -202,6 +202,11 @@ var gameMod = (function(){;
         var upgrade = game.upgrades[key];
         if(game.money >= upgrade.cost){
             console.log('we have the money');
+            upgrade.applyToGame(game, upgrade, upgrade.level);
+            upgrade.level += 1;
+            game.money -= upgrade.cost;
+            game.money_formatted = format_money(game.money);
+            upgrade.cost = upgrade.figureCost(game, upgrade, upgrade.level);
         }else{
             console.log('need more money');
         }
