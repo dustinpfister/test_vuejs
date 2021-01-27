@@ -1,3 +1,5 @@
+## 0.1.0 - Over time upgrades
+
 ## 0.0.0 - first upgrade
 * (done) copy over what was started with vuejs-example-idle-game-over-time
 * (done) update the appName of this example
@@ -9,9 +11,7 @@
 * (done) display the current level of an upgrade, cost, and a description in the upgrades div
 * (done) call the upgrade.figureCost method for each upgrade object in game.upgrades in gameMod.create
 * (done) be able to set game.upgrades via a gameMod.createState option
-
-* the gameMod.upgradeCheck method will checkl if there is enough money for the given upgrade
-* in the event that there is enough money for an upgrade upgrade.applyToGame will be called, and cost will be subtracted
-
-* game.upgrades needs to be part of the save state
-* have the first working upgrade increase the manual mine count
+* (done) the gameMod.upgradeCheck method will check if there is enough money for the given upgrade
+* (done) in the event that there is enough money for an upgrade upgrade.applyToGame will be called, and cost will be subtracted
+* (done) game.upgrades needs to be part of the save state
+* (done) have the first working upgrade increase the manual mine count
