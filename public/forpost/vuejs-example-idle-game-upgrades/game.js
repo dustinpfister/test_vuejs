@@ -83,7 +83,7 @@ var gameMod = (function(){;
   // create a main game state object
   api.createState = function(opt){
     opt = opt || {};
-    return {
+    var game = {
       manualMineCount: 5,
       lt: opt.lt || new Date(),
       money: opt.money || 0,
@@ -96,6 +96,8 @@ var gameMod = (function(){;
       minerals: createMinerals(opt.minerals),
       upgrades: createUpgrades()
     };
+    updateUpgradeCosts(game);
+    return game;
   };
 
 /********** ********** **********
@@ -183,10 +185,17 @@ var gameMod = (function(){;
     UPGRADES
 ********** ********** **********/
 
-  api.upgradeCheck = function(game, key){
-      console.log('upgrade check for ' + key);
-  };
+    var updateUpgradeCosts = function(game){
+        Object.keys(game.upgrades).forEach(function(key){
+            var upgrade = game.upgrades[key];
+            upgrade.cost = upgrade.figureCost(game, upgrade, upgrade.level);
+        });
+    };
 
-  // return public API
-  return api;
+    api.upgradeCheck = function(game, key){
+        console.log('upgrade check for ' + key);
+    };
+
+    // return public API
+    return api;
 }());
