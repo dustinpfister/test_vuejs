@@ -34,12 +34,18 @@ var vm = new Vue({
             var dat = this.$data;
             var buttonArr = e.target.id.split('_');
             console.log(buttonArr);
+            // The manual mine button
             if(buttonArr[1] == 'mine'){
                 gameMod.mine(dat.game, 1);
             }
+            // a sell all button
             if(buttonArr[1] == 'sellall'){
                 var type = buttonArr[2];
                 gameMod.sell(dat.game, type);
+            }
+            // an upgrade button
+            if(buttonArr[1] == 'upgrade'){
+                gameMod.mine(dat.game, 1);
             }
         },
         // away production
