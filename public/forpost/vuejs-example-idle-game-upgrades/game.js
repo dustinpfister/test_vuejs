@@ -63,6 +63,7 @@ var gameMod = (function(){;
   api.createState = function(opt){
     opt = opt || {};
     return {
+      manualMineCount: 5,
       lt: opt.lt || new Date(),
       money: opt.money || 0,
       money_formatted: format_money(opt.money || 0),

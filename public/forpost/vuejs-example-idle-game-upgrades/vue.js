@@ -36,7 +36,7 @@ var vm = new Vue({
             console.log(buttonArr);
             // The manual mine button
             if(buttonArr[1] == 'mine'){
-                gameMod.mine(dat.game, 1);
+                gameMod.mine(dat.game, dat.game.manualMineCount);
             }
             // a sell all button
             if(buttonArr[1] == 'sellall'){
