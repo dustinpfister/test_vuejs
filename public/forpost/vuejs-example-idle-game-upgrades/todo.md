@@ -1,5 +1,12 @@
 ## 0.1.0 - Over time upgrades
 
+## 0.1.0 - Menus, and Additional upgrades
+* have a main menus div in the template
+* have all minerals in the menus div
+* have upgrades in the menus div
+* in the disp div have links for each menu
+* add an upgrade for over time production
+
 ## 0.0.0 - first upgrade
 * (done) copy over what was started with vuejs-example-idle-game-over-time
 * (done) update the appName of this example
@@ -15,3 +22,4 @@
 * (done) in the event that there is enough money for an upgrade upgrade.applyToGame will be called, and cost will be subtracted
 * (done) game.upgrades needs to be part of the save state
 * (done) have the first working upgrade increase the manual mine count
+* (done - 01/27/2021)
