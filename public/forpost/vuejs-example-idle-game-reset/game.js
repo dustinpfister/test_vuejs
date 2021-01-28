@@ -55,7 +55,7 @@ var gameMod = (function(){;
                     return 100 + Math.floor(100 * level + Math.pow(1.25, level));
                 },
                 applyToGame: function(game, upgradeObj, level){
-                    game.manualMineCount = 5 + Math.floor(1 * level);
+                    game.manualMineCount = game.manualMineCountBase + Math.floor(1 * level);
                 }
             }
         };
@@ -86,7 +86,8 @@ var gameMod = (function(){;
     api.createState = function(opt){
       opt = opt || {};
       var game = {
-        manualMineCount: 5,
+        manualMineCount: 0,
+        manualMineCountBase: 1,
         lt: opt.lt || new Date(),
         money: opt.money || 0,
         money_formatted: format_money(opt.money || 0),
@@ -104,6 +105,11 @@ var gameMod = (function(){;
       updateUpgradeCosts(game);
       // firgure resetPointsDelta for first time
       figureResetPointsDelta(game);
+      // apply upgrades for first time
+      Object.keys(game.upgrades).forEach(function(key){
+          var upgrade = game.upgrades[key];
+          upgrade.applyToGame(game, upgrade, upgrade.level);
+      });
       return game;
     };
 
@@ -219,7 +225,6 @@ var gameMod = (function(){;
     var applyResetPoints = function(game){
     
     };
-
     // figure what the current game.resetPointsDelta is
     var figureResetPointsDelta = function(game){
         var ex = 0;

@@ -1,6 +1,7 @@
 
 ## 0.1.0 - Have reset points effect a base value for manual mine count
-* display manual mine count in manual menu
+* (done) display manual mine count in manual menu
+* have a game.manualMineCountBase prop
 * start an applyResetPoints helper
 
 ## 0.0.0 - Menus, and Additional upgrades
