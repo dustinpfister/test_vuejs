@@ -1,6 +1,12 @@
 var gameMod = (function(){;
 
     /********** ********** **********
+        CONSTANTS
+    ********** ********** **********/
+    var RESET_POINT_DELTA_BASE = 1.2;
+
+
+    /********** ********** **********
         HELPERS
     ********** ********** **********/
 
@@ -235,7 +241,7 @@ var gameMod = (function(){;
             var upgrade = game.upgrades[key];
             ex += upgrade.level;
         });
-        game.resetPointsDelta = Math.floor(Math.pow(1.2, ex - 1));
+        game.resetPointsDelta = Math.floor(Math.pow(RESET_POINT_DELTA_BASE, ex - 1));
     };
     // main public reset method
     api.reset = function(game){
