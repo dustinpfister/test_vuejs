@@ -35,7 +35,7 @@ var vm = new Vue({
             '</div>' +
         '</div>' +
         '<div class="reset wrap_menu" v-if="currentMenu===\'reset\'">' +
-            
+            '<input id="button_reset_now" type="button" value="Reset Now" v-on:click="click">' +
         '</div>' +
     '</div>',
     data: {
@@ -68,8 +68,11 @@ var vm = new Vue({
             }
             // if a nav button
             if(buttonArr[1] == 'nav'){
-                console.log(buttonArr);
                 dat.currentMenu = buttonArr[2];
+            }
+            // if a reset button
+            if(buttonArr[1] == 'reset'){
+                console.log( 'reset' );
             }
         },
         // away production
