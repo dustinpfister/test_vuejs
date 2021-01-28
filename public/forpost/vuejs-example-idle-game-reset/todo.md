@@ -1,8 +1,11 @@
 
 ## 0.1.0 - Have reset points effect a base value for manual mine count
 * (done) display manual mine count in manual menu
-* have a game.manualMineCountBase prop
-* start an applyResetPoints helper
+* (done) have a game.manualMineCountBase prop
+* (done) start an applyResetPoints helper
+* basic diminishing returns epression for game.manualMineCountBase
+* show base reset points in manual menu
+* show a basic min count table in manual menu
 
 ## 0.0.0 - Menus, and Additional upgrades
 * (done) copy over source code from vuejs-example-idle-game-reset
