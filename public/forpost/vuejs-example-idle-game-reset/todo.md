@@ -1,4 +1,8 @@
 
+## 0.1.0 - Have reset points effect a base value for manual mine count
+* display manual mine count in manual menu
+* start an applyResetPoints helper
+
 ## 0.0.0 - Menus, and Additional upgrades
 * (done) copy over source code from vuejs-example-idle-game-reset
 * (done) work out a nav div
@@ -10,4 +14,4 @@
 * (done) start a figureResetPointDelta helper that will be used to set what the current reset point value would be
 * (done) base resetPointDelta on number of upgrades bought
 * (done) award ResetPointDelta to game.resetPoints when reset now button is clicked
-* resetPoints needs to be part of the save state
+* (done) resetPoints needs to be part of the save state

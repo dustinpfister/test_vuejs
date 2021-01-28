@@ -4,16 +4,6 @@ var gameMod = (function(){;
         HELPERS
     ********** ********** **********/
 
-    // figure what the current game.resetPointsDelta is
-    var figureResetPointsDelta = function(game){
-        var ex = 0;
-        Object.keys(game.upgrades).forEach(function(key){
-            var upgrade = game.upgrades[key];
-            ex += upgrade.level;
-        });
-        game.resetPointsDelta = Math.floor(Math.pow(2, ex - 1));
-    };
-
     // format number as money
     // https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
     var format_money = function(number){
@@ -230,6 +220,22 @@ var gameMod = (function(){;
 /********** ********** **********
     RESET
 ********** ********** **********/
+
+    // apply reset points
+    var applyResetPoints = function(game){
+    
+    };
+
+    // figure what the current game.resetPointsDelta is
+    var figureResetPointsDelta = function(game){
+        var ex = 0;
+        Object.keys(game.upgrades).forEach(function(key){
+            var upgrade = game.upgrades[key];
+            ex += upgrade.level;
+        });
+        game.resetPointsDelta = Math.floor(Math.pow(2, ex - 1));
+    };
+    // main public reset method
     api.reset = function(game){
         // make sure delta is up to date
         figureResetPointsDelta(game);
