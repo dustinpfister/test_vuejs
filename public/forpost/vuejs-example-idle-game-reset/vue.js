@@ -5,9 +5,10 @@ var vm = new Vue({
             '<span> {{ game.money_formatted }} </span>'+
             '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
             '<div class="navbar">'+
-                '<span><input id="button_nav_manual" type="button" value="Manual" v-on:click="click"> | '+
-                '<input id="button_nav_minerals" type="button" value="Minerals" v-on:click="click"> | '+
-                '<input id="button_nav_upgrades" type="button" value="Upgrades" v-on:click="click"></span>'+
+                '<span><input id="button_nav_manual" type="button" value="Manual" v-on:click="click"> | ' +
+                '<input id="button_nav_minerals" type="button" value="Minerals" v-on:click="click"> | ' +
+                '<input id="button_nav_upgrades" type="button" value="Upgrades" v-on:click="click"> | ' + 
+                '<input id="button_nav_reset" type="button" value="Reset Points" v-on:click="click"></span>'+
             '</div>' +
         '</div>' +
         '<div class="manual wrap_menu" v-if="currentMenu===\'manual\'">'+
@@ -32,6 +33,9 @@ var vm = new Vue({
                  '<input v-bind:id="\'button_sellall_\' +min.type" type="button" value="sell all" v-on:click="click">' +
                  '<div><span>type: {{ min.type }}, count: {{ min.unitCount }}</span></div>' +
             '</div>' +
+        '</div>' +
+        '<div class="reset wrap_menu" v-if="currentMenu===\'reset\'">' +
+            
         '</div>' +
     '</div>',
     data: {
