@@ -11,7 +11,7 @@ var gameMod = (function(){;
             var upgrade = game.upgrades[key];
             ex += upgrade.level;
         });
-        game.resetPointsDelta = ex;
+        game.resetPointsDelta = Math.floor(Math.pow(2, ex - 1));
     };
 
     // format number as money
