@@ -108,6 +108,7 @@ var vm = new Vue({
             var dat = this.$data;
             var jsonStr = JSON.stringify({
                 money: dat.game.money,
+                resetPoints: dat.game.resetPoints,
                 minerals: dat.game.minerals.map(function(minObj){
                     return {
                         type: minObj.type,
