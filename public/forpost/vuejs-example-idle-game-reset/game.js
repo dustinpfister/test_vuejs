@@ -226,7 +226,7 @@ var gameMod = (function(){;
     // apply reset points
     var applyResetPoints = function(game){
         // basic Diminishing returns expression
-        game.manualMineCountBase = Math.round(1 + (1 - (1 / (1 + game.resetPoints / 10000))) * 49);
+        game.manualMineCountBase = Math.round(1 + (1 - (1 / (1 + game.resetPoints / 1000000))) * 49);
     };
     // figure what the current game.resetPointsDelta is
     var figureResetPointsDelta = function(game){
@@ -235,7 +235,7 @@ var gameMod = (function(){;
             var upgrade = game.upgrades[key];
             ex += upgrade.level;
         });
-        game.resetPointsDelta = Math.floor(Math.pow(2, ex - 1));
+        game.resetPointsDelta = Math.floor(Math.pow(1.2, ex - 1));
     };
     // main public reset method
     api.reset = function(game){
