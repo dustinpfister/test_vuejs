@@ -6,7 +6,12 @@ var gameMod = (function(){;
 
     // figure what the current game.resetPointsDelta is
     var figureResetPointsDelta = function(game){
-        game.resetPointsDelta = 1;
+        var ex = 0;
+        Object.keys(game.upgrades).forEach(function(key){
+            var upgrade = game.upgrades[key];
+            ex += upgrade.level;
+        });
+        game.resetPointsDelta = ex;
     };
 
     // format number as money
