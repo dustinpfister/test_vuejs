@@ -4,6 +4,9 @@ var vm = new Vue({
         '<div class="disp">'+
             '<span> {{ game.money_formatted }} </span>'+
             '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
+            '<div class="navbar">'+
+                '<input id="button_nav_manual" type="button" value="Manual" v-on:click="click">'+
+            '</div>' +
         '</div>' +
         '<div class="manual wrap_menu">'+
             '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
