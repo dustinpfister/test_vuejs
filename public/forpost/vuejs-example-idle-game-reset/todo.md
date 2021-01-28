@@ -8,6 +8,6 @@
 * (done) have a game.resetPointDelta value
 * (done) display game.resetPoints and game.resetPointDeltaDelta in reset menu
 * (done) start a figureResetPointDelta helper that will be used to set what the current reset point value would be
-* base resetPointDelta on number of upgrades bought
+* (done) base resetPointDelta on number of upgrades bought
 * award ResetPointDelta to game.resetPoints when reset now button is clicked
 * resetPoints needs to be part of the save state

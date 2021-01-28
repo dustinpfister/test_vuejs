@@ -43,7 +43,7 @@ var vm = new Vue({
     data: {
         game: gameMod.createState(),
         newGameOptions: {
-            money: 200,
+            money: 10000,
             minerals: [{type:'iron', unitCount: 20}],
             upgrades: [{key: 'manual', level: 0}]
         },
@@ -75,6 +75,7 @@ var vm = new Vue({
             // if a reset button
             if(buttonArr[1] == 'reset'){
                 console.log( 'reset' );
+                dat.game = gameMod.reset(dat.game);
             }
         },
         // away production

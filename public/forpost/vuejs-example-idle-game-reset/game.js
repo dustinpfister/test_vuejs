@@ -227,6 +227,19 @@ var gameMod = (function(){;
         }
     };
 
+/********** ********** **********
+    RESET
+********** ********** **********/
+    api.reset = function(game){
+        // make sure delta is up to date
+        figureResetPointsDelta(game);
+        // award delta
+        game.resetPoints += game.resetPointsDelta;
+        // create and return a new game object, but with current resetPoints
+        return api.createState({
+           resetPoints: game.resetPoints
+        });
+    };
     // return public API
     return api;
 }());
