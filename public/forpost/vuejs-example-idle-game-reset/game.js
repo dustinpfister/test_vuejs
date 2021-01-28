@@ -1,42 +1,47 @@
 var gameMod = (function(){;
 
-/********** ********** **********
-    HELPERS
-********** ********** **********/
+    /********** ********** **********
+        HELPERS
+    ********** ********** **********/
 
-  // format number as money
-  // https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
-  var format_money = function(number){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      // These options are needed to round to whole numbers if that's what you want.
-      minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-      maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
-    });
-    return formatter.format(number); /* $2,500.00 */
-  };
-  // get a mineral object
-  var getMinObj = function(minerals, query){
-    // if string get by type
-    if(typeof query === 'string'){
-      var i = minerals.length;
-      while(i--){
-          var minObj = minerals[i];
-          if(minObj.type === query.toLowerCase()){
-             return minObj;
-          }
-      }
-    }
-    // if number get by index
-    if(typeof query === 'number'){
-      return game.minerals[query];
-    }
-    return false;
-  };
+    // figure what the current game.resetPointsDelta is
+    var figureResetPointsDelta = function(game){
+        game.resetPointsDelta = 1;
+    };
 
-  // PUBLIC API
-  var api = {};
+    // format number as money
+    // https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+    var format_money = function(number){
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            // These options are needed to round to whole numbers if that's what you want.
+            minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+        });
+        return formatter.format(number); /* $2,500.00 */
+    };
+    // get a mineral object
+    var getMinObj = function(minerals, query){
+        // if string get by type
+        if(typeof query === 'string'){
+            var i = minerals.length;
+                while(i--){
+                    var minObj = minerals[i];
+                    if(minObj.type === query.toLowerCase()){
+                        return minObj;
+                }
+            }
+        }
+        // if number get by index
+        if(typeof query === 'number'){
+            return game.minerals[query];
+        }
+        return false;
+    };
+
+    // PUBLIC API
+    var api = {};
 
 /********** ********** **********
     CREATE
@@ -105,6 +110,8 @@ var gameMod = (function(){;
     };
     // call figure cost methods for all upgrades
     updateUpgradeCosts(game);
+    // firgure resetPointsDelta for first time
+    figureResetPointsDelta(game);
     return game;
   };
 
@@ -209,6 +216,7 @@ var gameMod = (function(){;
             game.money -= upgrade.cost;
             game.money_formatted = format_money(game.money);
             upgrade.cost = upgrade.figureCost(game, upgrade, upgrade.level);
+            figureResetPointsDelta(game);
         }else{
             console.log('need more money');
         }
