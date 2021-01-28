@@ -94,7 +94,7 @@ var gameMod = (function(){;
       money: opt.money || 0,
       money_formatted: format_money(opt.money || 0),
       resetPoints: opt.resetPoints || 0,
-      resetPointDelta: 0,
+      resetPointsDelta: 0,
       overTime: {
           secs: 0,
           per: 0,

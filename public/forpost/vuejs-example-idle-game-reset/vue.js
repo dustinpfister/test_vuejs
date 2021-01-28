@@ -36,6 +36,8 @@ var vm = new Vue({
         '</div>' +
         '<div class="reset wrap_menu" v-if="currentMenu===\'reset\'">' +
             '<input id="button_reset_now" type="button" value="Reset Now" v-on:click="click">' +
+            '<p>You have {{ game.resetPoints }} Reset Points, '+
+                'and reseting now will give you {{ game.resetPointsDelta }} more Reset Points</p>' +
         '</div>' +
     '</div>',
     data: {
@@ -45,7 +47,7 @@ var vm = new Vue({
             minerals: [{type:'iron', unitCount: 20}],
             upgrades: [{key: 'manual', level: 0}]
         },
-        currentMenu: 'manual',
+        currentMenu: 'reset',
         appName: 'vuejs-example-idle-game-reset'
     },
     methods: {
