@@ -103,13 +103,15 @@ var gameMod = (function(){;
       };
       // call figure cost methods for all upgrades
       updateUpgradeCosts(game);
-      // firgure resetPointsDelta for first time
-      figureResetPointsDelta(game);
+      // apply reset points
+      applyResetPoints(game);
       // apply upgrades for first time
       Object.keys(game.upgrades).forEach(function(key){
           var upgrade = game.upgrades[key];
           upgrade.applyToGame(game, upgrade, upgrade.level);
       });
+      // firgure resetPointsDelta for first time
+      figureResetPointsDelta(game);
       return game;
     };
 
@@ -223,7 +225,7 @@ var gameMod = (function(){;
 
     // apply reset points
     var applyResetPoints = function(game){
-    
+        game.manualMineCountBase = 50;
     };
     // figure what the current game.resetPointsDelta is
     var figureResetPointsDelta = function(game){
