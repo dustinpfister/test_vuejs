@@ -42,153 +42,147 @@ var gameMod = (function(){;
     CREATE
 ********** ********** **********/
 
-  // create upgrades helper
-  var createUpgrades = function(opt){
-      opt = opt || []
-      var upgrades = {
-          manual : {
-              key: 'manual',
-              desc: 'The count of mine actions per click of the manual mine button',
-              level: 0,
-              cost: Infinity,
-              figureCost: function(game, upgrade, level){
-                  return 100 + Math.floor(100 * level + Math.pow(1.25, level));
-              },
-              applyToGame: function(game, upgradeObj, level){
-                  game.manualMineCount = 5 + Math.floor(1 * level);
-              }
-          }
-      };
-      // set levels from options array
-      opt.forEach(function(upOpt){
-          upgrades[upOpt.key].level = upOpt.level;
-      });
-      return upgrades;
-  };
-
-
-  // create minerals helper
-  var createMinerals = function(opt){
-      opt = opt || [];
-      var minerals = [
-        {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
-        {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
-        {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: false, chance: 0.25},
-        {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
-      ];
-      opt.forEach(function(minOpt){
-        var minObj = getMinObj(minerals, minOpt.type);
-        if(minObj){
-            minObj.unitCount = minOpt.unitCount;
-        }
-      });
-      return minerals;
-  };
-
-  // create a main game state object
-  api.createState = function(opt){
-    opt = opt || {};
-    var game = {
-      manualMineCount: 5,
-      lt: opt.lt || new Date(),
-      money: opt.money || 0,
-      money_formatted: format_money(opt.money || 0),
-      resetPoints: opt.resetPoints || 0,
-      resetPointsDelta: 0,
-      overTime: {
-          secs: 0,
-          per: 0,
-          minesPerSec: 0.125
-      },
-      minerals: createMinerals(opt.minerals),
-      upgrades: createUpgrades(opt.upgrades)
+    // create upgrades helper
+    var createUpgrades = function(opt){
+        opt = opt || []
+        var upgrades = {
+            manual : {
+                key: 'manual',
+                desc: 'The count of mine actions per click of the manual mine button',
+                level: 0,
+                cost: Infinity,
+                figureCost: function(game, upgrade, level){
+                    return 100 + Math.floor(100 * level + Math.pow(1.25, level));
+                },
+                applyToGame: function(game, upgradeObj, level){
+                    game.manualMineCount = 5 + Math.floor(1 * level);
+                }
+            }
+        };
+        // set levels from options array
+        opt.forEach(function(upOpt){
+            upgrades[upOpt.key].level = upOpt.level;
+        });
+        return upgrades;
     };
-    // call figure cost methods for all upgrades
-    updateUpgradeCosts(game);
-    // firgure resetPointsDelta for first time
-    figureResetPointsDelta(game);
-    return game;
-  };
+    // create minerals helper
+    var createMinerals = function(opt){
+        opt = opt || [];
+        var minerals = [
+          {type: 'iron', unitCount: 0, moneyPerUnit: 1, locked: false, chance: 1},
+          {type: 'copper', unitCount: 0, moneyPerUnit: 3, locked: false, chance: 0.5},
+          {type: 'silver', unitCount: 0, moneyPerUnit: 9, locked: false, chance: 0.25},
+          {type: 'gold', unitCount: 0, moneyPerUnit: 25, locked: true, chance: 0.01}
+        ];
+        opt.forEach(function(minOpt){
+          var minObj = getMinObj(minerals, minOpt.type);
+          if(minObj){
+              minObj.unitCount = minOpt.unitCount;
+          }
+        });
+        return minerals;
+    };
+    // create a main game state object
+    api.createState = function(opt){
+      opt = opt || {};
+      var game = {
+        manualMineCount: 5,
+        lt: opt.lt || new Date(),
+        money: opt.money || 0,
+        money_formatted: format_money(opt.money || 0),
+        resetPoints: opt.resetPoints || 0,
+        resetPointsDelta: 0,
+        overTime: {
+            secs: 0,
+            per: 0,
+            minesPerSec: 0.125
+        },
+        minerals: createMinerals(opt.minerals),
+        upgrades: createUpgrades(opt.upgrades)
+      };
+      // call figure cost methods for all upgrades
+      updateUpgradeCosts(game);
+      // firgure resetPointsDelta for first time
+      figureResetPointsDelta(game);
+      return game;
+    };
 
 /********** ********** **********
     MINE
 ********** ********** **********/
 
-  // a single min action using Math.random for each mineral
-  var mineSingle = function(game){
-    var i = 0,
-    len = game.minerals.length,
-    minObj;
-    while(i < len){
-      minObj = game.minerals[i];
-      if(!minObj.locked){
-          var roll = Math.random();
-          if(roll < minObj.chance){
-              minObj.unitCount += 1;
-          }
+    // a single min action using Math.random for each mineral
+    var mineSingle = function(game){
+      var i = 0,
+      len = game.minerals.length,
+      minObj;
+      while(i < len){
+        minObj = game.minerals[i];
+        if(!minObj.locked){
+            var roll = Math.random();
+            if(roll < minObj.chance){
+                minObj.unitCount += 1;
+            }
+        }
+        i = i + 1;
       }
-      i = i + 1;
-    }
-  };
-
-  // call mineSingle a given count of times
-  var mineLoop = function(game, count){
-      var i = count;
-      while(i--){
-         mineSingle(game);
-      }
-  };
-
-  // mine by chance and count
-  var mineByChanceAndCount = function(game, count){
-      game.minerals.map(function(minObj){
-          minObj.unitCount += Math.floor(minObj.chance * count);
-          return minObj;
-      });
-  };
-
-  // prefrom a mine action
-  api.mine = function(game, count){
-      if(count === 1){
-          mineSingle(game);
-      }
-      if(count > 1 && count <= 50){
-          mineLoop(game, count);
-      }
-      if(count > 50){
-          mineByChanceAndCount(game, count);
-      }
-  };
+    };
+    // call mineSingle a given count of times
+    var mineLoop = function(game, count){
+        var i = count;
+        while(i--){
+           mineSingle(game);
+        }
+    };
+    // mine by chance and count
+    var mineByChanceAndCount = function(game, count){
+        game.minerals.map(function(minObj){
+            minObj.unitCount += Math.floor(minObj.chance * count);
+            return minObj;
+        });
+    };
+    // prefrom a mine action
+    api.mine = function(game, count){
+        if(count === 1){
+            mineSingle(game);
+        }
+        if(count > 1 && count <= 50){
+            mineLoop(game, count);
+        }
+        if(count > 50){
+            mineByChanceAndCount(game, count);
+        }
+    };
 
 /********** ********** **********
     SELL
 ********** ********** **********/
 
-  // sell
-  api.sell = function(game, type){
-      var minObj = getMinObj(game.minerals, type);
-      game.money += minObj.unitCount * minObj.moneyPerUnit;
-      game.money_formatted = format_money(game.money);
-      minObj.unitCount = 0;
-  };
+    // sell
+    api.sell = function(game, type){
+        var minObj = getMinObj(game.minerals, type);
+        game.money += minObj.unitCount * minObj.moneyPerUnit;
+        game.money_formatted = format_money(game.money);
+        minObj.unitCount = 0;
+    };
 
 /********** ********** **********
     UPDATE
 ********** ********** **********/
 
-  // update method
-  api.update = function(game, secs){
-    var ot = game.overTime,
-    mineSecs = 1 / ot.minesPerSec;
-    ot.secs += secs;
-    ot.per = ot.secs / mineSecs;
-    ot.per = ot.per > 1 ? 1 : ot.per;
-    if(ot.secs >= mineSecs){
-       var count = Math.floor(ot.secs / mineSecs);
-       api.mine(game, count);
-       ot.secs = 0;
-    }
-  };
+    // update method
+    api.update = function(game, secs){
+      var ot = game.overTime,
+      mineSecs = 1 / ot.minesPerSec;
+      ot.secs += secs;
+      ot.per = ot.secs / mineSecs;
+      ot.per = ot.per > 1 ? 1 : ot.per;
+      if(ot.secs >= mineSecs){
+         var count = Math.floor(ot.secs / mineSecs);
+         api.mine(game, count);
+         ot.secs = 0;
+      }
+    };
 
 /********** ********** **********
     UPGRADES
