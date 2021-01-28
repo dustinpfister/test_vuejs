@@ -4,8 +4,8 @@ var vm = new Vue({
         '<div class="disp">'+
             '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
             '<span> {{ game.money_formatted }} </span>'+
+            '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '</div>' +
-        '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '<div class="upgrades">'+
             '<div v-for="upgrade in game.upgrades">' +
                 '<input v-bind:id="\'button_upgrade_\'+upgrade.key"'+ 
