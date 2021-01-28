@@ -5,10 +5,10 @@ var vm = new Vue({
             '<span> {{ game.money_formatted }} </span>'+
             '<div class="probar" v-bind:style="\'width:\'+Math.round(game.overTime.per * 100)+\'%;\'" ></div>' +
         '</div>' +
-        '<div class="manual">'+
+        '<div class="manual wrap_menu">'+
             '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
         '</div>'+
-        '<div class="upgrades">'+
+        '<div class="upgrades wrap_menu">'+
             '<div v-for="upgrade in game.upgrades">' +
                 '<input v-bind:id="\'button_upgrade_\'+upgrade.key"'+ 
                     'type="button" v-bind:value="\'upgrade (\'+upgrade.level+\')\'" v-on:click="click"'+
@@ -18,7 +18,7 @@ var vm = new Vue({
                 '<span> desc: {{ upgrade.desc }} </span>' +
             '</div>'+
         '</div>' +
-        '<div>' +
+        '<div class="minerals wrap_menu">' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="minbox"' +
                 'v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
