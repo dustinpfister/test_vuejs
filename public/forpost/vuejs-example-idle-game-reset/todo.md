@@ -3,8 +3,8 @@
 * (done) display manual mine count in manual menu
 * (done) have a game.manualMineCountBase prop
 * (done) start an applyResetPoints helper
-* basic diminishing returns epression for game.manualMineCountBase
-* show base reset points in manual menu
+* (done) basic diminishing returns epression for game.manualMineCountBase
+* show base manual mine in manual menu
 * show a basic min count table in manual menu
 
 ## 0.0.0 - Menus, and Additional upgrades

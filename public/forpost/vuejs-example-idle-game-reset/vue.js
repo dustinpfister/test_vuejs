@@ -13,7 +13,8 @@ var vm = new Vue({
         '</div>' +
         '<div class="manual wrap_menu" v-if="currentMenu===\'manual\'">'+
             '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
-            '<p>Mine count per click: {{ game.manualMineCount }}</p>'+
+            '<p>Base Mine count per click: {{ game.manualMineCountBase }}</p>'+
+            '<p>Total Mine count per click: {{ game.manualMineCount }}</p>'+
         '</div>'+
         '<div class="upgrades wrap_menu" v-if="currentMenu===\'upgrades\'">'+
             '<div v-for="upgrade in game.upgrades">' +
