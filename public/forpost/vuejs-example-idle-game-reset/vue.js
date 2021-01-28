@@ -10,10 +10,10 @@ var vm = new Vue({
                 '<input id="button_nav_upgrades" type="button" value="Upgrades" v-on:click="click"></span>'+
             '</div>' +
         '</div>' +
-        '<div class="manual wrap_menu">'+
+        '<div class="manual wrap_menu" v-if="currentMenu===\'manual\'">'+
             '<input id="button_mine" type="button" value="mine" v-on:click="click">'+
         '</div>'+
-        '<div class="upgrades wrap_menu">'+
+        '<div class="upgrades wrap_menu" v-if="currentMenu===\'upgrades\'">'+
             '<div v-for="upgrade in game.upgrades">' +
                 '<input v-bind:id="\'button_upgrade_\'+upgrade.key"'+ 
                     'type="button" v-bind:value="\'upgrade (\'+upgrade.level+\')\'" v-on:click="click"'+
@@ -23,7 +23,7 @@ var vm = new Vue({
                 '<span> desc: {{ upgrade.desc }} </span>' +
             '</div>'+
         '</div>' +
-        '<div class="minerals wrap_menu">' +
+        '<div class="minerals wrap_menu" v-if="currentMenu===\'minerals\'">' +
             '<div v-bind:id="\'minbox_\'+min.type" '+
                 'class="minbox"' +
                 'v-bind:style="min.locked?\'display:none;\':\'display:block;\'" '+
@@ -41,6 +41,7 @@ var vm = new Vue({
             minerals: [{type:'iron', unitCount: 20}],
             upgrades: [{key: 'manual', level: 0}]
         },
+        currentMenu: 'manual',
         appName: 'vuejs-example-idle-game-reset'
     },
     methods: {
@@ -48,7 +49,6 @@ var vm = new Vue({
         click: function (e) {
             var dat = this.$data;
             var buttonArr = e.target.id.split('_');
-            console.log(buttonArr);
             // The manual mine button
             if(buttonArr[1] == 'mine'){
                 gameMod.mine(dat.game, dat.game.manualMineCount);
@@ -61,6 +61,11 @@ var vm = new Vue({
             // an upgrade button
             if(buttonArr[1] == 'upgrade'){
                 gameMod.upgradeCheck(dat.game, buttonArr[2]);
+            }
+            // if a nav button
+            if(buttonArr[1] == 'nav'){
+                console.log(buttonArr);
+                dat.currentMenu = buttonArr[2];
             }
         },
         // away production
