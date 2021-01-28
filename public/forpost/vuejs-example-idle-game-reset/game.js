@@ -93,6 +93,7 @@ var gameMod = (function(){;
       lt: opt.lt || new Date(),
       money: opt.money || 0,
       money_formatted: format_money(opt.money || 0),
+      resetPoints: opt.resetPoints || 0,
       overTime: {
           secs: 0,
           per: 0,
