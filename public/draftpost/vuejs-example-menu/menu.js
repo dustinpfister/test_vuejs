@@ -7,10 +7,8 @@ var vm = new Vue({
         '</div>'+
         '<div class="wrap_menu">' +
             '<menu-home v-bind:money="money" v-bind:currentMenu="currentMenu" v-on:delta-money="deltaMoney"></menu-home>'+
+            '<menu-other1 v-bind:money="money" v-bind:currentMenu="currentMenu" v-on:delta-money="deltaMoney"></menu-other1>'+
         '</div>'+
-        //'<div class="wrap_menu" v-if="currentMenu===\'other1\'">' +
-        //     '<menu-other1 v-bind:money="money" v-on:delta-money="deltaMoney"></menu-other1>'+
-        //'</div>'+
     '</div>'+
     '</div>',
     data: {
