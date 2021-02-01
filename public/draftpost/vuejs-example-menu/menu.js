@@ -14,18 +14,21 @@ var vm = new Vue({
     '</div>',
 */
     render: function(createElement){
+        var vm = this;
         var children = [];
         var menuButtons = [];
-        menuButtons.push(createElement('input', {
-            attrs:{
-                id:'button_changemenu_home',
-                type:'button',
-                value: 'home'
-            },
-            on: {
-                'click': this.click
-            }
-        }));
+        ['home', 'other1'].forEach(function(menuName){
+            menuButtons.push(createElement('input', {
+                attrs:{
+                    id:'button_changemenu_' + menuName,
+                    type:'button',
+                    value: menuName
+                },
+                on: {
+                    'click': vm.click
+                }
+            }));
+        });
         children.push(createElement('div', {class:'navbar'}, menuButtons));
         return createElement('div', {class:'wrap_main'}, children);
     },
