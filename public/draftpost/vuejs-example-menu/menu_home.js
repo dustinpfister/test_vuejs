@@ -1,5 +1,4 @@
 Vue.component('menu-home', {
-  name: 'menu-home',
   props: ['money', 'currentMenu'],
   data: function () {
     return {

@@ -35,7 +35,7 @@ var vm = new Vue({
         return createElement('div', {class:'wrap_main'}, children);
     },
     data: {
-        menus: ['home', 'other1'],
+        menus: ['home', 'manual'],
         currentMenu: 'home',
         money: 0
     },
