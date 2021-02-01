@@ -1,5 +1,6 @@
 var vm = new Vue({
     el: '#app',
+/*
     template: '<div class="wrap_main">' +
         '<div class="navbar">'+
             '<input id="button_changemenu_home" type="button" v-on:click="click" value="home">' +
@@ -11,8 +12,24 @@ var vm = new Vue({
         '</div>'+
     '</div>'+
     '</div>',
+*/
+    render: function(createElement){
+        var children = [];
+        var menuButtons = [];
+        menuButtons.push(createElement('input', {
+            attrs:{
+                id:'button_changemenu_home',
+                type:'button',
+                value: 'home'
+            },
+            on: {
+                'click': this.click
+            }
+        }));
+        children.push(createElement('div', {class:'navbar'}, menuButtons));
+        return createElement('div', {class:'wrap_main'}, children);
+    },
     data: {
-        menus: ['home', 'other1'],
         currentMenu: 'home',
         money: 0
     },
