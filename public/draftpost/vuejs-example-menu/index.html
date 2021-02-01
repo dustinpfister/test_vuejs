@@ -3,6 +3,17 @@
     <title>vue example of an idle game</title>
     <script src="/js/vuejs/2.6.10/vue.js"></script>
     <style>
+.wrap_main{
+}
+.wrap_menu{
+  padding:10px;
+  background:#afafaf;
+}
+.navbar{
+  padding:5px;
+  text-align:center;
+  background:gray;
+}
     </style>
   </head>
   <body>
@@ -11,14 +22,14 @@
 var vm = new Vue({
     el: '#app',
     template: '<div class="wrap_main">' +
-        '<div>'+
+        '<div class="navbar">'+
             '<input id="button_changemenu_home" type="button" v-on:click="click" value="home">' +
             '<input id="button_changemenu_other1" type="button" v-on:click="click" value="other1">' +
         '</div>'+
-        '<div v-if="currentMenu===\'home\'">' +
+        '<div class="wrap_menu" v-if="currentMenu===\'home\'">' +
             '<p>This is home</p>' +
         '</div>'+
-        '<div v-if="currentMenu===\'other1\'">' +
+        '<div class="wrap_menu" v-if="currentMenu===\'other1\'">' +
             '<p>This is the other menu</p>' +
         '</div>'+
     '</div>'+
