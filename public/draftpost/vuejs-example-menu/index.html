@@ -19,6 +19,29 @@
   <body>
   <div id="app"></div>
   <script>
+
+Vue.component('menu-home', {
+  data: function () {
+    return {
+    };
+  },
+  template: '<p>This is home</p>'
+});
+Vue.component('menu-other1', {
+  data: function () {
+    return {
+    };
+  },
+  template: '<p>This is the other1 menu</p>'
+});
+Vue.component('menu-other2', {
+  data: function () {
+    return {
+    };
+  },
+  template: '<p>This is the other2 menu</p>'
+});
+
 var vm = new Vue({
     el: '#app',
     template: '<div class="wrap_main">' +
@@ -28,13 +51,13 @@ var vm = new Vue({
             '<input id="button_changemenu_other2" type="button" v-on:click="click" value="other2">' +
         '</div>'+
         '<div class="wrap_menu" v-if="currentMenu===\'home\'">' +
-            '<p>This is home</p>' +
+            '<menu-home></menu-home>'+
         '</div>'+
         '<div class="wrap_menu" v-if="currentMenu===\'other1\'">' +
-            '<p>This is the other menu</p>' +
+             '<menu-other1></menu-other1>'+
         '</div>'+
         '<div class="wrap_menu" v-if="currentMenu===\'other2\'">' +
-            '<p>This is yet another menu</p>' +
+            '<menu-other2></menu-other2>'+
         '</div>'+
     '</div>'+
     '</div>',
