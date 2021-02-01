@@ -16,6 +16,7 @@ var vm = new Vue({
     render: function(createElement){
         var vm = this;
         var children = [];
+        // create menu buttons
         var menuButtons = [];
         vm.$data.menus.forEach(function(menuName){
             menuButtons.push(createElement('input', {
@@ -29,7 +30,21 @@ var vm = new Vue({
                 }
             }));
         });
+        // create navbar, append menu buttons to it an push to children
         children.push(createElement('div', {class:'navbar'}, menuButtons));
+        var menus = [];
+        vm.$data.menus.forEach(function(menuName){
+            menus.push(createElement('menu-' + menuName, {
+                props:{
+                   money: vm.$data.money,
+                   currentMenu: vm.$data.currentMenu
+                },
+                on: {
+                    'delta-money': vm.deltaMoney
+                }
+            }));
+        });
+        children.push(createElement('div', {class:'wrap_menu'}, menus));
         return createElement('div', {class:'wrap_main'}, children);
     },
     data: {
