@@ -1,4 +1,4 @@
-Vue.component('menu-manual', {
+Vue.component('menu-sections', {
   props: ['money', 'currentMenu'],
   data: function () {
     return {
@@ -7,7 +7,7 @@ Vue.component('menu-manual', {
   render: function(createElement){
       var children = [];
       var vm = this;
-      if(this.$props.currentMenu === 'manual'){
+      if(this.$props.currentMenu === 'sections'){
           children.push(createElement('input', {
               attrs: {
                  type: 'button',

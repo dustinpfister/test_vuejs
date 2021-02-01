@@ -1,3 +1,16 @@
+var createSections = function(){
+  var i = 0,
+  sections = [];
+  while(i < 12){
+     sections.push({
+        distance: 0,
+        per: 0
+     });
+     i += 1;
+  }
+};
+
+
 var vm = new Vue({
     el: '#app',
     render: function(createElement){
@@ -35,7 +48,8 @@ var vm = new Vue({
         return createElement('div', {class:'wrap_main'}, children);
     },
     data: {
-        menus: ['home', 'manual'],
+        menus: ['home', 'sections'],
+        sections: createSections(),
         currentMenu: 'home',
         money: 0
     },
