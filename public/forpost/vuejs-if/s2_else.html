@@ -9,11 +9,13 @@
 new Vue({
     el: '#demo-if',
     template: '<div>' +
-    '<p v-if=" typeof n === \'number\'" >{{ n.toFixed(2) }}</p>' +
-    '<p v-if-else>{{ String(n) }}</p>' +
+        '<div v-for="a in arr">' +
+            '<p v-if=" typeof a === \'number\' ">{{ a.toFixed(2) }}</p>' +
+            '<p v-else>{{ String(a) }}</p>' +
+        '</div>' +
     '</div>',
     data: {
-        n: 'foo'
+        arr: ['foo', 3.14159, NaN]
     }
 });
   </script>
