@@ -8,7 +8,14 @@ module.exports = (opt) => {
     // options
     opt = opt || {};
     opt.dir = path.resolve(opt.dir || 'public/forpost');
-    opt.folderName = 'forpost';
+    opt.folderName = opt.folderName || 'forpost';
+
+return (function(dir, folderName){
+
+    // options
+    //opt = opt || {};
+    //opt.dir = path.resolve(opt.dir || 'public/forpost');
+    //opt.folderName = opt.folderName || 'forpost';
 
     // Router
     let router = express.Router();
@@ -16,7 +23,7 @@ module.exports = (opt) => {
 
             // get files list
             (req, res, next) => {
-                fs.readdir(opt.dir, (e, files) => {
+                fs.readdir(dir, (e, files) => {
                     if (e) {
                         res.send(e.message);
                     } else {
@@ -49,7 +56,7 @@ module.exports = (opt) => {
                         projects.forEach((project_item) => {
                             html += '<ul style="display:inline-block;"><li>' + project_item.fn + '- <ul>';
                             project_item.files.forEach((file) => {
-                                html += '<li><a href=\"' + file.href + '\">' + file.pfn + '<\/a><\/li>';
+                                html += '<li><a href=\"/' + file.href + '\">' + file.pfn + '<\/a><\/li>';
                             });
                             html += '<\/ul><\/li><\/ul>';
                         });
@@ -62,11 +69,11 @@ module.exports = (opt) => {
 
                 req.files.forEach((fn) => {
 
-                    fs.stat(path.join(opt.dir, fn), (e, stats) => {
+                    fs.stat(path.join(dir, fn), (e, stats) => {
 
                         if (stats.isDirectory()) {
 
-                            fs.readdir(path.join(opt.dir, fn), (e, files) => {
+                            fs.readdir(path.join(dir, fn), (e, files) => {
 
                                 let project_item = {
                                     fn: fn,
@@ -78,7 +85,7 @@ module.exports = (opt) => {
                                     if (path.extname(pfn) === '.html') {
 
                                         project_item.files.push({
-                                            href: opt.folderName + '/' + fn + '/' + pfn,
+                                            href: folderName + '/' + fn + '/' + pfn,
                                             pfn: pfn
                                         });
 
@@ -103,5 +110,7 @@ module.exports = (opt) => {
         ]);
 
     return router;
+
+}(opt.dir, opt.folderName));
 
 };
