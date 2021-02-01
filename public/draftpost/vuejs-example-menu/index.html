@@ -2,63 +2,14 @@
   <head>
     <title>vue example of an idle game</title>
     <script src="/js/vuejs/2.6.10/vue.js"></script>
-    <style>
-.wrap_main{
-}
-.wrap_menu{
-  padding:10px;
-  background:#afafaf;
-}
-.navbar{
-  padding:5px;
-  text-align:center;
-  background:gray;
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
   <div id="app"></div>
   <script src="./menu_home.js"></script>
   <script src="./menu_other1.js"></script>
+  <script src="./menu.js"></script>
   <script>
-
-
-var vm = new Vue({
-    el: '#app',
-    template: '<div class="wrap_main">' +
-        '<div class="navbar">'+
-            '<input id="button_changemenu_home" type="button" v-on:click="click" value="home">' +
-            '<input id="button_changemenu_other1" type="button" v-on:click="click" value="other1">' +
-        '</div>'+
-        '<div class="wrap_menu" v-if="currentMenu===\'home\'">' +
-            '<menu-home v-bind:money="money" v-on:delta-money="deltaMoney"></menu-home>'+
-        '</div>'+
-        '<div class="wrap_menu" v-if="currentMenu===\'other1\'">' +
-             '<menu-other1 v-bind:money="money" v-on:delta-money="deltaMoney"></menu-other1>'+
-        '</div>'+
-    '</div>'+
-    '</div>',
-    data: {
-        currentMenu: 'other1',
-        money: 0
-    },
-    methods: {
-        // a button was clicked
-        click: function (e) {
-            var button_el = e.target,
-            dat = this.$data,
-            idArr = button_el.id.split('_');
-            console.log(idArr);
-            if(idArr[1] === 'changemenu'){
-                dat.currentMenu = idArr[2];
-            }
-        },
-        deltaMoney: function(a){
-            console.log('delta money event', a);
-            this.$data.money += a;
-        }
-    }
-});
 </script>
   </body>
 </html>
