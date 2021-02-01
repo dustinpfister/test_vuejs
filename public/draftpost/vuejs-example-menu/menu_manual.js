@@ -14,9 +14,7 @@ Vue.component('menu-manual', {
                  value: 'click ('+ vm.$props.money + ')'
               },
               on: {
-                  click: function(e){
-                      vm.$emit('delta-money', 1);
-                  }
+                  click: this.click
               }
           }));
       }
@@ -24,8 +22,7 @@ Vue.component('menu-manual', {
   },
   methods: {
     click: function(e){
-      //console.log(this.$data.money)
-      //console.log(this.$props)
+        this.$emit('delta-money', 1);
     }
   }
 });
