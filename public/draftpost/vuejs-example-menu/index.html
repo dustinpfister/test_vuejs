@@ -29,7 +29,13 @@ var vm = new Vue({
     methods: {
         // a button was clicked
         click: function (e) {
-            console.log(e.target);
+            var button_el = e.target,
+            dat = this.$data,
+            idArr = button_el.id.split('_');
+            console.log(idArr);
+            if(idArr[1] === 'changemenu'){
+                dat.currentMenu = idArr[2];
+            }
         }
     }
 });
