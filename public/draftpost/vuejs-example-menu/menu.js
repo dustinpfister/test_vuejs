@@ -1,18 +1,5 @@
 var vm = new Vue({
     el: '#app',
-/*
-    template: '<div class="wrap_main">' +
-        '<div class="navbar">'+
-            '<input id="button_changemenu_home" type="button" v-on:click="click" value="home">' +
-            '<input id="button_changemenu_other1" type="button" v-on:click="click" value="other1">' +
-        '</div>'+
-        '<div class="wrap_menu">' +
-            '<menu-home v-bind:money="money" v-bind:currentMenu="currentMenu" v-on:delta-money="deltaMoney"></menu-home>'+
-            '<menu-other1 v-bind:money="money" v-bind:currentMenu="currentMenu" v-on:delta-money="deltaMoney"></menu-other1>'+
-        '</div>'+
-    '</div>'+
-    '</div>',
-*/
     render: function(createElement){
         var vm = this;
         var children = [];
@@ -30,8 +17,8 @@ var vm = new Vue({
                 }
             }));
         });
-        // create navbar, append menu buttons to it an push to children
         children.push(createElement('div', {class:'navbar'}, menuButtons));
+        // create menus
         var menus = [];
         vm.$data.menus.forEach(function(menuName){
             menus.push(createElement('menu-' + menuName, {
