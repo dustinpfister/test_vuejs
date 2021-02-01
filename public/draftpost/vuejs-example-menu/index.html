@@ -25,12 +25,16 @@ var vm = new Vue({
         '<div class="navbar">'+
             '<input id="button_changemenu_home" type="button" v-on:click="click" value="home">' +
             '<input id="button_changemenu_other1" type="button" v-on:click="click" value="other1">' +
+            '<input id="button_changemenu_other2" type="button" v-on:click="click" value="other2">' +
         '</div>'+
         '<div class="wrap_menu" v-if="currentMenu===\'home\'">' +
             '<p>This is home</p>' +
         '</div>'+
         '<div class="wrap_menu" v-if="currentMenu===\'other1\'">' +
             '<p>This is the other menu</p>' +
+        '</div>'+
+        '<div class="wrap_menu" v-if="currentMenu===\'other2\'">' +
+            '<p>This is yet another menu</p>' +
         '</div>'+
     '</div>'+
     '</div>',
