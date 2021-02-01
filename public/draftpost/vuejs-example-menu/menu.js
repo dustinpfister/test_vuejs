@@ -17,7 +17,7 @@ var vm = new Vue({
         var vm = this;
         var children = [];
         var menuButtons = [];
-        ['home', 'other1'].forEach(function(menuName){
+        vm.$data.menus.forEach(function(menuName){
             menuButtons.push(createElement('input', {
                 attrs:{
                     id:'button_changemenu_' + menuName,
@@ -33,6 +33,7 @@ var vm = new Vue({
         return createElement('div', {class:'wrap_main'}, children);
     },
     data: {
+        menus: ['home', 'other1'],
         currentMenu: 'home',
         money: 0
     },
