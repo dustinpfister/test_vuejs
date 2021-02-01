@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>vue if example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-if"></div>
+  <script>
+new Vue({
+    el: '#demo-if',
+    template: '<div>' +
+        '<div v-for="a in arr" style="margin-bottom:20px;">' +
+            // it can just be the value itself that will convert to a true or false value
+            '<div v-if="a"> value is true: {{ a }}  <br></div>' +
+            // it can be an expression that will evaluate to true or value
+            '<div v-if=" typeof a === \'number\' ">is a number: {{ a.toFixed(2) }}<br></div>' +
+        '</div>' +
+    '</div>',
+    data: {
+        arr: [false, 2, 3, null, 6.5, 8, 'foo']
+    }
+});
+  </script>
+  </body>
+</html>
