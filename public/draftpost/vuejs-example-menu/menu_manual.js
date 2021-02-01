@@ -4,7 +4,24 @@ Vue.component('menu-manual', {
     return {
     };
   },
-  template: '<div v-if="currentMenu === \'manual\'"><input type="button" v-on:click="$emit(\'delta-money\', 1)" value="click"> {{ money }}</div>',
+  render: function(createElement){
+      var children = [];
+      var vm = this;
+      if(this.$props.currentMenu === 'manual'){
+          children.push(createElement('input', {
+              attrs: {
+                 type: 'button',
+                 value: 'click ('+ vm.$props.money + ')'
+              },
+              on: {
+                  click: function(e){
+                      vm.$emit('delta-money', 1);
+                  }
+              }
+          }));
+      }
+      return createElement('div', children);
+  },
   methods: {
     click: function(e){
       //console.log(this.$data.money)
