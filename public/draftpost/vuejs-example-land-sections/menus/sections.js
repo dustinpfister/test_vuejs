@@ -3,7 +3,9 @@
     Vue.component('sections-info', {
         props: ['sections'],
         template: '<div>'+
-            '{{ sections.length }}'+
+            '<ul>' +
+               '<li v-for="sec, i in sections" >section: {{i}}, dist: {{sec.distance}}, per: {{ sec.per }}</li>'+
+            '</ul>'+
         '</div>'
     });
 

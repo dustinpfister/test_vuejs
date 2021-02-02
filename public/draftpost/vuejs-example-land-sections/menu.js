@@ -61,7 +61,7 @@ var vm = new Vue({
     data: {
         menus: ['home', 'sun', 'sections'],
         sections: createSections(),
-        currentMenu: 'sun',
+        currentMenu: 'sections',
         sun: {
            x: CENTERX,
            y: CENTERY,
