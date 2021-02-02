@@ -3,9 +3,15 @@
     Vue.component('sections-info', {
         props: ['sections'],
         template: '<div>'+
-            '<ul>' +
-               '<li v-for="sec, i in sections" >section: {{i}}, dist: {{ sec.distance.toFixed(2) }}, per: {{ sec.per.toFixed(2) }}</li>'+
-            '</ul>'+
+            '<table>' +
+               '<tr> <th>index</th> <th>distance</th> <th>per</th> <th>pos</th> </tr>'+
+               '<tr v-for="sec, i in sections" >'+
+                  '<td>{{i}}</td>'+
+                  '<td>{{ sec.distance.toFixed(2) }}</td>'+
+                  '<td>{{ sec.per.toFixed(2) }}</td>' +
+                  '<td>{{ Math.round(sec.x) + \', \' + Math.round(sec.y) }}</td>' +
+               '</tr>'+
+            '</table>'+
         '</div>'
     });
 

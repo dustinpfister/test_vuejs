@@ -1,3 +1,10 @@
+table{
+  width:100%;
+}
+td{
+  background:#8f8f8f;
+  text-align:center;
+}
 .wrap_main{
 }
 .wrap_menu{
