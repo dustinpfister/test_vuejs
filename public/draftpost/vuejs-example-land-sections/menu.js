@@ -105,7 +105,7 @@
                 sun = dat.sun;
                 dat.sections = dat.sections.map(function(section){
                     section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
-                    section.per = 1;
+                    section.per = section.distance / (SECTION_DIST * 2);
                     return section;
                 });
             }
