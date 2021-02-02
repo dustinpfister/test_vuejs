@@ -59,6 +59,10 @@ new Vue({
     el: '#app',
     data: function(){
         return {
+            priceList: {
+                cookies: 1.25,
+                flower: 0.5
+            },
             cookies: 0,
             flower: 10,
             money: 0
@@ -80,13 +84,13 @@ new Vue({
            var dat = this.$data;
            if(dat.cookies >= count){
                dat.cookies -= count;
-               dat.money += count;
+               dat.money += dat.priceList.cookies * count;
            }
         },
         buy: function(count){
            var dat = this.$data;
-           if(dat.money >= count){
-               dat.money -= count;
+           if(dat.money >= count * dat.priceList.flower){
+               dat.money -= count * dat.priceList.flower;
                dat.flower += count;
            }
         }
