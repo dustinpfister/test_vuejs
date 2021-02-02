@@ -61,7 +61,7 @@
             return createElement('div', {class:'wrap_main'}, children);
         },
         data: {
-            menus: ['home', 'sun', 'sections'],
+            menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
             currentMenu: 'sections',
             sun: {
