@@ -3,9 +3,10 @@
     // ui for selecting the current section index to work on
     Vue.component('sections-ui-select', {
         props: ['section'],
-        template: '<div>'+
-            '<div style="text-align:center;">{{ section }}</div>' +
-            '<div style="text-align:center;"><button v-on:click="prev">prev</button> | '+
+        template: '<div style="text-align:center;">'+
+            '<h3>Select current world section</h3>'+
+            '<div><p>#{{ section.i }}, distance: {{ section.distance.toFixed(2) }}</p></div>' +
+            '<div><button v-on:click="prev">prev</button> | '+
             '<button v-on:click="next">next</button></div>'+
         '</div>',
         methods: {

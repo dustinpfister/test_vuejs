@@ -5,7 +5,7 @@
 ## 0.1.0 - Section select UI
 * (done) start a sections-ui-select component in sections.js
 * (done) the sections-ui-select component can be used to loop forward and backward over sections setting a 'currentSection'
-* Section select ui displays info for the current section, and buttons to change section number
+* (done) Section select ui displays info for the current section, and buttons to change section number
 
 ## 0.0.0 - sun and sections menus
 * (done) start with the source code for my vuejs-example-menu project

@@ -13,6 +13,7 @@
         while(i < 12){
             radian = utils.pi2 * (i / 12);
             sections.push({
+                i: i,
                 x: CENTERX + Math.cos(radian) * SECTION_DIST,
                 y: CENTERY + Math.sin(radian) * SECTION_DIST,
                 distance: 0,
