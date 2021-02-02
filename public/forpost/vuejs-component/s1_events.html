@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>vue component example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+
+// A COOKIE UI component that emits a 'bake-event'
+Vue.component('cookie-ui', {
+    props: ['cookies'],
+    template: '<div style="background:gray;padding:10px;">'+
+        '<h3>Cookie UI: </h3>'+
+        '<p><button v-on:click="bakeOne">Bake</button> cookies: {{ cookies }}</p>'+
+    '</div>',
+    methods: {
+        bakeOne: function (e) {
+            this.$emit('bake-event', 1);
+        }
+    }
+});
+
+// main vue
+new Vue({
+    el: '#app',
+    data: function(){
+        return {
+            cookies: 0
+        };
+    },
+    template: '<div style="background:black;padding:10px;">'+
+        '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake"></cookie-ui>'+
+    '</div>',
+    methods: {
+        bake: function(count){
+           this.$data.cookies += count;
+        }
+    }
+})
+</script>
+  </body>
+</html>
