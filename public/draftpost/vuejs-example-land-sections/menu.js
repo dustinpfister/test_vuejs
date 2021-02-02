@@ -100,9 +100,10 @@
             },
             // update sections based on current sun position
             updateSections: function(){
-                var dat = this.$data;
+                var dat = this.$data,
+                sun = dat.sun;
                 dat.sections = dat.sections.map(function(section){
-                    section.distance = utils.distance();
+                    section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
                     section.per = 1;
                     return section;
                 });
