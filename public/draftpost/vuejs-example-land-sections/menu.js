@@ -72,6 +72,7 @@ var vm = new Vue({
     },
     mounted: function(){
         this.setSunPosAD(Math.PI / 180 * 20, 50);
+        this.updateSections();
     },
     methods: {
         // a button was clicked
@@ -93,6 +94,15 @@ var vm = new Vue({
             sun.a = a;
             sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
             sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
+        },
+        // update sections based on current sun position
+        updateSections: function(){
+            var dat = this.$data;
+            dat.sections = dat.sections.map(function(section){
+                section.distance = 10;
+                section.per = 1;
+                return section;
+            });
         }
     }
 });
