@@ -28,11 +28,15 @@ Vue.component('cookie-ui', {
     props: ['cookies'],
     template: '<div class="ui">'+
         '<h3>Cookie UI: </h3>'+
-        '<p><button v-on:click="bakeOne">Bake</button> cookies: {{ cookies }}</p>'+
+        '<p><button v-on:click="bakeOne">Bake One</button> | '+
+        '<button v-on:click="sellOne">Sell One</button></p>'+
     '</div>',
     methods: {
         bakeOne: function (e) {
             this.$emit('bake-event', 1);
+        },
+        sellOne: function (e) {
+            this.$emit('sell-event', 1);
         }
     }
 });
@@ -42,7 +46,7 @@ Vue.component('cookie-disp', {
     props: ['state'],
     template: '<div class="ui">'+
         '<h3>Cookie Shop Game: </h3>'+
-        '<p>cookies: {{ state.cookies }}, flower: {{ state.flower }}</p>'+
+        '<p>cookies: {{ state.cookies }}, flower: {{ state.flower }}, money: ${{ state.money }}</p>'+
     '</div>'
 });
 
@@ -52,12 +56,13 @@ new Vue({
     data: function(){
         return {
             cookies: 0,
-            flower: 10
+            flower: 10,
+            money: 0
         };
     },
     template: '<div class="wrap_main">'+
         '<cookie-disp v-bind:state="$data"></cookie-disp>'+
-        '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake"></cookie-ui>'+
+        '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake" v-on:sell-event="sell" ></cookie-ui>'+
     '</div>',
     methods: {
         bake: function(count){
@@ -65,6 +70,13 @@ new Vue({
            if(dat.flower >= count){
                dat.flower -= count;
                dat.cookies += count;
+           }
+        },
+        sell: function(count){
+           var dat = this.$data;
+           if(dat.cookies > 0){
+               dat.cookies -= count;
+               dat.money += 1;
            }
         }
     }
