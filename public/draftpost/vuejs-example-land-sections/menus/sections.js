@@ -1,5 +1,5 @@
 Vue.component('menu-sections', {
-  props: ['currentMenu'],
+  props: ['currentMenu', 'sun'],
   data: function () {
     return {
     };

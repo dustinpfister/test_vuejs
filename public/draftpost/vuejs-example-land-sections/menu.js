@@ -1,3 +1,9 @@
+
+var SUN_RADIUS = 16,
+CENTERX = 0,
+CENTERY = 0,
+SECTION_DIST = 100;
+
 var createSections = function(){
   var i = 0,
   sections = [];
@@ -37,7 +43,8 @@ var vm = new Vue({
             menus.push(createElement('menu-' + menuName, {
                 props:{
                    //money: vm.$data.money,
-                   currentMenu: vm.$data.currentMenu
+                   currentMenu: vm.$data.currentMenu,
+                   sun: vm.$data.sun
                 },
                 on: {
                     'delta-money': vm.deltaMoney
@@ -51,6 +58,14 @@ var vm = new Vue({
         menus: ['home', 'sun', 'sections'],
         sections: createSections(),
         currentMenu: 'home',
+        sun: {
+           x: CENTERX,
+           y: CENTERY,
+           r: SUN_RADIUS,
+           a: 0,     // angle from center point (0,0)
+           dist: 0,
+           distMax: SECTION_DIST
+        },
         money: 0
     },
     methods: {
