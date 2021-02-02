@@ -45,7 +45,6 @@ var vm = new Vue({
         vm.$data.menus.forEach(function(menuName){
             menus.push(createElement('menu-' + menuName, {
                 props:{
-                   //money: vm.$data.money,
                    currentMenu: vm.$data.currentMenu,
                    sun: vm.$data.sun,
                    sections: vm.$data.sections
@@ -69,8 +68,7 @@ var vm = new Vue({
            a: 0,     // angle from center point (0,0)
            dist: 0,
            MAXDIST: SECTION_DIST
-        },
-        money: 0
+        }
     },
     mounted: function(){
         this.setSunPosAD(Math.PI / 180 * 20, 50);
@@ -95,10 +93,6 @@ var vm = new Vue({
             sun.a = a;
             sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
             sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
-        },
-        deltaMoney: function(a){
-            console.log('delta money event', a);
-            this.$data.money += a;
         }
     }
 });
