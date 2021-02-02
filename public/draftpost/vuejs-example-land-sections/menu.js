@@ -68,6 +68,9 @@ var vm = new Vue({
         },
         money: 0
     },
+    mounted: function(){
+        this.setSunPosAD(Math.PI / 180 * 20, 50);
+    },
     methods: {
         // a button was clicked
         click: function (e) {
@@ -85,7 +88,7 @@ var vm = new Vue({
             sun.dist = d;
             sun.dist = sun.dist < 0 ? 0 : sun.dist;
             sun.dist = sun.dist > sun.MAXDIST ? sun.MAXDIST : sun.dist;
-            sun.a = sun.a;
+            sun.a = a;
             sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
             sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
         },
