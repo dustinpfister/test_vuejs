@@ -2,6 +2,22 @@
   <head>
     <title>vue component example</title>
     <script src="/js/vuejs/2.6.10/vue.js"></script>
+    <style>
+body{
+  padding:0px;
+  margin:0px;
+}
+.wrap_main{
+  background:blue;
+  padding:10px;
+  margin:0px;
+}
+.ui{
+  background:gray;
+  padding:10px;
+  margin:10px;
+}
+    </style>
   </head>
   <body>
   <div id="app"></div>
@@ -10,7 +26,7 @@
 // A COOKIE UI component that emits a 'bake-event'
 Vue.component('cookie-ui', {
     props: ['cookies'],
-    template: '<div style="background:gray;padding:10px;margin:10px;">'+
+    template: '<div class="ui">'+
         '<h3>Cookie UI: </h3>'+
         '<p><button v-on:click="bakeOne">Bake</button> cookies: {{ cookies }}</p>'+
     '</div>',
@@ -21,9 +37,10 @@ Vue.component('cookie-ui', {
     }
 });
 
+// just display info
 Vue.component('cookie-disp', {
     props: ['state'],
-    template: '<div style="background:gray;padding:10px;margin:10px;">'+
+    template: '<div class="ui">'+
         '<h3>Cookie Shop Game: </h3>'+
         '<p>cookies: {{ state.cookies }}, flower: {{ state.flower }}</p>'+
     '</div>'
@@ -38,7 +55,7 @@ new Vue({
             flower: 10
         };
     },
-    template: '<div style="background:black;padding:10px;">'+
+    template: '<div class="wrap_main">'+
         '<cookie-disp v-bind:state="$data"></cookie-disp>'+
         '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake"></cookie-ui>'+
     '</div>',
