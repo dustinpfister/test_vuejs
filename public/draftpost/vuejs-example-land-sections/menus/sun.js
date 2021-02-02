@@ -1,4 +1,4 @@
-Vue.component('menu-sections', {
+Vue.component('menu-sun', {
   props: ['currentMenu'],
   data: function () {
     return {
@@ -7,7 +7,7 @@ Vue.component('menu-sections', {
   render: function(createElement){
       var children = [];
       var vm = this;
-      if(this.$props.currentMenu === 'sections'){
+      if(this.$props.currentMenu === 'sun'){
 /*
           children.push(createElement('input', {
               attrs: {

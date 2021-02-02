@@ -1,8 +1,8 @@
 Vue.component('menu-home', {
-  props: ['money', 'currentMenu'],
+  props: ['currentMenu'],
   data: function () {
     return {
     };
   },
-  template: '<div v-if="currentMenu === \'home\'"><p>This is home current number of clicks: {{ money }}</p></div>'
+  template: '<div v-if="currentMenu === \'home\'"><p>This is the home menu</p></div>'
 });

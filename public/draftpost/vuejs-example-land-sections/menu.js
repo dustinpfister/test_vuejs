@@ -36,7 +36,7 @@ var vm = new Vue({
         vm.$data.menus.forEach(function(menuName){
             menus.push(createElement('menu-' + menuName, {
                 props:{
-                   money: vm.$data.money,
+                   //money: vm.$data.money,
                    currentMenu: vm.$data.currentMenu
                 },
                 on: {
@@ -48,7 +48,7 @@ var vm = new Vue({
         return createElement('div', {class:'wrap_main'}, children);
     },
     data: {
-        menus: ['home', 'sections'],
+        menus: ['home', 'sun', 'sections'],
         sections: createSections(),
         currentMenu: 'home',
         money: 0
