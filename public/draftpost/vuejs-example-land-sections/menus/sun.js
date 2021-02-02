@@ -21,13 +21,13 @@ Vue.component('menu-sun', {
           children.push(createElement('input', {
               attrs: {
                  type: 'text',
-                 value: vm.$props.sun.a
+                 value: vm.$props.sun.a / (Math.PI * 2) * 360
               },
               on: {
                   keydown: function(e){
                       console.log('key down');
                       console.log(e.target.value);
-                      vm.setPos(e.target.value, vm.sun.dist);
+                      vm.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
                   }
               }
           }));
