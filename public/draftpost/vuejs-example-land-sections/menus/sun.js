@@ -1,6 +1,22 @@
 
 (function(){
 
+    // common set of methods
+    var methods = {
+        setA: function(e){
+             this.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
+        },
+        setD: function(e){
+             this.setPos(vm.sun.a, e.target.value);
+        },
+        center: function(e){
+            this.$emit('set-sunpos-ad', 0, 0);
+        },
+        setPos: function(a, d){
+            this.$emit('set-sunpos-ad', Number(a), Number(d));
+        }
+    };
+
     // sun-info component
     Vue.component('sun-info',{
         props: ['sun'],
@@ -14,24 +30,7 @@
             '<p>Angle: <input type="text" v-bind:value="sun.a / (Math.PI * 2) * 360" v-on:keyup="setA"></p>'+
             '<p>Distance: <input type="text" v-bind:value="sun.dist" v-on:keyup="setD"></p>'+
         '</div>',
-        methods: {
-            setA: function(e){
-                 console.log('key down');
-                 console.log(e.target.value);
-                 this.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
-            },
-            setD: function(e){
-                 console.log('key down');
-                 console.log(e.target.value);
-                 this.setPos(vm.sun.a, e.target.value);
-            },
-            center: function(e){
-                this.$emit('set-sunpos-ad', 0, 0);
-            },
-            setPos: function(a, d){
-                this.$emit('set-sunpos-ad', Number(a), Number(d));
-            }
-        }
+        methods: methods
     });
 
     // main menu-sun component
@@ -59,13 +58,6 @@
             }
             return createElement('div', children);
         },
-        methods: {
-            center: function(e){
-                this.$emit('set-sunpos-ad', 0, 0);
-            },
-            setPos: function(a, d){
-                this.$emit('set-sunpos-ad', Number(a), Number(d));
-            }
-        }
+        methods: methods
     });
 }());
