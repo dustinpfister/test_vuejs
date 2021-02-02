@@ -1,24 +1,40 @@
 (function(){
 
-    Vue.component('sections-info', {
+    // ui for selecting the current section index to work on
+    Vue.component('sections-ui-select', {
         props: ['sections'],
         template: '<div>'+
-            '<table>' +
-               '<tr> <th>index</th> <th>distance</th> <th>per</th> <th>pos</th> </tr>'+
-               '<tr v-for="sec, i in sections" >'+
-                  '<td>{{i}}</td>'+
-                  '<td>{{ sec.distance.toFixed(2) }}</td>'+
-                  '<td>{{ sec.per.toFixed(2) }}</td>' +
-                  '<td>{{ Math.round(sec.x) + \', \' + Math.round(sec.y) }}</td>' +
-               '</tr>'+
-            '</table>'+
-        '</div>'
+            '<button v-on:click="prev">prev</button> | '+
+            '<button v-on:click="next">next</button>'+
+        '</div>',
+        methods: {
+            next: function(){
+                this.$emit('step-section', 1);
+            },
+            prev: function(){
+                this.$emit('step-section', -1);
+            }
+        }
     });
 
     Vue.component('menu-sections', {
         props: ['currentMenu', 'sun', 'sections'],
+        data: function(){
+            return {
+                currentSectionIndex: 0
+            }
+        },
         template: '<div v-if="currentMenu === \'sections\'">'+
-            '<sections-info v-bind:sections="sections"></sections-info>'+
-        '</div>'
+            '<sections-ui-select v.bind:sections="sections" v-on:step-section="step" ></sections-ui-select>'+
+        '</div>',
+        methods: {
+            step: function(deltaIndex){
+                var dat = this.$data;
+                dat.currentSectionIndex += deltaIndex;
+                dat.currentSectionIndex = utils.mod(dat.currentSectionIndex, this.$props.sections.length);
+                console.log(dat.currentSectionIndex);
+            }
+        }
+        
     });
 }());
