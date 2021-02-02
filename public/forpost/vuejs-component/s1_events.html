@@ -10,7 +10,7 @@
 // A COOKIE UI component that emits a 'bake-event'
 Vue.component('cookie-ui', {
     props: ['cookies'],
-    template: '<div style="background:gray;padding:10px;">'+
+    template: '<div style="background:gray;padding:10px;margin:10px;">'+
         '<h3>Cookie UI: </h3>'+
         '<p><button v-on:click="bakeOne">Bake</button> cookies: {{ cookies }}</p>'+
     '</div>',
@@ -21,20 +21,34 @@ Vue.component('cookie-ui', {
     }
 });
 
+Vue.component('cookie-disp', {
+    props: ['state'],
+    template: '<div style="background:gray;padding:10px;margin:10px;">'+
+        '<h3>Cookie Shop Game: </h3>'+
+        '<p>cookies: {{ state.cookies }}, flower: {{ state.flower }}</p>'+
+    '</div>'
+});
+
 // main vue
 new Vue({
     el: '#app',
     data: function(){
         return {
-            cookies: 0
+            cookies: 0,
+            flower: 10
         };
     },
     template: '<div style="background:black;padding:10px;">'+
+        '<cookie-disp v-bind:state="$data"></cookie-disp>'+
         '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake"></cookie-ui>'+
     '</div>',
     methods: {
         bake: function(count){
-           this.$data.cookies += count;
+           var dat = this.$data;
+           if(dat.flower >= count){
+               dat.flower -= count;
+               dat.cookies += count;
+           }
         }
     }
 })
