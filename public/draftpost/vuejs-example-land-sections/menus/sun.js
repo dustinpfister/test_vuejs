@@ -26,6 +26,8 @@ Vue.component('menu-sun', {
               on: {
                   keydown: function(e){
                       console.log('key down');
+                      console.log(e.target.value);
+                      vm.setPos(e.target.value, vm.sun.dist);
                   }
               }
           }));
@@ -37,7 +39,7 @@ Vue.component('menu-sun', {
         this.$emit('set-sunpos-ad', 0, 0);
     },
     setPos: function(a, d){
-        this.$emit('set-sunpos-ad', a, d);
+        this.$emit('set-sunpos-ad', Number(a), Number(d));
     }
   }
 });
