@@ -1,6 +1,11 @@
 
-## 0.1.0 - have a grid for each section
+## 0.2.0 - Grid for each section
 * have a grid for each section object
+
+## 0.1.0 - Section select UI
+* start a sections-select component in sections.js
+* the sections-select component can be used to loop forward and backward over sections setting a 'currentSection'
+* Section select ui displays info for the current section, and buttons to change section number
 
 ## 0.0.0 - sun and sections menus
 * (done) start with the source code for my vuejs-example-menu project
@@ -13,6 +18,4 @@
 * (done) use createSections helper in main.js
 * (done) I will want a sections-info component started
 * (done) just display a list of all the sections for now in sections-info
-
-* updating sun angle and dist also updates dist and per values for each section
-* have a sections menu where I can loop over the current state of sections to see distance, and percent values for each
+* (done) updating sun angle and dist also updates dist and per values for each section
