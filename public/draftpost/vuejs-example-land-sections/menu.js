@@ -64,7 +64,7 @@ var vm = new Vue({
            r: SUN_RADIUS,
            a: 0,     // angle from center point (0,0)
            dist: 0,
-           distMax: SECTION_DIST
+           MAXDIST: SECTION_DIST
         },
         money: 0
     },
@@ -78,6 +78,16 @@ var vm = new Vue({
             if(idArr[1] === 'changemenu'){
                 dat.currentMenu = idArr[2];
             }
+        },
+        // set sun position with the given angle and dist
+        setSunPosAD: function(a, d){
+            var sun = this.$data.sun;
+            sun.dist = d;
+            sun.dist = sun.dist < 0 ? 0 : sun.dist;
+            sun.dist = sun.dist > sun.MAXDIST ? sun.MAXDIST : sun.dist;
+            sun.a = sun.a;
+            sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
+            sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
         },
         deltaMoney: function(a){
             console.log('delta money event', a);
