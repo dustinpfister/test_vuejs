@@ -8,23 +8,21 @@ Vue.component('menu-sun', {
       var children = [];
       var vm = this;
       if(this.$props.currentMenu === 'sun'){
-/*
           children.push(createElement('input', {
               attrs: {
                  type: 'button',
-                 value: 'click ('+ vm.$props.money + ')'
+                 value: 'center'
               },
               on: {
                   click: this.click
               }
           }));
-*/
       }
       return createElement('div', children);
   },
   methods: {
     click: function(e){
-        //this.$emit('delta-money', 1);
+        this.$emit('set-sunpos-ad', 0, 0);
     }
   }
 });

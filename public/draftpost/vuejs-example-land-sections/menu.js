@@ -47,7 +47,7 @@ var vm = new Vue({
                    sun: vm.$data.sun
                 },
                 on: {
-                    'delta-money': vm.deltaMoney
+                    'set-sunpos-ad': vm.setSunPosAD
                 }
             }));
         });
