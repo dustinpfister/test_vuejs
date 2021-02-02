@@ -1,6 +1,7 @@
 
 ## 0.2.0 - Grid for each section
-* have a grid for each section object
+* (done) have a grid for each section object
+* start a sections-ui-grid for menu/sections.js
 
 ## 0.1.0 - Section select UI
 * (done) start a sections-ui-select component in sections.js

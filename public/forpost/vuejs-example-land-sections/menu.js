@@ -6,6 +6,28 @@
     CENTERY = 0,
     SECTION_DIST = 100;
 
+    var createGrid = function(){
+        var grid = {
+            w: 11,
+            h: 8,
+            cells: []
+        },
+        i = 0,
+        len = grid.w * grid.h;
+        while(i < len){
+            grid.cells.push({
+               i: i,
+               x: i % grid.w,
+               y: Math.floor(i / grid.w),
+               itemIndex: 0
+            });
+            i += 1;
+        }
+        return grid;
+    };
+
+
+    // create sections array
     var createSections = function(){
         var i = 0,
         radian,
@@ -17,7 +39,8 @@
                 x: CENTERX + Math.cos(radian) * SECTION_DIST,
                 y: CENTERY + Math.sin(radian) * SECTION_DIST,
                 distance: 0,
-                per: 0
+                per: 0,
+                grid: createGrid()
             });
             i += 1;
         }
