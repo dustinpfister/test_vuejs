@@ -1,12 +1,20 @@
 
 (function(){
+
+    // render sun info helper
+    var createSunInfo = function(createElement){
+        var sun = this.$props.sun;
+        return createElement('p', 'x: ' + sun.x + ', y: ' + sun.y);
+    };
+
     Vue.component('menu-sun', {
         props: ['currentMenu', 'sun'],
         data: function () {
             return {};
         },
         render: function(createElement){
-            var children = [];
+
+            var children = [createSunInfo.call(this, createElement)];
             var vm = this;
             if(this.$props.currentMenu === 'sun'){
                 // center button
@@ -25,7 +33,7 @@
                         value: vm.$props.sun.a / (Math.PI * 2) * 360
                     },
                     on: {
-                        keydown: function(e){
+                        keyup: function(e){
                             console.log('key down');
                             console.log(e.target.value);
                             vm.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
