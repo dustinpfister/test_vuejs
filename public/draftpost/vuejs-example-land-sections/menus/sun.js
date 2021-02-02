@@ -5,7 +5,34 @@
     Vue.component('sun-info',{
         props: ['sun'],
         template: '<div> position: {{ sun.x }}, {{ sun.y}} </div>'
-    })
+    });
+
+    // text input ui
+    Vue.component('sun-ui-pos',{
+        props: ['sun'],
+        template: '<div>'+
+            '<input type="text" v-bind:value="sun.a / (Math.PI * 2) * 360" v-on:keyup="setA">'+
+            '<input type="text" v-bind:value="sun.dist" v-on:keyup="setD">'+
+        '</div>',
+        methods: {
+            setA: function(e){
+                 console.log('key down');
+                 console.log(e.target.value);
+                 this.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
+            },
+            setD: function(e){
+                 console.log('key down');
+                 console.log(e.target.value);
+                 this.setPos(vm.sun.a, e.target.value);
+            },
+            center: function(e){
+                this.$emit('set-sunpos-ad', 0, 0);
+            },
+            setPos: function(a, d){
+                this.$emit('set-sunpos-ad', Number(a), Number(d));
+            }
+        }
+    });
 
     // main menu-sun component
     Vue.component('menu-sun', {
@@ -19,8 +46,20 @@
             var vm = this;
             if(this.$props.currentMenu === 'sun'){
                 // push sun info
-                children=[[createElement('sun-info', {props: this.$props})]]
+                children.push( createElement('sun-info', {props: this.$props}) );
+
+                children.push( createElement('sun-ui-pos', {
+                    props: this.$props, 
+                    on: {
+                        'set-sunpos-ad': function(a, b){
+                            vm.setPos(a, b);
+                        }
+                    }
+                 }));
+
                 // center button
+                
+/*
                 children.push(createElement('input', {
                     attrs: {
                         type: 'button',
@@ -30,6 +69,9 @@
                         click: this.center
                     }
                 }));
+*/
+                // text input ui
+/*
                 children.push(createElement('input', {
                     attrs: {
                         type: 'text',
@@ -43,6 +85,7 @@
                         }
                     }
                 }));
+*/
             }
             return createElement('div', children);
         },
