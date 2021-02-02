@@ -1,30 +1,7 @@
-Vue.component('menu-sections', {
-  props: ['currentMenu', 'sun'],
-  data: function () {
-    return {
-    };
-  },
-  render: function(createElement){
-      var children = [];
-      var vm = this;
-      if(this.$props.currentMenu === 'sections'){
-/*
-          children.push(createElement('input', {
-              attrs: {
-                 type: 'button',
-                 value: 'click ('+ vm.$props.money + ')'
-              },
-              on: {
-                  click: this.click
-              }
-          }));
-*/
-      }
-      return createElement('div', children);
-  },
-  methods: {
-    click: function(e){
-        //this.$emit('delta-money', 1);
-    }
-  }
-});
+(function(){
+    Vue.component('menu-sections', {
+        props: ['currentMenu', 'sun'],
+        template: '<div v-if="currentMenu === \'sections\'">'+
+        '</div>'
+    });
+}());

@@ -8,10 +8,9 @@
 * (done) display current sun values in sun menu
 * (done) can set an angle value for the sun
 * (done) can set a dist value for the sun from the center position
-
-* center button in sun-ui-pos
+* (done) center button in sun-ui-pos
 * (done) iife in menu.js
-* use createSections helper in main.js
+* (done) use createSections helper in main.js
 
 * updating sun angle and dist also updates dist and per values for each section
 * have a sections menu where I can loop over the current state of sections to see distance, and percent values for each
