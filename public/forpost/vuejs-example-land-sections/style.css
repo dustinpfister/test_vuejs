@@ -5,6 +5,12 @@ td{
   background:#8f8f8f;
   text-align:center;
 }
+.menu_item{
+  padding:10px;
+  margin:10px;
+  background:#4f4f4f;
+  text-align:center;
+}
 .wrap_main{
 }
 .wrap_menu{

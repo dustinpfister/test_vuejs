@@ -2,7 +2,7 @@
 
     Vue.component('sections-info', {
         props: ['sections'],
-        template: '<div>'+
+        template: '<div class="menu_item">'+
             '<table>' +
                '<tr> <th>index</th> <th>distance</th> <th>per</th> <th>pos</th> </tr>'+
                '<tr v-for="sec, i in sections" >'+
