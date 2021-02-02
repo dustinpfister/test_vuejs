@@ -3,8 +3,8 @@
 * have a grid for each section object
 
 ## 0.1.0 - Section select UI
-* start a sections-select component in sections.js
-* the sections-select component can be used to loop forward and backward over sections setting a 'currentSection'
+* (done) start a sections-ui-select component in sections.js
+* (done) the sections-ui-select component can be used to loop forward and backward over sections setting a 'currentSection'
 * Section select ui displays info for the current section, and buttons to change section number
 
 ## 0.0.0 - sun and sections menus
