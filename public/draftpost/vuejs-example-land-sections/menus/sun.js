@@ -11,8 +11,8 @@
     Vue.component('sun-ui-pos',{
         props: ['sun'],
         template: '<div>'+
-            '<input type="text" v-bind:value="sun.a / (Math.PI * 2) * 360" v-on:keyup="setA">'+
-            '<input type="text" v-bind:value="sun.dist" v-on:keyup="setD">'+
+            '<p>Angle: <input type="text" v-bind:value="sun.a / (Math.PI * 2) * 360" v-on:keyup="setA"></p>'+
+            '<p>Distance: <input type="text" v-bind:value="sun.dist" v-on:keyup="setD"></p>'+
         '</div>',
         methods: {
             setA: function(e){
@@ -47,7 +47,7 @@
             if(this.$props.currentMenu === 'sun'){
                 // push sun info
                 children.push( createElement('sun-info', {props: this.$props}) );
-
+                // push sun-ui-pos
                 children.push( createElement('sun-ui-pos', {
                     props: this.$props, 
                     on: {
@@ -56,36 +56,6 @@
                         }
                     }
                  }));
-
-                // center button
-                
-/*
-                children.push(createElement('input', {
-                    attrs: {
-                        type: 'button',
-                        value: 'center'
-                    },
-                    on: {
-                        click: this.center
-                    }
-                }));
-*/
-                // text input ui
-/*
-                children.push(createElement('input', {
-                    attrs: {
-                        type: 'text',
-                        value: vm.$props.sun.a / (Math.PI * 2) * 360
-                    },
-                    on: {
-                        keyup: function(e){
-                            console.log('key down');
-                            console.log(e.target.value);
-                            vm.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
-                        }
-                    }
-                }));
-*/
             }
             return createElement('div', children);
         },
