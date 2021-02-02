@@ -12,5 +12,7 @@
 * (done) iife in menu.js
 * (done) use createSections helper in main.js
 
+* I will want a sections-info component
+
 * updating sun angle and dist also updates dist and per values for each section
 * have a sections menu where I can loop over the current state of sections to see distance, and percent values for each

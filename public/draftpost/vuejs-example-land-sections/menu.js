@@ -16,6 +16,7 @@ var createSections = function(){
      });
      i += 1;
   }
+  return sections;
 };
 
 
@@ -46,7 +47,8 @@ var vm = new Vue({
                 props:{
                    //money: vm.$data.money,
                    currentMenu: vm.$data.currentMenu,
-                   sun: vm.$data.sun
+                   sun: vm.$data.sun,
+                   sections: vm.$data.sections
                 },
                 on: {
                     'set-sunpos-ad': vm.setSunPosAD
