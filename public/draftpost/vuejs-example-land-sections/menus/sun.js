@@ -1,12 +1,13 @@
 
 (function(){
 
-    // render sun info helper
-    var createSunInfo = function(createElement){
-        var sun = this.$props.sun;
-        return createElement('p', 'x: ' + sun.x + ', y: ' + sun.y);
-    };
+    // sun-info component
+    Vue.component('sun-info',{
+        props: ['sun'],
+        template: '<div> position: {{ sun.x }}, {{ sun.y}} </div>'
+    })
 
+    // main menu-sun component
     Vue.component('menu-sun', {
         props: ['currentMenu', 'sun'],
         data: function () {
@@ -14,9 +15,11 @@
         },
         render: function(createElement){
 
-            var children = [createSunInfo.call(this, createElement)];
+            var children = [];
             var vm = this;
             if(this.$props.currentMenu === 'sun'){
+                // push sun info
+                children=[[createElement('sun-info', {props: this.$props})]]
                 // center button
                 children.push(createElement('input', {
                     attrs: {
