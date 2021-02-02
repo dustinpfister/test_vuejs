@@ -10,7 +10,7 @@
 * (done) can set a dist value for the sun from the center position
 
 * center button in sun-ui-pos
-* iife in menu.js
+* (done) iife in menu.js
 * use createSections helper in main.js
 
 * updating sun angle and dist also updates dist and per values for each section

@@ -29,6 +29,7 @@
         template: '<div>'+
             '<p>Angle: <input type="text" v-bind:value="sun.a / (Math.PI * 2) * 360" v-on:keyup="setA"></p>'+
             '<p>Distance: <input type="text" v-bind:value="sun.dist" v-on:keyup="setD"></p>'+
+            '<p><input type="button" value="center" v-on:click="center"></p>'+
         '</div>',
         methods: methods
     });
