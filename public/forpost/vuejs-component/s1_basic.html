@@ -1,3 +1,14 @@
+<html>
+  <head>
+    <title>vue component example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="step-demo">
+    <step></step>
+    <step></step>
+  </div>
+  <script>
 // A Basic step Component
 Vue.component('step', {
     template: '<div><button v-on:click="step">step</button> i: {{ i }} </div>',
@@ -12,7 +23,10 @@ Vue.component('step', {
         }
     }
 });
-
+ 
 new Vue({
     el: '#step-demo'
 })
+</script>
+  </body>
+</html>

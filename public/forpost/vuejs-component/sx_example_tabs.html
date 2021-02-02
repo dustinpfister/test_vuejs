@@ -1,3 +1,13 @@
+<html>
+  <head>
+    <title>vue component example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="tabs-demo">
+    <tabs></tabs>
+  </div>
+  <script>
 Vue.component('tab', {
     props: ['tabname'],
     template: '<div v-on:click="clicked" v-bind:style="tab_style" ><slot></slot></div>',
@@ -12,10 +22,10 @@ Vue.component('tab', {
         }
     }
 });
-
+ 
 Vue.component('tabs', {
     render: function (createElement) {
-
+ 
         var tabs = ['foo', 'bar'],
         children = [];
         tabs.forEach(function (tabName) {
@@ -39,7 +49,10 @@ Vue.component('tabs', {
         }
     }
 });
-
+ 
 new Vue({
     el: '#tabs-demo'
 })
+</script>
+  </body>
+</html>
