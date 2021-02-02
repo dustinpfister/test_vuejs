@@ -8,9 +8,13 @@
 
     var createSections = function(){
         var i = 0,
+        radian,
         sections = [];
         while(i < 12){
+            radian = utils.pi2 * (i / 12);
             sections.push({
+                x: CENTERX + Math.cos(radian) * SECTION_DIST,
+                y: CENTERY + Math.sin(radian) * SECTION_DIST,
                 distance: 0,
                 per: 0
             });
@@ -98,7 +102,7 @@
             updateSections: function(){
                 var dat = this.$data;
                 dat.sections = dat.sections.map(function(section){
-                    section.distance = 10;
+                    section.distance = utils.distance();
                     section.per = 1;
                     return section;
                 });
