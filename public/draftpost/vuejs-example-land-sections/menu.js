@@ -1,4 +1,6 @@
 
+(function(){
+
 var SUN_RADIUS = 16,
 CENTERX = 0,
 CENTERY = 0,
@@ -98,3 +100,5 @@ var vm = new Vue({
         }
     }
 });
+
+}());

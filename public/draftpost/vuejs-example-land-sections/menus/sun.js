@@ -4,10 +4,10 @@
     // common set of methods
     var methods = {
         setA: function(e){
-             this.setPos(Math.PI / 180 * e.target.value, vm.sun.dist);
+             this.setPos(Math.PI / 180 * e.target.value, this.$props.sun.dist);
         },
         setD: function(e){
-             this.setPos(vm.sun.a, e.target.value);
+             this.setPos(this.$props.sun.a, e.target.value);
         },
         center: function(e){
             this.$emit('set-sunpos-ad', 0, 0);
