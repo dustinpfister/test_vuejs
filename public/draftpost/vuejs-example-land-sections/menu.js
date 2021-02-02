@@ -97,6 +97,7 @@
                 sun.a = a;
                 sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
                 sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
+                this.updateSections();
             },
             // update sections based on current sun position
             updateSections: function(){

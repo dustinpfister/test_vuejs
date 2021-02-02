@@ -4,7 +4,7 @@
         props: ['sections'],
         template: '<div>'+
             '<ul>' +
-               '<li v-for="sec, i in sections" >section: {{i}}, dist: {{sec.distance}}, per: {{ sec.per }}</li>'+
+               '<li v-for="sec, i in sections" >section: {{i}}, dist: {{ sec.distance.toFixed(2) }}, per: {{ sec.per }}</li>'+
             '</ul>'+
         '</div>'
     });
