@@ -28,8 +28,9 @@ Vue.component('cookie-ui', {
     props: ['cookies'],
     template: '<div class="ui">'+
         '<h3>Cookie UI: </h3>'+
-        '<p><button v-on:click="bakeOne">Bake One</button> | '+
-        '<button v-on:click="sellOne">Sell One</button></p>'+
+        '<p><button v-on:click="bakeOne">Bake One Cookie</button> | '+
+        '<button v-on:click="buyOne">Buy One Flower</button> | '+
+        '<button v-on:click="sellOne">Sell One Cookie</button></p>'+
     '</div>',
     methods: {
         bakeOne: function (e) {
@@ -37,6 +38,9 @@ Vue.component('cookie-ui', {
         },
         sellOne: function (e) {
             this.$emit('sell-event', 1);
+        },
+        buyOne: function (e) {
+            this.$emit('buy-event', 1);
         }
     }
 });
@@ -62,7 +66,7 @@ new Vue({
     },
     template: '<div class="wrap_main">'+
         '<cookie-disp v-bind:state="$data"></cookie-disp>'+
-        '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake" v-on:sell-event="sell" ></cookie-ui>'+
+        '<cookie-ui v-bind:cookies="cookies" v-on:bake-event="bake" v-on:sell-event="sell" v-on:buy-event="buy" ></cookie-ui>'+
     '</div>',
     methods: {
         bake: function(count){
@@ -74,9 +78,16 @@ new Vue({
         },
         sell: function(count){
            var dat = this.$data;
-           if(dat.cookies > 0){
+           if(dat.cookies >= count){
                dat.cookies -= count;
-               dat.money += 1;
+               dat.money += count;
+           }
+        },
+        buy: function(count){
+           var dat = this.$data;
+           if(dat.money >= count){
+               dat.money -= count;
+               dat.flower += count;
            }
         }
     }
