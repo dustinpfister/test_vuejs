@@ -1,4 +1,4 @@
-
+// global method(s)
 Vue.mixin({
   methods: {
     format_money: utils.format_money
@@ -10,8 +10,8 @@ Vue.component('webassets-ui-create', {
     props: ['state'],
     data: function(){
         return {
-            startPosts: 20,
-            wordsPerPost: 500,
+            startPosts: 10,
+            wordsPerPost: 100,
             wordsPerClick: 100,
             progress: {
                 words: 0,
@@ -25,18 +25,27 @@ Vue.component('webassets-ui-create', {
     },
     template: '<div class="ui">'+
         '<h3>Create a Website for Free: </h3>' +
+        '<div>Progress: {{ progress.words }} / {{ progress.wordsNeeded }} {{ progress.per }}</div>'+
+        '<button v-on:click="write()">Write</button>'+
     '</div>',
     methods: {
         updateProgress: function(){
             var dat = this.$data,
             progress = dat.progress;
             progress.wordsNeeded = dat.startPosts * dat.wordsPerPost;
+            progress.words = progress.words > progress.wordsNeeded ? progress.wordsNeeded: progress.words;
             progress.per = progress.words / progress.wordsNeeded;
         },
         write: function (webAssetIndex) {
             var dat = this.$data,
             progress = dat.progress;
-            
+            progress.words += dat.wordsPerClick;
+            this.updateProgress();
+            if(progress.per === 1){
+                this.$emit('create-event', dat.startPosts, progress.wordsNeeded);
+                progress.words = 0;
+                this.updateProgress();
+            }
         }
     }
 });
@@ -108,11 +117,14 @@ new Vue({
     },
     template: '<div class="wrap_main">'+
         '<webassets-disp v-bind:state="$data"></webassets-disp>'+
-        '<webassets-ui-create v-bind:state="$data"></webassets-ui-create>'+
+        '<webassets-ui-create v-bind:state="$data" v-on:create-event="create"></webassets-ui-create>'+
         '<webassets-ui-buy v-bind:state="$data" v-on:buy-event="buy" ></webassets-ui-buy>'+
         '<webassets-ui-current v-bind:state="$data" v-on:sell-event="sell" ></webassets-ui-current>'+
     '</div>',
     methods: {
+        create: function(posts, words){
+            console.log(posts, words);
+        },
         buy: function(webAsset){
            console.log(webAsset.postCount);
            this.$data.money -= webAsset.worth;
