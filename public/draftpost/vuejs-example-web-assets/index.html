@@ -30,7 +30,10 @@ Vue.component('webassets-ui-buy', {
         return {
             webAsset: {
                 types: ['blog'],
-                postCount: 100,
+                blog: {
+                    postCount: 100,
+                    avgWordsPerPost: 800
+                },
                 monetizations: ['ads']
             }
         }
