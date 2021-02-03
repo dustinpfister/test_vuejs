@@ -41,13 +41,13 @@ Vue.component('webassets-ui-current', {
         '<div v-for="asset, index in state.webAssets" class="">'+
             '<p>Site: </p>'+
             '<p>{{ format_money(asset.worth) }}</p>'+
-            //'<button v-on:click="buy(index)">Buy</button>'+
+            '<button v-on:click="sell(index)">Sell</button>'+
         '</div>'+
     '</div>',
     methods: {
         // sell a webAsset
-        sell: function (webAsset) {
-            this.$emit('sell-event', webAsset);
+        sell: function (index) {
+            this.$emit('sell-event', index);
         }
     }
 });
@@ -81,7 +81,10 @@ new Vue({
            this.$data.money -= webAsset.worth;
            this.$data.webAssets.push(webAsset);
         },
-        sell: function(webAsset){
+        sell: function(index){
+           var webAsset = this.$data.webAssets[index];
+           this.$data.money += webAsset.worth;
+           this.$data.webAssets.splice(index, 1);
         }
     }
 });
