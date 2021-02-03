@@ -26,7 +26,13 @@ Vue.component('webassets-disp', {
     props: ['state'],
     template: '<div class="ui">' +
         '<h3>Web Assets Game: </h3>' +
-    '</div>'
+        '<p>Money: {{ format(state.money) }}</p>'+
+    '</div>',
+    methods: {
+        format: function(money){
+           return '$' + money;
+        }
+    }
 });
 
 // main vue
@@ -34,6 +40,7 @@ new Vue({
     el: '#app',
     data: function(){
         return {
+            money: 1000,
             webAssets: []
         };
     },
