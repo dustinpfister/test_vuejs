@@ -14,7 +14,9 @@
 
 ## 0.3.0 - sun-ui-canvas interface
 * (done) start a new sun-ui-canvas comp that will display the current position of the sun in a canvas element
-* draw sections in canvas
+* (done) draw sections in canvas
+* fix bug where max sun distance causes the sun to be on top of sections rather than just touching 
+
 
 ## 0.2.0 - Grid for each section
 * (done) have a grid for each section object
