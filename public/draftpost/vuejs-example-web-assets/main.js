@@ -1,4 +1,10 @@
 
+Vue.mixin({
+  methods: {
+    format_money: utils.format_money
+  }
+});
+
 // Buy a WebAsset object
 Vue.component('webassets-ui-buy', {
     props: ['state'],
@@ -11,6 +17,7 @@ Vue.component('webassets-ui-buy', {
         '<h3>Buy Website: </h3>'+
         '<div v-for="asset in forSale" class="forsale">'+
             '<p>For Sale: </p>'+
+            '<p>{{ format_money(asset.worth) }}</p>'+
             '<button v-on:click="buy(asset)">Buy</button>'+
         '</div>'+
     '</div>',
@@ -26,13 +33,8 @@ Vue.component('webassets-disp', {
     props: ['state'],
     template: '<div class="ui">' +
         '<h3>Web Assets Game: </h3>' +
-        '<p>Money: {{ format(state.money) }}</p>'+
-    '</div>',
-    methods: {
-        format: function(money){
-           return utils.format_money(money);
-        }
-    }
+        '<p>Money: {{ format_money(state.money) }}</p>'+
+    '</div>'
 });
 
 // main vue
