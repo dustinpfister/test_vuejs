@@ -62,9 +62,13 @@
             this.draw();
         },
         watch: {
-            sun: function(){
-                console.log('okay');
+            sun: {
+            //immediate: true,
+            deep: true,
+            handler(newValue, oldValue) {
+                this.draw();
             }
+        }
         },
         methods: {
             draw : function(){

@@ -125,14 +125,14 @@
             menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
             currentMenu: 'sun',
-            sun: Vue.observable({
+            sun: {
                x: CENTERX,
                y: CENTERY,
                r: SUN_RADIUS,
                a: 0,     // angle from center point (0,0)
                dist: 0,
                MAXDIST: SECTION_DIST
-            })
+            }
         },
         mounted: function(){
             this.setSunPosAD(Math.PI / 180 * 20, 50);
