@@ -1,8 +1,13 @@
 var WebAsset = (function(){
 
     var setAssetWorth = function(asset){
-        asset.worth = Math.floor(asset.words * 0.0125);
-        asset.moneyPerTick = 1 + Math.floor(asset.worth * 0.01);
+        var d = Math.log(1 + (asset.avgWordsPerPost / 2400)) / Math.log(2);
+        d = d > 1 ? 1: d;
+        d = d < 0 ? 0: d;
+        // worth set by total word count, and d
+        asset.worth = Math.floor(asset.words * (0.0125 + 0.4875 * d));
+        // money per tick set by worth
+        asset.moneyPerTick = 1 + Math.floor(asset.worth * (0.01 + 0.04 * d));
     };
 
     var api = function(opt){
@@ -17,9 +22,9 @@ var WebAsset = (function(){
             write: {
                 words: 0,
                 per: 0,
-                target: 500
+                target: opt.target || 500
             },
-            moneyPerTick:0
+            moneyPerTick: 0
         };
         asset.avgWordsPerPost = asset.words / asset.postCount;
         setAssetWorth(asset);
@@ -37,7 +42,7 @@ var WebAsset = (function(){
            asset.avgWordsPerPost = asset.words / asset.postCount;
            asset.write.words = utils.mod(asset.write.words, asset.write.target);
            asset.per = asset.write.words / asset.write.target;
-          setAssetWorth(asset);
+           setAssetWorth(asset);
         }
     };
 

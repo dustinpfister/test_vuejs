@@ -12,7 +12,7 @@ var main = new Vue({
         return {
             money: 0,
             lastUpdate: new Date(),
-            webAssets: [WebAsset({words: 10000})]
+            webAssets: [WebAsset({words: 10000, target: 1800})]
         };
     },
     template: '<div class="wrap_main">'+
