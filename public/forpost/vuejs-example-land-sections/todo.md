@@ -13,7 +13,8 @@
 * any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
 ## 0.3.0 - sun-ui-canvas interface
-* start a new sun-ui-canvas comp that will display the current position of the sun in a canvas element
+* (done) start a new sun-ui-canvas comp that will display the current position of the sun in a canvas element
+* draw sections in canvas
 
 ## 0.2.0 - Grid for each section
 * (done) have a grid for each section object

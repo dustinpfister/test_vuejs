@@ -75,6 +75,7 @@
                 i: i,
                 x: CENTERX + Math.cos(radian) * SECTION_DIST,
                 y: CENTERY + Math.sin(radian) * SECTION_DIST,
+                r: 16,
                 distance: 0,
                 per: 0,
                 grid: createGrid(maps[i])

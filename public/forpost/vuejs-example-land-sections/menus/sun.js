@@ -36,7 +36,7 @@
     });
 
     Vue.component('sun-ui-canvas',{
-        props: ['sun'],
+        props: ['sun', 'sections'],
         mixins: [methods],
         data: function(){
             return {
@@ -88,13 +88,20 @@
                 ctx.beginPath();
                 ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
                 ctx.fill();
+
+                this.$props.sections.forEach(function(sun){
+                    ctx.fillStyle = 'blue';
+                    ctx.beginPath();
+                    ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
             }
         }
     });
 
     // main menu-sun component
     Vue.component('menu-sun', {
-        props: ['currentMenu', 'sun'],
+        props: ['currentMenu', 'sun', 'sections'],
         data: function () {
             return {};
         },
