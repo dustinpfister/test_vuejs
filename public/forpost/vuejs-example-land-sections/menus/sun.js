@@ -39,7 +39,17 @@
         props: ['sun'],
         template: '<div class="menu_item">'+
             '<h3>Sun Position canvas</h3>'+
+            '<div id="canvas-app-sun-pos"></div>' +
         '</div>',
+        mounted: function(){
+            var canvasObj = utils.createCanvas({
+                container: document.getElementById('canvas-app-sun-pos')
+            });
+            var canvas = canvasObj.canvas;
+            var ctx = canvasObj.ctx;
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0,canvas.width, canvas.height);
+        },
         methods: methods
     });
 
