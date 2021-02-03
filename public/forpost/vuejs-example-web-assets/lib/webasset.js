@@ -9,6 +9,10 @@ var WebAsset = (function(){
             postCount: opt.postCount || 10,
             avgWordsPerPost: 0,
             worth: 0,
+            write: {
+                words: 0,
+                target: 500
+            },
             moneyPerTick:0
         };
         asset.avgWordsPerPost = asset.words / asset.postCount;
