@@ -124,7 +124,7 @@
         data: {
             menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
-            currentMenu: 'sections',
+            currentMenu: 'sun',
             sun: {
                x: CENTERX,
                y: CENTERY,

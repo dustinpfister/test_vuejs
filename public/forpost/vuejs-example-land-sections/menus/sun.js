@@ -35,6 +35,14 @@
         methods: methods
     });
 
+    Vue.component('sun-ui-canvas',{
+        props: ['sun'],
+        template: '<div class="menu_item">'+
+            '<h3>Sun Position canvas</h3>'+
+        '</div>',
+        methods: methods
+    });
+
     // main menu-sun component
     Vue.component('menu-sun', {
         props: ['currentMenu', 'sun'],
@@ -48,6 +56,7 @@
             if(this.$props.currentMenu === 'sun'){
                 // push sun info
                 children.push( createElement('sun-info', {props: this.$props}) );
+                children.push( createElement('sun-ui-canvas', {props: this.$props}) );
                 // push sun-ui-pos
                 children.push( createElement('sun-ui-pos', {
                     props: this.$props, 
