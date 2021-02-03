@@ -37,20 +37,49 @@
 
     Vue.component('sun-ui-canvas',{
         props: ['sun'],
+        mixins: [methods],
+        data: function(){
+            return {
+               canvasObj: null,
+               canvas: null,
+               ctx: null
+            };
+        },
         template: '<div class="menu_item">'+
             '<h3>Sun Position canvas</h3>'+
             '<div id="canvas-app-sun-pos"></div>' +
+            '<button v-on:click="draw()">draw</button>' +
         '</div>',
         mounted: function(){
-            var canvasObj = utils.createCanvas({
-                container: document.getElementById('canvas-app-sun-pos')
+            var dat = this.$data;
+            dat.canvasObj = utils.createCanvas({
+                container: document.getElementById('canvas-app-sun-pos'),
+                width: 320,
+                height: 240
             });
-            var canvas = canvasObj.canvas;
-            var ctx = canvasObj.ctx;
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0,0,canvas.width, canvas.height);
+            dat.canvas = dat.canvasObj.canvas;
+            dat.ctx = dat.canvasObj.ctx;
+            this.draw();
         },
-        methods: methods
+        watch: {
+            sun: function(){
+                console.log('okay');
+            }
+        },
+        methods: {
+            draw : function(){
+                var dat = this.$data,
+                ctx = dat.ctx,
+                sun = this.$props.sun;
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, dat.canvas.width, dat.canvas.height);
+
+                ctx.fillStyle = 'yellow';
+                ctx.beginPath();
+                ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
     });
 
     // main menu-sun component

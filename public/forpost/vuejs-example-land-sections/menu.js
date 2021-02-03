@@ -2,8 +2,8 @@
 (function(){
 
     var SUN_RADIUS = 16,
-    CENTERX = 0,
-    CENTERY = 0,
+    CENTERX = 160,
+    CENTERY = 120,
     SECTION_DIST = 100;
 
     var maps = [
@@ -125,14 +125,14 @@
             menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
             currentMenu: 'sun',
-            sun: {
+            sun: Vue.observable({
                x: CENTERX,
                y: CENTERY,
                r: SUN_RADIUS,
                a: 0,     // angle from center point (0,0)
                dist: 0,
                MAXDIST: SECTION_DIST
-            }
+            })
         },
         mounted: function(){
             this.setSunPosAD(Math.PI / 180 * 20, 50);
