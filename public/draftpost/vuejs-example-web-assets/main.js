@@ -55,7 +55,7 @@ Vue.component('webassets-ui-buy', {
     props: ['state'],
     data: function(){
         return {
-            forSale: [WebAsset(), WebAsset()]
+            forSale: [WebAsset({words: 50000}), WebAsset({words: 700000})]
         }
     },
     template: '<div class="ui">'+
@@ -67,12 +67,12 @@ Vue.component('webassets-ui-buy', {
         '</div>'+
     '</div>',
     methods: {
-        buy: function (webAssetIndex) {
+        buy: function (assetIndex) {
             var money = this.$props.state.money,
-            webAsset = this.$data.forSale[webAssetIndex];
-            if(money >= webAsset.worth){
-                this.$data.forSale.splice(webAssetIndex, 1);
-                this.$emit('buy-event', webAsset);
+            asset = this.$data.forSale[assetIndex];
+            if(money >= asset.worth){
+                this.$data.forSale.splice(assetIndex, 1);
+                this.$emit('buy-event', asset);
             }
         }
     }
@@ -124,15 +124,18 @@ new Vue({
     methods: {
         create: function(posts, words){
             console.log(posts, words);
+            this.$data.webAssets.push(webAsset({
+                posts: posts,
+                words: words
+            }));
         },
-        buy: function(webAsset){
-           console.log(webAsset.postCount);
-           this.$data.money -= webAsset.worth;
-           this.$data.webAssets.push(webAsset);
+        buy: function(asset){
+           this.$data.money -= asset.worth;
+           this.$data.webAssets.push(asset);
         },
         sell: function(index){
-           var webAsset = this.$data.webAssets[index];
-           this.$data.money += webAsset.worth;
+           var asset = this.$data.webAssets[index];
+           this.$data.money += asset.worth;
            this.$data.webAssets.splice(index, 1);
         }
     }
