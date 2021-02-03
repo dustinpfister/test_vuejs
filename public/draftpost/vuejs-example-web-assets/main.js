@@ -30,7 +30,7 @@ Vue.component('webassets-disp', {
     '</div>',
     methods: {
         format: function(money){
-           return '$' + money;
+           return utils.format_money(money);
         }
     }
 });
