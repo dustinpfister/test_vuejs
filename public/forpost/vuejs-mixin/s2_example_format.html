@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>vue mixin example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div>
+    <span id="one"></span><br>
+    <span id="two"></span><br>
+  </div>
+  <script>
+Vue.mixin({
+    methods: {
+        format_money: function(money, curr){
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: curr || 'USD',
+                minimumFractionDigits: 2, 
+                maximumFractionDigits: 2
+            });
+            return formatter.format(money);
+        }
+    },
+    template: '<div>{{ format_money(money, currency) }}</div>'
+});
+ 
+new Vue({
+    el: '#one',
+    data: {
+        money: 100,
+        currency: 'EUR'
+    }
+});
+
+new Vue({
+    el: '#two',
+    data: {
+        money: 3.50,
+        currency: 'USD'
+    }
+});
+ 
+  </script>
+  </body>
+</html>
