@@ -6,20 +6,40 @@
     CENTERY = 0,
     SECTION_DIST = 100;
 
-    var createGrid = function(){
+    var maps = [
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2',
+
+        '3,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2'
+    ];
+
+    var createGrid = function(indexString){
+        indexString = indexString || '';
         var grid = {
-            w: 11,
-            h: 8,
+            w: 10,
+            h: 7,
             cells: []
         },
         i = 0,
-        len = grid.w * grid.h;
+        len = grid.w * grid.h,
+        indexArr = indexString.split(',')
         while(i < len){
             grid.cells.push({
                i: i,
                x: i % grid.w,
                y: Math.floor(i / grid.w),
-               itemIndex: 0
+               itemIndex: indexArr[i] || 0
             });
             i += 1;
         }
@@ -40,7 +60,7 @@
                 y: CENTERY + Math.sin(radian) * SECTION_DIST,
                 distance: 0,
                 per: 0,
-                grid: createGrid()
+                grid: createGrid(maps[i])
             });
             i += 1;
         }

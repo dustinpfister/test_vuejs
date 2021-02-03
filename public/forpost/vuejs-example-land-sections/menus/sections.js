@@ -35,7 +35,7 @@
         '</div>',
         methods: {
             setStyle: function(cell){
-                var color = ['gray', 'red', 'green', 'blue'];
+                var color = ['blue', 'red', 'yellow', 'green'];
                 return 'position:absolute;'+
                 'left:'+Math.floor(32 * cell.x)+'px;'+
                 'top:'+Math.floor(32 * cell.y)+'px;'+
