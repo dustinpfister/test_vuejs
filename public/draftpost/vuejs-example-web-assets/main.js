@@ -15,15 +15,39 @@ Vue.component('webassets-ui-buy', {
     },
     template: '<div class="ui">'+
         '<h3>Buy Website: </h3>'+
-        '<div v-for="asset in forSale" class="forsale">'+
+        '<div v-for="asset, index in forSale" class="forsale">'+
             '<p>For Sale: </p>'+
             '<p>{{ format_money(asset.worth) }}</p>'+
-            '<button v-on:click="buy(asset)">Buy</button>'+
+            '<button v-on:click="buy(index)">Buy</button>'+
         '</div>'+
     '</div>',
     methods: {
-        buy: function (webAsset) {
-            this.$emit('buy-event', webAsset);
+        buy: function (webAssetIndex) {
+            var money = this.$props.state.money,
+            webAsset = this.$data.forSale[webAssetIndex];
+            if(money >= webAsset.worth){
+                this.$data.forSale.splice(webAssetIndex, 1);
+                this.$emit('buy-event', webAsset);
+            }
+        }
+    }
+});
+
+// Buy a WebAsset object
+Vue.component('webassets-ui-current', {
+    props: ['state'],
+    template: '<div class="ui">'+
+        '<h3>Current Websites: </h3>'+
+        '<div v-for="asset, index in state.webAssets" class="">'+
+            '<p>Site: </p>'+
+            '<p>{{ format_money(asset.worth) }}</p>'+
+            //'<button v-on:click="buy(index)">Buy</button>'+
+        '</div>'+
+    '</div>',
+    methods: {
+        // sell a webAsset
+        sell: function (webAsset) {
+            this.$emit('sell-event', webAsset);
         }
     }
 });
@@ -49,10 +73,15 @@ new Vue({
     template: '<div class="wrap_main">'+
         '<webassets-disp v-bind:state="$data"></webassets-disp>'+
         '<webassets-ui-buy v-bind:state="$data" v-on:buy-event="buy" ></webassets-ui-buy>'+
+        '<webassets-ui-current v-bind:state="$data" v-on:sell-event="sell" ></webassets-ui-current>'+
     '</div>',
     methods: {
         buy: function(webAsset){
            console.log(webAsset.postCount);
+           this.$data.money -= webAsset.worth;
+           this.$data.webAssets.push(webAsset);
+        },
+        sell: function(webAsset){
         }
     }
 });
