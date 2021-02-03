@@ -4,19 +4,15 @@ Vue.component('webassets-ui-buy', {
     props: ['state'],
     data: function(){
         return {
-            webAsset: {
-                types: ['blog'],
-                blog: {
-                    postCount: 100,
-                    avgWordsPerPost: 800
-                },
-                monetizations: ['ads']
-            }
+            forSale: [WebAsset(), WebAsset()]
         }
     },
     template: '<div class="ui">'+
         '<h3>Buy Website: </h3>'+
-        '<button v-on:click="buy(webAsset)">Buy</button>'+
+        '<div v-for="asset in forSale" class="forsale">'+
+            '<p>For Sale: </p>'+
+            '<button v-on:click="buy(asset)">Buy</button>'+
+        '</div>'+
     '</div>',
     methods: {
         buy: function (webAsset) {
@@ -47,7 +43,7 @@ new Vue({
     '</div>',
     methods: {
         buy: function(webAsset){
-           console.log(webAsset);
+           console.log(webAsset.postCount);
         }
     }
 });
