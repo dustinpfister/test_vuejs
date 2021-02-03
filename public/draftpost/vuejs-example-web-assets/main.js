@@ -5,7 +5,43 @@ Vue.mixin({
   }
 });
 
-// Buy a WebAsset object
+// Create a WebAsset
+Vue.component('webassets-ui-create', {
+    props: ['state'],
+    data: function(){
+        return {
+            startPosts: 20,
+            wordsPerPost: 500,
+            wordsPerClick: 100,
+            progress: {
+                words: 0,
+                wordsNeeded: 0,
+                per: 0
+            }
+        }
+    },
+    mounted: function(){
+        this.updateProgress();
+    },
+    template: '<div class="ui">'+
+        '<h3>Create a Website for Free: </h3>' +
+    '</div>',
+    methods: {
+        updateProgress: function(){
+            var dat = this.$data,
+            progress = dat.progress;
+            progress.wordsNeeded = dat.startPosts * dat.wordsPerPost;
+            progress.per = progress.words / progress.wordsNeeded;
+        },
+        write: function (webAssetIndex) {
+            var dat = this.$data,
+            progress = dat.progress;
+            
+        }
+    }
+});
+
+// Buy a WebAsset object with money
 Vue.component('webassets-ui-buy', {
     props: ['state'],
     data: function(){
@@ -33,7 +69,7 @@ Vue.component('webassets-ui-buy', {
     }
 });
 
-// Buy a WebAsset object
+// prefrom actions with current websites
 Vue.component('webassets-ui-current', {
     props: ['state'],
     template: '<div class="ui">'+
@@ -72,6 +108,7 @@ new Vue({
     },
     template: '<div class="wrap_main">'+
         '<webassets-disp v-bind:state="$data"></webassets-disp>'+
+        '<webassets-ui-create v-bind:state="$data"></webassets-ui-create>'+
         '<webassets-ui-buy v-bind:state="$data" v-on:buy-event="buy" ></webassets-ui-buy>'+
         '<webassets-ui-current v-bind:state="$data" v-on:sell-event="sell" ></webassets-ui-current>'+
     '</div>',
