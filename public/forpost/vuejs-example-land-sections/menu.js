@@ -126,6 +126,8 @@
             sections: createSections(),
             currentMenu: 'sun',
             sun: {
+               cx: CENTERX,
+               cy: CENTERY,
                x: CENTERX,
                y: CENTERY,
                r: SUN_RADIUS,

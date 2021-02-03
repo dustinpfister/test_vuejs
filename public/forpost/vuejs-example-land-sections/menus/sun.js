@@ -77,6 +77,13 @@
                 ctx.fillStyle = 'black';
                 ctx.fillRect(0, 0, dat.canvas.width, dat.canvas.height);
 
+                // small dot in center
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(sun.cx, sun.cy, 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // sun
                 ctx.fillStyle = 'yellow';
                 ctx.beginPath();
                 ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
