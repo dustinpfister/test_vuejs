@@ -1,7 +1,5 @@
 var WebAsset = (function(){
 
-
-
     var api = function(opt){
         var asset = {
             postCount: 100,
