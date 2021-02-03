@@ -124,7 +124,7 @@ new Vue({
     methods: {
         create: function(posts, words){
             console.log(posts, words);
-            this.$data.webAssets.push(webAsset({
+            this.$data.webAssets.push(WebAsset({
                 posts: posts,
                 words: words
             }));
