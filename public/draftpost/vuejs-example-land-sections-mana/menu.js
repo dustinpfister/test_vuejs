@@ -6,6 +6,65 @@
     CENTERY = 0,
     SECTION_DIST = 100;
 
+    var maps = [
+        '0,0,0,0,0,0,0,0,0,0,' +
+        '0,0,0,0,0,0,0,0,0,0,' +
+        '0,0,0,0,0,0,0,0,0,0,' +
+        '0,0,0,0,0,0,0,0,0,2,' +
+        '0,0,0,0,0,0,0,0,0,2,' +
+        '0,0,0,0,0,0,0,0,2,2,' +
+        '0,0,0,0,0,0,0,2,2,3',
+
+        '0,0,2,0,0,0,0,2,2,2,' +
+        '0,2,3,2,0,0,0,2,2,2,' +
+        '0,0,3,0,0,0,2,2,2,2,' +
+        '0,0,0,0,0,0,2,2,2,2,' +
+        '2,0,0,0,0,0,2,2,2,2,' +
+        '2,2,0,0,0,0,2,2,2,2,' +
+        '3,2,2,0,0,0,0,2,2,2',
+
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2,' +
+        '2,2,2,2,2,2,2,2,2,2',
+
+        '2,0,0,0,0,0,0,0,0,0,' +
+        '2,0,0,0,0,0,0,0,0,0,' +
+        '2,0,0,0,0,0,0,0,0,0,' +
+        '2,2,0,0,0,0,0,0,0,0,' +
+        '2,2,0,0,0,0,0,0,0,0,' +
+        '2,2,0,0,0,0,0,0,0,0,' +
+        '2,2,2,0,0,0,0,0,0,0'
+
+    ];
+
+    var createGrid = function(indexString){
+        indexString = indexString || '';
+        var grid = {
+            w: 10,
+            h: 7,
+            cells: []
+        },
+        i = 0,
+        len = grid.w * grid.h,
+        indexArr = indexString.split(',')
+        while(i < len){
+            grid.cells.push({
+               i: i,
+               x: i % grid.w,
+               y: Math.floor(i / grid.w),
+               itemIndex: indexArr[i] || 0
+            });
+            i += 1;
+        }
+        return grid;
+    };
+
+
+    // create sections array
     var createSections = function(){
         var i = 0,
         radian,
@@ -13,10 +72,12 @@
         while(i < 12){
             radian = utils.pi2 * (i / 12);
             sections.push({
+                i: i,
                 x: CENTERX + Math.cos(radian) * SECTION_DIST,
                 y: CENTERY + Math.sin(radian) * SECTION_DIST,
                 distance: 0,
-                per: 0
+                per: 0,
+                grid: createGrid(maps[i])
             });
             i += 1;
         }
@@ -61,7 +122,7 @@
             return createElement('div', {class:'wrap_main'}, children);
         },
         data: {
-            menus: ['home', 'sun', 'sections'],
+            menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
             currentMenu: 'sections',
             sun: {
