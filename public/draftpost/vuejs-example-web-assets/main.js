@@ -113,6 +113,7 @@ var main = new Vue({
     data: function(){
         return {
             money: 0,
+            lastUpdate: new Date(),
             webAssets: [WebAsset({words: 10000})]
         };
     },
@@ -125,9 +126,14 @@ var main = new Vue({
     mounted: function(){
         var dat = this.$data;
         var loop = function(){
+            var now = new Date(),
+            secs = (now - dat.lastUpdate) / 1000;
             setTimeout(loop, 1000);
             dat.webAssets.forEach(function(asset){
+                 var deltaMoney = WebAsset.update(asset, secs);
+                 dat.money += deltaMoney;
             });
+            dat.lastUpdate = now;
         };
         loop();
     },
