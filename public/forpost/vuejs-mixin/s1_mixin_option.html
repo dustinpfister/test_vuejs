@@ -1,3 +1,14 @@
+<html>
+  <head>
+    <title>vue mixin example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div>
+    <span id="one">{{ mess }}</span><br>
+    <span id="two">{{ mess }}</span><br>
+  </div>
+  <script>
 // Vue Instance with a Mixin that
 // gives vue an custom option
 new Vue({
@@ -21,7 +32,7 @@ new Vue({
     },
     startMess: 'hello'
 });
-
+ 
 // Another Vue instance that does not have the mixin, so the
 // option does not do anything.
 new Vue({
@@ -31,3 +42,6 @@ new Vue({
     },
     startMess: 'nope this no work, not a global mixin'
 });
+  </script>
+  </body>
+</html>

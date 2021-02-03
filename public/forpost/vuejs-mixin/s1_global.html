@@ -1,3 +1,14 @@
+<html>
+  <head>
+    <title>vue mixin example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div>
+    <span id="one">{{ mess }}</span><br>
+    <span id="two">{{ mess }}</span><br>
+  </div>
+  <script>
 Vue.mixin({
     created: function () {
         var startMess = this.$options.startMess;
@@ -10,7 +21,7 @@ Vue.mixin({
         }
     }
 });
-
+ 
 new Vue({
     el: '#one',
     data: {
@@ -18,10 +29,13 @@ new Vue({
     },
     startMess : 'hello'
 });
-
+ 
 new Vue({
     el: '#two',
     data: {
         mess: '' // 'no start mess option given'
     }
 });
+  </script>
+  </body>
+</html>
