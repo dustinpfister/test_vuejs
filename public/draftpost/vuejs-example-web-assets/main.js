@@ -55,7 +55,7 @@ Vue.component('webassets-ui-buy', {
     props: ['state'],
     data: function(){
         return {
-            forSale: [WebAsset({words: 50000}), WebAsset({words: 700000})]
+            forSale: [WebAsset({words: 10000}), WebAsset({words: 30000})]
         }
     },
     template: '<div class="ui">'+
@@ -86,6 +86,7 @@ Vue.component('webassets-ui-current', {
         '<div v-for="asset, index in state.webAssets" class="">'+
             '<p>Site: </p>'+
             '<p>{{ format_money(asset.worth) }}</p>'+
+            '<p>Money Per Tick: {{ format_money(asset.moneyPerTick) }}</p>'+
             '<button v-on:click="sell(index)">Sell</button>'+
         '</div>'+
     '</div>',
@@ -107,12 +108,12 @@ Vue.component('webassets-disp', {
 });
 
 // main vue
-new Vue({
+var main = new Vue({
     el: '#app',
     data: function(){
         return {
-            money: 1000,
-            webAssets: []
+            money: 0,
+            webAssets: [WebAsset({words: 10000})]
         };
     },
     template: '<div class="wrap_main">'+
@@ -121,6 +122,15 @@ new Vue({
         '<webassets-ui-buy v-bind:state="$data" v-on:buy-event="buy" ></webassets-ui-buy>'+
         '<webassets-ui-current v-bind:state="$data" v-on:sell-event="sell" ></webassets-ui-current>'+
     '</div>',
+    mounted: function(){
+        var dat = this.$data;
+        var loop = function(){
+            setTimeout(loop, 1000);
+            dat.webAssets.forEach(function(asset){
+            });
+        };
+        loop();
+    },
     methods: {
         create: function(posts, words){
             console.log(posts, words);
