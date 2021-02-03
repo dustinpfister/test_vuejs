@@ -48,7 +48,6 @@
         template: '<div class="menu_item">'+
             '<h3>Sun Position canvas</h3>'+
             '<div id="canvas-app-sun-pos"></div>' +
-            '<button v-on:click="draw()">draw</button>' +
         '</div>',
         mounted: function(){
             var dat = this.$data;
