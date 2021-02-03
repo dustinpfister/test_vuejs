@@ -83,11 +83,12 @@ Vue.component('webassets-ui-current', {
     props: ['state'],
     template: '<div class="ui">'+
         '<h3>Current Websites: </h3>'+
-        '<div v-for="asset, index in state.webAssets" class="">'+
+        '<div v-for="asset, index in state.webAssets" class="currentsite">'+
             '<p>Site: </p>'+
             '<p>{{ format_money(asset.worth) }}</p>'+
             '<p>Money Per Tick: {{ format_money(asset.moneyPerTick) }}</p>'+
-            '<button v-on:click="sell(index)">Sell</button>'+
+            '<p><button v-on:click="sell(index)">Sell</button></p>'+
+            '<div v-bind:style="\'width:\'+Math.round(asset.secs / asset.secsPerTick * 100)+\'%;height:10px;background:lime;\'"></div>'+
         '</div>'+
     '</div>',
     methods: {
@@ -128,7 +129,7 @@ var main = new Vue({
         var loop = function(){
             var now = new Date(),
             secs = (now - dat.lastUpdate) / 1000;
-            setTimeout(loop, 1000);
+            setTimeout(loop, 100);
             dat.webAssets.forEach(function(asset){
                  var deltaMoney = WebAsset.update(asset, secs);
                  dat.money += deltaMoney;

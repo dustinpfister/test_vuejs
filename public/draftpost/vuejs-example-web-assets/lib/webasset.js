@@ -4,7 +4,7 @@ var WebAsset = (function(){
         opt = opt || {};
         var asset = {
             secs: 0,
-            secsPerTick: 3,
+            secsPerTick: 10,
             words: opt.words || 30000,
             postCount: opt.postCount || 10,
             avgWordsPerPost: 0,
