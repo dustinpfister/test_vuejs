@@ -55,6 +55,7 @@ var main = new Vue({
         write: function(index){
             var asset = this.$data.webAssets[index];
             console.log(asset);
+            WebAsset.write(asset, {wordsPerWrite: 100}, 1);
         }
     }
 });
