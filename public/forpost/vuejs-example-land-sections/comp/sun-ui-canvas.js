@@ -44,6 +44,9 @@ Vue.component('sun-ui-canvas',{
         dat.canvas.addEventListener('mousedown', pointerDown);
         dat.canvas.addEventListener('mouseup', pointerUp);
         dat.canvas.addEventListener('mousemove', pointerMove);
+        dat.canvas.addEventListener('touchstart', pointerDown);
+        dat.canvas.addEventListener('touchend', pointerUp);
+        dat.canvas.addEventListener('touchmove', pointerMove);
         vm.draw();
     },
     watch: {
