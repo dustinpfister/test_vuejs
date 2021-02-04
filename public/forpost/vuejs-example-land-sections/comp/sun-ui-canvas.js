@@ -2,6 +2,7 @@ Vue.component('sun-ui-canvas',{
     props: ['sun', 'sections'],
     data: function(){
         return {
+           mousedown: false,
            canvasObj: null,
            canvas: null,
            ctx: null
@@ -9,10 +10,12 @@ Vue.component('sun-ui-canvas',{
     },
     template: '<div class="menu_item">'+
         '<h3>Sun Position canvas</h3>'+
+        '<p>mousedown: {{ mousedown }}<p>' +
         '<div id="canvas-app-sun-pos"></div>' +
     '</div>',
     mounted: function(){
-        var dat = this.$data;
+        var vm = this;
+        var dat = vm.$data;
         dat.canvasObj = utils.createCanvas({
             container: document.getElementById('canvas-app-sun-pos'),
             width: 320,
@@ -20,7 +23,13 @@ Vue.component('sun-ui-canvas',{
         });
         dat.canvas = dat.canvasObj.canvas;
         dat.ctx = dat.canvasObj.ctx;
-        this.draw();
+        dat.canvas.addEventListener('mousedown', function(){
+           dat.mousedown = true;
+        });
+        dat.canvas.addEventListener('mouseup', function(){
+           dat.mousedown = false;
+        });
+        vm.draw();
     },
     watch: {
         sun: {
