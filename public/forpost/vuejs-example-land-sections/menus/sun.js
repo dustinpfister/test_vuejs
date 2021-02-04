@@ -1,6 +1,6 @@
 
 (function(){
-
+/*
     // common set of methods
     var methods = {
         setA: function(e){
@@ -18,7 +18,7 @@
     };
 
     Vue.mixin({methods : methods});
-
+*/
     // sun-info component
     Vue.component('sun-info',{
         props: ['sun'],
