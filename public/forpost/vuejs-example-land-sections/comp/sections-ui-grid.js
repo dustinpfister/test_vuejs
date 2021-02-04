@@ -13,6 +13,7 @@ Vue.component('sections-ui-grid', {
         '</div>'+
     '</div>',
     methods: {
+        // set a style for a cell
         setStyle: function(cell){
             var color = ['blue', 'red', 'yellow', 'green'];
             return 'position:absolute;'+
@@ -21,6 +22,7 @@ Vue.component('sections-ui-grid', {
                 'background:'+color[cell.itemIndex]+';'+
                 'width:32px;height:32px;';
         },
+        // what to do if a cell is clicked
         clickCell: function(cell){
             this.$emit('click-cell', cell)
         }

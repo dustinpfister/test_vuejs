@@ -7,7 +7,7 @@
 * any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
 ## 0.5.0 - cell action select ui
-* start a sections-ui-cellaction component in sections.js
+* start a sections-ui-grid-cellaction component in sections.js
 * this new sections-ui-cellaction component will be used to set what clicking a grid cell will do
 * have a cellaction 0 that just simply will select a cell, and display info about that cell
 * have a cellaction 1 that will increase altitude by one for each click

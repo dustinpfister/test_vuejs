@@ -1,10 +1,10 @@
 Vue.component('menu-sections', {
     props: ['currentMenu', 'sun', 'sections'],
     data: function(){
-        console.log(this.$props.sections[0]);
         return {
             currentSectionIndex: 0,
-            section: this.$props.sections[0]
+            section: this.$props.sections[0],
+            cellAction: 0
         }
     },
     template: '<div v-if="currentMenu === \'sections\'">'+
@@ -20,9 +20,10 @@ Vue.component('menu-sections', {
             dat.section = this.$props.sections[dat.currentSectionIndex];
         },
         clickCell: function(cell){
-            console.log(cell.x, cell.y);
-            cell.itemIndex += 1;
-            cell.itemIndex = utils.mod(cell.itemIndex, 4);
+            var dat = this.$data;
+            if(dat.cellAction >= 0){
+                cell.itemIndex = dat.cellAction;
+            }
         }
     }
 });
