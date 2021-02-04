@@ -1,3 +1,11 @@
+<html>
+  <head>
+    <title>vue data example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-data"></div>
+  <script>
 new Vue({
     el: '#demo-data',
     template: '<div><input type="button" value="step" v-on:click="bar" ><span> i: {{ i }}</span></div>',
@@ -12,3 +20,6 @@ new Vue({
         }
     }
 });
+  </script>
+  </body>
+</html>
