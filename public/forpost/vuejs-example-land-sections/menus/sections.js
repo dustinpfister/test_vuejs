@@ -22,7 +22,7 @@ Vue.component('menu-sections', {
     },
     template: '<div v-if="currentMenu === \'sections\'">' +
         '<sections-ui-select v-bind:section="section" v-on:step-section="step" ></sections-ui-select>' +
-        '<sections-ui-cellaction v-on:set-cellaction="setCellAction" ></sections-ui-cellaction>' +
+        '<sections-ui-cellaction v-bind:cellAction="cellAction" v-on:set-cellaction="setCellAction" ></sections-ui-cellaction>' +
         '<sections-ui-grid v-bind:section="section" v-on:click-cell="clickCell" ></sections-ui-grid>' +
     '</div>',
     methods: {
@@ -30,7 +30,6 @@ Vue.component('menu-sections', {
             var dat = this.$data;
             dat.currentSectionIndex += deltaIndex;
             dat.currentSectionIndex = utils.mod(dat.currentSectionIndex, this.$props.sections.length);
-            console.log(dat.currentSectionIndex);
             dat.section = this.$props.sections[dat.currentSectionIndex];
         },
         clickCell: function(cell){
