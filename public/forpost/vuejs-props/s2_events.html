@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>vue props example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-props"></div>
+  <script>
+Vue.component('ui-pos', {
+    props: ['pos'],
+    template: '<div>'+
+        ' x: <input id="input_x" type="text" v-bind:value="pos.x" v-on:keyup="posSet"> | '+
+        ' y: <input id="input_y" type="text" v-bind:value="pos.y" v-on:keyup="posSet">'+
+    '</div>',
+    methods: {
+        posSet: function(e){
+            var idArr = e.target.id.split('_');
+            var newPos = {
+               x: this.$props.pos.x,
+               y: this.$props.pos.y
+            };
+            newPos[idArr[1]] = e.target.value;
+            this.$emit('event-poschange', newPos);
+        }
+    }
+});
+ 
+new Vue({
+    el: '#demo-props',
+    data: function(){
+        return {
+           pos: {x: 10, y: 45}
+        };
+    },
+    template: '<div><ui-pos v-bind:pos="pos"></ui-pos></div>'
+});
+  </script>
+  </body>
+</html>
