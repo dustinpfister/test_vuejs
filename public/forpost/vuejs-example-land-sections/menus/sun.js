@@ -10,7 +10,14 @@ Vue.component('menu-sun', {
         if(this.$props.currentMenu === 'sun'){
             // push sun info
             children.push( createElement('sun-info', {props: this.$props}) );
-            children.push( createElement('sun-ui-canvas', {props: this.$props}) );
+            children.push( createElement('sun-ui-canvas', {
+                props: this.$props,
+                on: {
+                    'set-sunpos-ad': function(a, b){
+                        vm.setPos(a, b);
+                    }
+                }
+             }));
             // push sun-ui-pos
             children.push( createElement('sun-ui-pos', {
                 props: this.$props, 

@@ -15,7 +15,8 @@ Vue.component('sun-ui-canvas',{
     '</div>',
     mounted: function(){
         var vm = this;
-        var dat = vm.$data;
+        var dat = vm.$data,
+        sun = vm.$props.sun;
         dat.canvasObj = utils.createCanvas({
             container: document.getElementById('canvas-app-sun-pos'),
             width: 320,
@@ -32,8 +33,11 @@ Vue.component('sun-ui-canvas',{
         dat.canvas.addEventListener('mousemove', function(e){
            e.preventDefault();
            if(dat.mousedown){
-               var pos = utils.getCanvasRelative(e);
-               console.log(pos);
+               var pos = utils.getCanvasRelative(e),
+               a = Math.atan2(sun.cy - pos.y, sun.cx - pos.x) + Math.PI,
+               d = utils.distance(pos.x, pos.y, sun.cx, sun.cy);
+               console.log(a.toFixed(2), Math.round(d));
+               vm.$emit('set-sunpos-ad', Number(a), Number(d));
            }
         });
         vm.draw();
