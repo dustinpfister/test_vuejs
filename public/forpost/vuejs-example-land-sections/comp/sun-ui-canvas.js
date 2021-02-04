@@ -2,7 +2,7 @@ Vue.component('sun-ui-canvas',{
     props: ['sun', 'sections'],
     data: function(){
         return {
-           mousedown: false,
+           down: false,
            canvasObj: null,
            canvas: null,
            ctx: null
@@ -10,7 +10,7 @@ Vue.component('sun-ui-canvas',{
     },
     template: '<div class="menu_item">'+
         '<h3>Sun Position canvas</h3>'+
-        '<p>mousedown: {{ mousedown }}<p>' +
+        '<p>mousedown: {{ down }}<p>' +
         '<div id="canvas-app-sun-pos"></div>' +
     '</div>',
     mounted: function(){
@@ -24,22 +24,26 @@ Vue.component('sun-ui-canvas',{
         });
         dat.canvas = dat.canvasObj.canvas;
         dat.ctx = dat.canvasObj.ctx;
-        dat.canvas.addEventListener('mousedown', function(){
-           dat.mousedown = true;
-        });
-        dat.canvas.addEventListener('mouseup', function(){
-           dat.mousedown = false;
-        });
-        dat.canvas.addEventListener('mousemove', function(e){
+
+        var pointerDown = function(){
+           dat.down = true;
+        };
+        var pointerUp = function(){
+           dat.down = false;
+        };
+        var pointerMove = function(e){
            e.preventDefault();
-           if(dat.mousedown){
+           if(dat.down){
                var pos = utils.getCanvasRelative(e),
                a = Math.atan2(sun.cy - pos.y, sun.cx - pos.x) + Math.PI,
                d = utils.distance(pos.x, pos.y, sun.cx, sun.cy);
-               console.log(a.toFixed(2), Math.round(d));
                vm.$emit('set-sunpos-ad', Number(a), Number(d));
            }
-        });
+        };
+
+        dat.canvas.addEventListener('mousedown', pointerDown);
+        dat.canvas.addEventListener('mouseup', pointerUp);
+        dat.canvas.addEventListener('mousemove', pointerMove);
         vm.draw();
     },
     watch: {
