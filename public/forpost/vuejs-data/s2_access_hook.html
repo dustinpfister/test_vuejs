@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>vue data example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-data"></div>
+  <script>
+new Vue({
+    el: '#demo-data',
+    data: {
+        i: 42
+    },
+    beforeCreate: function(){
+        console.log(this.$data); // undefined
+    },
+    created: function(){
+        console.log(this.$data.i); // 42
+    }
+});
+  </script>
+  </body>
+</html>
