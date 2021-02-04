@@ -5,6 +5,14 @@
   </head>
   <body>
   <div id="demo-data"></div>
-  <script src="./basic.js"></script>
+  <script>
+new Vue({
+    el: '#demo-data',
+    template: '<p>{{foo}}</p>',
+    data: {
+        foo: 'bar'
+    }
+});
+  </script>
   </body>
 </html>
