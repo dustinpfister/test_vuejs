@@ -29,6 +29,13 @@ Vue.component('sun-ui-canvas',{
         dat.canvas.addEventListener('mouseup', function(){
            dat.mousedown = false;
         });
+        dat.canvas.addEventListener('mousemove', function(e){
+           e.preventDefault();
+           if(dat.mousedown){
+               var pos = utils.getCanvasRelative(e);
+               console.log(pos);
+           }
+        });
         vm.draw();
     },
     watch: {
