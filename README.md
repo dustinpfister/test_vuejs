@@ -1,6 +1,6 @@
 # test_vuejs
 
-Working out some vue.js examples to write about on my website here at github pages.
+Working out some vue.js examples to write about on my website here at [github pages](https://dustinpfister.github.io/). Many of these examples are on various asspects of the framework by itself, others are full working simple project examples.
 
 ## setup
 
