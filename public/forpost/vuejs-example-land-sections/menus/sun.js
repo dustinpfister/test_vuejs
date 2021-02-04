@@ -2,6 +2,8 @@
 (function(){
 
     // common set of methods
+
+
     var methods = {
         setA: function(e){
              this.setPos(Math.PI / 180 * e.target.value, this.$props.sun.dist);
@@ -16,6 +18,8 @@
             this.$emit('set-sunpos-ad', Number(a), Number(d));
         }
     };
+
+    Vue.mixin({methods : methods});
 
     // sun-info component
     Vue.component('sun-info',{
@@ -34,7 +38,7 @@
         '</div>',
         methods: methods
     });
-
+/*
     Vue.component('sun-ui-canvas',{
         props: ['sun', 'sections'],
         mixins: [methods],
@@ -98,7 +102,7 @@
             }
         }
     });
-
+*/
     // main menu-sun component
     Vue.component('menu-sun', {
         props: ['currentMenu', 'sun', 'sections'],
