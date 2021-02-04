@@ -1,6 +1,13 @@
 Vue.component('sections-ui-cellaction', {
+    props: ['cellAction'],
     template: '<div class="menu_item">'+
-        '<p>Cell Action Select</p>' +
+        '<h3>Cell Action Select</h3>' +
+        '<p> Current Index: {{ cellAction }} </p>' +
+        '<p>' + 
+            '<button v-on:click="$emit(\'set-cellaction\',0)" >Water</button>' +
+            '<button v-on:click="$emit(\'set-cellaction\',2)" >Sand</button>' +
+            '<button v-on:click="$emit(\'set-cellaction\',3)" >Grass</button>' +
+        '</p>' +
     '</div>'
 });
 
@@ -15,7 +22,7 @@ Vue.component('menu-sections', {
     },
     template: '<div v-if="currentMenu === \'sections\'">' +
         '<sections-ui-select v-bind:section="section" v-on:step-section="step" ></sections-ui-select>' +
-        '<sections-ui-cellaction></sections-ui-cellaction>' +
+        '<sections-ui-cellaction v-on:set-cellaction="setCellAction" ></sections-ui-cellaction>' +
         '<sections-ui-grid v-bind:section="section" v-on:click-cell="clickCell" ></sections-ui-grid>' +
     '</div>',
     methods: {
@@ -31,6 +38,10 @@ Vue.component('menu-sections', {
             if(dat.cellAction >= 0){
                 cell.itemIndex = dat.cellAction;
             }
+        },
+        setCellAction: function(actionIndex){
+            console.log(actionIndex);
+            this.$data.cellAction = actionIndex;
         }
     }
 });
