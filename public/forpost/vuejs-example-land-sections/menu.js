@@ -1,11 +1,12 @@
 
 (function(){
 
-    var SUN_RADIUS = 16,
-    CENTERX = 160,
+    var CENTERX = 160,
     CENTERY = 120,
     SECTION_DIST = 100,
-    SECTION_RADIUS = 16;
+    SECTION_RADIUS = 16,
+    SUN_RADIUS = 16,
+    SUN_MAXDIST = SECTION_DIST - SUN_RADIUS - SECTION_RADIUS;
 
     var maps = [
         '0,0,0,0,0,0,0,0,0,0,' +
@@ -135,7 +136,7 @@
                r: SUN_RADIUS,
                a: 0,     // angle from center point (0,0)
                dist: 0,
-               MAXDIST: SECTION_DIST - SUN_RADIUS - SECTION_RADIUS
+               MAXDIST: SUN_MAXDIST
             }
         },
         mounted: function(){
