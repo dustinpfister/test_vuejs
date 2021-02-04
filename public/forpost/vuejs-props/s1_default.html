@@ -1,3 +1,11 @@
+<html>
+  <head>
+    <title>vue props example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-props"></div>
+  <script>
 Vue.component('custom', {
     props: {
         foo: {
@@ -7,7 +15,7 @@ Vue.component('custom', {
     },
     template: '<div>{{ foo }}</div>'
 });
-
+ 
 new Vue({
     el: '#demo-props',
     template: '<div>' +
@@ -15,3 +23,6 @@ new Vue({
     '<custom></custom>' + // 'foobar'
     '</div>'
 });
+  </script>
+  </body>
+</html>
