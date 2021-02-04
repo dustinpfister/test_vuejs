@@ -4,7 +4,8 @@
     var SUN_RADIUS = 16,
     CENTERX = 160,
     CENTERY = 120,
-    SECTION_DIST = 100;
+    SECTION_DIST = 100,
+    SECTION_RADIUS = 16;
 
     var maps = [
         '0,0,0,0,0,0,0,0,0,0,' +
@@ -75,7 +76,7 @@
                 i: i,
                 x: CENTERX + Math.cos(radian) * SECTION_DIST,
                 y: CENTERY + Math.sin(radian) * SECTION_DIST,
-                r: 16,
+                r: SECTION_RADIUS,
                 distance: 0,
                 per: 0,
                 grid: createGrid(maps[i])
@@ -134,7 +135,7 @@
                r: SUN_RADIUS,
                a: 0,     // angle from center point (0,0)
                dist: 0,
-               MAXDIST: SECTION_DIST
+               MAXDIST: SECTION_DIST - SUN_RADIUS - SECTION_RADIUS
             }
         },
         mounted: function(){
