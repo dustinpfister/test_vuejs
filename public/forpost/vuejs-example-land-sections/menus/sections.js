@@ -1,5 +1,5 @@
 (function(){
-
+/*
     Vue.component('sections-ui-grid', {
         props: ['section'],
         data: function(){
@@ -28,7 +28,7 @@
             }
         }
     });
-
+*/
     Vue.component('menu-sections', {
         props: ['currentMenu', 'sun', 'sections'],
         data: function(){
