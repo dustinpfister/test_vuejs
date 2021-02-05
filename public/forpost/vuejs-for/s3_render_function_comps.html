@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>vue for example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="list"></div>
+  <script>
+
+Vue.component('mycomp-1',{
+    props: ['index', 'item'],
+    template: '<p>{{ 1 + index }} )  {{ item }}</p>'
+});
+
+new Vue({
+    el: '#list',
+    render: function(createElement){
+        var children = [];
+        this.$data.arr.forEach(function(item, index){
+            var child = createElement('mycomp-1', {
+                props: {
+                   index: index,
+                   item: item
+                }
+            });
+            children.push(child);
+        });
+        return createElement('div', children);
+    },
+    data: {
+        arr: ['foo', 'man', 'chew']
+    }
+});
+  </script>
+  </body>
+</html>
