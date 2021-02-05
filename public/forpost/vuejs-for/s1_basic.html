@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>vue for example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="list"></div>
+  <script>
+new Vue({
+    el: '#list',
+    template: '<ul><li v-for="kw in keywords" >{{ kw }}</li></ul>',
+    data: {
+        keywords: ['lodash find', 'canvas arc', 'vue for']
+    }
+});
+  </script>
+  </body>
+</html>
