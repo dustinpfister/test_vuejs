@@ -1,23 +1,25 @@
+<!-- land-sections-grid -->
+## 0.x.0 - cell.altitude, and cell.typeIndex
+* have a cell.typeIndex prop that will be a cell type index value 0-water, 1-fire, 2-beach, 3-grass, 4-forest, ect
+* add a cell.altitude value that will be an index value between 0 and ALTITUDE_MAX
+* have a grid.seaLevel prop that will have a value in the same range as ALTITUDE
+* any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
-## 0.x.0 - game.js lib
-* start a game.js lib that will be a module for the creation and mutation of a game state object
-
-## 0.8.0 - fire, boiling water, and molten rock cell types
+## 0.x.0 - fire, boiling water, and molten rock cell types
 * start a range of cell types for when section.temp.kelvin hits high values
 
-## 0.7.0 - section.temp + fire
+
+<!-- land-sections -->
+
+## 0.7.0 - Mana System
+
+## 0.6.0 - section.temp
 * have a section.temp object
 * have a section.temp.per value between 0 and 1
 * a temp.per of zero should be considered 0 kelvin and 1 should be 5778 kelvin, make constants with these values
 * have s section.temp.kelvin that will always be a kelvin value between min and max const values
 * have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]
 * have a section.temp.displayTemp that will be a conversion from temp.kelvin to the temp.displayUnit
-
-## 0.6.0 - cell.altitude, and cell.typeIndex
-* have a cell.typeIndex prop that will be a cell type index value 0-water, 1-fire, 2-beach, 3-grass, 4-forest, ect
-* add a cell.altitude value that will be an index value between 0 and ALTITUDE_MAX
-* have a grid.seaLevel prop that will have a value in the same range as ALTITUDE
-* any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
 ## 0.5.0 - cell action select ui
 * (done) start a sections-ui-cellaction component in sections.js
