@@ -1,17 +1,28 @@
 
+## 0.x.0 - game.js lib
+* start a game.js lib that will be a module for the creation and mutation of a game state object
 
-## 0.x.0 - cell.altitude
+## 0.8.0 - fire, boiling water, and molten rock cell types
+* start a range of cell types for when section.temp.kelvin hits high values
+
+## 0.7.0 - section.temp + fire
+* have a section.temp object
+* have a section.temp.per value between 0 and 1
+* a temp.per of zero should be considered 0 kelvin and 1 should be 5778 kelvin, make constants with these values
+* have s section.temp.kelvin that will always be a kelvin value between min and max const values
+* have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]
+* have a section.temp.displayTemp that will be a conversion from temp.kelvin to the temp.displayUnit
+
+## 0.6.0 - cell.altitude, and cell.typeIndex
 * have a cell.typeIndex prop that will be a cell type index value 0-water, 1-fire, 2-beach, 3-grass, 4-forest, ect
 * add a cell.altitude value that will be an index value between 0 and ALTITUDE_MAX
 * have a grid.seaLevel prop that will have a value in the same range as ALTITUDE
 * any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
 ## 0.5.0 - cell action select ui
-* start a sections-ui-grid-cellaction component in sections.js
-* this new sections-ui-cellaction component will be used to set what clicking a grid cell will do
-* have a cellaction 0 that just simply will select a cell, and display info about that cell
-* have a cellaction 1 that will increase altitude by one for each click
-* have a cellaction 2 that wll lower altitude by one for each click
+* (done) start a sections-ui-cellaction component in sections.js
+* (done) this new sections-ui-cellaction component will be used to set what clicking a grid cell will do
+* (done) cell action index values just set the cell type for now
 
 ## 0.3.0 - sun-ui-canvas interface
 * (done) start a new sun-ui-canvas comp that will display the current position of the sun in a canvas element
