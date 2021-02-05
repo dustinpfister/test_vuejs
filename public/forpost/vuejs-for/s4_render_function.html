@@ -10,8 +10,8 @@ new Vue({
     el: '#list',
     render: function(createElement){
         var children = [];
-        this.$data.arr.forEach(function(item){
-            var child = createElement('p', item);
+        this.$data.arr.forEach(function(item, index){
+            var child = createElement('p', index + ') ' + item);
             children.push(child);
         });
         return createElement('div', children);
