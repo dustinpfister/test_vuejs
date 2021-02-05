@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>vue for example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="list"></div>
+  <script>
+new Vue({
+    el: '#list',
+    render: function(createElement){
+        var children = [];
+        this.$data.arr.forEach(function(item){
+            var child = createElement('p', item);
+            children.push(child);
+        });
+        return createElement('div', children);
+    },
+    data: {
+        arr: ['foo', 'man', 'chew']
+    }
+});
+  </script>
+  </body>
+</html>
