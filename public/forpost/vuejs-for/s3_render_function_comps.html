@@ -7,17 +7,20 @@
   <div id="list"></div>
   <script>
 
-Vue.component('mycomp-1',{
+Vue.component('keywords',{
     props: ['index', 'item'],
-    template: '<p>{{ 1 + index }} )  {{ item }}</p>'
+    template: '<div style="background:gray;margin:10px;padding:10px;">'+
+        '<h3> {{ item.subject }} Keywords </h3>' +
+        '<p v-for="word in item.words" >{{ word }}</p>'+
+    '</div>'
 });
 
 new Vue({
     el: '#list',
     render: function(createElement){
         var children = [];
-        this.$data.arr.forEach(function(item, index){
-            var child = createElement('mycomp-1', {
+        this.$data.keywords.forEach(function(item, index){
+            var child = createElement('keywords', {
                 props: {
                    index: index,
                    item: item
@@ -28,7 +31,11 @@ new Vue({
         return createElement('div', children);
     },
     data: {
-        arr: ['foo', 'man', 'chew']
+        keywords: [
+            {subject: 'lodash', words: ['lodash find']}, 
+            {subject: 'Canvas', words: ['canvas arc', 'canvas position']}, 
+            {subject: 'Vuejs', words: ['vue for', 'vue directive', 'vue component', 'vue render function']}
+        ]
     }
 });
   </script>
