@@ -4,14 +4,13 @@
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <div id="foo"></div>
+  <div id="demo"></div>
   <script>
   new Vue({
-    el:'#foo',
-    template: '<p v-bind:style="redness">{{mess}}<\/p>',
+    el:'#demo',
+    template: '<p>{{mess}}<\/p>',
     data: {
-      mess: 'bar',
-      redness: 'color:red;'
+      mess: 'Hello World'
     }
   });
   </script>
