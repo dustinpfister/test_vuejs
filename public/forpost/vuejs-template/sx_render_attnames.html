@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>vue template example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+
+Vue.component('text-red',{
+   template: '<p style="color:red;"><slot></slot></p>'
+});
+Vue.component('text-green',{
+   template: '<p style="color:green;"><slot></slot></p>'
+});
+
+  new Vue({
+    el:'#demo',
+    render: function(createElement){
+       var children = [];
+       this.$data.arr.forEach(function(obj){
+           // generating the node name with a javaScript expression
+           var nodeName = 'text-' + obj.color;
+           children.push(createElement(nodeName, { props: props}, obj.mess));
+       });
+       return createElement('div', children);
+    },
+    data: {
+        arr: [
+            {mess: 'Hello', color: 'red'}, 
+            {mess: 'World', color: 'green'}
+        ]
+    }
+  });
+  </script>
+  </body>
+</html>
