@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>vue template example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<p v-bind:style="redness" v-text="mess"><\/p>',
+    data: {
+      mess: 'Hello World!',
+      redness: 'color:red;'
+    }
+  });
+  </script>
+  </body>
+</html>
