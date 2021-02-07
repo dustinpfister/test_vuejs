@@ -21,11 +21,11 @@ let genHTML = (projects) =>{
     });
 
     projects.forEach((project_item) => {
-        html += '<ul style=""><li>' + project_item.fn + '- <ul>';
+        html += '<div style="background:gray;margin-bottom:10px;padding:10px;"><ul><li>' + project_item.fn + '- <ul>';
         project_item.files.forEach((file) => {
             html += '<li><a href=\"/' + file.href + '\">' + file.pfn + '<\/a><\/li>';
         });
-       html += '<\/ul><\/li><\/ul>';
+       html += '<\/ul><\/li><\/ul></div>';
     });
     html + '<\/body></html>';
     return html;
