@@ -41,7 +41,11 @@ return (function(dir, folderName){
                 step = (projects) => {
                     i += 1;
                     if (i === len) {
-                        let html = '<html><head><title>VUEJS Examples</title></head><body><h1>VUE.JS EXAMPLES:<\/h1>';
+                        let html = '<html>'+
+                            '<head><title>VUEJS Examples</title>'+
+                            '<script src="/js/vuejs/2.6.10/vue.js"></script>'+
+                            '</head>'+
+                            '<body><h1>VUE.JS EXAMPLES:<\/h1>';
 
                         projects.sort((a, b) => {
                             if (a.fn > b.fn) {
