@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>vue methods example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el: '#demo',
+    template: '<div>'+
+        '<p v-bind:style="getColorStyle(1)">Red</p>' +
+        '<p v-bind:style="getColorStyle(0,1)">Lime</p>' +
+        '<p v-bind:style="getColorStyle(0,0,1)">Blue</p>' +
+    '</div>',
+    data: {
+        i: 0
+    },
+    methods: {
+        // return a value in the range of 0 to 255
+        // based on a value per value in the range of [0, 1],
+        // and where a value of undefined will default to 0
+        toColorValue: function(per){
+           per = per === undefined ? 0 : per;
+           return Math.round(per * 255);
+        },
+        // return a CSS string that will set color with the given
+        // percent values for red, green, blue, and alpha
+        getColorStyle: function(rPer, gPer, bPer, aPer){
+            aPer = aPer === undefined ? 1 : aPer;
+            // using toColorValue method in this getColorStyle method
+            return 'color:rgba(' + this.toColorValue(rPer) + 
+                ',' + this.toColorValue(gPer) + 
+                ',' + this.toColorValue(bPer) + 
+                ',' + aPer.toFixed(2) + ');'
+        }
+    }
+});
+  </script>
+  </body>
+</html>
