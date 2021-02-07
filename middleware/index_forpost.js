@@ -2,6 +2,35 @@ let express = require('express');
 path = require('path'),
 fs = require('fs');
 
+// gen HTML Helper
+let genHTML = (projects) =>{
+    let html = '<html>'+
+        '<head><title>VUEJS Examples</title>'+
+        '<script src="/js/vuejs/2.6.10/vue.js"></script>'+
+        '</head>'+
+        '<body><h1>VUE.JS EXAMPLES:<\/h1>';
+
+    projects.sort((a, b) => {
+        if (a.fn > b.fn) {
+            return 1
+        }
+        if (a.fn < b.fn) {
+            return -1
+        }
+        return 0;
+    });
+
+    projects.forEach((project_item) => {
+        html += '<ul style=""><li>' + project_item.fn + '- <ul>';
+        project_item.files.forEach((file) => {
+            html += '<li><a href=\"/' + file.href + '\">' + file.pfn + '<\/a><\/li>';
+        });
+       html += '<\/ul><\/li><\/ul>';
+    });
+    html + '<\/body></html>';
+    return html;
+};
+
 // export a factor function that will return a router
 module.exports = (opt) => {
 
@@ -41,6 +70,9 @@ return (function(dir, folderName){
                 step = (projects) => {
                     i += 1;
                     if (i === len) {
+
+                        let html = genHTML(projects);
+/*
                         let html = '<html>'+
                             '<head><title>VUEJS Examples</title>'+
                             '<script src="/js/vuejs/2.6.10/vue.js"></script>'+
@@ -58,14 +90,14 @@ return (function(dir, folderName){
                         });
 
                         projects.forEach((project_item) => {
-                            html += '<ul style="display:inline-block;"><li>' + project_item.fn + '- <ul>';
+                            html += '<ul style=""><li>' + project_item.fn + '- <ul>';
                             project_item.files.forEach((file) => {
                                 html += '<li><a href=\"/' + file.href + '\">' + file.pfn + '<\/a><\/li>';
                             });
                             html += '<\/ul><\/li><\/ul>';
                         });
-
-                        res.send(html + '<\/body></html>');
+*/
+                        res.send(html);
 
                     }
 
