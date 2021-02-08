@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>vue next tick example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+var vm = new Vue({
+        el: '#demo',
+        template: '<p>{{ degree }}</p>',
+        data: {
+            degree: 45
+        },
+        mounted: function(){
+            console.log(this.degree); // 45
+        },
+        updated: function(){
+            console.log(this.degree); // 0
+        }
+    });
+vm.degree = 0;
+  </script>
+  </body>
+</html>
