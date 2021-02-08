@@ -14,9 +14,15 @@ var vm = new Vue({
         },
         mounted: function(){
             console.log(this.degree); // 45
+            console.log(this.$el.textContent); // 45
+        },
+        beforeUpdate: function(){
+            console.log(this.degree); // 0
+            console.log(this.$el.textContent); // 45
         },
         updated: function(){
             console.log(this.degree); // 0
+            console.log(this.$el.textContent); // 0
         }
     });
 vm.degree = 0;
