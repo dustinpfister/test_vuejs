@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>vue next tick example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-nexttick"></div>
+  <script>
+var vm = new Vue({
+        el: '#demo-nexttick',
+        template: '<p>{{ radian }}</p>',
+        data: {
+            radian: Math.PI / 180 * 45
+        }
+    });
+// the value of the textContent will still be the old
+// value when I set radian to 0
+vm.radian = 0;
+console.log(Number(vm.$el.textContent).toFixed(2)); // 0.79
+// I can however use Vue.nextTick as a way to take a look
+// after the next text is done, at which point the textContent
+// is now the new value
+Vue.nextTick(function () {
+    console.log(Number(vm.$el.textContent).toFixed(2)); // 0.00
+});
+
+  </script>
+  </body>
+</html>
