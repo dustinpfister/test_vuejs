@@ -11,7 +11,7 @@ Vue.component('image-color-pick', {
                 attrs: {
                     id: 'color_' + i,
                     class: 'image-color-pick-div',
-                    style: 'left:' + ( x * 32 ) + 'px;top:'+ ( y * 32 ) +';background:' + color + ';'
+                    style: vm.styleStr(x, y, color)
                 },
                 on:{
                     click: vm.colorClick
@@ -27,6 +27,9 @@ Vue.component('image-color-pick', {
         }, divs);
     },
     methods: {
+        styleStr: function(x, y, color){
+            return 'left:' + ( x * 32 ) + 'px;top:'+ ( y * 32 ) +';background:' + color + ';'
+        },
         colorClick: function(e){
             var div = e.target,
             idArr = div.id.split('_')
