@@ -33,13 +33,14 @@ new Vue({
             var img = dat.imgs[dat.currentImage];
             var pxIndex = y * img.width + Number(x);
             img.data[pxIndex] = img.colorIndex;
-            //this.$forceUpdate();
         },
         pxClickHandler: function(x, y){
             this.pSet(x, y);
         },
         colorClickHandler: function(index){
-            console.log(index);
+            var dat = this.$data;
+            var img = dat.imgs[dat.currentImage];
+            img.colorIndex = index;
         }
     }
 });
