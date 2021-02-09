@@ -3,15 +3,20 @@ Vue.component('image-div-grid', {
     props: ['img'],
     render: function(createElement){
         var img = this.$props.img,
+        vm = this,
         divs = [];
         img.data.forEach(function(px, i){
-            var x = i % img.width * img.pxSize,
-            y = Math.floor(i / img.width) * img.pxSize,
+            var x = i % img.width,
+            y = Math.floor(i / img.width),
             color = img.palette[px];
             var px = createElement('div', {
                 attrs: {
+                    id: 'px_' + x + '_' + y,
                     class: 'image-div-grid-px',
-                    style: 'left:' + x + 'px;top:'+ y +';background:' + color + ';'
+                    style: 'left:' + ( x * img.pxSize ) + 'px;top:'+ ( y * img.pxSize ) +';background:' + color + ';'
+                },
+                on:{
+                    click: vm.pxClick
                 }
             });
             divs.push(px);
@@ -21,6 +26,13 @@ Vue.component('image-div-grid', {
                 class: 'image-div-grid'
             }
         }, divs);
+    },
+    methods: {
+        pxClick: function(e){
+            var div = e.target,
+            idArr = div.id.split('_')
+            console.log(idArr);
+        }
     }
 });
 
