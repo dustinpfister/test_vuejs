@@ -5,7 +5,13 @@
   margin:20px;
 }
 .image-div-grid{
-  background:gray;
+    background-image:
+      linear-gradient(45deg, #bbb 25%, transparent 25%), 
+      linear-gradient(135deg, #bbb 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #bbb 75%),
+      linear-gradient(135deg, transparent 75%, #bbb 75%);
+    background-size:25px 25px; /* Must be a square */
+    background-position:0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px; /* Must be half of one side of the square */
 }
 .image-div-grid-px{
   position:absolute;
@@ -13,7 +19,7 @@
   height:32px;
 }
 .image-color-pick{
-  background:gray;
+
 }
 .image-color-pick-div{
   position:absolute;
