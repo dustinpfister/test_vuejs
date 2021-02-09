@@ -1,3 +1,47 @@
+
+Vue.component('image-div-grid', {
+    props: ['img'],
+    render: function(createElement){
+        var img = this.$props.img,
+        divs = [];
+        img.data.forEach(function(px){
+            var px = createElement('div', {
+                attrs: {
+                    style: 'position:absolute;left:' + x + 'px;top:'+ y +';background:' + color + ';'
+                }
+            });
+            divs.push(px);
+        });
+        return createElement('div', divs);
+    }
+});
+
+new Vue({
+    el: '#app',
+    template: '<div>{{ currentImage }}</div>',
+    data: function(){
+        return {
+           currentImage: 0,
+           imgs : [{
+               width: 8,
+               height: 8,
+               palette: [false, 'white', 'black', 'red', 'lime', 'blue'],
+               data: [
+                   2,0,0,0,0,0,0,2,
+                   0,0,0,0,0,0,0,0,
+                   0,0,2,0,0,2,0,0,
+                   0,0,2,3,3,2,0,0,
+                   0,0,0,3,3,0,0,0,
+                   0,0,2,0,0,2,0,0,
+                   0,0,0,2,2,0,0,0,
+                   2,0,0,0,0,0,0,2
+               ]
+           }]
+        }
+    }
+});
+
+/*
 new Vue({
     el: '#app',
     render: function (createElement) {
@@ -95,4 +139,5 @@ new Vue({
             div.style.background = d.colors[d.currentColorIndex];
         }
     }
-})
+});
+*/
