@@ -32,13 +32,16 @@ Vue.component('image-div-grid', {
             var div = e.target,
             idArr = div.id.split('_')
             console.log(idArr);
+            this.$emit('px-click', idArr[1], idArr[2],);
         }
     }
 });
 
 new Vue({
     el: '#app',
-    template: '<div><image-div-grid v-bind:img="imgs[currentImage]" ></image-div-grid></div>',
+    template: '<div>'+
+        '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
+    '</div>',
     data: function(){
         return {
            currentImage: 0,
@@ -58,6 +61,11 @@ new Vue({
                    2,0,0,0,0,0,0,2
                ]
            }]
+        }
+    },
+    methods: {
+        pxClickHandler: function(x, y){
+            console.log(x, y);
         }
     }
 });
