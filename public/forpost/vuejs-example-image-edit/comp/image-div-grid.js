@@ -1,4 +1,3 @@
-
 Vue.component('image-div-grid', {
     props: ['img'],
     render: function(createElement){
@@ -23,7 +22,8 @@ Vue.component('image-div-grid', {
         });
         return createElement('div', {
             attrs: {
-                class: 'image-div-grid'
+                class: 'image-div-grid',
+                style: 'width:' + (img.width * img.pxSize) + 'px;height:' + (img.height * img.pxSize) + 'px;'
             }
         }, divs);
     },
