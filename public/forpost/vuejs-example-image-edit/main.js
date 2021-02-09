@@ -1,6 +1,6 @@
 new Vue({
     el: '#app',
-    template: '<div>'+
+    template: '<div class="wrap_main">'+
         '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
         '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
     '</div>',

@@ -1,4 +1,6 @@
-
+.wrap_main{
+  background:gray;
+}
 .ui-div{
   position:relative;
   display:inline-block;
