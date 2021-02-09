@@ -4,27 +4,36 @@ Vue.component('image-div-grid', {
     render: function(createElement){
         var img = this.$props.img,
         divs = [];
-        img.data.forEach(function(px){
+        img.data.forEach(function(px, i){
+            var x = i % img.width * img.pxSize,
+            y = Math.floor(i / img.width) * img.pxSize,
+            color = img.palette[px];
             var px = createElement('div', {
                 attrs: {
-                    style: 'position:absolute;left:' + x + 'px;top:'+ y +';background:' + color + ';'
+                    class: 'image-div-grid-px',
+                    style: 'left:' + x + 'px;top:'+ y +';background:' + color + ';'
                 }
             });
             divs.push(px);
         });
-        return createElement('div', divs);
+        return createElement('div', {
+            attrs: {
+                class: 'image-div-grid'
+            }
+        }, divs);
     }
 });
 
 new Vue({
     el: '#app',
-    template: '<div>{{ currentImage }}</div>',
+    template: '<div><image-div-grid v-bind:img="imgs[currentImage]" ></image-div-grid></div>',
     data: function(){
         return {
            currentImage: 0,
            imgs : [{
                width: 8,
                height: 8,
+               pxSize: 32,
                palette: [false, 'white', 'black', 'red', 'lime', 'blue'],
                data: [
                    2,0,0,0,0,0,0,2,
