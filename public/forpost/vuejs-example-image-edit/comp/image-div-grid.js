@@ -4,6 +4,7 @@ Vue.component('image-div-grid', {
         var img = this.$props.img,
         vm = this,
         divs = [];
+        console.log('render');
         img.data.forEach(function(px, i){
             var x = i % img.width,
             y = Math.floor(i / img.width),
@@ -32,7 +33,8 @@ Vue.component('image-div-grid', {
             var div = e.target,
             idArr = div.id.split('_')
             console.log(idArr);
-            this.$emit('px-click', idArr[1], idArr[2],);
+            this.$emit('px-click', idArr[1], idArr[2]);
+            this.$forceUpdate();
         }
     }
 });

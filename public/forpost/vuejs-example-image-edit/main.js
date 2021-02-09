@@ -26,17 +26,14 @@ new Vue({
            }]
         }
     },
-    updated: function(){
-        console.log('update');
-    },
     methods: {
         // set the current image pix pos to the current image color index
         pSet: function(x, y){
             var dat = this.$data;
             var img = dat.imgs[dat.currentImage];
             var pxIndex = y * img.width + Number(x);
-            img.data[pxIndex] = 0; //img.colorIndex;
-            this.$forceUpdate();
+            img.data[pxIndex] = img.colorIndex;
+            //this.$forceUpdate();
         },
         pxClickHandler: function(x, y){
             this.pSet(x, y);
