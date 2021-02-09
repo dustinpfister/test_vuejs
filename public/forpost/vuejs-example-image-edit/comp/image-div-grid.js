@@ -23,7 +23,7 @@ Vue.component('image-div-grid', {
         });
         return createElement('div', {
             attrs: {
-                class: 'image-div-grid',
+                class: 'image-div-grid ui-div',
                 style: 'width:' + (img.width * img.pxSize) + 'px;height:' + (img.height * img.pxSize) + 'px;'
             }
         }, divs);

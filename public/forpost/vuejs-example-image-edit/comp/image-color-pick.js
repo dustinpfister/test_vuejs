@@ -21,7 +21,7 @@ Vue.component('image-color-pick', {
         });
         return createElement('div', {
             attrs: {
-                class: 'image-color-pick',
+                class: 'image-color-pick ui-div',
                 style: 'width:' + (2 * 32) + 'px;height:' + (6 * 32) + 'px;'
             }
         }, divs);
