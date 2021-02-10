@@ -25,7 +25,8 @@ var vm = new Vue({
             var dat = this.$data;
             var img = dat.imgs[dat.currentImage];
             var pxIndex = y * img.width + Number(x);
-            img.data[pxIndex] = img.colorIndex;
+            img.data[pxIndex] = Number(img.colorIndex);
+            this.$forceUpdate();
         },
         pxClickHandler: function(x, y){
             this.pSet(x, y);
