@@ -46,7 +46,9 @@ var IMG = (function(){
 
     // create IMGS from a pixmap object
     api.createIMGSFromPixmap = function(pixmap, animationKey){
+        animationKey = animationKey || Object.keys(pixmap.ani)[0]
         var imgs = [];
+        console.log(animationKey);
         return imgs;
     };
 
