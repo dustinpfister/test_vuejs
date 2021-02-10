@@ -24,14 +24,11 @@ Vue.component('image-text-pixmap', {
         },
         keyup: function(e){
             this.$data.json = e.target.value;
-            console.log(this.$data.json);
         },
         load: function(){
-            console.log(this.$data.json);
-            //this.$emit('load-json', this.$data.json);
+            this.$emit('load-json', this.$data.json);
         },
         updateText : function(){
-            console.log('yeah');
             var pixmap = IMG.createPixmap({
                 imgs: this.$props.imgs
             });

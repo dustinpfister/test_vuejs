@@ -5,7 +5,7 @@ var vm = new Vue({
             '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
             '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
         '</div>' +
-        '<image-text-pixmap v-bind:imgs="imgs"></image-text-pixmap>'+
+        '<image-text-pixmap v-bind:imgs="imgs" v-on:load-json="load"></image-text-pixmap>'+
     '</div>',
     data: function(){
         var data = {
@@ -31,7 +31,7 @@ var vm = new Vue({
                 //console.log(child.updateText);
                 //child.$forceUpdate()
                 if(child.updateText){
-child.updateText();
+                    child.updateText();
                 }
             });
         },
@@ -42,6 +42,9 @@ child.updateText();
             var dat = this.$data;
             var img = dat.imgs[dat.currentImage];
             img.colorIndex = index;
+        },
+        load: function(json){
+            console.log(json);
         }
     }
 });
