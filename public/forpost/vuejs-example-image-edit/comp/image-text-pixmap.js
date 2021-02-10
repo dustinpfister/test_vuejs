@@ -20,7 +20,13 @@ Vue.component('image-text-pixmap', {
         },
         // emit a 'load-json' event
         load: function(){
-            this.$emit('load-json', this.$data.json);
+            try{
+                // the json should parse okay
+                var json = JSON.parse(this.$data.json);
+                this.$emit('load-json', JSON.stringify(json));
+            }catch(e){
+                this.$emit('load-json-error', 'JSON parse Error');
+            }
         },
         // update textarea
         updateText : function(){
