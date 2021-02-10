@@ -44,7 +44,8 @@ var vm = new Vue({
             img.colorIndex = index;
         },
         load: function(json){
-            console.log(json);
+            var pixmapObj = JSON.parse(json);
+            console.log(pixmapObj);
         }
     }
 });

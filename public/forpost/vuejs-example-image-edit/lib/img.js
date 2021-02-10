@@ -1,14 +1,15 @@
 var IMG = (function(){
 
     // main method
-    var api = function(){
+    var api = function(opt){
+        opt = opt || {};
         return {
-               width: 8,
-               height: 8,
+               width: opt.width || 8,
+               height: opt.height || 8,
                pxSize: 32,
-               palette: [false, 'white', 'black', 'red', 'lime', 'blue'],
+               palette: opt.palette || [false, 'white', 'black', 'red', 'lime', 'blue'],
                colorIndex: 0,
-               data: Vue.observable([
+               data: opt.data || [
                    0,0,0,0,0,0,0,0,
                    0,0,0,0,0,0,0,0,
                    0,0,2,0,0,2,0,0,
@@ -17,7 +18,7 @@ var IMG = (function(){
                    0,0,2,0,0,2,0,0,
                    0,0,0,2,2,0,0,0,
                    0,0,0,0,0,0,0,0
-               ])
+               ]
            }
     };
 
