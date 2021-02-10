@@ -18,18 +18,32 @@ Vue.component('image-text-pixmap', {
     },
     methods: {
         validate: function(){
-
             var dat = this.$data;
             dat.valid = false;
             try{
                 // the json should parse okay
-                var json = JSON.parse(this.$data.json);
+                var obj = JSON.parse(this.$data.json);
                 dat.valid = true;
                 dat.mess = 'JSON looks good';
+                // look for fractions of a frame
+                var i = 0,
+                aniKeys = Object.keys(obj.ani),
+                len = aniKeys.length;
+                while(i < len){
+                    var key = aniKeys[i];
+                    var ani = obj.ani[key]
+                    var size = ani.w * ani.h;
+                    var frames = ani.data.length / size
+                    if(frames % 1 != 0){
+                        dat.valid = false;
+                        dat.mess = 'Fraction of a frame';
+                        break;
+                    }
+                    i += 1;
+                }
             }catch(e){
                 dat.mess = 'Error parsing JSON';
             }
-
         },
         // what to do on a keyup event
         keyup: function(e){
