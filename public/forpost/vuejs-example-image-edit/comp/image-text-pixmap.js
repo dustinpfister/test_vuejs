@@ -15,7 +15,7 @@ Vue.component('image-text-pixmap', {
         this.updateText();
     },
     updated: function(){
-        this.updateText();
+        //this.updateText();
     },
     methods: {
         update: function(){
@@ -31,7 +31,7 @@ Vue.component('image-text-pixmap', {
             //this.$emit('load-json', this.$data.json);
         },
         updateText : function(){
-            //console.log(this.$props.imgs);
+            console.log('yeah');
             var pixmap = IMG.createPixmap({
                 imgs: this.$props.imgs
             });
