@@ -48,6 +48,7 @@ Vue.component('image-text-pixmap', {
         // what to do on a keyup event
         keyup: function(e){
             this.$data.json = e.target.value;
+            this.validate();
         },
         // emit a 'load-json' event
         load: function(){
@@ -77,7 +78,6 @@ Vue.component('image-text-pixmap', {
             this.$data.json = JSON.stringify(pixmap);
             //!!! I should not have to do this, but it seems like I have to
             this.$el.querySelectorAll('textarea')[0].value = this.$data.json;
-
             this.validate();
         }
     }
