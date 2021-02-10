@@ -52,7 +52,8 @@ var IMG = (function(){
         console.log(ani);
         
         var size = ani.w * ani.h;
-        console.log(ani.data.length)
+        var frames = ani.data.length / size;
+        console.log('size', size, 'frames', frames);
 
         return imgs;
     };
