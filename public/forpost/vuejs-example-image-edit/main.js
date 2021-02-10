@@ -1,11 +1,13 @@
 var vm = new Vue({
     el: '#app',
     template: '<div class="wrap_main">'+
-        '<div>'+
+        '<div style="text-align:center;">'+
             '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
             '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
         '</div>' +
+        '<div style="text-align:center;">'+
         '<image-text-pixmap v-bind:imgs="imgs" v-on:load-json="load"></image-text-pixmap>'+
+        '</div>' +
     '</div>',
     data: function(){
         var data = {
