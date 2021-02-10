@@ -26,11 +26,10 @@ var vm = new Vue({
             var img = dat.imgs[dat.currentImage];
             var pxIndex = y * img.width + Number(x);
             img.data[pxIndex] = Number(img.colorIndex);
-            //console.log(this.$children);
-this.$children.forEach(function(child){
-child.$forceUpdate()
-    console.log();
-});
+            // force update all children
+            this.$children.forEach(function(child){
+                child.$forceUpdate()
+            });
         },
         pxClickHandler: function(x, y){
             this.pSet(x, y);
