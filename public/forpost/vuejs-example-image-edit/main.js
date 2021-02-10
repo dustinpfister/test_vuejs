@@ -28,3 +28,9 @@ new Vue({
         }
     }
 });
+
+var pxObj = JSON.stringify(IMG.createPixmap({
+   imgs: [IMG(), IMG()]
+}));
+
+console.log(pxObj);
