@@ -46,7 +46,8 @@ var vm = new Vue({
         load: function(json){
             var pixmapObj = JSON.parse(json);
             var imgs = IMG.createIMGSFromPixmap(pixmapObj);
-            console.log(imgs);
+            //console.log(imgs);
+            this.$data.imgs = imgs;
         }
     }
 });
