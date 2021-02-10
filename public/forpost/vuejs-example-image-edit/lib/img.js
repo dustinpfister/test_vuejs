@@ -33,8 +33,8 @@ var IMG = (function(){
         });
         ani[opt.aniName || 'animation'] = {
             paletteIndex: 0,
-            w: opt.width || 32,
-            h: opt.height || 32,
+            w: opt.w || 32,
+            h: opt.h || 32,
             data: data
         };
         return {
@@ -47,8 +47,13 @@ var IMG = (function(){
     // create IMGS from a pixmap object
     api.createIMGSFromPixmap = function(pixmap, animationKey){
         animationKey = animationKey || Object.keys(pixmap.ani)[0]
-        var imgs = [];
-        console.log(animationKey);
+        var imgs = [],
+        ani = pixmap.ani[animationKey];
+        console.log(ani);
+        
+        var size = ani.w * ani.h;
+        console.log(ani.data.length)
+
         return imgs;
     };
 

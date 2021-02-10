@@ -30,6 +30,8 @@ Vue.component('image-text-pixmap', {
         },
         updateText : function(){
             var pixmap = IMG.createPixmap({
+                w: 8,
+                h: 8,
                 imgs: this.$props.imgs
             });
             this.$data.json = JSON.stringify(pixmap);
