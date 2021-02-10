@@ -36,7 +36,7 @@ Vue.component('image-text-pixmap', {
                     var frames = ani.data.length / size
                     if(frames % 1 != 0){
                         dat.valid = false;
-                        dat.mess = 'Fraction of a frame';
+                        dat.mess = 'Fraction of a frame frameCount=' + frames;
                         break;
                     }
                     i += 1;
