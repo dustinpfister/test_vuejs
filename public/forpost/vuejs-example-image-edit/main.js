@@ -5,7 +5,7 @@ new Vue({
             '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
             '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
         '</div>' +
-        '<image-text-pixmap v-bind:img="imgs[currentImage]"></image-text-pixmap>'+
+        '<image-text-pixmap v-bind:imgs="imgs"></image-text-pixmap>'+
     '</div>',
     data: function(){
         return {
