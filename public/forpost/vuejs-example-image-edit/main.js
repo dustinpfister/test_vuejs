@@ -47,7 +47,8 @@ var vm = new Vue({
             var pixmapObj = JSON.parse(json);
             var imgs = IMG.createIMGSFromPixmap(pixmapObj);
             //console.log(imgs);
-            this.$data.imgs = imgs;
+            this.$data.imgs = Vue.observable(imgs);
+//this.$data.imgs = imgs;
         }
     }
 });
