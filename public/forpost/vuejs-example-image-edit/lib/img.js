@@ -58,6 +58,12 @@ var IMG = (function(){
         while(frameIndex < frames){
             var data = ani.data.slice(frameIndex * size, size);
             console.log(data);
+            var img = api({
+               width: pixmap.w,
+               height: pixmap.h,
+               data: data
+            });
+            imgs.push(img);
             frameIndex += 1;
         }
 
