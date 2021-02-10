@@ -10,7 +10,7 @@ var vm = new Vue({
     data: function(){
         var data = {
            currentImage: 0,
-           imgs : [IMG(), IMG()]
+           imgs : [IMG()]
         };
         return data;
     },
@@ -26,7 +26,11 @@ var vm = new Vue({
             var img = dat.imgs[dat.currentImage];
             var pxIndex = y * img.width + Number(x);
             img.data[pxIndex] = Number(img.colorIndex);
-            this.$forceUpdate();
+            //console.log(this.$children);
+this.$children.forEach(function(child){
+child.$forceUpdate()
+    console.log();
+});
         },
         pxClickHandler: function(x, y){
             this.pSet(x, y);
