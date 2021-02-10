@@ -45,7 +45,7 @@ var IMG = (function(){
     };
 
     // create IMGS from a pixmap object
-    api.createIMGSFromPixmap = function(pixmap, animationKey){
+    api.createIMGSFromPixmap = function(pixmap, animationKey, paletteIndex){
         animationKey = animationKey || Object.keys(pixmap.ani)[0]
         var imgs = [],
         ani = pixmap.ani[animationKey];
@@ -61,6 +61,7 @@ var IMG = (function(){
             var img = api({
                width: pixmap.w,
                height: pixmap.h,
+               palette: pixmap.palettes[paletteIndex || 0],
                data: data
             });
             imgs.push(img);
