@@ -1,10 +1,12 @@
 .wrap_main{
-  background:gray;
+  background:#2f2f2f;
 }
 .ui-div{
   position:relative;
   display:inline-block;
+  background:#8f8f8f;
   margin:20px;
+  outline:2px solid white;
 }
 .image-div-grid{
     background-image:
