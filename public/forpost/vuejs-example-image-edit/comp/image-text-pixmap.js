@@ -9,7 +9,7 @@ Vue.component('image-text-pixmap', {
     },
     template: '<div class="ui-div">'+
         '<h3>Pixmap JSON</h3>'+
-        '<p>vaild: {{ vaild }}, mess: {{ mess }}</p>' +
+        '<p v-bind:style="messStyle()">vaild: {{ vaild }}, mess: {{ mess }}</p>' +
         '<button v-on:click="load">load</button><br>'+
         '<textarea cols="70" rows="15" v-text="json" v-on:keyup="keyup"></textarea>'+
     '</div>',
@@ -17,6 +17,13 @@ Vue.component('image-text-pixmap', {
         this.updateText();
     },
     methods: {
+        messStyle: function(){
+            if(this.$data.valid){
+                return 'color:lime;'
+            }
+            return 'color:red;'
+        },
+        // vaidate the JSON
         validate: function(){
             var dat = this.$data;
             dat.valid = false;
@@ -57,15 +64,6 @@ Vue.component('image-text-pixmap', {
             if(dat.valid){
                 this.$emit('load-json', dat.json);
             }
-/*
-            try{
-                // the json should parse okay
-                var json = JSON.parse(this.$data.json);
-                this.$emit('load-json', JSON.stringify(json));
-            }catch(e){
-                this.$emit('load-json-error', 'JSON parse Error');
-            }
-*/
         },
         // update textarea
         updateText : function(){

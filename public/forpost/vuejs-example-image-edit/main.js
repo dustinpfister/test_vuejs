@@ -23,8 +23,6 @@ var vm = new Vue({
             img.data[pxIndex] = Number(img.colorIndex);
             // force update all children
             this.$children.forEach(function(child){
-                //console.log(child.updateText);
-                //child.$forceUpdate()
                 if(child.updateText){
                     child.updateText();
                 }
