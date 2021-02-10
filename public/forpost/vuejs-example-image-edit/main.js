@@ -14,11 +14,6 @@ var vm = new Vue({
         };
         return data;
     },
-    mounted: function(){
-    },
-    updated: function(){
-        console.log('update');
-    },
     methods: {
         // set the current image pix pos to the current image color index
         pSet: function(x, y){

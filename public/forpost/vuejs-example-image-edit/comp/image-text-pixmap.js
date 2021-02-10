@@ -7,27 +7,22 @@ Vue.component('image-text-pixmap', {
     },
     template: '<div class="ui-div">'+
         '<h3>Pixmap JSON</h3>'+
-        //'<button v-on:click="update">update</button> | '+
         '<button v-on:click="load">load</button><br>'+
         '<textarea cols="70" rows="15" v-text="json" v-on:keyup="keyup"></textarea>'+
     '</div>',
     mounted: function(){
         this.updateText();
     },
-    updated: function(){
-        //this.updateText();
-    },
     methods: {
-        update: function(){
-            this.updateText();
-            this.$forceUpdate();
-        },
+        // what to do on a keyup event
         keyup: function(e){
             this.$data.json = e.target.value;
         },
+        // emit a 'load-json' event
         load: function(){
             this.$emit('load-json', this.$data.json);
         },
+        // update textarea
         updateText : function(){
             var pixmap = IMG.createPixmap({
                 w: 8,

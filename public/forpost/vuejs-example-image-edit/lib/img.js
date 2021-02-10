@@ -49,15 +49,11 @@ var IMG = (function(){
         animationKey = animationKey || Object.keys(pixmap.ani)[0]
         var imgs = [],
         ani = pixmap.ani[animationKey];
-        console.log(ani);
-        
         var size = ani.w * ani.h;
         var frames = ani.data.length / size;
-        console.log('size', size, 'frames', frames);
         var frameIndex = 0;
         while(frameIndex < frames){
             var data = ani.data.slice(frameIndex * size, size);
-            console.log(data);
             var img = api({
                width: pixmap.w,
                height: pixmap.h,
@@ -67,7 +63,6 @@ var IMG = (function(){
             imgs.push(img);
             frameIndex += 1;
         }
-
         return imgs;
     };
 
