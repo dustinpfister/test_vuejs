@@ -8,7 +8,7 @@ var IMG = (function(){
                pxSize: 32,
                palette: [false, 'white', 'black', 'red', 'lime', 'blue'],
                colorIndex: 0,
-               data: [
+               data: Vue.observable([
                    0,0,0,0,0,0,0,0,
                    0,0,0,0,0,0,0,0,
                    0,0,2,0,0,2,0,0,
@@ -17,7 +17,7 @@ var IMG = (function(){
                    0,0,2,0,0,2,0,0,
                    0,0,0,2,2,0,0,0,
                    0,0,0,0,0,0,0,0
-               ]
+               ])
            }
     };
 

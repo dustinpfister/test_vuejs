@@ -1,4 +1,4 @@
-new Vue({
+var vm = new Vue({
     el: '#app',
     template: '<div class="wrap_main">'+
         '<div>'+
@@ -8,10 +8,16 @@ new Vue({
         '<image-text-pixmap v-bind:imgs="imgs"></image-text-pixmap>'+
     '</div>',
     data: function(){
-        return {
+        var data = {
            currentImage: 0,
-           imgs : [IMG()]
-        }
+           imgs : [IMG(), IMG()]
+        };
+        return data;
+    },
+    mounted: function(){
+    },
+    updated: function(){
+        console.log('update');
     },
     methods: {
         // set the current image pix pos to the current image color index
