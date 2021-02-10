@@ -22,7 +22,7 @@ var IMG = (function(){
            }
     };
 
-    // create a PIXMAP format object 
+    // create a PIXMAP format object with an array if IMGS
     api.createPixmap = function(opt){
         opt = opt || {};
         var ani = {};
@@ -42,6 +42,12 @@ var IMG = (function(){
             palettes: [opt.palette || [false, 'black', 'white']],
             ani: ani
         };
+    };
+
+    // create IMGS from a pixmap object
+    api.createIMGSFromPixmap = function(pixmap, animationKey){
+        var imgs = [];
+        return imgs;
     };
 
     return api;
