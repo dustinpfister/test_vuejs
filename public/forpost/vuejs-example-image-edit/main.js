@@ -73,6 +73,11 @@ var vm = new Vue({
                 dat.currentImage += 1;
                 dat.currentImage = dat.currentImage >= dat.imgs.length ? 0 : dat.currentImage;
             }
+            if(action == 'prev'){
+                console.log('yes');
+                dat.currentImage -= 1;
+                dat.currentImage = dat.currentImage < 0 ? dat.imgs.length - 1 : dat.currentImage;
+            }
         },
         load: function(json){
             var pixmapObj = JSON.parse(json);
