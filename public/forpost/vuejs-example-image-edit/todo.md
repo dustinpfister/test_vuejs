@@ -3,6 +3,8 @@
 ## 0.x.0 - Open and save json files on local file system
 * can open and save json files to the local file system
 
+## 0.x.0 - Pretty json formater
+
 ## 0.x.0 - select animation to load
 * be able to set the animation to load in image-text-pixmap in pixmaps with more than one animation
 
