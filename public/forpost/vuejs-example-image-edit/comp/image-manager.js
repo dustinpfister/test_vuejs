@@ -12,7 +12,14 @@ Vue.component('image-manager', {
     methods: {
         click: function(e){
             var idArr = e.target.id.split('_');
-            console.log(idArr);
+            if(idArr[1] === 'next'){
+                console.log('next event');
+                this.$emit('manager', 'next');
+            }
+            if(idArr[1] === 'prev'){
+                console.log('prev event');
+                this.$emit('manager', 'prev');
+            }
         }
     }
 });
