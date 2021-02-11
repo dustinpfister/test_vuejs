@@ -40,7 +40,11 @@ var vm = new Vue({
             img.colorIndex = index;
         },
         managerClickHandler: function(action){
-            console.log(action);
+            var dat = this.$data;
+            if(action == 'next'){
+                dat.currentImage += 1;
+                dat.currentImage = dat.currentImage >= dat.imgs.length ? 0 : dat.currentImage;
+            }
         },
         load: function(json){
             var pixmapObj = JSON.parse(json);
