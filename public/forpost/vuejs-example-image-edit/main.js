@@ -13,7 +13,8 @@ var vm = new Vue({
     data: function(){
         var data = {
            currentImage: 0,
-           imgs : [IMG(), IMG()]
+           //imgs : [IMG()]
+           imgs : []
         };
         return data;
     },

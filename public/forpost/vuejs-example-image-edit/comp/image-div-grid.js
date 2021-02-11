@@ -4,6 +4,7 @@ Vue.component('image-div-grid', {
         var img = this.$props.img,
         vm = this,
         divs = [];
+        if(img){
         img.data.forEach(function(px, i){
             var x = i % img.width,
             y = Math.floor(i / img.width),
@@ -20,12 +21,14 @@ Vue.component('image-div-grid', {
             });
             divs.push(px);
         });
+        
         return createElement('div', {
             attrs: {
                 class: 'image-div-grid ui-div',
                 style: 'width:' + (img.width * img.pxSize) + 'px;height:' + (img.height * img.pxSize) + 'px;'
             }
         }, divs);
+        }
     },
     methods: {
         pxClick: function(e){

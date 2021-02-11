@@ -14,7 +14,9 @@ Vue.component('image-text-pixmap', {
         '<textarea cols="70" rows="15" v-text="json" v-on:keyup="keyup"></textarea>'+
     '</div>',
     mounted: function(){
-        this.updateText();
+        if(this.$props.imgs.length >= 1){
+            this.updateText();
+        }
     },
     methods: {
         messStyle: function(){
