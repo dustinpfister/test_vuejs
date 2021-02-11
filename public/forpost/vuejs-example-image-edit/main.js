@@ -13,7 +13,7 @@ var vm = new Vue({
     data: function(){
         var data = {
            currentImage: 0,
-           imgs : [IMG()]
+           imgs : [IMG(), IMG()]
         };
         return data;
     },
@@ -50,8 +50,7 @@ var vm = new Vue({
             var pixmapObj = JSON.parse(json);
             var imgs = IMG.createIMGSFromPixmap(pixmapObj);
             //console.log(imgs);
-            this.$data.imgs = Vue.observable(imgs);
-//this.$data.imgs = imgs;
+            this.$data.imgs = imgs; //Vue.observable(imgs);
         }
     }
 });

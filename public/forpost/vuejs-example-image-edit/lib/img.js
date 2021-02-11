@@ -53,13 +53,14 @@ var IMG = (function(){
         var frames = ani.data.length / size;
         var frameIndex = 0;
         while(frameIndex < frames){
-            var data = ani.data.slice(frameIndex * size, size);
+            var data = ani.data.slice(frameIndex * size, frameIndex * size + size);
             var img = api({
                width: pixmap.w,
                height: pixmap.h,
                palette: pixmap.palettes[paletteIndex || 0],
                data: data
             });
+            console.log(img);
             imgs.push(img);
             frameIndex += 1;
         }
