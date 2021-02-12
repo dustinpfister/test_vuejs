@@ -9,8 +9,8 @@
 * be able to set the animation to load in image-text-pixmap in pixmaps with more than one animation
 
 ## 0.3.0 - image-size compoent started
-* image-size compoent will display the current image size
-* image-size can be used to set the width and height
+* image-size component will display the current image size
+* image-size can be used to set the width and height of images
 
 ## 0.2.0 - image-manager component started
 * (done) start an image-manager compoent
