@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>vue destroy example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-destroy"></div>
+  <script>
+var vm = new Vue({
+        el: '#demo-destroy',
+        template: '<div>' +
+        '<input type="button" v-on:click="step" value="step"> | ' +
+        '<input type="button" v-on:click="kill" value="kill">' +
+        '<p>i:{{i}}</p>' +
+        '</div>',
+        data: {
+            i: 0
+        },
+        methods: {
+            step: function () {
+                this.$data.i += 1;
+            },
+            // kill this instance
+            kill: function(){
+                this.$destroy();
+            }
+        }
+    });
+  </script>
+  </body>
+</html>
