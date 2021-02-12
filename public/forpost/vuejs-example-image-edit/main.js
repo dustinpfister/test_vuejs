@@ -5,6 +5,7 @@ var vm = new Vue({
             '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
             '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
             '<image-manager v-bind:state="$data" v-on:manager="managerClickHandler" ></image-manager>'+
+            '<image-size v-bind:state="$data" ></image-size>'+
         '</div>' +
         '<div style="text-align:center;">'+
             '<image-text-pixmap v-bind:imgs="imgs" v-on:load-json="load"></image-text-pixmap>'+
@@ -15,19 +16,32 @@ var vm = new Vue({
            currentImage: 0,
            imgs : [
                IMG({
+                   width:16,
+                   height:16,
                    palette:[false,"white","black","red","orange","blue"],
                    data:[
-                       0,3,3,3,3,3,3,0,
-                       3,3,3,4,4,3,3,3,
-                       3,1,1,4,4,1,1,3,
-                       3,1,5,4,4,5,1,3,
-                       0,4,4,4,4,4,4,0,
-                       0,4,2,4,4,2,4,0,
-                       0,4,4,2,2,4,4,0,
-                       0,4,4,4,4,4,4,0]
+                       0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,
+                       3,3,3,4,4,3,3,3,0,0,0,0,0,0,0,0,
+                       3,1,1,4,4,1,1,3,0,0,0,0,0,0,0,0,
+                       3,1,5,4,4,5,1,3,0,0,0,0,0,0,0,0,
+                       0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,
+                       0,4,2,4,4,2,4,0,0,0,0,0,0,0,0,0,
+                       0,4,4,2,2,4,4,0,0,0,0,0,0,0,0,0,
+                       0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,
+
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                }),
                IMG({
                    palette:[false,"white","black","red","orange","blue"],
+                   width:16,
+                   height:16,
                    data:[
                        0,3,3,3,3,3,3,0,
                        3,3,3,4,4,3,3,3,
