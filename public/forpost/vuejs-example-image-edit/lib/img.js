@@ -1,7 +1,6 @@
 var IMG = (function(){
 
-    // main method
-    var api = function(opt){
+   var createIMG = function(opt){
         opt = opt || {};
         return {
                width: opt.width || 8,
@@ -21,6 +20,9 @@ var IMG = (function(){
                ]
            }
     };
+
+    // main method
+    var api = createIMG;
 
     // create a PIXMAP format object with an array if IMGS
     api.createPixmap = function(opt){
