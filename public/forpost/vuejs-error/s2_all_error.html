@@ -1,3 +1,11 @@
+<html>
+  <head>
+    <title>vue error example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo-error"></div>
+    <script>
 var vmError = new Vue({
         el: '#demo-error',
         template: '<div>' +
@@ -24,6 +32,8 @@ var vmError = new Vue({
         }
     });
 window.onerror = vmError.onError;
-
 // trowning an error
 throw new Error('My error');
+    </script>
+  </body>
+</html>

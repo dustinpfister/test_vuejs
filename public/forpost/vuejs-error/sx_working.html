@@ -1,6 +1,18 @@
+<html>
+  <head>
+    <title>vue error example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+<div id="app">
+  <ul>
+    <li is="item" v-for="item in items" :item="item"></li>
+  </ul>
+</div>
+    <script>
 // https://jsfiddle.net/Linusborg/z84wspcg/
 Vue.config.errorHandler = function (err, vm, info) {
-
+ 
     let handler,
     current = vm;
     if (vm.$options.errorHandler) {
@@ -18,14 +30,14 @@ Vue.config.errorHandler = function (err, vm, info) {
     } else {
         console.log(err)
     }
-
+ 
 };
-
+ 
 Vue.component('error-display', {
     props: ['msg'],
     template: '<component is=\"li\" class=\"error\">{{msg}}</component>'
 });
-
+ 
 Vue.component('item', {
     props: ['item'],
     data() {
@@ -44,7 +56,7 @@ Vue.component('item', {
         this.dataError = true
     }
 });
-
+ 
 new Vue({
     el: '#app',
     data: {
@@ -61,3 +73,6 @@ new Vue({
         ]
     },
 });
+    </script>
+  </body>
+</html>
