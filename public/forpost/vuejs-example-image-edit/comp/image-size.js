@@ -5,8 +5,8 @@ Vue.component('image-size', {
         };
     },
     template: '<div class="ui-div">'+
-        '<h3>Image Size</h3>'+
-        '<p>{{  }}</p>'+
+        '<h3>Global Image Size</h3>'+
+        '<p>{{ state.imageWidth }}, {{ state.imageHeight }}</p>'+
     '</div>',
     methods: {
         click: function(e){
