@@ -1,24 +1,22 @@
 var IMG = (function(){
 
+   // create blank data helper
+   var createBlankData = function(size, index){
+       return new Array(size).fill(index);
+   };
+
+   // create img method
    var createIMG = function(opt){
         opt = opt || {};
-        return {
+        var img = {
                width: opt.width || 8,
                height: opt.height || 8,
                pxSize: 32,
                palette: opt.palette || [false, 'white', 'black', 'red', 'lime', 'blue'],
-               colorIndex: 0,
-               data: opt.data || [
-                   0,0,0,0,0,0,0,0,
-                   0,0,0,0,0,0,0,0,
-                   0,0,2,0,0,2,0,0,
-                   0,0,2,0,0,2,0,0,
-                   0,0,0,0,0,0,0,0,
-                   0,0,2,0,0,2,0,0,
-                   0,0,0,2,2,0,0,0,
-                   0,0,0,0,0,0,0,0
-               ]
-           }
+               colorIndex: 0
+           };
+        img.data = opt.data || createBlankData(img.width * img.height, 0);
+        return img;
     };
 
     // main method
