@@ -52,11 +52,12 @@ var IMG = (function(){
         var size = ani.w * ani.h;
         var frames = ani.data.length / size;
         var frameIndex = 0;
+        console.log(ani.w, ani.h)
         while(frameIndex < frames){
             var data = ani.data.slice(frameIndex * size, frameIndex * size + size);
             var img = api({
-               width: pixmap.w,
-               height: pixmap.h,
+               width: ani.w, //pixmap.w,
+               height: ani.h, //pixmap.h,
                palette: pixmap.palettes[paletteIndex || 0],
                data: data
             });

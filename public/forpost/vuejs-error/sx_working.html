@@ -26,9 +26,9 @@ Vue.config.errorHandler = function (err, vm, info) {
         }
     }
     if (handler) {
-        handler.call(current, err, vm, info)
+        handler.call(current, err, vm, info);
     } else {
-        console.log(err)
+        console.log(err);
     }
  
 };

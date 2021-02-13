@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>vue error example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo-error"></div>
+    <script>
+window.addEventListener('error', function (e) {
+    var err = this.error;
+    var out = document.getElementById('demo-error');
+    out.innerText = e.message;
+});
+// trowning an error
+throw new Error('My error');
+// Uncaught Error: My error
+    </script>
+  </body>
+</html>

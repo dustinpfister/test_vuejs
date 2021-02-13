@@ -69,10 +69,11 @@ Vue.component('image-text-pixmap', {
         },
         // update textarea
         updateText : function(){
+            var img = this.$props.imgs[0];
             var pixmap = IMG.createPixmap({
-                w: 8,
-                h: 8,
-                palette: this.$props.imgs[0].palette,
+                w: img.width,
+                h: img.height,
+                palette: img.palette,
                 imgs: this.$props.imgs
             });
             this.$data.json = JSON.stringify(pixmap);
