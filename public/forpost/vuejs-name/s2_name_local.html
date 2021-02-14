@@ -1,3 +1,11 @@
+<html>
+  <head>
+    <title>vue name example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-name"></div>
+  <script>
 var Foo = {
     template: '<span>Foo</span>'
 };
@@ -5,7 +13,6 @@ var Bar = {
     name: 'bar',
     template: '<span>Bar</span>'
 };
-
 // using components locally
 new Vue({
     el: '#demo-name',
@@ -23,3 +30,6 @@ new Vue({
         console.log(Bar.name); // 'bar'
     }
 });
+  </script>
+  </body>
+</html>
