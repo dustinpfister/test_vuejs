@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>vue name example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-name"></div>
+  <script>
+new Vue({
+    el: '#demo-name',
+    template: '<div><foo></foo><bar></bar></div>',
+    components: {
+        foo: {
+            template: '<span>Foo</span>'
+        },
+        bar: {
+            name: 'bar',
+            template: '<span>Bar</span>'
+        }
+    },
+    mounted: function () {
+        console.log(this.$children[0].name); // undefined
+        console.log(this.$children[0].$options._componentTag); // 'foo'
+
+        console.log(this.$children[1].name); // undefined
+        console.log(this.$children[1].$options._componentTag); // 'bar'
+    }
+});
+  </script>
+  </body>
+</html>
