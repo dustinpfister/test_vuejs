@@ -80,6 +80,12 @@
                 r: SECTION_RADIUS,
                 distance: 0,
                 per: 0,
+                temp: {
+                    per: 0,
+                    kelvin: 0,
+                    displayUnit: 'kelvin',
+                    displayTemp: 0
+                },
                 grid: createGrid(maps[i])
             });
             i += 1;
@@ -127,7 +133,7 @@
         data: {
             menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
-            currentMenu: 'sections',
+            currentMenu: 'sections-table',
             sun: {
                cx: CENTERX,
                cy: CENTERY,
