@@ -5,6 +5,8 @@
     CENTERY = 120,
     SECTION_DIST = 100,
     SECTION_RADIUS = 16,
+    SECTION_TEMP_KELVIN_MIN = 0,    // Think in kelvin when it comes to a standard unit for temp
+    SECTION_TEMP_KELVIN_MAX = 5778,
     SUN_RADIUS = 16,
     SUN_MAXDIST = SECTION_DIST - SUN_RADIUS - SECTION_RADIUS;
 
@@ -177,7 +179,9 @@
                 sun = dat.sun;
                 dat.sections = dat.sections.map(function(section){
                     section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
-                    section.per = section.distance / (SECTION_DIST * 2);
+                    section.per = 1 - section.distance / (SECTION_DIST * 2);
+                    // temp
+                    section.temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
                     return section;
                 });
             }
