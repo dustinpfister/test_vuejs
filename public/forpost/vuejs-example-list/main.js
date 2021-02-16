@@ -52,11 +52,7 @@ new Vue({
         },
         // push a new item
         pushNew: function () {
-            this.$data.items.push({
-                id: 'list-item-' + this.$data.count,
-                mess: this.$data.textInput,
-                done: false
-            });
+            this.$data.items.push(this.createItem());
             this.$data.count += 1;
         }
     }

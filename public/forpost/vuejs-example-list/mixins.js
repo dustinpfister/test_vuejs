@@ -8,6 +8,14 @@ Vue.mixin({
         get_item_id: function(evnt){
             var idArray = this.get_id_array(evnt);
             return idArray.slice(0, 3).join('-');
+        },
+        createItem: function(opt){
+            opt = opt || {};
+            return {
+                id: opt.id || 'list-item-' + this.$data.count,
+                mess: opt.mess || this.$data.textInput,
+                done: opt.done || false
+            };
         }
     }
 });
