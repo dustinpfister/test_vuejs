@@ -5,8 +5,8 @@ Vue.component('list-item', {
         '<input v-bind:id=\"$props.item.id+\'-del\'\" type=\"button\" v-on:click=\"delItem\" value=\"Del\"></li>'+
     '</div>',
     methods: {
-        delItem: function(){
-            console.log('del item');
+        delItem: function(e){
+            this.$emit('delitem', e);
         }
     }
 });
@@ -16,12 +16,12 @@ new Vue({
     template: '<div>' +
     '<input type=\"text\" v-model=\"textInput\"> '+
     '<input type=\"Button\" value=\"Push\" v-on:click=\"pushNew\"></br>' +
-    //'<ul>'+
-    //    '<li v-for=\"item in items\"><input v-model=\"item.mess\"> '+
-    //    '<input v-bind:id=\"item.id+\'-del\'\" type=\"button\" v-on:click=\"delItem\" value=\"Del\"></li>'+
-    //'</ul>' +
-    '<div>'+
-        '<list-item v-for="item in items" v-bind:key="item.id" v-bind:item="item" ></list-item>'+
+    '<div>' +
+        '<list-item ' +
+            'v-for="item in items" ' +
+            'v-bind:key="item.id" ' +
+            'v-bind:item="item" ' + 
+            'v-on:delitem="delItem"></list-item>'+
     '</div>' +
     '</div>',
     data: {
@@ -29,6 +29,7 @@ new Vue({
         items: []
     },
     methods: {
+        // delete an item
         delItem: function(e){
             var id = e.target.id.replace(/-del/, ''),
             i = this.$data.items.length,
@@ -40,6 +41,7 @@ new Vue({
                 }
             }
         },
+        // push a new item
         pushNew: function () {
             var id = this.$data.items.length;
             this.$data.items.push({
