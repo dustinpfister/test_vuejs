@@ -7,7 +7,7 @@ Vue.component('list-item', {
             'v-bind:value=\"$props.item.mess\" ' +
             'type=\"text\" ' + 
             'v-on:keyup="updateItem"> ' +
-        '<span v-else >{{ $props.item.mess }}</span> ' +
+        '<span class="donetext" v-else >{{ $props.item.mess }}</span> ' +
         '<input ' + 
             'v-bind:id=\"$props.item.id+\'-del\'\" ' + 
             'type=\"button\" ' +
@@ -18,7 +18,6 @@ Vue.component('list-item', {
             'type=\"button\" ' +
             'v-on:click=\"doneItem\" ' +
             'value=\"Done\"></li> ' +
-        '<span>{{ $props.item.done }}</span>' +
     '</div>',
     methods: {
         delItem: function(e){

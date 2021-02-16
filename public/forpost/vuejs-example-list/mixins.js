@@ -32,6 +32,7 @@ Vue.mixin({
             var json = JSON.stringify(lists);
             localStorage.setItem('vuejs-list', json);
         },
+        // load lists from local storage
         load: function(){
             var json = localStorage.getItem('vuejs-list');
             if(json){
