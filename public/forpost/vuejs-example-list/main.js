@@ -8,7 +8,7 @@ new Vue({
             'v-for="item in items" ' +
             'v-bind:key="item.id" ' +
             'v-bind:item="item" ' + 
-            'v-on:delitem="delItem" ' +
+            'v-on:delitem="delItemById" ' +
             'v-on:updateitem="updateItem" ></list-item>'+
     '</div>' +
     '<div>{{ items }}</div>'+
@@ -18,10 +18,9 @@ new Vue({
         items: []
     },
     methods: {
-        // delete an item
-        delItem: function(e){
-            var id = this.get_item_id(e),
-            i = this.$data.items.length,
+        // delete an item by id
+        delItemById: function(id){
+            var i = this.$data.items.length,
             item;
             while(i--){
                 item = this.$data.items[i];

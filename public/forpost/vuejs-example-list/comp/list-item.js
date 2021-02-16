@@ -6,7 +6,8 @@ Vue.component('list-item', {
     '</div>',
     methods: {
         delItem: function(e){
-            this.$emit('delitem', e);
+            var id = this.get_item_id(e);
+            this.$emit('delitem', id);
         },
         updateItem: function(e){
             this.$emit('updateitem', e);
