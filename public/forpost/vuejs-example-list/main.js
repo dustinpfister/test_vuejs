@@ -11,6 +11,7 @@ new Vue({
             'v-bind:key="item.id" ' +
             'v-bind:item="item" ' + 
             'v-on:delitem="delItemById" ' +
+            'v-on:doneitem="doneItemById" ' +
             'v-on:updateitem="updateItemById" ></list-item>'+
     '</div>' +
     //'<div>{{ items }}</div>'+
@@ -54,6 +55,14 @@ new Vue({
             var i = this.getItemById(id, true);
             if(typeof i === 'number'){
                 this.$data.items.splice(i, 1);
+            }
+            this.save(this.$data);
+        },
+        // flag and item as done
+        doneItemById: function(id){
+            var item = this.getItemById(id, false);
+            if(item){
+                item.done = !item.done;
             }
             this.save(this.$data);
         },

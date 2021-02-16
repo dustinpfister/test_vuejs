@@ -16,6 +16,7 @@ Vue.component('list-item', {
             'type=\"button\" ' +
             'v-on:click=\"doneItem\" ' +
             'value=\"Done\"></li> ' +
+        '<span>{{ $props.item.done }}</span>' +
     '</div>',
     methods: {
         delItem: function(e){

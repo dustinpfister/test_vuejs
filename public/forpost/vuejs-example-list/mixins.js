@@ -22,7 +22,6 @@ Vue.mixin({
             // first load
             var lists = this.load();
             if(lists){
-                console.log(lists);
                 lists[0] = data;
             }else{
                 // no lists! create a new object and save the current list
