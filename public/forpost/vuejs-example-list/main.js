@@ -1,6 +1,6 @@
 new Vue({
     el: '#app',
-    template: '<div>' +
+    template: '<div class="wrap_main">' +
     '<div class="wrap_create">' +
         '<input type=\"text\" v-model=\"textInput\"> '+
         '<input type=\"Button\" value=\"Push\" v-on:click=\"pushNew\"></br>' +
