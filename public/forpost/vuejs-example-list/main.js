@@ -18,17 +18,28 @@ new Vue({
         items: []
     },
     methods: {
-        // delete an item by id
-        delItemById: function(id){
+        // get item (or item index) by id
+        getItemById: function(id, returnIndex){
+            returnIndex = returnIndex === undefined ? false: returnIndex;
             var i = this.$data.items.length,
             item;
             while(i--){
                 item = this.$data.items[i];
                 if(item.id === id){
-                    this.$data.items.splice(i, 1);
+                    if(returnIndex){
+                        return i;
+                    }
+                    return item;
                 }
             }
-
+            return false;
+        },
+        // delete an item by id
+        delItemById: function(id){
+            var i = this.getItemById(id, true);
+            if(typeof i === 'number'){
+                this.$data.items.splice(i, 1);
+            }
         },
         updateItemById: function(id, prop, value){
             console.log(id, prop, value);
