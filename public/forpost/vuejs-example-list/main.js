@@ -13,12 +13,24 @@ new Vue({
             'v-on:delitem="delItemById" ' +
             'v-on:updateitem="updateItemById" ></list-item>'+
     '</div>' +
-    '<div>{{ items }}</div>'+
+    //'<div>{{ items }}</div>'+
     '</div>',
     data: {
+        listName: 'demo', // list name used for save states
         textInput: 'Enter new item text',
-        count: 0,  // count used to make sure I do not have duplicate item ids
+        count: 0, // count used to make sure I do not have duplicate item ids
         items: []
+    },
+    mounted: function(){
+        // load and saved list
+        var vm = this,
+        lists = vm.load(),
+        savedList = lists[0],
+        dat = vm.$data;
+        dat.count = savedList.count;
+        savedList.items.forEach(function(savedItem){
+            dat.items.push(vm.createItem(savedItem));
+        });
     },
     methods: {
         // get item (or item index) by id
@@ -43,17 +55,19 @@ new Vue({
             if(typeof i === 'number'){
                 this.$data.items.splice(i, 1);
             }
+            this.save(this.$data);
         },
         // update an item by id
         updateItemById: function(id, prop, value){
             var item = this.getItemById(id, false);
-            console.log(id, prop, value);
             item[prop] = value;
+            this.save(this.$data);
         },
         // push a new item
         pushNew: function () {
             this.$data.items.push(this.createItem());
             this.$data.count += 1;
+            this.save(this.$data);
         }
     }
 });

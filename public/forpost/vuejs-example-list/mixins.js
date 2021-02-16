@@ -16,6 +16,29 @@ Vue.mixin({
                 mess: opt.mess || this.$data.textInput,
                 done: opt.done || false
             };
+        },
+        // save a list to localStorage
+        save: function(data){
+            // first load
+            var lists = this.load();
+            if(lists){
+                console.log(lists);
+                lists[0] = data;
+            }else{
+                // no lists! create a new object and save the current list
+                console.log('no lists!');
+                lists = [];
+                lists.push(data);
+            }
+            var json = JSON.stringify(lists);
+            localStorage.setItem('vuejs-list', json);
+        },
+        load: function(){
+            var json = localStorage.getItem('vuejs-list');
+            if(json){
+                return JSON.parse(json);
+            }
+            return false;
         }
     }
 });
