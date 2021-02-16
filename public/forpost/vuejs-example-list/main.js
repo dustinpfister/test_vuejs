@@ -42,7 +42,9 @@ new Vue({
             }
         },
         updateItemById: function(id, prop, value){
+            var item = this.getItemById(id, false);
             console.log(id, prop, value);
+            item[prop] = value;
         },
         // push a new item
         pushNew: function () {

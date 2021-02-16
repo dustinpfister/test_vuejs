@@ -1,7 +1,7 @@
 Vue.component('list-item', {
     props: ['item'],
     template: '<div>'+
-        '<input v-bind:value=\"$props.item.mess\" type=\"text\" v-on:keyup="updateItem"> '+
+        '<input v-bind:id=\"$props.item.id+\'-mess\'\" v-bind:value=\"$props.item.mess\" type=\"text\" v-on:keyup="updateItem"> '+
         '<input v-bind:id=\"$props.item.id+\'-del\'\" type=\"button\" v-on:click=\"delItem\" value=\"Del\"></li>'+
     '</div>',
     methods: {
