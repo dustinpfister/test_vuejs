@@ -8,8 +8,10 @@ new Vue({
             'v-for="item in items" ' +
             'v-bind:key="item.id" ' +
             'v-bind:item="item" ' + 
-            'v-on:delitem="delItem"></list-item>'+
+            'v-on:delitem="delItem" ' +
+            'v-on:updateitem="updateItem" ></list-item>'+
     '</div>' +
+    '<div>{{ items }}</div>'+
     '</div>',
     data: {
         textInput: 'Enter new item text',
@@ -27,6 +29,9 @@ new Vue({
                     this.$data.items.splice(i, 1);
                 }
             }
+        },
+        updateItem: function(e){
+            console.log(e.target.value);
         },
         // push a new item
         pushNew: function () {

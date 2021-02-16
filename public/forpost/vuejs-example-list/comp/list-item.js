@@ -1,12 +1,15 @@
 Vue.component('list-item', {
     props: ['item'],
     template: '<div>'+
-        '<input v-bind:value=\"$props.item.mess\"> '+
+        '<input v-bind:value=\"$props.item.mess\" type=\"text\" v-on:keyup="updateItem"> '+
         '<input v-bind:id=\"$props.item.id+\'-del\'\" type=\"button\" v-on:click=\"delItem\" value=\"Del\"></li>'+
     '</div>',
     methods: {
         delItem: function(e){
             this.$emit('delitem', e);
+        },
+        updateItem: function(e){
+            this.$emit('updateitem', e);
         }
     }
 });
