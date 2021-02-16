@@ -15,6 +15,7 @@ new Vue({
     '</div>',
     data: {
         textInput: 'Enter new item text',
+        count: 0,  // count used to make sure I do not have duplicate item ids
         items: []
     },
     methods: {
@@ -48,12 +49,13 @@ new Vue({
         },
         // push a new item
         pushNew: function () {
-            var id = this.$data.items.length;
+            //var id = this.$data.items.length;
             this.$data.items.push({
-                id: 'list-item-' + id,
+                id: 'list-item-' + this.$data.count,
                 mess: this.$data.textInput,
                 done: false
             });
+            this.$data.count += 1;
         }
     }
 });
