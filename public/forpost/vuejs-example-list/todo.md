@@ -1,5 +1,6 @@
 ## vue-example-list todo list
 
-* update a list item text
-* save and load item list with local storage
-* style.css file
+* (done) update a list item text
+* (done) save and load item list with local storage
+* (done) some basic CSS
+* have a done button working
