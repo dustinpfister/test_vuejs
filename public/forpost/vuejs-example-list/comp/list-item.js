@@ -10,7 +10,8 @@ Vue.component('list-item', {
             this.$emit('delitem', id);
         },
         updateItem: function(e){
-            this.$emit('updateitem', e);
+            var id = this.get_item_id(e);
+            this.$emit('updateitem', id, 'mess', e.target.value);
         }
     }
 });

@@ -9,7 +9,7 @@ new Vue({
             'v-bind:key="item.id" ' +
             'v-bind:item="item" ' + 
             'v-on:delitem="delItemById" ' +
-            'v-on:updateitem="updateItem" ></list-item>'+
+            'v-on:updateitem="updateItemById" ></list-item>'+
     '</div>' +
     '<div>{{ items }}</div>'+
     '</div>',
@@ -30,8 +30,8 @@ new Vue({
             }
 
         },
-        updateItem: function(e){
-            console.log(e.target.value);
+        updateItemById: function(id, prop, value){
+            console.log(id, prop, value);
         },
         // push a new item
         pushNew: function () {
