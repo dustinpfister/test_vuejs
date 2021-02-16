@@ -3,4 +3,4 @@
 * (done) update a list item text
 * (done) save and load item list with local storage
 * (done) some basic CSS
-* have a done button working
+* (done) have a done button working

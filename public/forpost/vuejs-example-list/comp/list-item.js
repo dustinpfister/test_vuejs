@@ -2,10 +2,12 @@ Vue.component('list-item', {
     props: ['item'],
     template: '<div class="wrap_item">'+
         '<input '+
+            'v-if="!$props.item.done" ' +
             'v-bind:id=\"$props.item.id+\'-mess\'\" ' +
             'v-bind:value=\"$props.item.mess\" ' +
             'type=\"text\" ' + 
             'v-on:keyup="updateItem"> ' +
+        '<span v-else >{{ $props.item.mess }}</span> ' +
         '<input ' + 
             'v-bind:id=\"$props.item.id+\'-del\'\" ' + 
             'type=\"button\" ' +
