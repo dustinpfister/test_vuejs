@@ -1,8 +1,10 @@
 new Vue({
     el: '#app',
     template: '<div>' +
-    '<input type=\"text\" v-model=\"textInput\"> '+
-    '<input type=\"Button\" value=\"Push\" v-on:click=\"pushNew\"></br>' +
+    '<div class="wrap_create">' +
+        '<input type=\"text\" v-model=\"textInput\"> '+
+        '<input type=\"Button\" value=\"Push\" v-on:click=\"pushNew\"></br>' +
+    '</div>'+
     '<div>' +
         '<list-item ' +
             'v-for="item in items" ' +
