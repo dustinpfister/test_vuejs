@@ -42,6 +42,7 @@ new Vue({
                 this.$data.items.splice(i, 1);
             }
         },
+        // update an item by id
         updateItemById: function(id, prop, value){
             var item = this.getItemById(id, false);
             console.log(id, prop, value);
@@ -49,7 +50,6 @@ new Vue({
         },
         // push a new item
         pushNew: function () {
-            //var id = this.$data.items.length;
             this.$data.items.push({
                 id: 'list-item-' + this.$data.count,
                 mess: this.$data.textInput,
