@@ -20,6 +20,8 @@ new Vue({
     methods: {
         // delete an item
         delItem: function(e){
+            console.log( this.get_item_id(e) )
+/*
             var id = e.target.id.replace(/-del/, ''),
             i = this.$data.items.length,
             item;
@@ -29,6 +31,7 @@ new Vue({
                     this.$data.items.splice(i, 1);
                 }
             }
+*/
         },
         updateItem: function(e){
             console.log(e.target.value);
