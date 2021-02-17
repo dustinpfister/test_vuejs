@@ -95,9 +95,11 @@
         return sections;
     };
 
+    // set Section Temp helper
     var setSectionTemp = function(section){
-        var temp = section.temp;
-        temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
+        var temp = section.temp,
+        per = Math.log( 1 + section.per) / Math.log(2 + 3800 * (1-section.per))
+        temp.kelvin = SECTION_TEMP_KELVIN_MIN + per * SECTION_TEMP_KELVIN_MAX;
         temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
         // display unit defaults to kelvin
         temp.displayTemp = temp.kelvin
@@ -159,7 +161,7 @@
             }
         },
         mounted: function(){
-            this.setSunPosAD(Math.PI / 180 * 20, 50);
+            //this.setSunPosAD(Math.PI / 180 * 20, 50);
             this.updateSections();
         },
         methods: {
