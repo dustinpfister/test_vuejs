@@ -22,8 +22,17 @@ new Vue({
         this.add();
     },
     methods: {
+        check: function(num){
+            var int = parseInt(num);
+            if(String(int) === 'NaN'){
+               int = 0;
+            }
+            return int;
+        },
         add: function () {
-            this.c = parseInt(this.a) + parseInt(this.b);
+            var a = this.check(this.a),
+            b = this.check(this.b);
+            this.c = a + b;
         }
     }
 });
