@@ -20,6 +20,7 @@
 * (done) have s section.temp.kelvin that will always be a kelvin value between min and max const values
 * (done) have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]
 * (done) have a section.temp.displayTemp that will be a conversion from temp.kelvin to the temp.displayUnit
+* fix bug where section.per can never get to 1
 
 ## 0.5.0 - cell action select ui
 * (done) start a sections-ui-cellaction component in sections.js
