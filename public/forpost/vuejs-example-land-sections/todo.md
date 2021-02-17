@@ -14,8 +14,8 @@
 ## 0.7.0 - Mana System
 
 ## 0.6.0 - section.temp
-* have a section.temp object
-* have a section.temp.per value between 0 and 1
+* (done) have a section.temp object
+* (done) have a section.temp.per value between 0 and 1
 * a temp.per of zero should be considered 0 kelvin and 1 should be 5778 kelvin, make constants with these values
 * have s section.temp.kelvin that will always be a kelvin value between min and max const values
 * have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]

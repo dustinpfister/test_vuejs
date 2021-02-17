@@ -85,7 +85,7 @@
                 temp: {
                     per: 0,
                     kelvin: 0,
-                    displayUnit: 'kelvin',
+                    displayUnit: 'fahrenheit',
                     displayTemp: 0
                 },
                 grid: createGrid(maps[i])
@@ -183,6 +183,9 @@
                     // temp
                     section.temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
                     section.temp.per = section.temp.kelvin / SECTION_TEMP_KELVIN_MAX;
+                    if(section.temp.displayUnit = 'fahrenheit'){
+                        section.temp.displayTemp = (section.temp.kelvin - 273.15) * 9 / 5 + 32;
+                    }
                     return section;
                 });
             }
