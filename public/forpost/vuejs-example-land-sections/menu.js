@@ -182,6 +182,7 @@
                     section.per = 1 - section.distance / (SECTION_DIST * 2);
                     // temp
                     section.temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
+                    section.temp.per = section.temp.kelvin / SECTION_TEMP_KELVIN_MAX;
                     return section;
                 });
             }

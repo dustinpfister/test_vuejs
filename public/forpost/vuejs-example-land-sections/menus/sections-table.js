@@ -10,7 +10,7 @@ Vue.component('sections-info', {
               '<td>{{ sec.distance.toFixed(2) }}</td>'+
               '<td>{{ sec.per.toFixed(2) }}</td>' +
               '<td>{{ Math.round(sec.x) + \', \' + Math.round(sec.y) }}</td>' +
-              '<td>{{ sec.temp.displayTemp  }} {{ sec.temp.displayUnit }} ( {{ sec.temp.kelvin }} kelvin) {{ Math.round(sec.temp.per * 100) }}%</td>' +
+              '<td>{{ sec.temp.displayTemp  }} {{ sec.temp.displayUnit }} ( {{ sec.temp.kelvin.toFixed(2) }} kelvin) {{ Math.round(sec.temp.per * 100) }}%</td>' +
            '</tr>'+
         '</table>'+
     '</div>'
