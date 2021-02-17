@@ -16,10 +16,10 @@
 ## 0.6.0 - section.temp
 * (done) have a section.temp object
 * (done) have a section.temp.per value between 0 and 1
-* a temp.per of zero should be considered 0 kelvin and 1 should be 5778 kelvin, make constants with these values
-* have s section.temp.kelvin that will always be a kelvin value between min and max const values
-* have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]
-* have a section.temp.displayTemp that will be a conversion from temp.kelvin to the temp.displayUnit
+* (done) a temp.per of zero should be considered 0 kelvin and 1 should be 5778 kelvin, make constants with these values
+* (done) have s section.temp.kelvin that will always be a kelvin value between min and max const values
+* (done) have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]
+* (done) have a section.temp.displayTemp that will be a conversion from temp.kelvin to the temp.displayUnit
 
 ## 0.5.0 - cell action select ui
 * (done) start a sections-ui-cellaction component in sections.js

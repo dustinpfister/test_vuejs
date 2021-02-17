@@ -95,6 +95,17 @@
         return sections;
     };
 
+    var setSectionTemp = function(section){
+        var temp = section.temp;
+        temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
+        temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
+        // display unit defaults to kelvin
+        temp.displayTemp = temp.kelvin
+        if(temp.displayUnit = 'fahrenheit'){
+            temp.displayTemp = (temp.kelvin - 273.15) * 9 / 5 + 32;
+        }
+    };
+
     var vm = new Vue({
         el: '#app',
         render: function(createElement){
@@ -180,15 +191,7 @@
                 dat.sections = dat.sections.map(function(section){
                     section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
                     section.per = 1 - section.distance / (SECTION_DIST * 2);
-                    // temp
-                    var temp = section.temp;
-                    temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
-                    temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
-                    // display unit defaults to kelvin
-                    temp.displayTemp = temp.kelvin
-                    if(temp.displayUnit = 'fahrenheit'){
-                        temp.displayTemp = (temp.kelvin - 273.15) * 9 / 5 + 32;
-                    }
+                    setSectionTemp(section);
                     return section;
                 });
             }
