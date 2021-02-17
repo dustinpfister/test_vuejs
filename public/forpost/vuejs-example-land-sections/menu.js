@@ -181,10 +181,13 @@
                     section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
                     section.per = 1 - section.distance / (SECTION_DIST * 2);
                     // temp
-                    section.temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
-                    section.temp.per = section.temp.kelvin / SECTION_TEMP_KELVIN_MAX;
-                    if(section.temp.displayUnit = 'fahrenheit'){
-                        section.temp.displayTemp = (section.temp.kelvin - 273.15) * 9 / 5 + 32;
+                    var temp = section.temp;
+                    temp.kelvin = SECTION_TEMP_KELVIN_MIN + section.per * SECTION_TEMP_KELVIN_MAX;
+                    temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
+                    // display unit defaults to kelvin
+                    temp.displayTemp = temp.kelvin
+                    if(temp.displayUnit = 'fahrenheit'){
+                        temp.displayTemp = (temp.kelvin - 273.15) * 9 / 5 + 32;
                     }
                     return section;
                 });
