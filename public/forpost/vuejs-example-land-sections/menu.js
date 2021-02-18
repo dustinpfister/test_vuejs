@@ -108,6 +108,14 @@
         }
     };
 
+    // set Section Per helper
+    var setSectionPer = function(section, sun){
+        section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
+        var maxDist = section.distance - section.r - sun.r;
+        section.distance = section.distance > maxDist ? maxDist : section.distance;
+        section.per = 1 - section.distance / (SECTION_DIST * 2);
+    };
+
     var vm = new Vue({
         el: '#app',
         render: function(createElement){
@@ -191,10 +199,7 @@
                 var dat = this.$data,
                 sun = dat.sun;
                 dat.sections = dat.sections.map(function(section){
-                    section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
-                    var maxDist = section.distance - section.r - sun.r;
-                    section.distance = section.distance > maxDist ? maxDist : section.distance;
-                    section.per = 1 - section.distance / (SECTION_DIST * 2);
+                    setSectionPer(section, sun);
                     setSectionTemp(section);
                     return section;
                 });
