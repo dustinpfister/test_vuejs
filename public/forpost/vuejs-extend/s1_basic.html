@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Vue extend example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+// a 'Basic' subclass of Vue created with Vue.extend
+var Basic = Vue.extend({
+        // template for an asset
+        template: '<div>' +
+            '<h1>Basic Subclass Example</h1>' +
+            '<p>{{ mess }}</p>'+
+        '</div>',
+        // data
+        data: function () {
+            return {
+                mess: 'Hello World'
+            }
+        }
+    });
+// create an instance of 'Basic' and mount it
+var vm = new Basic();
+vm.$mount('#app');
+  </script>
+  </body>
+</html>
