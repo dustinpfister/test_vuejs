@@ -21,8 +21,9 @@ var Basic = Vue.extend({
         }
     });
 // create an instance of 'Basic' and mount it
-var vm = new Basic();
-vm.$mount('#app');
+var vm = new Basic({
+  el: '#app'
+});
   </script>
   </body>
 </html>
