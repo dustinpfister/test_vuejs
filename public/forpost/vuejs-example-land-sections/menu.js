@@ -98,7 +98,7 @@
     // set Section Temp helper
     var setSectionTemp = function(section){
         var temp = section.temp,
-        per = Math.log( 1 + section.per) / Math.log(2 + 3800 * (1-section.per))
+        per = Math.log( 1 + section.per) / Math.log(2 + 36000 * (1-section.per))
         temp.kelvin = SECTION_TEMP_KELVIN_MIN + per * SECTION_TEMP_KELVIN_MAX;
         temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
         // display unit defaults to kelvin
@@ -161,7 +161,7 @@
             }
         },
         mounted: function(){
-            //this.setSunPosAD(Math.PI / 180 * 20, 50);
+            this.setSunPosAD(Math.PI / 180 * 0, 70);
             this.updateSections();
         },
         methods: {
@@ -192,7 +192,7 @@
                 sun = dat.sun;
                 dat.sections = dat.sections.map(function(section){
                     section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
-                    section.per = 1 - section.distance / (SECTION_DIST * 2);
+                    section.per = 1 - (section.distance - section.r - sun.r) / (SECTION_DIST * 2);
                     setSectionTemp(section);
                     return section;
                 });
