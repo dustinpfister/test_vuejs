@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Vue extend example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+// a 'Basic' subclass of Vue created with Vue.extend
+var Basic = Vue.extend({
+        // template for an asset
+        template: '<div>' +
+            '<h1>Items Example</h1>' +
+            '<p>Item Index: {{ currentIndex }}, value:  {{ items[currentIndex] }}</p>'+
+        '</div>',
+        // data
+        data: function (a) {
+            return {
+                currentIndex: 0,  // a default index
+                items: ['one', 'two', 'three'] // a default set of items
+            }
+        }
+    });
+// create an instance of 'Basic' and mount it
+var vm = new Basic({
+  el: '#app',
+  data: {
+    currentIndex: 3 // set a starting index other than 0
+  },
+  created: function(){
+      // add an additional Item
+      this.$data.items.push('four');
+  }
+});
+  </script>
+  </body>
+</html>
