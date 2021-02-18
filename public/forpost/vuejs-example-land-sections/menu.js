@@ -192,7 +192,9 @@
                 sun = dat.sun;
                 dat.sections = dat.sections.map(function(section){
                     section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
-                    section.per = 1 - (section.distance - section.r - sun.r) / (SECTION_DIST * 2);
+                    var maxDist = section.distance - section.r - sun.r;
+                    section.distance = section.distance > maxDist ? maxDist : section.distance;
+                    section.per = 1 - section.distance / (SECTION_DIST * 2);
                     setSectionTemp(section);
                     return section;
                 });
