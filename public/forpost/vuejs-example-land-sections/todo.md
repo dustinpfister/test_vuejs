@@ -5,13 +5,19 @@
 * have a grid.seaLevel prop that will have a value in the same range as ALTITUDE
 * any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
-## 0.x.0 - fire, boiling water, and molten rock cell types
+
+<!-- BASIC IDEA -->
+<!-- 
+   Get the basic game logic worked out
+-->
+
+
+## 0.x.0 - Mana System
+
+## 0.7.0 - fire, boiling water, and molten rock cell types
 * start a range of cell types for when section.temp.kelvin hits high values
-
-
-<!-- land-sections -->
-
-## 0.7.0 - Mana System
+* section temp should have an impact on what the cell types are by having kelvin temp ranges for cell types
+* display what the set of tiles is in the set sun pos canvas
 
 ## 0.6.0 - section.temp
 * (done) have a section.temp object
@@ -20,7 +26,7 @@
 * (done) have s section.temp.kelvin that will always be a kelvin value between min and max const values
 * (done) have a section.temp.displayUnit prop that can be \[Kelvin, Celsius, or Fahrenheit\]
 * (done) have a section.temp.displayTemp that will be a conversion from temp.kelvin to the temp.displayUnit
-* fix bug where section.per can never get to 1
+* (done) fix bug where section.per can never get to 1
 
 ## 0.5.0 - cell action select ui
 * (done) start a sections-ui-cellaction component in sections.js
