@@ -18,12 +18,14 @@ var app = new Vue({
         methods: {
             startAWork: function () {
                 var dat = this.$data;
-                var obj = {
-                    id: dat.count,
-                    worth: 1
-                };
-                dat.count += 1;
-                dat.works.push(obj);
+                if(dat.works.length < dat.maxWorks){
+                    var obj = {
+                        id: dat.count,
+                        worth: 1
+                    };
+                    dat.count += 1;
+                    dat.works.push(obj);
+                }
             }
         }
     });
