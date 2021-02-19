@@ -15,10 +15,16 @@ var app = new Vue({
             maxWorks: 10,
             works: []   // a log of work objects
         },
+        // THE UPDATED HOOK
         updated: function () {
-            var data = this.$data;
+            var dat = this.$data;
+            // process the works if we hit the max
+            if(dat.works.length == dat.maxWorks){
+                this.processWorks();
+            }
         },
         methods: {
+            // process the array of work objects
             processWorks: function(){
                 var dat = this.$data;
                 dat.works.forEach(function(w){
@@ -26,6 +32,7 @@ var app = new Vue({
                 });
                 dat.works = [];
             },
+            // start a work object
             startAWork: function () {
                 var dat = this.$data;
                 if(dat.works.length < dat.maxWorks){
