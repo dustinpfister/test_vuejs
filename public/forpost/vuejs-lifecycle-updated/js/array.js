@@ -3,10 +3,13 @@ var app = new Vue({
         template: '<div>' +
             '<button v-on:click="startAWork">Start a Work</button>' +
             '<h3> works:</h3>' +
-            '<div><div v-for="w in works" >id: {{w.id}}, worth: {{ w.worth }}</div></div>' +
+            '<div style="background:gray;padding:10px;">' +
+                '<div v-for="w in works" >id: {{w.id}}, worth: {{ w.worth }}</div>' +
+            '</div>' +
         '</div>',
         data: {
             count: 0,
+            maxWorks: 10,
             works: []   // a log of work objects
         },
         updated: function () {
