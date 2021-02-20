@@ -76,10 +76,16 @@ Vue.component('sun-ui-canvas',{
             ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
             ctx.fill();
             // draw sections
-            this.$props.sections.forEach(function(sun){
-                ctx.fillStyle = 'blue';
+            this.$props.sections.forEach(function(section){
+                ctx.fillStyle = 'cyan';
+                if(section.sheetIndex === 1){
+                    ctx.fillStyle = 'blue';
+                }
+                if(section.sheetIndex === 2){
+                    ctx.fillStyle = 'red';
+                }
                 ctx.beginPath();
-                ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
+                ctx.arc(section.x, section.y, section.r, 0, Math.PI * 2);
                 ctx.fill();
             });
         }
