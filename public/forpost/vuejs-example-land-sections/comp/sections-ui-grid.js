@@ -15,7 +15,12 @@ Vue.component('sections-ui-grid', {
     methods: {
         // set a style for a cell
         setStyle: function(cell){
-            var color = ['blue', 'red', 'yellow', 'green'];
+            var sheets = [
+                ['cyan', 'blue', '#0000ff', '#008f8f'],
+                ['blue', 'red', 'yellow', 'green'],
+                ['red', 'red', 'brown', 'black']
+            ];
+            var color = sheets[2];
             return 'position:absolute;'+
                 'left:'+Math.floor(32 * cell.x)+'px;'+
                 'top:'+Math.floor(32 * cell.y)+'px;'+

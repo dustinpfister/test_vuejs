@@ -20,8 +20,10 @@
 * any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
 ## 0.7.0 - fire, boiling water, and molten rock cell types
-* start a range of cell types for when section.temp.kelvin hits high values
-* section temp should have an impact on what the cell types are by having kelvin temp ranges for cell types
+* (done) rename itemIndex of a grid cell section to tileIndex
+* each section will need to have a sheetIndex property
+* start a collection of 'sprite sheets' for section.temp ranges
+* section temp should be what will set the sheetIndex value of a section.
 * display what the set of tiles is in the set sun pos canvas
 
 ## 0.6.0 - section.temp

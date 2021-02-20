@@ -67,7 +67,6 @@
         return grid;
     };
 
-
     // create sections array
     var createSections = function(){
         var i = 0,
@@ -82,6 +81,7 @@
                 r: SECTION_RADIUS,
                 distance: 0,
                 per: 0,
+                sheetIndex: 0,
                 temp: {
                     per: 0,
                     kelvin: 0,
