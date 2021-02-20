@@ -95,6 +95,15 @@
         return sections;
     };
 
+    var updateSections = function(data){
+        var sun = data.sun;
+        data.sections = data.sections.map(function(section){
+            setSectionPer(section, sun);
+            setSectionTemp(section);
+            return section;
+        });
+    };
+
     // set Section Temp helper
     var setSectionTemp = function(section){
         var temp = section.temp,
@@ -169,8 +178,10 @@
             }
         },
         mounted: function(){
-            this.setSunPosAD(Math.PI / 180 * 0, 70);
-            this.updateSections();
+            //this.setSunPosAD(Math.PI / 180 * 0, 70);
+            //this.updateSections();
+
+            updateSections(this.$data);
         },
         methods: {
             // a button was clicked
@@ -192,8 +203,10 @@
                 sun.a = a;
                 sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
                 sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
-                this.updateSections();
+                //this.updateSections();
+                updateSections(this.$data);
             },
+/*
             // update sections based on current sun position
             updateSections: function(){
                 var dat = this.$data,
@@ -204,6 +217,7 @@
                     return section;
                 });
             }
+*/
         }
     });
 
