@@ -98,8 +98,18 @@
     var updateSections = function(data){
         var sun = data.sun;
         data.sections = data.sections.map(function(section){
+            // set section percent based on distance to sun
             setSectionPer(section, sun);
+            // set section temp
             setSectionTemp(section);
+            // set sheet index based on section temp
+            section.sheetIndex = 0;
+            if(section.temp.kelvin >= 274){
+                section.sheetIndex = 1;
+            }
+            if(section.temp.kelvin >= 327){
+                section.sheetIndex = 2;
+            }
             return section;
         });
     };
