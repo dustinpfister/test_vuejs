@@ -8,7 +8,10 @@
   <script>
 var app = new Vue({
         el: '#container',
-        template: '<div><p>total: {{ total }} </p></div>',
+        template: '<div>' +
+            '<h3>total: {{ total }} </h3>' +
+            '<p v-for="obj in nums"> n: {{obj.n}} </p>' + 
+        '</div>',
         data: {
             total: 0,
             nums: []
@@ -38,8 +41,6 @@ var app = new Vue({
                         n: 10 + Math.floor(Math.random() * 10)
                     });
                 }
-                // force update to make sure update hook fires
-                this.$forceUpdate();
             }
         }
     });
