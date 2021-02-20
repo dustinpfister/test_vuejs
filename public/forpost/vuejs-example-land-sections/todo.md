@@ -6,6 +6,10 @@
    Get the basic game logic worked out
 -->
 
+## 0.x.0 - /lib/game.js
+* start a game.js module that will be for the creating and mutation of a game state.
+* start pulling code that has to do with the creation and mutation of game state out of menu.js into game.js
+
 ## 0.x.0 - Mana System
 * there will need to be some kind of currency for prefroming various actions so start a mana system
 
