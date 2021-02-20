@@ -9,7 +9,7 @@
 new Vue({
     el: '#demo',
     template: '<div>' +
-        '<canvas v-on:click.right.prevent="rightDown" width="320" height="240"></canvas>' +
+        '<canvas v-on:click.right.prevent="rightDown" v-on:mouseup.prevent="up" width="320" height="240"></canvas>' +
     '</div>',
     data: {
         canvas: null,
@@ -30,6 +30,10 @@ new Vue({
             ctx.fillRect(0,0, canvas.width, canvas.height);
             ctx.fillStyle = 'white';
             ctx.fillText(dat.down, 20, 20);
+        },
+        up: function(){
+            this.$data.down = false;
+            this.draw();
         },
         rightDown: function () {
             this.$data.down = true;
