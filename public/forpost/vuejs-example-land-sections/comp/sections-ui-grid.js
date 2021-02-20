@@ -20,7 +20,7 @@ Vue.component('sections-ui-grid', {
                 ['blue', 'red', 'yellow', 'green'],
                 ['red', 'red', 'brown', 'black']
             ];
-            var color = sheets[2];
+            var color = sheets[this.$props.section.sheetIndex];
             return 'position:absolute;'+
                 'left:'+Math.floor(32 * cell.x)+'px;'+
                 'top:'+Math.floor(32 * cell.y)+'px;'+
