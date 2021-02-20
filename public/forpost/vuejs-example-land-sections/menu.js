@@ -60,7 +60,7 @@
                i: i,
                x: i % grid.w,
                y: Math.floor(i / grid.w),
-               itemIndex: indexArr[i] || 0
+               tileIndex: indexArr[i] || 0
             });
             i += 1;
         }
@@ -165,7 +165,7 @@
         data: {
             menus: ['home', 'sun', 'sections', 'sections-table'],
             sections: createSections(),
-            currentMenu: 'sections-table',
+            currentMenu: 'sections',
             sun: {
                cx: CENTERX,
                cy: CENTERY,

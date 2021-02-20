@@ -19,7 +19,7 @@ Vue.component('sections-ui-grid', {
             return 'position:absolute;'+
                 'left:'+Math.floor(32 * cell.x)+'px;'+
                 'top:'+Math.floor(32 * cell.y)+'px;'+
-                'background:'+color[cell.itemIndex]+';'+
+                'background:'+color[cell.tileIndex]+';'+
                 'width:32px;height:32px;';
         },
         // what to do if a cell is clicked

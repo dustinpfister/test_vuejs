@@ -35,7 +35,7 @@ Vue.component('menu-sections', {
         clickCell: function(cell){
             var dat = this.$data;
             if(dat.cellAction >= 0){
-                cell.itemIndex = dat.cellAction;
+                cell.tileIndex = dat.cellAction;
             }
         },
         setCellAction: function(actionIndex){
