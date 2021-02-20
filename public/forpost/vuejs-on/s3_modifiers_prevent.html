@@ -9,14 +9,12 @@
 new Vue({
     el: '#demo',
     template: '<div>' +
-        '<canvas v-on:mouseup.prevent="up" width="320" height="240"></canvas>' +
+        '<canvas v-on:click.right.prevent="rightDown" width="320" height="240"></canvas>' +
     '</div>',
     data: {
         canvas: null,
         ctx:null,
-        down: false,
-        x: 0,
-        y: 0
+        down: false
     },
     mounted: function(){
         this.$data.canvas = this.$el.querySelectorAll('canvas')[0];
@@ -31,10 +29,11 @@ new Vue({
             ctx.fillStyle = 'black';
             ctx.fillRect(0,0, canvas.width, canvas.height);
             ctx.fillStyle = 'white';
-            ctx.fillText(dat.down + ',' + dat.x + ',' + dat.y, 20, 20);
+            ctx.fillText(dat.down, 20, 20);
         },
-        up: function () {
-            console.log('up');
+        rightDown: function () {
+            this.$data.down = true;
+            this.draw();
         }
     }
 });
