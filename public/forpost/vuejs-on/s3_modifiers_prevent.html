@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>vue on example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+        '<canvas v-on:mouseup.prevent="up" width="320" height="240"></canvas>' +
+    '</div>',
+    data: {
+        canvas: null,
+        ctx:null,
+        down: false,
+        x: 0,
+        y: 0
+    },
+    mounted: function(){
+        this.$data.canvas = this.$el.querySelectorAll('canvas')[0];
+        this.$data.ctx = this.$data.canvas.getContext('2d');
+        this.draw();
+    },
+    methods: {
+        draw: function(){
+            var dat = this.$data,
+            ctx = dat.ctx,
+            canvas = dat.canvas;
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.fillText(dat.down + ',' + dat.x + ',' + dat.y, 20, 20);
+        },
+        up: function () {
+            console.log('up');
+        }
+    }
+});
+    </script>
+  </body>
+</html>
