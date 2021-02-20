@@ -117,7 +117,7 @@
     // set Section Temp helper
     var setSectionTemp = function(section){
         var temp = section.temp,
-        per = Math.log( 1 + section.per) / Math.log(2 + 36000 * (1-section.per))
+        per = Math.log( 1 + section.per) / Math.log( 2 + 36000 * (1 - section.per));
         temp.kelvin = SECTION_TEMP_KELVIN_MIN + per * SECTION_TEMP_KELVIN_MAX;
         temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
         // display unit defaults to kelvin
@@ -133,6 +133,7 @@
         var maxDist = section.distance - section.r - sun.r;
         section.distance = section.distance > maxDist ? maxDist : section.distance;
         section.per = 1 - section.distance / (SECTION_DIST * 2);
+        section.per = section.per > 1 ? 1 : section.per;
     };
 
     var vm = new Vue({

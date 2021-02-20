@@ -24,7 +24,9 @@
 * (done) each section will need to have a sheetIndex property
 * (done) start a collection of 'sprite sheets' for section.temp ranges
 * (done) section temp should be what will set the sheetIndex value of a section.
-* display what the sheet index is in sun-ui-canvas
+* (done) display what the sheet index is in sun-ui-canvas
+* fix a NaN temp bug
+
 
 ## 0.6.0 - section.temp
 * (done) have a section.temp object
