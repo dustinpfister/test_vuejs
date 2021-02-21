@@ -1,6 +1,5 @@
 // just a way to serve the html folder
 let express = require('express'),
-path = require('path'),
 app = express(),
 port = process.env.PORT || process.argv[2] || 8080;
  
