@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>test_vjs static server index</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <h1>test_vjs static server index</h1>
+    <div id="mess"></div>
+    <script>
+new Vue({
+    el:'#mess',
+    template: '<div style="background:gray;padding:10px;"><p>{{message}}</p></div>',
+    data: {
+        message:'hello world'
+    }
+});
+    </script>
+  </body>
+</html>

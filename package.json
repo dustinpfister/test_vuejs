@@ -10,6 +10,7 @@
   "author": "Dustin Pfister",
   "license": "GPL-3.0",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "serve-index": "^1.9.1"
   }
 }
