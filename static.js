@@ -2,10 +2,15 @@
 let express = require('express'),
 path = require('path'),
 app = express(),
-port = process.env.PORT || process.argv[2] || 8080;
- 
-app.use('/', express.static( path.resolve(__dirname, 'public') ));
+PORT = process.env.PORT || process.argv[2] || 8080,
+PUBLIC_HTML = path.resolve(__dirname, 'public');
 
-app.listen(port, function () {
-    console.log('static server up on port: ' + port);
+// use express static to serve the public folder
+app.use('/', express.static(PUBLIC_HTML));
+
+// listen on PORT
+app.listen(PORT, function () {
+    console.log('static server up');
+    console.log('serving PUBLIC HTML folder at: ' + PUBLIC_HTML);
+    console.log('on port: ' + PORT);
 });
