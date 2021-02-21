@@ -5,7 +5,8 @@
   "main": "static.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "list": "node ./list.js"
+    "list": "node ./list.js",
+    "static": "node ./static.js"
   },
   "author": "Dustin Pfister",
   "license": "GPL-3.0",
