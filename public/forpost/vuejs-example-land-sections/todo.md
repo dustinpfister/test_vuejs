@@ -14,10 +14,12 @@
 * there will need to be some kind of currency for prefroming various actions so start a mana system
 
 ## 0.x.0 - cell.elevation, and cell.typeIndex
-* move sections-ui-cellaction to its own file in the comp folder
+* (done) move sections-ui-cellaction to its own file in the comp folder
+* (done) add a cell.elevation value that will be an index value between 0 and ELEVATION\_MAX
+
 * have a cell.typeIndex prop that will be a cell type index value 0-water, 1-fire, 2-beach, 3-grass, 4-forest, ect
-* add a cell.elevation value that will be an index value between 0 and ALTITUDE\_MAX
-* have a grid.seaLevel prop that will have a value in the same range as 0 to ALTITUDE\_MAX
+
+* have a grid.seaLevel prop that will have a value in the same range as 0 to ELEVATION\_MAX
 * any cell with an ALTITUDE at or below grid.seaLevel will have a cell.typeIndex of 0 water
 
 ## 0.7.0 - fire, boiling water, and molten rock cell types

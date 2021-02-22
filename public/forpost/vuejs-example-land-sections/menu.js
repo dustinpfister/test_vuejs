@@ -8,7 +8,8 @@
     SECTION_TEMP_KELVIN_MIN = 0,    // Think in kelvin when it comes to a standard unit for temp
     SECTION_TEMP_KELVIN_MAX = 5778,
     SUN_RADIUS = 16,
-    SUN_MAXDIST = SECTION_DIST - SUN_RADIUS - SECTION_RADIUS;
+    SUN_MAXDIST = SECTION_DIST - SUN_RADIUS - SECTION_RADIUS,
+    ELEVATION_MAX = 5;
 
     var maps = [
         '0,0,0,0,0,0,0,0,0,0,' +
@@ -60,7 +61,8 @@
                i: i,
                x: i % grid.w,
                y: Math.floor(i / grid.w),
-               tileIndex: indexArr[i] || 0
+               tileIndex: indexArr[i] || 0,
+               elevation: 0
             });
             i += 1;
         }
