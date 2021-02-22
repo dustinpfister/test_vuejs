@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+
+Vue.component('hello', {
+    props: ['color'],
+    template: '<div><span v-bind:style="setStyle()"><slot></slot></span><br></div>',
+    methods: {
+        setStyle: function(){
+            var color = this.$props.color;
+            if(color){
+                return 'color:' + color + ';';
+            }
+            return 'color:cyan;'
+        }
+    }
+});
+
+new Vue({
+    el:'#demo',
+    template: '<div>'+
+        '<hello color="red">{{ mess }}</hello>' +
+        '<hello color="green">{{ mess }}</hello>' +
+        '<hello color="blue">{{ mess }}</hello>' +
+    '</div>',
+    data: function(){
+        var dat = {
+            mess: 'Hello World'
+        };
+        return dat;
+    }
+});
+  </script>
+  </body>
+</html>
