@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el:'#demo',
+    template: '<div>'+
+        '<input '+
+            'type="button" ' + 
+            'v-on:click="step" ' +
+            'v-bind:value="\'Step Mess Index ( \' + index + \'\/\' + strArray.length + \' )\'"> ' +
+        '<p v-text="mess"></p>' +
+    '</div>',
+    data: function(){
+        var dat = {
+            index: 0,
+            strArray: ['hello world', 'foo', 'bar'],
+            mess: ''
+        };
+        return dat;
+    },
+    // a created life cycle hook
+    created: function(){
+        this.set(0);
+    },
+    methods: {
+        // set a mesage index
+        set: function(index){
+            var dat = this.$data;
+            dat.index = index === undefined ? dat.index : index;
+            dat.mess = dat.strArray[dat.index];
+        },
+        // step the mesage index
+        step: function(){
+            var dat = this.$data;
+            dat.index += 1;
+            dat.index %= dat.strArray.length;
+            this.set(dat.index);
+        }
+    }
+});
+  </script>
+  </body>
+</html>
