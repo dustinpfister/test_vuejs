@@ -22,11 +22,25 @@
         return formatter.format(number); 
     });
   
-  
-  new Vue({
-    el: '#demo',
-    template: '<p>{{ \'3.5\' | money }}</p>'
-  })
+   Vue.component('moneydivs', {
+       props: ['amounts'],
+       template: '<div>' +
+           '<div v-for="m in $props.amounts">{{ m | money }}</div>' +
+       '</div>'
+   });
+
+
+    new Vue({
+        el: '#demo',
+        template: '<p>' +
+            '<moneydivs v-bind:amounts="amounts" ></moneydivs>' +
+        '</p>',
+        data: function(){
+            return {
+                amounts: [9.99, 3.25, 1.75]
+            };
+        }
+    });
   
   
   </script>
