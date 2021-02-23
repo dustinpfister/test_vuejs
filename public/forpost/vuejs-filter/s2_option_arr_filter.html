@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>vue filter example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+  <script>
+  
+new Vue({
+    el:'#demo',
+    template: '<p>{{ arr | get_active | to_text }}</p>',
+    data: {
+        arr: [
+            {active:false, mess: 'foo'},
+            {active:true, mess: 'man'},
+            {active:false, mess: 'chew'},
+            {active:true, mess: 42}
+        ] 
+    },
+    filters: {
+        get_active : function(arr){
+            return arr.filter(function(obj){
+                return obj.active;
+            })
+        },
+        to_text : function(arr){
+            var text = '';
+            arr.forEach(function(obj){
+                text += obj.mess + ' ';
+            });
+            return text;
+        }
+    }
+});
+  
+  </script>
+  </body>
+</html>
