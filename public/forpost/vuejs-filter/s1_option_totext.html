@@ -1,4 +1,11 @@
-
+<html>
+  <head>
+    <title>vue filter example list</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <pre id="list">{{ items | toText }}</pre>
+    <script>
 new Vue({
     el: '#list',
     data: {
@@ -22,3 +29,6 @@ new Vue({
         }
     }
 });
+    </script>
+  </body>
+</html>
