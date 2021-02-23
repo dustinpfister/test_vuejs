@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>vue filter global example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+    </div>
+  <script>
+  
+    // global money filter
+    Vue.filter('kelvinToUnit', function(kelvin, unit){
+        var temp = kelvin;
+        if(unit.toLowerCase() === 'c'){
+            return kelvin - 273.15;
+        }
+        return temp;
+    });
+
+    // using the money filter in a main Vuejs instance
+    new Vue({
+        el: '#demo',
+        template: '<div>' +
+            '<h3>{{ kelvin | kelvinToUnit("c") }}</h3>' +
+        '</div>',
+        data: function(){
+            return {
+                kelvin: 303.15
+            };
+        }
+    });
+  
+  
+  </script>
+  </body>
+</html>
