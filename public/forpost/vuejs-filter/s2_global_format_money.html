@@ -8,6 +8,7 @@
     </div>
   <script>
   
+    // global money filter
     Vue.filter('money', function(val){
         var formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
@@ -22,21 +23,25 @@
         return formatter.format(number); 
     });
   
-   Vue.component('moneydivs', {
-       props: ['amounts'],
-       template: '<div>' +
-           '<div v-for="m in $props.amounts">{{ m | money }}</div>' +
-       '</div>'
-   });
+    // using the global money filter in a component
+    Vue.component('moneydivs', {
+        props: ['amounts'],
+        template: '<div>' +
+            '<div v-for="m in $props.amounts">{{ m | money }}</div>' +
+        '</div>'
+    });
 
-
+    // using the money filter in a main Vuejs instance
     new Vue({
         el: '#demo',
-        template: '<p>' +
+        template: '<div>' +
+            '<h3>Amounts: </h3>' +
             '<moneydivs v-bind:amounts="amounts" ></moneydivs>' +
-        '</p>',
+            '<h3>Other Amount: {{other | money}}</h3>' +
+        '</div>',
         data: function(){
             return {
+                other: 1357.68,
                 amounts: [9.99, 3.25, 1.75]
             };
         }
