@@ -10,11 +10,14 @@
   
     // global money filter
     Vue.filter('kelvinToUnit', function(kelvin, unit){
-        var temp = kelvin;
+        unit = unit === undefined ? 'k' : unit;
         if(unit.toLowerCase() === 'c'){
             return String( Number(kelvin) - 273.15) + 'c';
         }
-        return temp;
+        if(unit.toLowerCase() === 'f'){
+            return String( ( Number(kelvin) - 273.15) * 9 / 5 + 32 ) + 'f';
+        }
+        return kelvin + 'k';
     });
 
     // using the money filter in a main Vuejs instance
@@ -22,6 +25,8 @@
         el: '#demo',
         template: '<div>' +
             '<h3>{{ kelvin | kelvinToUnit(displayUnit) }}</h3>' +
+            '<h3>{{ kelvin | kelvinToUnit("f") }}</h3>' +
+            '<h3>{{ kelvin | kelvinToUnit }}</h3>' +
         '</div>',
         data: function(){
             return {
