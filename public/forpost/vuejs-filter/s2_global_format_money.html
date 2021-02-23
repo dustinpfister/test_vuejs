@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>vue filter global example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+    </div>
+  <script>
+  
+    Vue.filter('money', function(val){
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+        });
+        var number = Number(val);
+        if(String(number) === 'NaN'){
+            number = 0;
+        }
+        return formatter.format(number); 
+    });
+  
+  
+  new Vue({
+    el: '#demo',
+    template: '<p>{{ \'3.5\' | money }}</p>'
+  })
+  
+  
+  </script>
+  </body>
+</html>
