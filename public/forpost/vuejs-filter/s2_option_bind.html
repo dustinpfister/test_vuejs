@@ -8,7 +8,10 @@
     <script>
 new Vue({
     el: '#demo',
-    template:'<input type="button" v-bind:value="state | buttonText">',
+    template:'<input ' + 
+        'v-bind:value="state | buttonText" ' +
+        'v-on:click="click(state)" ' +
+        'type="button" >',
     data: {
         state: {
             amount: 40,
@@ -18,6 +21,11 @@ new Vue({
     filters: {
         buttonText: function (state) {
             return 'step by ' + state.delta + ' ( ' + state.amount + ' ) ';
+        }
+    },
+    methods : {
+        click: function(state){
+            state.amount += state.delta;
         }
     }
 });
