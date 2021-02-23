@@ -8,7 +8,7 @@
     </div>
   <script>
   
-    // global money filter
+    // kelvin to display unit filter
     Vue.filter('kelvinToUnit', function(kelvin, unit){
         unit = unit === undefined ? 'k' : unit;
         if(unit.toLowerCase() === 'c'){
@@ -20,7 +20,7 @@
         return kelvin + 'k';
     });
 
-    // using the money filter in a main Vuejs instance
+   // use case example
     new Vue({
         el: '#demo',
         template: '<div>' +
@@ -35,7 +35,6 @@
             };
         }
     });
-  
   
   </script>
   </body>
