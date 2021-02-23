@@ -12,7 +12,7 @@
     Vue.filter('kelvinToUnit', function(kelvin, unit){
         var temp = kelvin;
         if(unit.toLowerCase() === 'c'){
-            return kelvin - 273.15;
+            return String( Number(kelvin) - 273.15) + 'c';
         }
         return temp;
     });
@@ -21,11 +21,12 @@
     new Vue({
         el: '#demo',
         template: '<div>' +
-            '<h3>{{ kelvin | kelvinToUnit("c") }}</h3>' +
+            '<h3>{{ kelvin | kelvinToUnit(displayUnit) }}</h3>' +
         '</div>',
         data: function(){
             return {
-                kelvin: 303.15
+                kelvin: 303.15,
+                displayUnit: 'c'
             };
         }
     });
