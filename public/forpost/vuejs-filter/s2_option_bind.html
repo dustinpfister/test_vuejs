@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>vue filter example list</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el: '#demo',
+    template:'<input type="button" v-bind:value="state | buttonText">',
+    data: {
+        state: {
+            amount: 40,
+            delta: 5
+        }
+    },
+    filters: {
+        buttonText: function (state) {
+            return 'step by ' + state.delta + ' ( ' + state.amount + ' ) ';
+        }
+    }
+});
+    </script>
+  </body>
+</html>
