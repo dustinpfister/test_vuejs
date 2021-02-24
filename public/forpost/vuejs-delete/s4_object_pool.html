@@ -17,13 +17,18 @@ new Vue({
         pool: []
     },
     created: function(){
-        this.$data.pool = this.createPool(10);
-        var obj = this.getNextActiveState(false);
-        obj.active = true;
-        obj.mess = 'Hello World';
-        console.log(obj);
+        this.$data.pool = this.createPool(5);
+        this.useNext('Hello World');
+        this.useNext('This is an object pool');
     },
     methods: {
+        useNext: function(mess){
+            var obj = this.getNextActiveState(false);
+            if(obj){
+                obj.active = true;
+                obj.mess = mess || '';
+            }
+        },
         getNextActiveState: function(state){
             state = state === undefined ? false: state;
             var i = 0,
