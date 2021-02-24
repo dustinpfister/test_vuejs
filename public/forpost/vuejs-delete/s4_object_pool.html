@@ -9,14 +9,35 @@
 new Vue({
     el: '#app',
     template: '<div>'+
+        '<div v-for="obj in pool">' +
+            '<p v-if="obj.active">{{obj.mess}}</p>' +
+        '</div>' +
     '</div>',
     data: {
         pool: []
     },
     created: function(){
         this.$data.pool = this.createPool(10);
+        var obj = this.getNextActiveState(false);
+        obj.active = true;
+        obj.mess = 'Hello World';
+        console.log(obj);
     },
     methods: {
+        getNextActiveState: function(state){
+            state = state === undefined ? false: state;
+            var i = 0,
+            obj,
+            len = this.$data.pool.length;
+            while(i < len){
+                obj = this.$data.pool[i];
+                if(obj.active === state){
+                    return obj;
+                }
+                i += 1;
+            }
+            return false;
+        },
         createPool: function(size){
             var i = 0,
             pool = [];
