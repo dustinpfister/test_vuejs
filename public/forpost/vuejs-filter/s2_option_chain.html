@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>vue filter example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+  <script>
+  
+  new Vue({
+    el:'#demo',
+    template: '<p>{{ mess | foo | bar | upper }}</p>',
+    data: {
+      mess: 'what is '
+    },
+    filters: {
+      foo : function(val){
+        return val + ' foo';
+      },
+      bar : function(val){
+           return val + 'bar?';
+      },
+      upper : function(val){
+          return val.toUpperCase();
+      }
+    }
+  });
+  
+  </script>
+  </body>
+</html>
