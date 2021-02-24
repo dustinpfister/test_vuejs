@@ -10,6 +10,7 @@ new Vue({
     el: '#app',
     template: '<div>'+
         '<input type="text" v-model="messText" v-on:keyup.enter="useNext">' +
+        '<button v-on:click="useNext">Add</button>' +
         '<div v-for="obj in pool">' +
             '<p v-if="obj.active">{{obj.mess}}</p>' +
         '</div>' +
