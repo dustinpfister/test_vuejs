@@ -9,11 +9,13 @@
 new Vue({
     el: '#app',
     template: '<div>'+
+        '<input type="text" v-model="messText" v-on:keyup.enter="useNext">' +
         '<div v-for="obj in pool">' +
             '<p v-if="obj.active">{{obj.mess}}</p>' +
         '</div>' +
     '</div>',
     data: {
+        messText: 'Hello World',
         pool: []
     },
     created: function(){
@@ -23,10 +25,15 @@ new Vue({
     },
     methods: {
         useNext: function(mess){
+            console.log(this.$data)
             var obj = this.getNextActiveState(false);
             if(obj){
                 obj.active = true;
-                obj.mess = mess || '';
+                if(typeof mess === 'string'){
+                   obj.mess = mess || this.$data.messText;
+                }else{
+                    obj.mess = this.$data.messText;
+                }
             }
         },
         getNextActiveState: function(state){
