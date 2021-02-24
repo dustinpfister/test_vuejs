@@ -9,8 +9,9 @@
 new Vue({
     el: '#app',
     template: '<div>'+
-        '<input type="text" v-model="messText" v-on:keyup.enter="useNext">' +
-        '<button v-on:click="useNext">Add</button>' +
+        '<input type="text" v-model="messText" v-on:keyup.enter="useNext"> ' +
+        '<button v-on:click="useNext">Add</button> ' +
+        '<button v-on:click="del">Delete</button> ' +
         '<div v-for="obj in pool">' +
             '<p v-if="obj.active">{{obj.mess}}</p>' +
         '</div>' +
@@ -25,8 +26,16 @@ new Vue({
         this.useNext('This is an object pool');
     },
     methods: {
+        // the 'delete' method just sets an active flag to false
+        // the object is still there it can just be used for something
+        // else now
+        del: function(){
+            var obj = this.getNextActiveState(true);
+            if(obj){
+                obj.active = false;
+            }
+        },
         useNext: function(mess){
-            console.log(this.$data)
             var obj = this.getNextActiveState(false);
             if(obj){
                 obj.active = true;
