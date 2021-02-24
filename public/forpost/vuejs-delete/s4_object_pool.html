@@ -6,17 +6,31 @@
   <body>
   <div id="app"></div>
   <script>
-var vm = new Vue({
-        el: '#app',
-        template: '<div>'+
-        '</div>',
-        data: {
-            pool: []
-        },
-        methods: {
+new Vue({
+    el: '#app',
+    template: '<div>'+
+    '</div>',
+    data: {
+        pool: []
+    },
+    created: function(){
+        this.$data.pool = this.createPool(10);
+    },
+    methods: {
+        createPool: function(size){
+            var i = 0,
+            pool = [];
+            while(i < size){
+                pool.push({
+                    active: false,
+                    mess: 'none'
+                });
+                i += 1;
+            }
+            return pool;
         }
-    });
-vm.names.sort();
+    }
+});
   </script>
   </body>
 </html>
