@@ -1,9 +1,10 @@
 Vue.component('menu-manual', {
-  props: ['money', 'currentMenu'],
-  data: function () {
-    return {
-    };
-  },
+  //props: ['money', 'currentMenu'],
+  //data: function () {
+  //  return {
+  //  };
+  //},
+  props: ['state', 'currentMenu'],
   render: function(createElement){
       var children = [];
       var vm = this;
@@ -11,7 +12,7 @@ Vue.component('menu-manual', {
           children.push(createElement('input', {
               attrs: {
                  type: 'button',
-                 value: 'click ('+ vm.$props.money + ')'
+                 value: 'click ('+ vm.$props.state.money + ')'
               },
               on: {
                   click: this.click
@@ -22,7 +23,8 @@ Vue.component('menu-manual', {
   },
   methods: {
     click: function(e){
-        this.$emit('delta-money', 1);
+        //this.$emit('delta-money', 1);
+        this.$emit('state-change', 'delta-money', 1);
     }
   }
 });
