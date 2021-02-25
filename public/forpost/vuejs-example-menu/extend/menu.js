@@ -1,5 +1,4 @@
 var Menu = Vue.extend({
-    el: '#app',
     render: function(createElement){
         var vm = this;
         var children = [];
@@ -34,10 +33,12 @@ var Menu = Vue.extend({
         children.push(createElement('div', {class:'wrap_menu'}, menus));
         return createElement('div', {class:'wrap_main'}, children);
     },
-    data: {
-        menus: ['home', 'manual'],
-        currentMenu: 'home',
-        money: 0
+    data: function(){
+        return {
+            menus: ['home', 'manual'],
+            currentMenu: 'home',
+            money: 0
+        };
     },
     methods: {
         // a button was clicked
