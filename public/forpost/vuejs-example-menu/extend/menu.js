@@ -29,6 +29,7 @@ console.log(vm.$data.currentMenu);
                 },
                 on: {
                     //'delta-money': vm.deltaMoney
+                    'state-change': vm.stateChange
                 }
             }));
         });
@@ -55,6 +56,9 @@ console.log(vm.$data.currentMenu);
             if(idArr[1] === 'changemenu'){
                 dat.currentMenu = idArr[2];
             }
+        },
+        stateChange: function(key, value){
+            console.log('must add your own method for state change events',key, value);
         }
     }
 });
