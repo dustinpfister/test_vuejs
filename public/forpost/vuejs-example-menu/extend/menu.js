@@ -35,7 +35,7 @@ var Menu = Vue.extend({
     },
     data: function(){
         return {
-            menus: ['home', 'manual'],
+            menus: ['home'],
             currentMenu: 'home',
             money: 0
         };
