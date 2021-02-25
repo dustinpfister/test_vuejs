@@ -50,10 +50,6 @@ var Menu = Vue.extend({
             if(idArr[1] === 'changemenu'){
                 dat.currentMenu = idArr[2];
             }
-        },
-        deltaMoney: function(a){
-            console.log('delta money event', a);
-            this.$data.money += a;
         }
     }
 });
