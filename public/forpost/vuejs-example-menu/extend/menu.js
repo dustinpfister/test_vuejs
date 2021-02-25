@@ -20,15 +20,12 @@ var Menu = Vue.extend({
         // create menus
         var menus = [];
         vm.$data.menus.forEach(function(menuName){
-console.log(vm.$data.currentMenu);
             menus.push(createElement('menu-' + menuName, {
                 props:{
                    state: vm.$data.state,
-                   //money: vm.$data.money,
                    currentMenu: vm.$data.currentMenu
                 },
                 on: {
-                    //'delta-money': vm.deltaMoney
                     'state-change': vm.stateChange
                 }
             }));
@@ -40,10 +37,7 @@ console.log(vm.$data.currentMenu);
         return {
             menus: ['home'],
             currentMenu: 'home',
-            money: 0,
-            state: {
-                money: 10
-            }
+            state: {} // state defaults to an empty object
         };
     },
     methods: {

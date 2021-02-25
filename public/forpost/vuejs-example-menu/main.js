@@ -1,7 +1,10 @@
 var vm = new Menu({
     el: '#app',
     data: {
-        menus: ['home', 'manual']
+        menus: ['home', 'manual'],
+        state: {
+            money: 50
+        }
     },
     created: function(){
         //var dat = this.$data;
