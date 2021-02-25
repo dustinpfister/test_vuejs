@@ -12,8 +12,10 @@ var vm = new Menu({
             this.$data.money += a;
         },
         stateChange: function(key, value){
-            console.log('okay yeah!');
             console.log(key, value);
+            if(key === 'delta-money'){
+                this.$data.state.money += value;
+            }
         }
     }
 })
