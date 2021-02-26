@@ -4,21 +4,23 @@
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <div id="interface">
-    <input v-on:click="step" type="button" value="step">
-    <p>{{ frame }}</p>
-  </div>
+  <div id="interface"></div>
   <script>
 new Vue({
     el: '#interface',
+    template: '<div>' +
+        '<input v-on:click="step" type="button" value="step">' +
+        '<p>{{ frame }} / {{ maxFrame }} </p>' +
+    '</div>',
     data: {
         frame: 0,
         maxFrame: 10
     },
     methods: {
         step: function (e) {
-            this.frame += 1;
-            this.frame %= this.maxFrame;
+            var dat = this.$data
+            dat.frame += 1;
+            dat.frame %= dat.maxFrame;
         }
     }
 });
