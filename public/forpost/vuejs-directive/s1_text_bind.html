@@ -4,19 +4,20 @@
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <div id="header">
-    <h1 v-text="mess_h1" >Something went wrong.</h1>
-    <p v-text="mess_p" v-bind:style="style_red"></p>
-  </div>
+  <div id="demo"></div>
   <script>
-var vm = new Vue({
-        el: '#header',
-        data: {
-            mess_h1: 'This is a v-text directive example',
-            mess_p: 'Uisng the v-text and v-bind:style directives here',
-            style_red: 'color:red;'
-        }
-    });
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+        '<p>{{ mess }}</p>' +
+        '<p v-text="mess" >Something went wrong.</p>' +
+        '<p v-text="mess" v-bind:style="style_red"></p>' +
+    '</div>',
+    data: {
+        mess: 'Directives are great',
+        style_red: 'color:red;'
+    }
+});
   </script>
   </body>
 </html>
