@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>vue directive example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="content">
+     <h1>There is a=a and then there is a=<span v-tobin >a</span></h1>
+  </div>
+  <script>
+Vue.directive('tobin', {
+    bind: function (el, binding, vnode) {
+
+        if (!el.dataset.text) {
+            el.dataset.text = el.innerText;
+        }
+        el.innerText = [].map.call(el.dataset.text, (c) => {
+            return c.charCodeAt(0).toString(2);
+        }).join('');
+
+    }
+});
+ 
+new Vue({
+    el: '#content'
+});
+  </script>
+  </body>
+</html>
