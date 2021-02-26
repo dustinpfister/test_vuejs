@@ -8,6 +8,15 @@
     <h1 v-text="mess_h1" >Something went wrong.</h1>
     <p v-text="mess_p" v-bind:style="style_red"></p>
   </div>
-  <script src="./text.js"></script>
+  <script>
+var vm = new Vue({
+        el: '#header',
+        data: {
+            mess_h1: 'This is a v-text directive example',
+            mess_p: 'Uisng the v-text and v-bind:style directives here',
+            style_red: 'color:red;'
+        }
+    });
+  </script>
   </body>
 </html>
