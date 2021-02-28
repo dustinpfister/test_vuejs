@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>vue html example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<p></p>',
+    mounted: function(){
+        this.$el.querySelectorAll('p')[0].innerText = 'foo';
+    }
+  });
+  </script>
+  </body>
+</html>
