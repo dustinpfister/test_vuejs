@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>vue observable example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+// A vanilla javaScript State module
+var stateMod = (function(){
+    var api = {};
+    api.create = function(){
+        return {
+            count: 0
+        };
+    };
+    api.update = function(state){
+        state.count += 1;
+    };
+    return api;
+}());
+// a vuejs instance 
+new Vue({
+    el:'#demo',
+    data: function(){
+        return {
+            state: stateMod.create()
+        };
+    },
+    render : function(createElement){
+       return createElement('input', {
+            attrs: {
+                type: 'button',
+                value: 'count: ' + this.$data.state.count
+            },
+            on: {
+                click: this.click
+            }
+        });
+    },
+    methods: {
+       click : function(){
+           stateMod.update(this.$data.state);
+       }
+    }
+});
+    </script>
+  </body>
+</html>
