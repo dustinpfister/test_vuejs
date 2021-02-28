@@ -5,6 +5,7 @@
   <body>
     <div id="demo"></div>
     <script>
+// a create reactive helper that will use getters and setters
 var createReactive = function (obj, onSet) {
     obj = obj || {};
     onSet = onSet || function () {};
@@ -28,13 +29,16 @@ var createReactive = function (obj, onSet) {
     });
     return newObj;
 };
+// a render function
 var render = function (obj) {
-    console.log(obj);
+    var el = document.getElementById('demo');
+    el.innerText = obj.n;
 };
 var a = createReactive({
         n: 42
     }, render);
-console.log(a.n);
+// a chnage to a.n will call the render function
+a.n = 15;
     </script>
   </body>
 </html>
