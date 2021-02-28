@@ -9,8 +9,7 @@
 var state = Vue.observable({
     count: 0
 });
- 
-var vm = new Vue({
+new Vue({
     el:'#demo',
     render : function(createElement){
        return createElement('input', {
@@ -29,7 +28,6 @@ var vm = new Vue({
        }
     }
 });
- 
     </script>
   </body>
 </html>
